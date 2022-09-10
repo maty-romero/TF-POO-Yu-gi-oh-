@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;eje15&apos; to &apos;mainPrincipal&apos;&#x0D;&#x0A;- Original project: &apos;Clasic YuGiOh!&apos;&#x0D;&#x0A;- Original element: &apos;Clasic YuGiOh!/src/eje15&apos;&#x0D;&#x0A;- Renamed element: &apos;Clasic YuGiOh!/src/mainPrincipal&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;eje15&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;eje15" name="mainPrincipal" qualified="false" references="true" stamp="1662821381718" textual="false" version="1.0"/>
+</session>

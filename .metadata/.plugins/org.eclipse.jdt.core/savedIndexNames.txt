@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\veram\Documents\POO\Proyecto Final- maty\TF-POO-Yu-gi-oh-\.metadata\.plugins\org.eclipse.jdt.core
+3206145387.index
+1865797976.index
+195505260.index
