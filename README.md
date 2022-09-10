@@ -1,5 +1,7 @@
 # TF-POO-Yu-gi-oh-
 
+#### Vera Maximiliano - Romero Matias 
+
 ## Branchs 
 Main: Rama principal. Solo utilizar al estar seguros y haber probado en Dev
 
@@ -10,4 +12,4 @@ Dev: Rama para el desarrollo. Se utilizaran ramas adicionales para agregar modif
 Otros: Se incluiran ramas para introducir cambios y poder hacer Merge con la rama Dev 
 
 
-Vera Maximiliano - Romero Matias 
+
