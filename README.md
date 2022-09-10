@@ -8,3 +8,6 @@ Maquetado: Rama de Pruebas iniciales. Se maquetará las interfaces y como podria
 Dev: Rama para el desarrollo. Se utilizaran ramas adicionales para agregar modificaciones.  
 
 Otros: Se incluiran ramas para introducir cambios y poder hacer Merge con la rama Dev 
+
+
+Vera Maximiliano - Romero Matias 
