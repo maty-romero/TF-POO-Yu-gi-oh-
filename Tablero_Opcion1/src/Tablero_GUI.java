@@ -9,6 +9,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class Tablero_GUI extends JFrame {
 
@@ -19,29 +25,67 @@ public class Tablero_GUI extends JFrame {
 		JPanel panelInferior = new JPanel();
 		getContentPane().add(panelInferior, BorderLayout.SOUTH);
 		
+		JButton btnNewButton_3 = new JButton("Mano Jugador");
+		panelInferior.add(btnNewButton_3);
+		
 		JPanel panelSuperior = new JPanel();
 		getContentPane().add(panelSuperior, BorderLayout.NORTH);
 		
-		JLabel carta1 = new JLabel("");
-		carta1.setFont(new Font("Tahoma", Font.PLAIN, 5));
+		JButton btnNewButton = new JButton("Mano Oponente");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelSuperior.add(btnNewButton);
 		
 		
 		URL urlIcon = getClass().getResource("/img/carta1.jpg"); //imagen local relativa al projecto
-		ImageIcon icon1 = new ImageIcon(new ImageIcon(urlIcon).getImage().getScaledInstance(150, 200, Image.SCALE_DEFAULT)); 
-		
-		carta1.setIcon(icon1);
-		
-		panelSuperior.add(carta1);
-		
-		JLabel carta2 = new JLabel("");
-		panelSuperior.add(carta2);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		panelSuperior.add(lblNewLabel_2);
+		ImageIcon icon1 = new ImageIcon(new ImageIcon(urlIcon).getImage().getScaledInstance(150, 200, Image.SCALE_DEFAULT));
 		
 		JPanel panelDerecho = new JPanel();
 		getContentPane().add(panelDerecho, BorderLayout.EAST);
-		panelDerecho.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panelDerecho.setLayout(new CardLayout(0, 0));
+		
+		JButton btnNewButton_4 = new JButton("Visualizador Carta");
+		panelDerecho.add(btnNewButton_4, "name_329020141950400");
+		
+		JPanel panelCentral = new JPanel();
+		getContentPane().add(panelCentral, BorderLayout.CENTER);
+		panelCentral.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panelSuperiorCentral = new JPanel();
+		panelCentral.add(panelSuperiorCentral, BorderLayout.NORTH);
+		
+		JButton btnNewButton_1 = new JButton("Monstruos y hechizos Oponente");
+		panelSuperiorCentral.add(btnNewButton_1);
+		
+		JPanel panelInferiorCentral = new JPanel();
+		panelCentral.add(panelInferiorCentral, BorderLayout.SOUTH);
+		
+		JButton btnNewButton_2 = new JButton("Monstruos y hechizos Jugador");
+		panelInferiorCentral.add(btnNewButton_2);
+		
+		JPanel panelIzquierdoCentral = new JPanel();
+		panelCentral.add(panelIzquierdoCentral, BorderLayout.WEST);
+		
+		JButton btnNewButton_5 = new JButton("Cementerio Oponente");
+		panelIzquierdoCentral.add(btnNewButton_5);
+		
+		JPanel panelDerechoCentral = new JPanel();
+		panelCentral.add(panelDerechoCentral, BorderLayout.EAST);
+		
+		JButton btnNewButton_6 = new JButton("Cementerio Jugador");
+		panelDerechoCentral.add(btnNewButton_6);
+		
+		JPanel panelCentral_Central = new JPanel();
+		panelCentral.add(panelCentral_Central, BorderLayout.CENTER);
+		
+		JButton btnNewButton_8 = new JButton("Separacion entre Oponente Y jugador");
+		panelCentral_Central.add(btnNewButton_8);
+		
+		JButton btnNewButton_7 = new JButton("Fases de la partida ");
+		btnNewButton_7.setVerticalAlignment(SwingConstants.BOTTOM);
+		panelCentral_Central.add(btnNewButton_7);
 		
 	}
 
