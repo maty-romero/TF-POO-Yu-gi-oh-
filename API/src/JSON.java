@@ -2,7 +2,11 @@
 public class JSON {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		/*
+		 Interpretar Objetos JSObject y JSONArray
+		 Para poder Estructurar la informacion que una API nos da 
+		 */
 
 	}
 
