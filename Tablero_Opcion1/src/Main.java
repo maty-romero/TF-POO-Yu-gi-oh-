@@ -5,7 +5,7 @@ public class Main {
 		
 		Tablero_GUI tablero = new Tablero_GUI(); 
 		
-		tablero.setBounds(200, 200, 250, 300);
+		tablero.setBounds(0, 0, 600, 600);
 		tablero.setVisible(true);
 
 	}

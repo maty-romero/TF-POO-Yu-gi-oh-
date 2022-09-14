@@ -36,6 +36,10 @@ public class Tablero_GUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Tablero_GUI.class.getResource("/img/carta1.jpg")));
+		panelSuperior.add(lblNewLabel);
 		panelSuperior.add(btnNewButton);
 		
 		
@@ -89,4 +93,7 @@ public class Tablero_GUI extends JFrame {
 		
 	}
 
+	private Icon cambiarTamaño()
+	
+	
 }
