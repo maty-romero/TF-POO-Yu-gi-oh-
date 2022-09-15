@@ -21,7 +21,7 @@ public class ConsumoAPI_Gatitos {
 		
 		//
 		try {
-			URL url = new URL("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Dark Magician");
+			URL url = new URL("https://db.ygoprodeck.com/api/v7/cardinfo.php");
 			//conexion a la url 
 			HttpURLConnection conx = (HttpURLConnection) url.openConnection();
 			//solicitar la conexion a traves de GET 
@@ -53,11 +53,14 @@ public class ConsumoAPI_Gatitos {
 				System.out.println(infoString);
 				
 				//tenemos la info en un Json array 
-				JSONArray jArray = new JSONArray(infoString.toString());
+//				JSONArray jArray = new JSONArray(infoString.toString()); //No es un 
 				
+				JSONObject hola = new JSONObject(infoString); 
+//				System.out.println(hola);
+				System.out.println(hola.getString("data"));
 				//accedemos a un json array. 
-				JSONObject jsObject = jArray.getJSONObject(0);
-				System.out.println(jsObject.getString("id")); //obtenemos el valor de la clave pasada por parametro
+//				JSONObject jsObject = jArray.getJSONObject(0);
+//				System.out.println(jsObject.getString("id")); //obtenemos el valor de la clave pasada por parametro
 				
 //				JsonObject jsonObject = new JsonParser().parse(infoString).getAsJsonObject();
 //				Assert.assertTrue(jsonObject.get("name").getAsString().equals("Baeldung"));
