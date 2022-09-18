@@ -115,24 +115,8 @@ public Vista() {
 this.frame=new JFrame("TABLERO");
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 this.frame.setSize(2000,2000);
-
-
-
 this.generarTablero();
 
-	ArrayList<JPanel> cartas_tablero = new ArrayList<JPanel>();
-	private JLabel lblNewLabel;
-	private JPanel panel_1;
-	private JPanel panel_2;
-	private JPanel panel_3;
-	private JLabel fondo;
-
-	public Vista() {
-		this.frame = new JFrame("TABLERO");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setSize(2000, 2000);
-
-}
 
 
 
