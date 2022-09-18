@@ -14,16 +14,13 @@ this.inicializarVista();
 
 
 private void inicializarVista() {
-	this.vista.mostrar();
-	
+	this.vista.mostrar();	
 }
 
-//private void inicializarVista() {
-//this.vista.getBotonGenerar().addActionListener( e -> this.generarContraseña() );
-//this.vista.mostrar();
+//public describirCarta() {
+//	
 //}
-//private void generarContraseña() {
-//this.modelo.generarContraseña();
-//this.vista.getInputContraseña().setText( this.modelo.getContraseña() );
-//}
+
+
+
 }

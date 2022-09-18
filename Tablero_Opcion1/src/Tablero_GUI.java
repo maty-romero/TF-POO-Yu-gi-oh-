@@ -20,6 +20,8 @@ public class Tablero_GUI extends JFrame {
 
 	
 	public Tablero_GUI() {
+		
+		
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelInferior = new JPanel();
