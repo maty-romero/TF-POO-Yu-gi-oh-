@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/celuf/Desktop/json-20220320.jar"/>
 	<classpathentry kind="lib" path="src/Libreria/gson-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

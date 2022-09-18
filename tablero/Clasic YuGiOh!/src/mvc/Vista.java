@@ -1,4 +1,5 @@
 package mvc;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -119,7 +120,17 @@ this.frame.setSize(2000,2000);
 
 this.generarTablero();
 
+	ArrayList<JPanel> cartas_tablero = new ArrayList<JPanel>();
+	private JLabel lblNewLabel;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JLabel fondo;
 
+	public Vista() {
+		this.frame = new JFrame("TABLERO");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.frame.setSize(2000, 2000);
 
 }
 
@@ -158,9 +169,17 @@ frame.getContentPane().add(this.contadorBot);
 this.imagen_carta1Bot = new JLabel (icon_URL);
 this.carta1_bot.add(imagen_carta1Bot);
 
+		JPanel carta2_bot = new JPanel();
+		carta2_bot.setBackground(Color.BLACK);
+		carta2_bot.setBounds(380, 121, 74, 96);
+		frame.getContentPane().add(carta2_bot);
 
 frame.getContentPane().add(this.carta1_bot);
 
+		JPanel carta4_bot = new JPanel();
+		carta4_bot.setBackground(Color.BLACK);
+		carta4_bot.setBounds(226, 249, 74, 96);
+		frame.getContentPane().add(carta4_bot);
 
 this.carta2_bot = new JPanel();
 this.carta2_bot.setBackground(new Color(153, 0, 0));
@@ -250,6 +269,10 @@ this.carta1Campo_bot.add(imagenCartaCampo1Bot);
 
 frame.getContentPane().add(this.carta1Campo_bot);
 
+		JPanel carta2Campo_bot = new JPanel();
+		carta2Campo_bot.setBackground(Color.BLACK);
+		carta2Campo_bot.setBounds(294, 10, 74, 96);
+		frame.getContentPane().add(carta2Campo_bot);
 
 this.carta2Campo_bot = new JPanel();
 this.carta2Campo_bot.setBackground(Color.BLACK);
@@ -262,6 +285,10 @@ this.carta2Campo_bot.add(imagenCartaCampo2Bot);
 
 frame.getContentPane().add(this.carta2Campo_bot);
 
+		JPanel carta4Campo_bot = new JPanel();
+		carta4Campo_bot.setBackground(Color.BLACK);
+		carta4Campo_bot.setBounds(605, 10, 74, 96);
+		frame.getContentPane().add(carta4Campo_bot);
 
 this.carta3Campo_bot = new JPanel();
 this.carta3Campo_bot.setBackground(Color.BLACK);
@@ -310,6 +337,10 @@ this.carta6Campo_bot.add(imagenCartaCampo6Bot);
 
 frame.getContentPane().add(this.carta6Campo_bot);
 
+		JPanel carta6Campo_bot = new JPanel();
+		carta6Campo_bot.setBackground(Color.BLACK);
+		carta6Campo_bot.setBounds(749, 10, 74, 96);
+		frame.getContentPane().add(carta6Campo_bot);
 
 //Cartas de mano del jugador
 this.carta1_jug = new JPanel();
@@ -334,6 +365,10 @@ this.carta2_jug.add(imagenCarta2Jug);
 
 frame.getContentPane().add(this.carta2_jug);
 
+		JPanel carta3_jug = new JPanel();
+		carta3_jug.setBackground(Color.BLACK);
+		carta3_jug.setBounds(310, 593, 74, 96);
+		frame.getContentPane().add(carta3_jug);
 
 this.carta3_jug = new JPanel();
 this.carta3_jug.setBackground(new Color(153, 0, 0));
@@ -420,6 +455,10 @@ this.carta2Campo_jug.add(imagenCartaCampo2Jug);
 
 frame.getContentPane().add(this.carta2Campo_jug);
 
+		JPanel carta3Campo_jug = new JPanel();
+		carta3Campo_jug.setBackground(Color.BLACK);
+		carta3Campo_jug.setBounds(535, 385, 74, 96);
+		frame.getContentPane().add(carta3Campo_jug);
 
 this.carta3Campo_jug = new JPanel();
 this.carta3Campo_jug.setBackground(Color.BLACK);
@@ -467,7 +506,15 @@ this.carta6Campo_jug.add(imagenCartaCampo6Jug);
 
 frame.getContentPane().add(this.carta6Campo_jug);
 
+		JPanel carta5Campo_jug = new JPanel();
+		carta5Campo_jug.setBackground(Color.BLACK);
+		carta5Campo_jug.setBounds(380, 492, 74, 96);
+		frame.getContentPane().add(carta5Campo_jug);
 
+		JPanel carta6Campo_jug = new JPanel();
+		carta6Campo_jug.setBackground(Color.BLACK);
+		carta6Campo_jug.setBounds(535, 492, 74, 96);
+		frame.getContentPane().add(carta6Campo_jug);
 
 //Descripcion completa de la carta seleccionada
 
@@ -539,7 +586,13 @@ this.imagenFondoTablero.setBounds(0, 0, 1283, 700);
 
 this.frame.getContentPane().add(this.imagenFondoTablero);
 
+	}
 
+	private void generarPanelInferior() {
+		this.panelInferior = new JPanel();
+		this.botonGenerar = new JButton("Generar");
+		this.panelInferior.add(this.botonGenerar);
+	}
 
 }
 
