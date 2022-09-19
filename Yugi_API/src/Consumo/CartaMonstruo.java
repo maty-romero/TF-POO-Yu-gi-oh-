@@ -2,28 +2,11 @@ package Consumo;
 
 import java.util.List;
 
-public class MonstruosNormal {
-	
-	/* 
-	 * Estructura de JSON: MONSTRUOS NORMALES; 
-	 * EndPoint: https://db.ygoprodeck.com/api/v7/cardinfo.php?type=Normal%20Monster 
-	 
-	 	data : Array 
-	 		--> N JSON Objects compuestos de: 
-	 			(id, name, etc..) --> demas propiedades simples (String, int, etc). 
-	 			
-	 			card_images: Array --> 1 JSON Object de:  
-	 				id, image_url, image_url_small
-	 			
-	 			card_prices: Array --> 1 JSON Object de:
-	 				cardmarket_price, tcgplayer_price, ebay_price, amazon_price, coolstuffinc_price
-	 
-	 */
-	
-	
-	private List<Carta> data; //acceso a los objetos JSONs
-	 
-	
+import Consumo.MonstruosNormal.Imagenes;
+import Consumo.MonstruosNormal.Precios;
+
+public class CartaMonstruo {
+
 	public class Carta{
 		private int id;  
 		private String name, type, desc;
@@ -71,16 +54,5 @@ public class MonstruosNormal {
 	public class Precios{ 
 		private String cardmarket_price, tcgplayer_price, ebay_price, amazon_price, coolstuffinc_price; 
 	}
-
-	//obtengo todo el array con los objetos JSONs
-	public List<Carta> getData() {
-		return this.data;
-	}
-	
-	
-	
-	
-
-	
 	
 }
