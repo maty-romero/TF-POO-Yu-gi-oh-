@@ -612,18 +612,10 @@ public class Vista_tablero {
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
 
-//accedo a carta_1 y creo el label
-//BufferedImage img = null;
-//try {
-//    img = ImageIO.read(new File("dark_magician.jpg"));
-//} catch (IOException e) {
-//    e.printStackTrace(); //si no encuentra el archivo, lo dirà
-//}
-//Image dimg = img.getScaledInstance(150, 150,
-//        Image.SCALE_SMOOTH);
-//ImageIcon imageIcon = new ImageIcon(dimg);
-
-///PANEL CON GRIDLAYOUT para las cartas de la mano del jugador
+		
+		
+		
+	//Getters y Setters 	
 
 	}
 
