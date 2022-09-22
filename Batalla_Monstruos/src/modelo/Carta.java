@@ -4,19 +4,26 @@ import java.net.URL;
 
 public abstract class Carta {
 
-	private Integer id; 
-	private String nombre, tipo, descripcion; 
-	private URL url_carta; //url local de carta 
+	/*
+	 * Falta la implementacion de la invocacion de cartas. 
+	 */
 	
-	public Carta(Integer id, String nombre, String tipo, String descripcion, URL url_carta) {
+	private Integer id; 
+	private String nombre, descripcion; 
+	private URL imagen;
+	
+	public Carta(Integer id, String nombre, String descripcion, URL imagen) {
 		this.id = id;
 		this.nombre = nombre;
-		this.tipo = tipo;
 		this.descripcion = descripcion;
-		this.url_carta = url_carta;
+		this.imagen = imagen;
 	}
-
-	//getters 
+ 
+	public void invocarCarta(Carta c) {
+		
+	}
+	
+	//Getters 
 	
 	public Integer getId() {
 		return id;
@@ -26,17 +33,13 @@ public abstract class Carta {
 		return nombre;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-	public URL getUrl_carta() {
-		return url_carta;
-	}
+	public URL getImagen() {
+		return imagen;
+	} 
 	
 	
 	
