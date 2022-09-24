@@ -1,0 +1,18 @@
+package mainPrincipal;
+
+import java.net.URL;
+
+public class Main {
+public static void main(String[] args) {
+Modelo modelo = new Modelo();
+Vista vista = new Vista();
+Controlador controlador = new Controlador(modelo, vista);
+
+
+
+String imageUrl = "http://www.avajava.com/images/avajavalogo.jpg";
+URL img = new URL(imageUrl);
+
+}
+
+}
