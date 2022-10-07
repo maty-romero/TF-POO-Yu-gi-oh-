@@ -13,11 +13,11 @@ public class Deck {
 	}
 	
 	public CartaMonstruo getMonstruo() {
-		return monstruos.pop();
+		return monstruos.pollLast();
 	}
 	
 	public CartaHechizo getHechizo() {
-		return hechizos.pop();
+		return hechizos.pollLast();
 	}
 
 	public void setMonstruos(LinkedList<CartaMonstruo> monstruos) {

@@ -6,7 +6,7 @@ import java.util.Random;
 public class Duelista {
 
 	private Deck deck; 
-	private Mano mano; 
+	private Mano mano;   
 	private Cementerio cementerio; 
 	
 	private Campo campo; 
@@ -20,6 +20,9 @@ public class Duelista {
 	public Duelista(Deck deck, String nombre) {
 		super();
 		this.deck = deck;
+		this.mano = new Mano();
+		this.campo = new Campo(); 
+		this.cementerio = new Cementerio(); 
 		this.vida = 8000; //inicializacion de vida 
 		this.nombre = nombre;
 		//this.icono = icono;

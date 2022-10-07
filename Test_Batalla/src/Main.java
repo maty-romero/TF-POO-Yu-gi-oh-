@@ -12,20 +12,44 @@ public class Main {
 		 
 		Batalla batallaMonstruos = new Batalla(duelistaJugador, duelistaOponente); 
 		
-		//los duelista roban 5 cartas
+		//los duelistas roban 5 cartas
 		for (int i = 0; i < 5; i++) {
 			duelistaJugador.robarCarta(); 
 			duelistaOponente.robarCarta();
 		}
 		
+		//invocacion de monstruos 
 		duelistaJugador.getCampo().invocarMonstruo(duelistaJugador.getMano().getManoMonstruos().get(0));
 		duelistaOponente.getCampo().invocarMonstruo(duelistaOponente.getMano().getManoMonstruos().get(0));
 	
+		//Seteo de valores de posicion ataque o defensa para las cartas. 
+		duelistaJugador.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
+		duelistaOponente.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
+		
+		//Informacion de las cartas, antes de la batalla 
+		System.out.println("CARTA ATACANTE");
+		System.out.println("Ataque: "+ duelistaJugador.getCampo().getMonstruos().get(0).getAtaque());
+		System.out.println("Defensa: "+ duelistaJugador.getCampo().getMonstruos().get(0).getDefensa());
+		System.out.println("\nCARTA OBJETIVO");
+		System.out.println("Ataque: "+ duelistaOponente.getCampo().getMonstruos().get(0).getAtaque());
+		System.out.println("Defensa: "+ duelistaOponente.getCampo().getMonstruos().get(0).getDefensa());
+		System.out.println("");
+		
 		batallaMonstruos.atacar(duelistaJugador.getCampo().getMonstruos().get(0), duelistaOponente.getCampo().getMonstruos().get(0));
 		
-
+		//Resultados de la batalla
 		
-		/* 					TEST COMBATE ENTRE CARTAS 
+		System.out.println("DATOS DEL DUELISTA JUGADOR: ");
+		System.out.println("Vida duelista: " + duelistaJugador.getVida());
+		System.out.println("Cemeneterio size: " + duelistaJugador.getCementerio().getMonstruos().size());
+		System.out.println("");
+		System.out.println("DATOS DEL DUELISTA OPONENTE: ");
+		System.out.println("Vida duelista: " + duelistaOponente.getVida());
+		System.out.println("Cemeneterio size: " + duelistaOponente.getCementerio().getMonstruos().size());
+		
+		
+		
+		/* 					TEST SOLO COMBATE ENTRE CARTAS 
 		
 		System.out.println(duelistaJugador.getCementerio().size());
 		

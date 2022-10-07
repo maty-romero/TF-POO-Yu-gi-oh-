@@ -40,11 +40,14 @@ public class Batalla {
 		if (cartaObjetivo.getPosicionAtaque()) { // Ambas Cartas en posicion ataque
 			Integer dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque(); 
 			if(dmg > 0) { //duelistaJugador 
+				System.out.println("cartaAtacante gano, duelista no recibe daño");
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo); 
 			}else if(dmg < 0) { 
+				System.out.println("cartaObjetivo gano, duelista recibe daño restante");
 				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante);
 				this.getDuelistaJugador().recibirDanio(Math.abs(dmg));
 			}else { //dmg = 0
+				System.out.println("ambas cartas mueren, duelista no recibe daño.");
 				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante);
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo);
 			}

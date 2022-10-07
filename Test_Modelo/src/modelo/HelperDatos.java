@@ -15,7 +15,7 @@ public class HelperDatos {
 			deck.add(new CartaMonstruo(i, "Monstruo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
 			deck.add(new CartaHechizo(i, "Hechizo"+i, "Descripcion"+i));
 		}
-		Collections.shuffle(deck); 
+//		Collections.shuffle(deck); 
 		return deck;
 	}
 	
