@@ -6,7 +6,7 @@ public abstract class Carta {
 
 	
 	private Integer id; 
-	protected Boolean esMonstruo; //true = Monstruo; false = Hechizo 
+//	protected Boolean esMonstruo; //true = Monstruo; false = Hechizo 
 	
 	private String nombre, descripcion; 
 //	private URL imagen;

@@ -11,6 +11,8 @@ public class CartaMonstruo extends Carta{
 	private Integer ataque, defensa; 
 	private Boolean posicionAtaque; 
 	
+	protected Boolean esMonstruo;
+	
 	public CartaMonstruo(Integer id, String nombre, String descripcion, Integer ataque, Integer defensa) {
 		super(id, nombre, descripcion);
 		this.ataque = ataque;
