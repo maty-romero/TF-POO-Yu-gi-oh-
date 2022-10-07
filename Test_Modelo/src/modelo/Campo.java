@@ -16,13 +16,10 @@ public class Campo {
 		}
 	}
 
-	public ArrayList<CartaMonstruo> getMonstruos() {
-		return monstruos;
-	}
-
-	public ArrayList<CartaHechizo> getHechizos() {
-		return hechizos;
-	}
+	
+	
+	//		Otra opcion --> Con exepciones 
+	
 	
 //	public void reposicionCampo() {
 //		try {
@@ -50,8 +47,16 @@ public class Campo {
 //		this.getMonstruos().remove(c); 
 //	}
 	
+	
 	//Getters
 	
+	public ArrayList<CartaMonstruo> getMonstruos() {
+		return monstruos;
+	}
+
+	public ArrayList<CartaHechizo> getHechizos() {
+		return hechizos;
+	}
 	
 	
 	
