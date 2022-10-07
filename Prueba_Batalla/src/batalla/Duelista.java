@@ -1,4 +1,4 @@
-package modelo;
+package batalla;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,26 +11,17 @@ public class Duelista {
 	private ArrayList<Carta> cementerio = new ArrayList<>();; 
 	private Integer vida; 
 	private String nombre; 
-	private URL icono;
+	//private URL icono;
 	
-	public Duelista(LinkedList<Carta> deck, String nombre, URL icono) {
+	//, URL icono
+	public Duelista(LinkedList<Carta> deck, String nombre) {
 		super();
 		this.deck = deck;
 		this.vida = 8000; //inicializacion de vida 
 		this.nombre = nombre;
-		this.icono = icono;
+		//this.icono = icono;
 	}
 
-	public void atacar(CartaMonstruo cartaObjetivo) {
-		if(cartaObjetivo.getPosicionAtaque()) {
-			
-			
-			
-		}else {
-			
-		}
-	}
-	
 	
 	public void recibirDanio(Integer dmg) {
 		this.setVida(this.getVida() - dmg); 
@@ -73,9 +64,9 @@ public class Duelista {
 		return nombre;
 	}
 
-	public URL getIcono() {
-		return icono;
-	} 
+//	public URL getIcono() {
+//		return icono;
+//	} 
 	
 	
 	

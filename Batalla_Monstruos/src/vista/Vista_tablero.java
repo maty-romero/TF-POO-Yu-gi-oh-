@@ -1,5 +1,7 @@
 package vista;
 
+
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -10,6 +12,10 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.print.DocFlavor.URL;
 import javax.swing.*;
+
+import controlador.TableroController;
+import controlador.TableroController;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -93,7 +99,6 @@ public class Vista_tablero {
 //Botones descripcion del jugador 
 	private JButton btnInvocacion;
 	private JButton btnAtacar;
-	private JButton btnDefender;
 
 //Contador de vida del bot
 
@@ -110,7 +115,13 @@ public class Vista_tablero {
 
 	ArrayList<JPanel> cartas_tablero = new ArrayList<JPanel>();
 
-	public Vista_tablero() {
+//Controlador
+	private TableroController controlador; 
+	
+	
+	public Vista_tablero(TableroController controlador) {
+		this.setControlador(controlador);
+		
 		this.tablero = new JFrame("TABLERO");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.tablero.setSize(2000, 2000);
@@ -118,6 +129,7 @@ public class Vista_tablero {
 		this.generarTablero();
 
 	}
+
 
 	private void generarTablero() {
 
@@ -540,7 +552,7 @@ public class Vista_tablero {
 
 		this.descCartaSeleccionada = new JPanel();
 //CAMBIO HECHO		
-		descCartaSeleccionada.setBounds(862, 550, 391, 80); // cambio en posicion y altura de la descripcion
+		descCartaSeleccionada.setBounds(862, 532, 391, 96); // cambio en posicion y altura de la descripcion
 		this.descCartaSeleccionada.setBackground(Color.BLACK);
 		this.descCarta = new JLabel("INSERTE DESCRIPCION DE LA CARTA AQUI");
 		descCarta.setBackground(new Color(255, 255, 255));
@@ -551,18 +563,13 @@ public class Vista_tablero {
 		
 		// Botton Invocacion
 		this.btnInvocacion = new JButton("Invocar");
-		btnInvocacion.setBounds(862, 500, 100, 30);
+		btnInvocacion.setBounds(910, 492, 100, 30);
 		tablero.getContentPane().add(this.btnInvocacion);
 
 		// Botton Atacar
 		this.btnAtacar = new JButton("Atacar");
-		btnAtacar.setBounds(1010, 500, 100, 30);
+		btnAtacar.setBounds(1107, 492, 100, 30);
 		tablero.getContentPane().add(this.btnAtacar);
-		
-		// Botton Atacar
-		this.btnDefender = new JButton("Defender");
-		btnDefender.setBounds(1150, 500, 100, 30);
-		tablero.getContentPane().add(this.btnDefender);
 
 //Contador vida jugador
 		this.contadorJug = new JLabel("8000");
@@ -662,4 +669,23 @@ public class Vista_tablero {
 	public void mostrar() {
 		this.tablero.setVisible(true);
 	}
+
+
+	public TableroController getControlador() {
+		return controlador;
+	}
+
+
+	public void setControlador(TableroController controlador) {
+		this.controlador = controlador;
+	}
+
+
+	public JButton getBtnAtacar() {
+		return btnAtacar;
+	}
+
+
+	
+	
 }

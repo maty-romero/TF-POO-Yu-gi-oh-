@@ -7,7 +7,6 @@ import Consumo.MonstruosNormal.Precios;
 
 public class CartaMonstruo {
 
-	public class Carta{
 		private int id;  
 		private String name, type, desc;
 		private int atk, def, level; 
@@ -33,9 +32,7 @@ public class CartaMonstruo {
 			return card_images;
 		}
 	
-	}
-	
-	
+
 	
 	public class Imagenes{
 		private int id; 

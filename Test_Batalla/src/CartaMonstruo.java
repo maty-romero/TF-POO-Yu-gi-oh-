@@ -1,4 +1,5 @@
-package modelo;
+
+
 
 import java.net.URL;
 
@@ -11,8 +12,8 @@ public class CartaMonstruo extends Carta{
 	private Integer ataque, defensa; 
 	private Boolean posicionAtaque, posicionDefensa;
 	
-	public CartaMonstruo(Integer id, String nombre, String descripcion, URL imagen, Integer ataque, Integer defensa) {
-		super(id, nombre, descripcion, imagen);
+	public CartaMonstruo(Integer id, String nombre, String descripcion, Integer ataque, Integer defensa) {
+		super(id, nombre, descripcion);
 		this.ataque = ataque;
 		this.defensa = defensa;
 	}
@@ -33,6 +34,14 @@ public class CartaMonstruo extends Carta{
 
 	public Boolean getPosicionDefensa() {
 		return posicionDefensa;
+	}
+
+	public void setPosicionAtaque(Boolean posicionAtaque) {
+		this.posicionAtaque = posicionAtaque;
+	}
+
+	public void setPosicionDefensa(Boolean posicionDefensa) {
+		this.posicionDefensa = posicionDefensa;
 	}
 	
 	

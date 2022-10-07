@@ -2,6 +2,8 @@ package Consumo;
 
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+
 public class MonstruosNormal {
 	
 	/* 
@@ -20,7 +22,7 @@ public class MonstruosNormal {
 	 
 	 */
 	
-	
+	@Expose(serialize = false ,deserialize = false)
 	private List<Carta> data; //acceso a los objetos JSONs
 	 
 	
@@ -30,6 +32,7 @@ public class MonstruosNormal {
 		private int atk, def, level; 
 		private String race, attribute; 
 		private List<Imagenes> card_images; //imagenes de las cartas 
+//		@Expose(serialize = false ,deserialize = false)
 		private List<Precios> precios_cartas;
 		
 		public String getName() {

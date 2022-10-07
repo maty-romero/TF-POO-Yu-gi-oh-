@@ -1,4 +1,3 @@
-package modelo;
 
 import java.net.URL;
 
@@ -8,15 +7,15 @@ public abstract class Carta {
 	 * Falta la implementacion de la invocacion de cartas. 
 	 */
 	
-	private Integer id; 
-	private String nombre, descripcion; 
-	private URL imagen;
+	protected Integer id;  
+	protected String nombre, descripcion; 
+	//private URL imagen;
 	
-	public Carta(Integer id, String nombre, String descripcion, URL imagen) {
+	public Carta(Integer id, String nombre, String descripcion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.imagen = imagen;
+		//this.imagen = imagen;
 	} 
 	
 	//Getters 
@@ -33,9 +32,9 @@ public abstract class Carta {
 		return descripcion;
 	}
 
-	public URL getImagen() {
-		return imagen;
-	} 
+//	public URL getImagen() {
+//		return imagen;
+//	} 
 	
 	
 	

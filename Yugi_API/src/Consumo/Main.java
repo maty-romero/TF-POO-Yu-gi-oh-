@@ -1,17 +1,13 @@
 package Consumo;
 
-import java.awt.Desktop;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
-
-import javax.swing.JOptionPane;
+import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 
 public class Main {
 
@@ -40,51 +36,66 @@ public class Main {
 			
 			
 			
-			//tratar de hacerlo en un metoodo o clase aparte lo sigueinte 
+			//tratar de hacerlo en un metodo o clase aparte lo sigueinte 
 			
 			Gson gson = new Gson();
 			
 			//serializo de JSON String a Objeto CartaInfo 
 			
+
 		    MonstruosNormal infoCartas = gson.fromJson(datos, MonstruosNormal.class); 
-		 
-		    System.out.println("Cantidad cartas monstruos normales: " + infoCartas.getData().size());
+		     
+		    
+		    //JSONObject json = infoCartas.getData(); 
+		   
+		  
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+//		    System.out.println("Cantidad cartas monstruos normales: " + infoCartas.getData().size());
 		    
 		    //al obtener una imagen del JSON se debe realizar .getCard_images().get(0) ya que la propiedad solo tiene un Objeto
 		    
 		    //obtengo el url de la imagen pequeña de una carta 
 		    System.out.println(infoCartas.getData().get(0).getCard_images().get(0).getImage_url_small());
-		    
-		    //obtengo el url de la imagen normal de una carta
-		    System.out.println(infoCartas.getData().get(0).getCard_images().get(0).getImage_url());
-		    
-		    //obtengo el ataque de una carta 
-		    System.out.println(infoCartas.getData().get(0).getAtk());
-		    
-		    //obtengo la defensa de una carta 
-		    System.out.println(infoCartas.getData().get(0).getDef());
+//		    
+//		    //obtengo el url de la imagen normal de una carta
+//		    System.out.println(infoCartas.getData().get(0).getCard_images().get(0).getImage_url());
+//		    
+//		    //obtengo el ataque de una carta 
+//		    System.out.println(infoCartas.getData().get(0).getAtk());
+//		    
+//		    //obtengo la defensa de una carta 
+//		    System.out.println(infoCartas.getData().get(0).getDef());
 		    
 			
 
-			 String web = ""; 
-			// Se busca una carta por su nombre y muestra en consola la imagen correspondiente 
-			for (int i = 0; i < 10; i++) {
-				
-				if(infoCartas.getData().get(i).getName().equals("Akakieisu")){
-					web = infoCartas.getData().get(i).getCard_images().get(0).getImage_url();
-				}
-			}
+//			 String web = ""; 
+//			// Se busca una carta por su nombre y muestra en consola la imagen correspondiente 
+//			for (int i = 0; i < 10; i++) {
+//				
+//				if(infoCartas.getData().get(i).getName().equals("Akakieisu")){
+//					web = infoCartas.getData().get(i).getCard_images().get(0).getImage_url();
+//				}
+//			}
 		    
-			System.out.println("url imagen: " + web);
-			
-			
-			//abre el navegador por defecto con la imagen del JSON 
-			Desktop enlace = Desktop.getDesktop();
-			try {
-			    enlace.browse(new URI(web));
-			} catch (IOException | URISyntaxException e) {
-				e.printStackTrace();
-			}
+//			System.out.println("url imagen: " + web);
+//			
+//			
+//			//abre el navegador por defecto con la imagen del JSON 
+//			Desktop enlace = Desktop.getDesktop();
+//			try {
+//			    enlace.browse(new URI(web));
+//			} catch (IOException | URISyntaxException e) {
+//				e.printStackTrace();
+//			}
 		    
 			
 			

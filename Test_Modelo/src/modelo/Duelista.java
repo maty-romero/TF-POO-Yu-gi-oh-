@@ -11,24 +11,14 @@ public class Duelista {
 	private ArrayList<Carta> cementerio = new ArrayList<>();; 
 	private Integer vida; 
 	private String nombre; 
-	private URL icono;
+//	private URL icono;
 	
-	public Duelista(LinkedList<Carta> deck, String nombre, URL icono) {
+	public Duelista(LinkedList<Carta> deck, String nombre) {
 		super();
 		this.deck = deck;
 		this.vida = 8000; //inicializacion de vida 
 		this.nombre = nombre;
-		this.icono = icono;
-	}
-
-	public void atacar(CartaMonstruo cartaObjetivo) {
-		if(cartaObjetivo.getPosicionAtaque()) {
-			
-			
-			
-		}else {
-			
-		}
+//		this.icono = icono;
 	}
 	
 	
@@ -39,7 +29,8 @@ public class Duelista {
 	//saca una carta del mazo, la remueve y queda en la mano del Duelista
 	//El robo de carta actua como una pila 
 	public void robarCarta() {
-		this.getMano().add(this.getDeck().pop());
+		Carta carta = this.getDeck().pollLast(); 
+		this.getMano().add(carta);
 	}
 	
 	//agrega una carta al array cemeneterio; en el controlador se elimina del campo la carta muerta
@@ -73,9 +64,9 @@ public class Duelista {
 		return nombre;
 	}
 
-	public URL getIcono() {
-		return icono;
-	} 
+//	public URL getIcono() {
+//		return icono;
+//	} 
 	
 	
 	

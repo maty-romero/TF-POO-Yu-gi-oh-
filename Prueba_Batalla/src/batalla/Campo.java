@@ -1,11 +1,22 @@
-package modelo;
+package batalla;
 
 import java.util.ArrayList;
 
 public class Campo {
 
-	private ArrayList<Carta> monstruos; 
+	private ArrayList<CartaMonstruo> monstruos; 
 	private ArrayList<Carta> hechizos; 
+//	private ArrayList<Carta> campoCartas; 
+	
+//	public void invocarCarta(Carta c) {
+//		this.getCampoCartas().add(c); 
+//	}
+//
+//	public ArrayList<Carta> getCampoCartas() {
+//		return campoCartas;
+//	}
+	
+	
 	
 	public void invocarMonstruo(CartaMonstruo c) {
 		this.getMonstruos().add(c); 
@@ -26,11 +37,11 @@ public class Campo {
 	
 	//Getters
 	
-	private ArrayList<Carta> getMonstruos() {
+	public ArrayList<CartaMonstruo> getMonstruos() {
 		return monstruos;
 	}
 
-	private ArrayList<Carta> getHechizos() {
+	public ArrayList<Carta> getHechizos() {
 		return hechizos;
 	}
 	

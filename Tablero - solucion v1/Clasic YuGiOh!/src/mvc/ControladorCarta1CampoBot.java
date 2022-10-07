@@ -46,7 +46,6 @@ public class ControladorCarta1CampoBot implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
 	}
 
 	@Override
