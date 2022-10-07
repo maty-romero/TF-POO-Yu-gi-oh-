@@ -35,6 +35,7 @@ public class Main {
 		System.out.println("Defensa: "+ duelistaOponente.getCampo().getMonstruos().get(0).getDefensa());
 		System.out.println("");
 		
+		//Batalla entre cartas 
 		batallaMonstruos.atacar(duelistaJugador.getCampo().getMonstruos().get(0), duelistaOponente.getCampo().getMonstruos().get(0));
 		
 		//Resultados de la batalla
