@@ -10,7 +10,7 @@ public class CartaMonstruo extends Carta{
 	 */
 	
 	private Integer ataque, defensa; 
-	private Boolean posicionAtaque, posicionDefensa;
+	private Boolean posicionAtaque;
 	
 	public CartaMonstruo(Integer id, String nombre, String descripcion, Integer ataque, Integer defensa) {
 		super(id, nombre, descripcion);
@@ -32,18 +32,11 @@ public class CartaMonstruo extends Carta{
 		return posicionAtaque;
 	}
 
-	public Boolean getPosicionDefensa() {
-		return posicionDefensa;
-	}
-
 	public void setPosicionAtaque(Boolean posicionAtaque) {
 		this.posicionAtaque = posicionAtaque;
 	}
 
-	public void setPosicionDefensa(Boolean posicionDefensa) {
-		this.posicionDefensa = posicionDefensa;
-	}
-	
+
 	
 	
 	
