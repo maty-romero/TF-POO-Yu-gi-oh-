@@ -1,4 +1,6 @@
-INDEX VERSION 1.131+C:\Users\veram\Documents\POO\Proyecto Final- maty\TF-POO-Yu-gi-oh-\.metadata\.plugins\org.eclipse.jdt.core
-3206145387.index
+INDEX VERSION 1.131+C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\.metadata\.plugins\org.eclipse.jdt.core
+2471098318.index
 1865797976.index
-195505260.index
+3358046534.index
+3474817415.index
+2369447540.index
