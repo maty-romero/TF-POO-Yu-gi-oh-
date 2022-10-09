@@ -2,13 +2,10 @@
 import java.net.URL;
 
 public abstract class Carta {
-
-	/*
-	 * Falta la implementacion de la invocacion de cartas. 
-	 */
 	
 	protected Integer id;  
-	protected String nombre, descripcion; 
+	protected String nombre, descripcion;   
+	
 	//private URL imagen;
 	
 	public Carta(Integer id, String nombre, String descripcion) {

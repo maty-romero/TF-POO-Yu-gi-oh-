@@ -4,6 +4,11 @@ public class Tablero {
 	/*
 	 * Controla los estados de la partida???
 	 * 
+	 * Notificar fase de robo 
+	 * Fase de invocacion
+	 * Fase de pelea
+	 * Cambio de turno --> Agregar un boton de pasar turno 
+	 * 
 	 */
 	
 	private Duelista duelistaJugador, duelistaOponente; 
@@ -16,8 +21,5 @@ public class Tablero {
 		this.campoOponente = campoOponente;
 	} 
 	
-	public void invocarMonstruo(CartaMonstruo carta) {
-		campoJugador.invocarMonstruo(carta);
-	}
 	
 }

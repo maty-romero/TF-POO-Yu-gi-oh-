@@ -4,10 +4,6 @@
 import java.net.URL;
 
 public class CartaMonstruo extends Carta{
-
-	/*
-	 * Falta la implementacion de la invocacion de cartas. 
-	 */
 	
 	private Integer ataque, defensa; 
 	private Boolean posicionAtaque;

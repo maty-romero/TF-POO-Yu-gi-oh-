@@ -18,6 +18,9 @@ public class Main {
 			duelistaOponente.robarCarta();
 		}
 		
+		System.out.println("Size manoMonstruos duelistaJugador: " + duelistaJugador.getMano().getManoMonstruos().size());
+		System.out.println("Size manoMonstruos duelistaOponente: " + duelistaOponente.getMano().getManoMonstruos().size());
+		
 		//invocacion de monstruos 
 		duelistaJugador.getCampo().invocarMonstruo(duelistaJugador.getMano().getManoMonstruos().get(0));
 		duelistaOponente.getCampo().invocarMonstruo(duelistaOponente.getMano().getManoMonstruos().get(0));
@@ -35,6 +38,9 @@ public class Main {
 		System.out.println("Defensa: "+ duelistaOponente.getCampo().getMonstruos().get(0).getDefensa());
 		System.out.println("");
 		
+		System.out.println("Size campo Jugador antes de la batalla: " + duelistaJugador.getCampo().getMonstruos().size());
+		System.out.println("Size campo Oponente antes de la batalla: " + duelistaJugador.getCampo().getMonstruos().size());
+		
 		//Batalla entre cartas 
 		batallaMonstruos.atacar(duelistaJugador.getCampo().getMonstruos().get(0), duelistaOponente.getCampo().getMonstruos().get(0));
 		
@@ -48,6 +54,8 @@ public class Main {
 		System.out.println("Vida duelista: " + duelistaOponente.getVida());
 		System.out.println("Cemeneterio size: " + duelistaOponente.getCementerio().getMonstruos().size());
 		
+		System.out.println("Size campo Jugador luego de la batalla: " + duelistaJugador.getCampo().getMonstruos().size());
+		System.out.println("Size campo Oponente luego de la batalla: " + duelistaJugador.getCampo().getMonstruos().size());
 		
 		
 		/* 					TEST SOLO COMBATE ENTRE CARTAS 

@@ -5,12 +5,12 @@ public class Mano {
 	private ArrayList<CartaMonstruo> manoMonstruos = new ArrayList<>(); 
 	private ArrayList<Carta> manoHechizos = new ArrayList<>(); 
 	
-	public void agregarMonstruo(CartaMonstruo carta) {
-		manoMonstruos.add(carta); 
+	public void agregarCarta(CartaMonstruo carta) {
+		this.getManoMonstruos().add(carta); 
 	}
 
-	public void agregarHechizo(CartaHechizo carta) {
-		manoHechizos.add(carta); 
+	public void agregarCarta(CartaHechizo carta) {
+		this.getManoHechizos().add(carta); 
 	}
 
 	public ArrayList<CartaMonstruo> getManoMonstruos() {

@@ -11,20 +11,23 @@ public class Duelista {
 	
 	private Campo campo; 
 	
-	
 	private Integer vida; 
 	private String nombre; 
+	
+	private Boolean ganador, invocoMonstruo;
 	//private URL icono;
 	
 	//, URL icono
 	public Duelista(Deck deck, String nombre) {
-		super();
 		this.deck = deck;
 		this.mano = new Mano();
 		this.campo = new Campo(); 
 		this.cementerio = new Cementerio(); 
 		this.vida = 8000; //inicializacion de vida 
 		this.nombre = nombre;
+		this.ganador = false; 
+		this.invocoMonstruo = false; 
+		
 		//this.icono = icono;
 	}
 
@@ -37,9 +40,9 @@ public class Duelista {
 	//El robo de carta actua como una pila 
 	public void robarCarta() {
 		if(new Random().nextBoolean()) { //Se obtiene un monstruo en la mano
-			this.getMano().agregarMonstruo(this.getDeck().getMonstruo());
+			this.getMano().agregarCarta(this.getDeck().getMonstruo());
 		}else {
-			this.getMano().agregarHechizo(this.getDeck().getHechizo());
+			this.getMano().agregarCarta(this.getDeck().getHechizo());
 		}
 	}
 	
@@ -48,10 +51,28 @@ public class Duelista {
 	//getters y setters 
 	
 	
-	
 	public Integer getVida() {
-		return vida;
+		return this.vida;
 	}
+
+	public Boolean getInvocoMonstruo() {
+		return this.invocoMonstruo;
+	}
+
+
+	public void setInvocoMonstruo(Boolean invocoMonstruo) {
+		this.invocoMonstruo = invocoMonstruo;
+	}
+	
+	public Boolean getGanador() {
+		return this.ganador;
+	}
+
+
+	public void setGanador(Boolean ganador) {
+		this.ganador = ganador;
+	}
+
 
 	public Cementerio getCementerio() {
 		return cementerio;
@@ -59,12 +80,12 @@ public class Duelista {
 
 
 	public Deck getDeck() {
-		return deck;
+		return this.deck;
 	}
 
 
 	public Mano getMano() {
-		return mano;
+		return this.mano;
 	}
 
 
@@ -73,12 +94,12 @@ public class Duelista {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 
 	public Campo getCampo() {
-		return campo;
+		return this.campo;
 	}
 
 //	public URL getIcono() {
