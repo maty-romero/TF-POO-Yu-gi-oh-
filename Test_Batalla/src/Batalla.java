@@ -46,23 +46,22 @@ public class Batalla {
 			if(dmg > 0) { //duelistaJugador 
 				System.out.println("cartaAtacante gano, duelista no recibe daño");
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo); //se lo lleva al cementerio
-				this.getDuelistaOponente().getCampo().getMonstruos().remove(cartaObjetivo); //se remueve el monstruo del campo
-				
+				this.getDuelistaOponente().getCampo().eliminarCarta(cartaObjetivo);  //se remueve el monstruo del campo
 			}
 			if(dmg < 0) { 
 				System.out.println("cartaObjetivo gano, duelista recibe daño restante");
 				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante); //se lo lleva al cementerio
-				this.getDuelistaJugador().getCampo().getMonstruos().remove(cartaAtacante); //se remueve el monstruo del campo
+				this.getDuelistaJugador().getCampo().eliminarCarta(cartaAtacante); //se remueve el monstruo del campo
 				this.getDuelistaJugador().recibirDanio(Math.abs(dmg)); 	//el duelistaJugador recibe el daño restante
 			}
 			if(dmg == 0) {
 				//Se mandan al cementerio y se elemina del campo las 2 cartas
 				System.out.println("ambas cartas mueren, duelista no recibe daño.");
 				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante); 
-				this.getDuelistaJugador().getCampo().getMonstruos().remove(cartaAtacante); 
+				this.getDuelistaJugador().getCampo().eliminarCarta(cartaAtacante);  
 				
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo);
-				this.getDuelistaOponente().getCampo().getMonstruos().remove(cartaObjetivo); 
+				this.getDuelistaOponente().getCampo().eliminarCarta(cartaObjetivo);  
 			}
 			
 		
@@ -72,7 +71,7 @@ public class Batalla {
 			if(dmg > 0 ) {
 				//carta Objetivo muere y es retirada del campo. 
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo);
-				this.getDuelistaOponente().getCampo().getMonstruos().remove(cartaObjetivo); 
+				this.getDuelistaOponente().getCampo().eliminarCarta(cartaObjetivo);  
 				
 			}else { //dmg < 0 
 				//duelista jugador rebice daño, ninguna carta muere.
