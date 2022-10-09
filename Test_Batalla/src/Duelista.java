@@ -14,7 +14,6 @@ public class Duelista {
 	private Integer vida; 
 	private String nombre; 
 	
-	//los 2 duelistas son ganadores hasta que uno de los dos pierda
 	private Boolean ganador, invocoMonstruo;
 	//private URL icono;
 	
@@ -26,13 +25,12 @@ public class Duelista {
 		this.cementerio = new Cementerio(); 
 		this.vida = 8000; //inicializacion de vida 
 		this.nombre = nombre;
-		this.ganador = true; 
+		this.ganador = true; //los duelistas son ganadores hasta que uno de los dos pierda
 		this.invocoMonstruo = false; 
 		
 		//this.icono = icono;
 	}
 
-	
 	public void recibirDanio(Integer dmg) {
 		this.setVida(this.getVida() - dmg); 
 	}
@@ -91,11 +89,9 @@ public class Duelista {
 		return this.deck;
 	}
 
-
 	public Mano getMano() {
 		return this.mano;
 	}
-
 
 	public void setVida(Integer vida) {
 		this.vida = vida;
@@ -104,7 +100,6 @@ public class Duelista {
 	public String getNombre() {
 		return this.nombre;
 	}
-
 
 	public Campo getCampo() {
 		return this.campo;

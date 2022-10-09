@@ -6,7 +6,8 @@ public class Campo {
 	private ArrayList<CartaMonstruo> monstruos = new ArrayList<>(); 
 	private ArrayList<CartaHechizo> hechizos = new ArrayList<>(); 
 	
-	public void invocarMonstruo(CartaMonstruo c) {
+	public void invocarMonstruo(CartaMonstruo c, Boolean posAtaque) {
+		c.setPosicionAtaque(true);
 		this.getMonstruos().add(c); 
 	}
 

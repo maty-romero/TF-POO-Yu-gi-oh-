@@ -22,12 +22,12 @@ public class Main {
 		System.out.println("Size manoMonstruos duelistaOponente: " + duelistaOponente.getMano().getManoMonstruos().size());
 		
 		//invocacion de monstruos 
-		duelistaJugador.getCampo().invocarMonstruo(duelistaJugador.getMano().getManoMonstruos().get(0));
-		duelistaOponente.getCampo().invocarMonstruo(duelistaOponente.getMano().getManoMonstruos().get(0));
+		duelistaJugador.getCampo().invocarMonstruo(duelistaJugador.getMano().getManoMonstruos().get(0), true);
+		duelistaOponente.getCampo().invocarMonstruo(duelistaOponente.getMano().getManoMonstruos().get(0), true);
 	
 		//Seteo de valores de posicion ataque o defensa para las cartas. 
-		duelistaJugador.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
-		duelistaOponente.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
+//		duelistaJugador.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
+//		duelistaOponente.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
 		
 		//Informacion de las cartas, antes de la batalla 
 		System.out.println("CARTA ATACANTE");

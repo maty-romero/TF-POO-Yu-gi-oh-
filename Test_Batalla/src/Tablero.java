@@ -12,14 +12,12 @@ public class Tablero {
 	 */
 	
 	private Duelista duelistaJugador, duelistaOponente; 
-	private Campo campoJugador, campoOponente;
 	
-	public Tablero(Duelista duelistaJugador, Duelista duelistaOponente, Campo campoJugador, Campo campoOponente) {
+	public Tablero(Duelista duelistaJugador, Duelista duelistaOponente) {
 		this.duelistaJugador = duelistaJugador;
 		this.duelistaOponente = duelistaOponente;
-		this.campoJugador = campoJugador;
-		this.campoOponente = campoOponente;
-	} 
+	}
+	
 	
 	
 }

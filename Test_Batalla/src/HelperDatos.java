@@ -20,7 +20,7 @@ public class HelperDatos {
 		Deck deck = new Deck();
 		LinkedList<CartaMonstruo> monstruos = new LinkedList<>(); 
 		LinkedList<CartaMonstruo> hechizos = new LinkedList<>(); 
-		for (int i = 0; i < new Random().nextInt(10); i++) {
+		for (int i = 0; i < new Random().nextInt(10, 20); i++) {
 			monstruos.add(new CartaMonstruo(i, "Monstruo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
 			hechizos.add(new CartaMonstruo(i, "Hechizo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
 		}
