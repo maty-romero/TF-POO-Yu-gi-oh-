@@ -7,6 +7,9 @@ public class Batalla {
 	 * duelistaJugador --> Duelista que esta en su turno 
 	 * duelistaOponente --> Duelista que se ataca
 	 * 
+	 * CartaAtacante --> pertenece al duelistaJugador
+	 * CartaObjetivo --> pertence al duelistaOponente
+	 * 
 	 * Controlar desde afuera que el campo atacante tenga monstruos para utilizar el metodo Atacar()
 	 * Caso contrario atacar al duelista de maenra directa 
 	 */
@@ -28,12 +31,13 @@ public class Batalla {
 	 * 	dmg < 0 --> cartaObjetivo gano, duelista recibe daño restante. 
 	 * 	dmg = 0 --> ambas cartas mueren, duelista no recibe daño. 
 	 * 
-	 * Una carta en posicion de ataque y otra en defensa --> Ningun duelista recibe daño.
+	 * Una carta en posicion de ataque y otra en defensa: 
 	 * 	
 	 *  dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque()
 	 *   
-	 * 	dmg >= 0 --> CartaObjetivo muere 
-	 *  dmg < 0 --> Ninguna carta muere, sigue la partida 
+	 * 	dmg > 0 --> CartaObjetivo muere (ATK>DEF), nadie recibe daño 
+	 *  dmg < 0 --> Ambas cartas sobreviven, duelista recibe daño igual a la diferencia entre ATK y DEF
+	 *  dmg = 0 --> Ninguna carta muere, sigue la partida 
 	 */	 
 
 	public void atacar(CartaMonstruo cartaAtacante, CartaMonstruo cartaObjetivo) {
@@ -41,24 +45,40 @@ public class Batalla {
 			Integer dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque(); 
 			if(dmg > 0) { //duelistaJugador 
 				System.out.println("cartaAtacante gano, duelista no recibe daño");
-				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo); 
-			}else if(dmg < 0) { 
+				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo); //se lo lleva al cementerio
+				this.getDuelistaOponente().getCampo().getMonstruos().remove(cartaObjetivo); //se remueve el monstruo del campo
+				
+			}
+			if(dmg < 0) { 
 				System.out.println("cartaObjetivo gano, duelista recibe daño restante");
-				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante);
-				this.getDuelistaJugador().recibirDanio(Math.abs(dmg));
-			}else { //dmg = 0
+				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante); //se lo lleva al cementerio
+				this.getDuelistaJugador().getCampo().getMonstruos().remove(cartaAtacante); //se remueve el monstruo del campo
+				this.getDuelistaJugador().recibirDanio(Math.abs(dmg)); 	//el duelistaJugador recibe el daño restante
+			}
+			if(dmg == 0) {
+				//Se mandan al cementerio y se elemina del campo las 2 cartas
 				System.out.println("ambas cartas mueren, duelista no recibe daño.");
-				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante);
+				this.getDuelistaJugador().getCementerio().llevarMonstruoCementerio(cartaAtacante); 
+				this.getDuelistaJugador().getCampo().getMonstruos().remove(cartaAtacante); 
+				
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo);
+				this.getDuelistaOponente().getCampo().getMonstruos().remove(cartaObjetivo); 
 			}
 			
-		// Una carta en posicion de ataque y otra en defensa
-		} else { 
+		
+		} else { // Una carta en posicion de ataque y otra en defensa
+			
 			Integer dmg = cartaAtacante.getAtaque() - cartaObjetivo.getDefensa(); 
-			if(dmg >= 0 ) {
+			if(dmg > 0 ) {
+				//carta Objetivo muere y es retirada del campo. 
 				this.getDuelistaOponente().getCementerio().llevarMonstruoCementerio(cartaObjetivo);
+				this.getDuelistaOponente().getCampo().getMonstruos().remove(cartaObjetivo); 
+				
+			}else { //dmg < 0 
+				//duelista jugador rebice daño, ninguna carta muere.
+				this.getDuelistaJugador().recibirDanio(Math.abs(dmg)); 
 			}
-			//caso contrario no pasa nada y sigue la partida
+			//caso contrario (dmg = 0) --> no pasa nada y sigue la partida
 		}	
 	}
 
