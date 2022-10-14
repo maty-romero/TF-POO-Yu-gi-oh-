@@ -1,6 +1,2 @@
 INDEX VERSION 1.131+C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\.metadata\.plugins\org.eclipse.jdt.core
 1865797976.index
-2471098318.index
-2256682776.index
-1067094681.index
-195505260.index

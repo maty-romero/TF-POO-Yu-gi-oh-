@@ -6,6 +6,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\Test_Batalla"/>
+			<item value="C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\Tablero"/>
 			<item value="C:\Users\celuf\Desktop\Tablero - solucion v1 - backup"/>
 			<item value="C:\Users\veram\Documents\POO\Proyecto Final\Clasic YuGiOh!"/>
 		</list>
@@ -13,5 +15,9 @@
 	<section name="ChooseWorkspaceDialogSettings">
 		<item key="DIALOG_X_ORIGIN" value="652"/>
 		<item key="DIALOG_Y_ORIGIN" value="341"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>
