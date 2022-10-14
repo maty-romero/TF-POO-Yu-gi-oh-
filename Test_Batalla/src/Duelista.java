@@ -25,13 +25,12 @@ public class Duelista {
 		this.cementerio = new Cementerio(); 
 		this.vida = 8000; //inicializacion de vida 
 		this.nombre = nombre;
-		this.ganador = false; 
+		this.ganador = true; //los duelistas son ganadores hasta que uno de los dos pierda
 		this.invocoMonstruo = false; 
 		
 		//this.icono = icono;
 	}
 
-	
 	public void recibirDanio(Integer dmg) {
 		this.setVida(this.getVida() - dmg); 
 	}
@@ -39,11 +38,18 @@ public class Duelista {
 	//saca una carta del mazo, la remueve y queda en la mano del Duelista
 	//El robo de carta actua como una pila 
 	public void robarCarta() {
-		if(new Random().nextBoolean()) { //Se obtiene un monstruo en la mano
-			this.getMano().agregarCarta(this.getDeck().getMonstruo());
-		}else {
-			this.getMano().agregarCarta(this.getDeck().getHechizo());
+		try {
+			if(new Random().nextBoolean()) { //Se obtiene un monstruo en la mano
+				this.getMano().agregarCarta(this.getDeck().getMonstruo());
+			}else {
+				this.getMano().agregarCarta(this.getDeck().getHechizo());
+			}
+			
+		}catch(IndexOutOfBoundsException e) {
+			System.out.println("El duelista " + this.getNombre() + " ha perdido.");
+			this.setGanador(false);
 		}
+		
 	}
 	
 	
@@ -83,11 +89,9 @@ public class Duelista {
 		return this.deck;
 	}
 
-
 	public Mano getMano() {
 		return this.mano;
 	}
-
 
 	public void setVida(Integer vida) {
 		this.vida = vida;
@@ -96,7 +100,6 @@ public class Duelista {
 	public String getNombre() {
 		return this.nombre;
 	}
-
 
 	public Campo getCampo() {
 		return this.campo;

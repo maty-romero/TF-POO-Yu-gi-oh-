@@ -17,21 +17,19 @@ public class Main {
 			duelistaOponente.robarCarta(); // si solo roba carta de hechizos del deck, puede haber error más abajo
 
 		}
-
-		System.out
-				.println("Size manoMonstruos duelistaJugador: " + duelistaJugador.getMano().getManoMonstruos().size());
-		System.out.println(
-				"Size manoMonstruos duelistaOponente: " + duelistaOponente.getMano().getManoMonstruos().size());
-
-		// invocacion de monstruos
+		
+		System.out.println("Size manoMonstruos duelistaJugador: " + duelistaJugador.getMano().getManoMonstruos().size());
+		System.out.println("Size manoMonstruos duelistaOponente: " + duelistaOponente.getMano().getManoMonstruos().size());
+		
+		//invocacion de monstruos 
 		duelistaJugador.getCampo().invocarMonstruo(duelistaJugador.getMano().getManoMonstruos().get(0), true);
 		duelistaOponente.getCampo().invocarMonstruo(duelistaOponente.getMano().getManoMonstruos().get(0), true);
-
-		// Seteo de valores de posicion ataque o defensa para las cartas.
-		duelistaJugador.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
-		duelistaOponente.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
-
-		// Informacion de las cartas, antes de la batalla
+	
+		//Seteo de valores de posicion ataque o defensa para las cartas. 
+//		duelistaJugador.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
+//		duelistaOponente.getCampo().getMonstruos().get(0).setPosicionAtaque(true);
+		
+		//Informacion de las cartas, antes de la batalla 
 		System.out.println("CARTA ATACANTE");
 		System.out.println("Ataque: " + duelistaJugador.getCampo().getMonstruos().get(0).getAtaque());
 		System.out.println("Defensa: " + duelistaJugador.getCampo().getMonstruos().get(0).getDefensa());
