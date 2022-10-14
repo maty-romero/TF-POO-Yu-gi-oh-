@@ -122,9 +122,14 @@ public class Vista_tablero {
 	private JPanel iconoJug;
 	private JLabel imagenIconoJug;
 
+//Botones 
+	private JButton btnAtacar;
+	private JButton btnInvocar;
+	
 // Array de cartas
 
 	private HashMap<JPanel, String> cartasTablero = new HashMap<JPanel, String>();
+	
 
 	public Vista_tablero(ControladorCarta1CampoBot c) {
 		setControladorCarta1CampoBot(c);
@@ -159,6 +164,20 @@ public class Vista_tablero {
 		ImageIcon icon_URL = new ImageIcon(
 				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
 		tablero.getContentPane().setLayout(null);
+		
+		btnInvocar = new JButton("INVOCAR");
+		btnInvocar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnInvocar.setBounds(1094, 479, 108, 23);
+		tablero.getContentPane().add(btnInvocar);
+		
+		btnAtacar = new JButton("ATACAR");
+		btnAtacar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAtacar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAtacar.setBounds(910, 479, 89, 23);
+		tablero.getContentPane().add(btnAtacar);
 
 //contador vida bot
 		this.contadorBot = new JLabel("8000");
@@ -580,7 +599,7 @@ public class Vista_tablero {
 //Descripcion completa de la carta seleccionada
 
 		this.cartaSeleccionada = new JPanel();
-		cartaSeleccionada.setBounds(862, 83, 391, 390);
+		cartaSeleccionada.setBounds(862, 78, 391, 390);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
 
@@ -594,7 +613,7 @@ public class Vista_tablero {
 		// this.cartaSeleccionada.add(imagenDescCarta);
 
 		this.descCartaSeleccionada = new JPanel();
-		descCartaSeleccionada.setBounds(862, 474, 391, 160);
+		descCartaSeleccionada.setBounds(862, 514, 391, 120);
 		this.descCartaSeleccionada.setBackground(Color.BLACK);
 		this.descCarta = new JLabel("INSERTE DESCRIPCION DE LA CARTA AQUI");
 		descCarta.setBackground(new Color(255, 255, 255));
@@ -603,7 +622,7 @@ public class Vista_tablero {
 
 //Contador vida jugador
 		this.contadorJug = new JLabel("8000");
-		contadorJug.setBounds(1053, 632, 200, 57);
+		contadorJug.setBounds(1053, 667, 200, 57);
 		contadorJug.setForeground(new Color(0, 0, 0));
 		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.contadorJug.setIcon(null);
@@ -645,7 +664,7 @@ public class Vista_tablero {
 				new ImageIcon(fondoTableroURL).getImage().getScaledInstance(1400, 1400, Image.SCALE_DEFAULT));
 
 		imagenFondoTablero = new JLabel(iconFondoTablero);
-		imagenFondoTablero.setBounds(0, 0, 1283, 700);
+		imagenFondoTablero.setBounds(0, 0, 1283, 784);
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
@@ -867,7 +886,4 @@ this.generarHashCartas();
 	public void setCartasTablero(HashMap<JPanel, String> cartasTablero) {
 		this.cartasTablero = cartasTablero;
 	}
-
-
-
 }
