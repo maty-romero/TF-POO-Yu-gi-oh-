@@ -8,11 +8,11 @@ public class HelperDatos {
 	//Integer id, String nombre, String descripcion, Integer ataque, Integer defensa
 	
 	public static LinkedList<CartaMonstruo> generaDeckMonstruos() {
-		LinkedList<CartaMonstruo> deckMonstruos = new LinkedList<>(); 
+		LinkedList<CartaMonstruo> deck = new LinkedList<>(); 
 		for (int i = 0; i < new Random().nextInt(10); i++) {
-			deckMonstruos.add(new CartaMonstruo(i, "Monstruo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
+			deck.add(new CartaMonstruo(i, "Monstruo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
 		}
-		return deckMonstruos;
+		return deck;
 	}
 	
 	//Genera monstruos y lo agrega en un array 
@@ -22,10 +22,10 @@ public class HelperDatos {
 		LinkedList<CartaMonstruo> hechizos = new LinkedList<>(); 
 		for (int i = 0; i < new Random().nextInt(10, 20); i++) {
 			monstruos.add(new CartaMonstruo(i, "Monstruo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
-			hechizos.add(new CartaHechizo(i,"nombre"+i, "descripcion"+i));
+			hechizos.add(new CartaMonstruo(i, "Hechizo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
 		}
 		deck.setMonstruos(monstruos);
-		deck.setHechizos(hechizos);
+		deck.setMonstruos(hechizos);
 		return deck;
 	}
 	

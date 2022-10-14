@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.131+C:\Users\veram\Documents\TF-POO-Yu-gi-oh-\.metadata\.plugins\org.eclipse.jdt.core
 3206145387.index
 1865797976.index
@@ -8,3 +9,8 @@ INDEX VERSION 1.131+C:\Users\veram\Documents\TF-POO-Yu-gi-oh-\.metadata\.plugins
 1342752528.index
 2256682776.index
 195505260.index
+=======
+INDEX VERSION 1.131+C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\.metadata\.plugins\org.eclipse.jdt.core
+1509799344.index
+1865797976.index
+>>>>>>> 171effd318d864927ff1ba6db7f3961769ee3e7b
