@@ -3,7 +3,6 @@ INDEX VERSION 1.131+C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\.metadata\.
 1865797976.index
 2471098318.index
 1342752528.index
-2369447540.index
 3358046534.index
 1509799344.index
 195505260.index

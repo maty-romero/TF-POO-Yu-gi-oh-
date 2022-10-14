@@ -81,6 +81,12 @@ public class Batalla {
 		}	
 	}
 
+	//Si el duelista no tiene monstruos en el campo de batalla 
+	public void ataqueDirecto(CartaMonstruo cartaAtacante) {
+		this.duelistaOponente.recibirDanio(cartaAtacante.getAtaque());
+	}
+	
+	
 	public Duelista getDuelistaJugador() {
 		return duelistaJugador;
 	}
