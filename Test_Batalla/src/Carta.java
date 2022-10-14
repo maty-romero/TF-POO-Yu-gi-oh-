@@ -1,6 +1,8 @@
 
 import java.net.URL;
 
+import javax.swing.JPanel;
+
 public abstract class Carta {
 	
 	protected Integer id;  
@@ -13,6 +15,8 @@ public abstract class Carta {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		//this.imagen = imagen;
+		
+		
 	} 
 	
 	//Getters 
