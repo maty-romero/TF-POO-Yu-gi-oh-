@@ -19,7 +19,7 @@ public class HelperDatos {
 	public static Deck generaDeck() {
 		Deck deck = new Deck();
 		LinkedList<CartaMonstruo> monstruos = new LinkedList<>(); 
-		LinkedList<CartaMonstruo> hechizos = new LinkedList<>(); 
+		LinkedList<CartaHechizo> hechizos = new LinkedList<>(); 
 		for (int i = 0; i < new Random().nextInt(10, 20); i++) {
 			monstruos.add(new CartaMonstruo(i, "Monstruo"+i, "Descripcion"+i, new Random().nextInt(10), new Random().nextInt(10)));
 			hechizos.add(new CartaHechizo(i,"nombre"+i, "descripcion"+i));
