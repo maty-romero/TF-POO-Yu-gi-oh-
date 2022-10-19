@@ -8,21 +8,11 @@ public class Main {
 		
 		
 		try {
-//			ConexionDB db = ConexionDB.getInstance();
-//			
-//			ConexionDB.getInstance().ImpresionCompleta(
-//					ConexionDB.getInstance().query("SELECT * FROM monstruos")
-//					);
+
 			String query = "SELECT * from "; //para obtener las demas DB 
 			
 			ResultSet rs = ConexionDB.getInstance().query(query + "monstruos"); 
-			
-//			if(rs.next()) {
-//				System.out.println(rs.getInt("id_carta"));
-//			}else {
-//				System.out.println("Esta vacia");
-//			}
-			
+						
 			//recorro filas, 
 			while(rs.next()) { //recorre fila por fila asiganando
 			
@@ -32,12 +22,9 @@ public class Main {
 				String url = rs.getString("imagen_url");
 				Integer ataque = rs.getInt("ataque");
 				Integer defensa = rs.getInt("defensa");
-				
-				
-				
+								
 			}
 
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
