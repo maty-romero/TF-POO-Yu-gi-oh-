@@ -9,15 +9,13 @@ public abstract class Carta {
 	protected Integer id;  
 	protected String nombre, descripcion;   
 	
-	//private URL imagen;
+	private String urlImagen;
 	
-	public Carta(Integer id, String nombre, String descripcion) {
+	public Carta(Integer id, String nombre, String descripcion, String urlImagen) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		//this.imagen = imagen;
-		
-		
+		this.urlImagen = urlImagen; 
 	} 
 	
 	//Getters 
@@ -34,9 +32,11 @@ public abstract class Carta {
 		return descripcion;
 	}
 
-//	public URL getImagen() {
-//		return imagen;
-//	} 
+	private String getUrlImagen() {
+		return urlImagen;
+	}
+
+
 	
 	
 	

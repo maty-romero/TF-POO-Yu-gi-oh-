@@ -8,8 +8,8 @@ public class CartaMonstruo extends Carta {
 	private Integer ataque, defensa;
 	private Boolean posicionAtaque;
 
-	public CartaMonstruo(Integer id, String nombre, String descripcion, Integer ataque, Integer defensa) {
-		super(id, nombre, descripcion);
+	public CartaMonstruo(Integer id, String nombre, String descripcion, String urlImagen, Integer ataque, Integer defensa) {
+		super(id, nombre, descripcion, urlImagen);
 		this.ataque = ataque;
 		this.defensa = defensa;
 	}
