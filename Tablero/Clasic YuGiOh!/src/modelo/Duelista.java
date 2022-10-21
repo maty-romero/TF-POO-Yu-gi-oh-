@@ -1,6 +1,5 @@
 package modelo;
 
-
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -16,11 +15,10 @@ public class Duelista {
 	private String nombre; 
 	
 	private Boolean ganador, invocoMonstruo;
-	//private URL icono;
+	//private String iconoUrl;
 	
-	//, URL icono
-	public Duelista(Deck deck, String nombre) {
-		this.deck = deck;
+	public Duelista(String nombre) {
+		this.deck = Barajador.generaDeck(); //se obtiene un deck 'aleatorio' desde la BD 
 		this.mano = new Mano();
 		this.campo = new Campo(); 
 		this.cementerio = new Cementerio(); 
@@ -29,7 +27,7 @@ public class Duelista {
 		this.ganador = true; //los duelistas son ganadores hasta que uno de los dos pierda
 		this.invocoMonstruo = false; 
 		
-		//this.icono = icono;
+		//this.icono = iconoUrl;
 	}
 
 	public void recibirDanio(Integer dmg) {
@@ -106,9 +104,7 @@ public class Duelista {
 		return this.campo;
 	}
 
-//	public URL getIcono() {
-//		return icono;
-//	} 
+ 
 	
 	
 	
