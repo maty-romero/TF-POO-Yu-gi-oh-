@@ -162,19 +162,19 @@ public class Vista_tablero {
 				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
 		tablero.getContentPane().setLayout(null);
 		
-		btnInvocar = new JButton("INVOCAR");
-		btnInvocar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnInvocar.setBounds(1094, 479, 108, 23);
-		tablero.getContentPane().add(btnInvocar);
-		
-		btnAtacar = new JButton("ATACAR");
-		btnAtacar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAtacar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAtacar.setBounds(910, 479, 89, 23);
-		tablero.getContentPane().add(btnAtacar);
+//		btnInvocar = new JButton("INVOCAR");
+//		btnInvocar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+//		btnInvocar.setBounds(1094, 479, 108, 23);
+//		tablero.getContentPane().add(btnInvocar);
+//		
+//		btnAtacar = new JButton("ATACAR");
+//		btnAtacar.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//			}
+//		});
+//		btnAtacar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+//		btnAtacar.setBounds(910, 479, 89, 23);
+//		tablero.getContentPane().add(btnAtacar);
 
 //contador vida bot
 		this.contadorBot = new JLabel("8000");
@@ -256,19 +256,13 @@ public class Vista_tablero {
 		manoBot.setBounds(94, 10, 726, 100);
 		manoBot.setSize(730, 100);
 		tablero.getContentPane().add(manoBot);
-		manoBot.setLayout(new GridLayout(1, 10, 0, 0));
+		manoBot.setLayout(new GridLayout(1, 0, 0, 0));
 		manoBot.setVisible(true);
 
 		manoBot.add(this.carta1ManoBot); // ATENCION; no admite duplicados. Es decir, si añadis la misma imagen_carta
 											// entonces te ignorará la ultima que le pongas y solo añadirà una imagen
 		manoBot.add(this.carta2ManoBot);
-		manoBot.add(this.carta3ManoBot); // A VECES SALE ERROR, SIN RAZON. Es decir, a veces cuando ejecutas esta linea
-											// (
-											// o las demas lineas manoBot.add(Carta) sale error, y otras veces no,
-											// cuidado).
-											// Una posible solucion, algo más estable, es añadir al grid el JLabel
-											// imagen, y
-											// no los paneles.
+		manoBot.add(this.carta3ManoBot);
 		manoBot.add(this.carta4ManoBot);
 		manoBot.add(this.carta5ManoBot);
 
