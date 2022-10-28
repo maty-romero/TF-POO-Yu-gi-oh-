@@ -2,17 +2,25 @@ package controlador;
 
 import modelo.Batalla;
 import modelo.Duelista;
+import modelo.Modelo;
 import vista.Vista_tablero;
 
 public class TableroController {
-
+	private Modelo modelo;
+	private ControladorProyeccionCartas c;
+	
 	private static Duelista duelistaJugador, duelistaOponente; 
 	private static Batalla batallaJugador, batallaOponente; //para los cambios de turno
 	
-	private Vista_tablero vista; 
+	private Vista_tablero vista;
 	
 	public TableroController() {
 //		vista = new Vista_tablero(this);
+		Vista_tablero vista = new Vista_tablero();
+		this.vista=vista;
+		this.vista.mostrar();
+		this.modelo = new Modelo();
+
 		duelistaJugador = new Duelista("YUGI"); 
 		duelistaOponente = new Duelista("KIRA"); 
 		batallaJugador = new Batalla(duelistaJugador, duelistaOponente);

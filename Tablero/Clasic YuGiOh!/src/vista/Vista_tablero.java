@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.print.DocFlavor.URL;
 import javax.swing.*;
 
-import controlador.ControladorCarta1CampoBot;
+import controlador.ControladorProyeccionCartas;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -26,9 +26,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Vista_tablero {
-	private ControladorCarta1CampoBot controlador;
-//	private ControladorCarta2CampoBot controladorCarta2CampoBot;
-
 //tablero
 	private JFrame tablero;
 	private JPanel manoJugador;
@@ -131,8 +128,8 @@ public class Vista_tablero {
 	private HashMap<JPanel, String> cartasTablero = new HashMap<JPanel, String>();
 	
 
-	public Vista_tablero(ControladorCarta1CampoBot c) {
-		setControladorCarta1CampoBot(c);
+	public Vista_tablero() {
+	//	setControladorCarta1CampoBot(c);
 		this.tablero = new JFrame("TABLERO");
 //		this.anadirCartasArrayCartas();;
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -307,7 +304,7 @@ public class Vista_tablero {
 //campo de batalla del bot
 		this.carta1CampoBot = new JPanel();
 
-		carta1CampoBot.addMouseListener(this.getControlador());
+		carta1CampoBot.addMouseListener(new ControladorProyeccionCartas(this));
 
 		carta1CampoBot.setBounds(226, 249, 135, 96);
 		this.carta1CampoBot.setBackground(Color.BLACK);
@@ -323,7 +320,7 @@ public class Vista_tablero {
 		tablero.getContentPane().add(this.carta1CampoBot);
 
 		this.carta2CampoBot = new JPanel();
-		this.carta2CampoBot.addMouseListener(controlador);
+		this.carta2CampoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		carta2CampoBot.setBounds(380, 249, 135, 96);
 		this.carta2CampoBot.setBackground(Color.BLACK);
 
@@ -338,7 +335,7 @@ public class Vista_tablero {
 		tablero.getContentPane().add(this.carta2CampoBot);
 
 		this.carta3CampoBot = new JPanel();
-		this.carta3CampoBot.addMouseListener(controlador);
+		this.carta3CampoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		carta3CampoBot.setBounds(535, 249, 135, 96);
 		this.carta3CampoBot.setBackground(Color.BLACK);
 
@@ -354,7 +351,7 @@ public class Vista_tablero {
 		tablero.getContentPane().add(this.carta3CampoBot);
 
 		this.carta4CampoBot = new JPanel();
-		this.carta4CampoBot.addMouseListener(controlador);
+		this.carta4CampoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		carta4CampoBot.setBounds(226, 117, 135, 96);
 		this.carta4CampoBot.setBackground(Color.BLACK);
 
@@ -370,7 +367,7 @@ public class Vista_tablero {
 		tablero.getContentPane().add(this.carta4CampoBot);
 
 		this.carta5CampoBot = new JPanel();
-		this.carta5CampoBot.addMouseListener(controlador);
+		this.carta5CampoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		carta5CampoBot.setBounds(380, 117, 135, 96);
 		this.carta5CampoBot.setBackground(Color.BLACK);
 
@@ -388,7 +385,7 @@ public class Vista_tablero {
 		StringCarta6CampoBot = "/cartas/dark_magician.jpg";
 
 		this.carta6CampoBot = new JPanel();
-		this.carta6CampoBot.addMouseListener(controlador);
+		this.carta6CampoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		carta6CampoBot.setBounds(535, 117, 135, 96);
 		this.carta6CampoBot.setBackground(Color.BLACK);
 
@@ -723,13 +720,7 @@ this.generarHashCartas();
 		this.tablero = tablero;
 	}
 
-	public ControladorCarta1CampoBot getControlador() {
-		return controlador;
-	}
 
-	public void setControladorCarta1CampoBot(ControladorCarta1CampoBot controlador) {
-		this.controlador = controlador;
-	}
 
 	public void setImagenCarta1Bot(JLabel imagen_carta1Bot) {
 		this.imagen_carta1Bot = imagen_carta1Bot;
