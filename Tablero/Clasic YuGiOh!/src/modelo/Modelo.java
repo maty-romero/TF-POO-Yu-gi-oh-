@@ -13,13 +13,15 @@ public class Modelo {
 	private TableroController controlador;
 
 	
-	//Genero la imagen de una carta cualquiera, la carta debe tener datos cargados desde la base de datos.
+	
+//Devuelvo la imagen de la carta, gracias a que el objeto carta tiene una ruta de archivo.
 	public JLabel generoImagenCarta(Carta carta) {
 		java.net.URL urlCarta = getClass().getResource(carta.getPathImagen());
 		ImageIcon iconURL = new ImageIcon(
 				new ImageIcon(urlCarta).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		JLabel imgCarta = new JLabel(iconURL);
-		return imgCarta;
+		System.out.println("envio un label al controlador");
+		return new JLabel(iconURL);
+
 	}
 
 }

@@ -2,6 +2,8 @@ package controlador;
 
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 import modelo.Batalla;
 import modelo.Carta;
 import modelo.CartaHechizo;
@@ -30,21 +32,30 @@ public class TableroController {
 		batallaJugador = new Batalla(duelistaJugador, duelistaOponente);
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
 
-		this.generoImagenesMonstruo(duelistaJugador.getMano().getManoMonstruos());
-		this.generoImagenesMonstruo(duelistaJugador.getMano().getManoMonstruos());
+		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX
+		System.out.println("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		ArrayList<CartaMonstruo> monstruos = duelistaOponente.getMano().getManoMonstruos();
+		monstruos.get(0).setPathImagen("/cartas/cambio_de_fidelidad.jpg");
+		// XXXXXXXXXXX
+		System.out.println("hola");
+
+		this.envioImagenesMonstruoVista(monstruos);
+		// this.generoImagenesHechizo(duelistaOponente.getMano().getManoHechizos());
 
 	}
 
-	public void generoImagenesMonstruo(ArrayList<CartaMonstruo> cartas) {
-		for (Carta carta : cartas) {
-			this.modelo.generoImagenCarta(carta);
+	public void envioImagenesMonstruoVista(ArrayList<CartaMonstruo> monstruos) {
+		for (Carta carta : monstruos) {
+			this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(carta));
 		}
 	}
 
+//Si tengo 3 cartas hechizo en la mano, por ejemplo, se cargaran 3 imagenes.
 	public void generoImagenesHechizo(ArrayList<CartaHechizo> cartas) {
 		for (Carta carta : cartas) {
-			this.modelo.generoImagenCarta(carta);
+			this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(carta));
 		}
+
 	}
 
 	// flujo de la partida

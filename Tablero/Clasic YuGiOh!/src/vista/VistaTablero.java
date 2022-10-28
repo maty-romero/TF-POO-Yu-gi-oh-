@@ -40,11 +40,11 @@ public class VistaTablero {
 	private JPanel carta4ManoBot;
 	private JPanel carta5ManoBot;
 
-	private JLabel imagen_carta1Bot;
-	private JLabel imagen_carta2Bot;
-	private JLabel imagen_carta3Bot;
-	private JLabel imagen_carta4Bot;
-	private JLabel imagen_carta5Bot;
+	private JLabel imagenCarta1ManoBot;
+	private JLabel imagenCarta2ManoBot;
+	private JLabel imagenCarta3ManoBot;
+	private JLabel imagenCarta4ManoBot;
+	private JLabel imagenCarta5ManoBot;
 
 	private JPanel deck_bot;
 	private JLabel imagen_DeckBot;
@@ -175,8 +175,8 @@ public class VistaTablero {
 																							// projecto
 		ImageIcon icon1_URL = new ImageIcon(
 				new ImageIcon(url_carta).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagen_carta1Bot = new JLabel(icon1_URL);
-		this.carta1ManoBot.add(imagen_carta1Bot);
+		this.imagenCarta1ManoBot = new JLabel(icon1_URL);
+		this.carta1ManoBot.add(imagenCarta1ManoBot);
 
 //tablero.getContentPane().add(this.carta1_bot);
 
@@ -188,8 +188,8 @@ public class VistaTablero {
 																						// projecto
 		ImageIcon icon2_URL = new ImageIcon(
 				new ImageIcon(url_carta2).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagen_carta2Bot = new JLabel(icon2_URL);
-		this.carta2ManoBot.add(imagen_carta2Bot);
+		this.imagenCarta2ManoBot = new JLabel(icon2_URL);
+		this.carta2ManoBot.add(imagenCarta2ManoBot);
 
 //tablero.getContentPane().add(this.carta2_bot); //para añadir panel al frame tablero, sirve para pruebas
 
@@ -200,8 +200,8 @@ public class VistaTablero {
 		java.net.URL url_carta3 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg");
 		ImageIcon icon3_URL = new ImageIcon(
 				new ImageIcon(url_carta3).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagen_carta3Bot = new JLabel(icon3_URL);
-		this.carta3ManoBot.add(imagen_carta3Bot);
+		this.imagenCarta3ManoBot = new JLabel(icon3_URL);
+		this.carta3ManoBot.add(imagenCarta3ManoBot);
 
 //tablero.getContentPane().add(this.carta3_bot);
 
@@ -213,9 +213,9 @@ public class VistaTablero {
 																								// projecto
 		ImageIcon icon4_URL = new ImageIcon(
 				new ImageIcon(url_carta4).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagen_carta4Bot = new JLabel(icon4_URL);
+		this.imagenCarta4ManoBot = new JLabel(icon4_URL);
 
-		this.carta4ManoBot.add(imagen_carta4Bot); // Al Panel carta le añado la imagen
+		this.carta4ManoBot.add(imagenCarta4ManoBot); // Al Panel carta le añado la imagen
 
 //tablero.getContentPane().add(this.carta4_bot);
 
@@ -227,8 +227,12 @@ public class VistaTablero {
 																								// projecto
 		ImageIcon icon5_URL = new ImageIcon(
 				new ImageIcon(url_carta5).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagen_carta5Bot = new JLabel(icon5_URL);
-		this.carta5ManoBot.add(imagen_carta5Bot);
+		this.imagenCarta5ManoBot = new JLabel(icon5_URL);
+//
+		// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//		
+
+		this.carta5ManoBot.add(imagenCarta5ManoBot);
 
 //tablero.getContentPane().add(this.carta5_bot);
 
@@ -239,17 +243,16 @@ public class VistaTablero {
 		tablero.getContentPane().add(manoBot);
 		manoBot.setLayout(new GridLayout(1, 0, 0, 0));
 		manoBot.setVisible(true);
-		this.carta2ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
-		this.carta1ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
-		this.carta3ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
+//		this.carta2ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
+//		this.carta1ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
+//		this.carta3ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		manoBot.setFocusable(true);
 
-		manoBot.add(this.carta1ManoBot); // ATENCION; no admite duplicados. Es decir, si añadis la misma imagen_carta
-											// entonces te ignorará la ultima que le pongas y solo añadirà una imagen
-		manoBot.add(this.carta2ManoBot);
-		manoBot.add(this.carta3ManoBot);
-		manoBot.add(this.carta4ManoBot);
-		manoBot.add(this.carta5ManoBot);
+//		manoBot.add(this.carta1ManoBot); 
+//		manoBot.add(this.carta2ManoBot);
+//		manoBot.add(this.carta3ManoBot);
+//		manoBot.add(this.carta4ManoBot);
+//		manoBot.add(this.carta5ManoBot);
 		manoBot.setFocusable(true);
 
 //deck del bot
@@ -649,6 +652,14 @@ public class VistaTablero {
 
 	}
 
+	public void agregoCartaManoBot(JLabel labelCarta) {
+		JPanel carta = new JPanel();
+		carta.addMouseListener(new ControladorProyeccionCartas(this));
+		carta.setBounds(605, 593, 74, 96);
+		carta.setBackground(new Color(153, 0, 0));
+		this.manoBot.add(carta.add(labelCarta));	
+    }
+
 	public void generarHashCartas() {
 		this.cartasTablero.put(carta1CampoBot, StringCarta1CampoBot);
 		this.cartasTablero.put(carta2CampoBot, StringCarta2CampoBot);
@@ -656,9 +667,9 @@ public class VistaTablero {
 		this.cartasTablero.put(carta4CampoBot, StringCarta4CampoBot);
 		this.cartasTablero.put(carta5CampoBot, StringCarta5CampoBot);
 		this.cartasTablero.put(carta6CampoBot, StringCarta6CampoBot);
-		this.cartasTablero.put(this.carta1ManoBot, "/cartas/dark_magician.jpg");
-		this.cartasTablero.put(this.carta2ManoBot, "/IconoPersonajes/seto_kaiba.png");
-		this.cartasTablero.put(this.carta3ManoBot, "/cartas/cambio_de_fidelidad.jpg");
+//		this.cartasTablero.put(this.carta1ManoBot, "/cartas/dark_magician.jpg");
+//		this.cartasTablero.put(this.carta2ManoBot, "/IconoPersonajes/seto_kaiba.png");
+//		this.cartasTablero.put(this.carta3ManoBot, "/cartas/cambio_de_fidelidad.jpg");
 
 	}
 
@@ -703,11 +714,11 @@ public class VistaTablero {
 	}
 
 	public void setImagenCarta1Bot(JLabel imagen_carta1Bot) {
-		this.imagen_carta1Bot = imagen_carta1Bot;
+		this.imagenCarta1ManoBot = imagen_carta1Bot;
 	}
 
 	public JLabel getImagenCarta2Bot() {
-		return imagen_carta2Bot;
+		return imagenCarta2ManoBot;
 	}
 
 	public JPanel getCarta2CampoBot() {
@@ -727,7 +738,7 @@ public class VistaTablero {
 	}
 
 	public void setImagen_carta2Bot(JLabel imagen_carta2Bot) {
-		this.imagen_carta2Bot = imagen_carta2Bot;
+		this.imagenCarta2ManoBot = imagen_carta2Bot;
 	}
 
 	public JPanel getCartaSeleccionada() {
@@ -857,4 +868,5 @@ public class VistaTablero {
 	public void setCartasTablero(HashMap<JPanel, String> cartasTablero) {
 		this.cartasTablero = cartasTablero;
 	}
+
 }
