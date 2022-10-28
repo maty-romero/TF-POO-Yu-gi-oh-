@@ -16,18 +16,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import modelo.Modelo;
-import vista.Vista_tablero;
+import vista.VistaTablero;
 
 public class ControladorProyeccionCartas implements MouseListener {
-	private Vista_tablero vista;
+	private VistaTablero vista;
 	private Modelo modelo;
 	private JLabel imagenCarta4Jug;
 
-	public ControladorProyeccionCartas(Vista_tablero vista) {
+	public ControladorProyeccionCartas(VistaTablero vista) {
 		this.vista = vista;
 		modelo = new Modelo();
-		//this.vista.mostrar();  NO ACTIVAR O SALE PANTALLA LAGEADA
- 	}
+		// this.vista.mostrar(); NO ACTIVAR O SALE PANTALLA LAGEADA
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {

@@ -25,14 +25,15 @@ import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Vista_tablero {
+public class VistaTablero {
 //tablero
 	private JFrame tablero;
 	private JPanel manoJugador;
 	private JPanel manoBot;
 	private JPanel panel_Tablero;
 	private JLabel imagenFondoTablero;
-//Cartas de campo, de mano, cementerio y deck del bot
+
+	// Cartas de campo, de mano, cementerio y deck del bot
 	private JPanel carta1ManoBot;
 	private JPanel carta2ManoBot;
 	private JPanel carta3ManoBot;
@@ -122,46 +123,27 @@ public class Vista_tablero {
 //Botones 
 	private JButton btnAtacar;
 	private JButton btnInvocar;
-	
+
 // Array de cartas
 
 	private HashMap<JPanel, String> cartasTablero = new HashMap<JPanel, String>();
-	
 
-	public Vista_tablero() {
-	//	setControladorCarta1CampoBot(c);
+	public VistaTablero() {
 		this.tablero = new JFrame("TABLERO");
-//		this.anadirCartasArrayCartas();;
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.tablero.setSize(2000, 2000);
 		this.generarTablero();
-		
-//    System.out.println(cartasTablero.get(0).getComponent(0).getClass()) ;  
-     //  System.out.println(this.cartasTablero); 
-		
 
 	}
 
-//	public void anadirCartasArrayCartas() {
-//	this.cartasTablero.add(carta1CampoBot);
-//	this.cartasTablero.add(carta2CampoBot);
-//	this.cartasTablero.add(carta3CampoBot);
-//	this.cartasTablero.add(carta4CampoBot);
-//	this.cartasTablero.add(carta5CampoBot);
-//	this.cartasTablero.add(carta6CampoBot);
-//
-//	
-//	
-//	}
-
 	private void generarTablero() {
-	
+
 		java.net.URL url_carta1 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
 																								// projecto
 		ImageIcon icon_URL = new ImageIcon(
 				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
 		tablero.getContentPane().setLayout(null);
-		
+
 //		btnInvocar = new JButton("INVOCAR");
 //		btnInvocar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 //		btnInvocar.setBounds(1094, 479, 108, 23);
@@ -215,8 +197,7 @@ public class Vista_tablero {
 		carta3ManoBot.setBounds(453, 10, 74, 96);
 		this.carta3ManoBot.setBackground(new Color(153, 0, 0));
 
-		java.net.URL url_carta3 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
-																								// projecto
+		java.net.URL url_carta3 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg");
 		ImageIcon icon3_URL = new ImageIcon(
 				new ImageIcon(url_carta3).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
 		this.imagen_carta3Bot = new JLabel(icon3_URL);
@@ -251,13 +232,17 @@ public class Vista_tablero {
 
 //tablero.getContentPane().add(this.carta5_bot);
 
-//MANO DEL JUGADOR Panel grid layout
+//MANO DEL BOT Panel grid layout
 		manoBot = new JPanel();
 		manoBot.setBounds(94, 10, 726, 100);
 		manoBot.setSize(730, 100);
 		tablero.getContentPane().add(manoBot);
 		manoBot.setLayout(new GridLayout(1, 0, 0, 0));
 		manoBot.setVisible(true);
+		this.carta2ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
+		this.carta1ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
+		this.carta3ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
+		manoBot.setFocusable(true);
 
 		manoBot.add(this.carta1ManoBot); // ATENCION; no admite duplicados. Es decir, si añadis la misma imagen_carta
 											// entonces te ignorará la ultima que le pongas y solo añadirà una imagen
@@ -265,6 +250,7 @@ public class Vista_tablero {
 		manoBot.add(this.carta3ManoBot);
 		manoBot.add(this.carta4ManoBot);
 		manoBot.add(this.carta5ManoBot);
+		manoBot.setFocusable(true);
 
 //deck del bot
 		this.deck_bot = new JPanel();
@@ -595,7 +581,7 @@ public class Vista_tablero {
 		tablero.getContentPane().add(this.cartaSeleccionada);
 
 		java.net.URL url_descCarta = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local
-	                       																		// relativa al
+																									// relativa al
 		// projecto
 		ImageIcon iconDescCart = new ImageIcon(
 				new ImageIcon(url_descCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
@@ -659,19 +645,21 @@ public class Vista_tablero {
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
-this.generarHashCartas();
-		
-		
-         
-		
+		this.generarHashCartas();
+
 	}
+
 	public void generarHashCartas() {
-		this.cartasTablero.put(carta1CampoBot,StringCarta1CampoBot);
+		this.cartasTablero.put(carta1CampoBot, StringCarta1CampoBot);
 		this.cartasTablero.put(carta2CampoBot, StringCarta2CampoBot);
-		this.cartasTablero.put(carta3CampoBot,StringCarta3CampoBot );
-		this.cartasTablero.put(carta4CampoBot,StringCarta4CampoBot);
+		this.cartasTablero.put(carta3CampoBot, StringCarta3CampoBot);
+		this.cartasTablero.put(carta4CampoBot, StringCarta4CampoBot);
 		this.cartasTablero.put(carta5CampoBot, StringCarta5CampoBot);
 		this.cartasTablero.put(carta6CampoBot, StringCarta6CampoBot);
+		this.cartasTablero.put(this.carta1ManoBot, "/cartas/dark_magician.jpg");
+		this.cartasTablero.put(this.carta2ManoBot, "/IconoPersonajes/seto_kaiba.png");
+		this.cartasTablero.put(this.carta3ManoBot, "/cartas/cambio_de_fidelidad.jpg");
+
 	}
 
 	public JFrame getTablero() {
@@ -713,8 +701,6 @@ this.generarHashCartas();
 	public void setTablero(JFrame tablero) {
 		this.tablero = tablero;
 	}
-
-
 
 	public void setImagenCarta1Bot(JLabel imagen_carta1Bot) {
 		this.imagen_carta1Bot = imagen_carta1Bot;

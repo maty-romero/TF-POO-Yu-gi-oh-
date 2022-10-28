@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
 import modelo.Modelo;
-import vista.Vista_tablero;
+import vista.VistaTablero;
 
 public class Main {
 	public static void main(String[] args) {
