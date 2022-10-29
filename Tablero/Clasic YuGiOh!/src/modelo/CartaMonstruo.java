@@ -32,5 +32,19 @@ public class CartaMonstruo extends Carta {
 		this.posicionAtaque = posicionAtaque;
 	}
 
+	public void setAtaque(Integer ataque) {
+		this.ataque = ataque;
+	}
 
+	public void setDefensa(Integer defensa) {
+		this.defensa = defensa;
+	}
+
+	@Override
+	public String toString() {
+		return "CartaMonstruo [ataque=" + ataque + ", defensa=" + defensa +super.getPathImagen() +"]+";
+	}
+
+
+	
 }

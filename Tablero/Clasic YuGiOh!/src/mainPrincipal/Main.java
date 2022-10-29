@@ -5,15 +5,20 @@ import java.net.http.HttpResponse;
 
 import javax.swing.JPanel;
 
-import controlador.ControladorCarta1CampoBot;
+//import controlador.ControladorProyeccionCartas;
+import controlador.TableroController;
 import modelo.Modelo;
-import vista.Vista_tablero;
+import vista.VistaTablero;
 
 public class Main {
 	public static void main(String[] args) {
 		Modelo modelo = new Modelo();
-		ControladorCarta1CampoBot controlador = new ControladorCarta1CampoBot();
-        
+		TableroController tableroController= new TableroController();        
+         
+		System.out.println(tableroController.getManoMonstruoOponente());
+
+	 
+	
 	}
 
 }
