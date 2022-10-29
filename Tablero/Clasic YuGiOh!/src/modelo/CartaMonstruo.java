@@ -42,8 +42,11 @@ public class CartaMonstruo extends Carta {
 
 	@Override
 	public String toString() {
-		return "CartaMonstruo [ataque=" + ataque + ", defensa=" + defensa +super.getPathImagen() +"]+";
+		return "CartaMonstruo [ataque=" + ataque + ", defensa=" + defensa + ", id=" + id + ", nombre=" + nombre
+				+ ", descripcion=" + descripcion + "]";
 	}
+
+	
 
 
 	
