@@ -33,10 +33,17 @@ public class TableroController {
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
 
 		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX
-		System.out.println("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		ArrayList<CartaMonstruo> monstruos = duelistaOponente.getMano().getManoMonstruos();
-		monstruos.get(0).setPathImagen("/cartas/cambio_de_fidelidad.jpg");
-		// XXXXXXXXXXX
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
+
+		/// XXXXXXXXXXX
 
 		this.envioImagenesMonstruoVista(monstruos);
 		// this.generoImagenesHechizo(duelistaOponente.getMano().getManoHechizos());
@@ -45,6 +52,7 @@ public class TableroController {
 
 	public void envioImagenesMonstruoVista(ArrayList<CartaMonstruo> monstruos) {
 		for (Carta carta : monstruos) {
+			System.out.println("entre");
 			this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(carta));
 		}
 	}
