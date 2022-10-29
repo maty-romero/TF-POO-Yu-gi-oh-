@@ -37,7 +37,6 @@ public class TableroController {
 		ArrayList<CartaMonstruo> monstruos = duelistaOponente.getMano().getManoMonstruos();
 		monstruos.get(0).setPathImagen("/cartas/cambio_de_fidelidad.jpg");
 		// XXXXXXXXXXX
-		System.out.println("hola");
 
 		this.envioImagenesMonstruoVista(monstruos);
 		// this.generoImagenesHechizo(duelistaOponente.getMano().getManoHechizos());

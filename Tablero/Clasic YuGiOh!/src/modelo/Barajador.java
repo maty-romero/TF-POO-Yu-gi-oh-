@@ -38,7 +38,7 @@ public class Barajador {
 				id = rsMonstruos.getInt("id_carta");
 				nombre = rsMonstruos.getString("nombre");
 				descripcion = rsMonstruos.getString("descripcion");
-				url = rsMonstruos.getString("imagen_url");
+				url = rsMonstruos.getString("pathImagen");
 				ataque = rsMonstruos.getInt("ataque");
 				defensa = rsMonstruos.getInt("defensa");
 
