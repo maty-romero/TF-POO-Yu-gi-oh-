@@ -1,34 +1,20 @@
 package controlador;
 
-import java.util.ArrayList;
-
-import javax.swing.JLabel;
-
 import modelo.Batalla;
-import modelo.Carta;
-import modelo.CartaHechizo;
-import modelo.CartaMonstruo;
 import modelo.Duelista;
-import modelo.Modelo;
-import vista.VistaTablero;
+import vista.Vista_tablero;
 
 public class TableroController {
-	private Modelo modelo;
-	private ControladorProyeccionCartas c;
 
-	private static Duelista duelistaJugador, duelistaOponente;
-	private static Batalla batallaJugador, batallaOponente; // para los cambios de turno
-
-	private VistaTablero vista;
-
+	private static Duelista duelistaJugador, duelistaOponente; 
+	private static Batalla batallaJugador, batallaOponente; //para los cambios de turno
+	
+	private Vista_tablero vista; 
+	
 	public TableroController() {
-		VistaTablero vista = new VistaTablero();
-		this.vista = vista;
-		this.vista.mostrar();
-		this.modelo = new Modelo();
-
-		duelistaJugador = new Duelista("YUGI");
-		duelistaOponente = new Duelista("KIRA");
+//		vista = new Vista_tablero(this);
+		duelistaJugador = new Duelista("YUGI"); 
+		duelistaOponente = new Duelista("KIRA"); 
 		batallaJugador = new Batalla(duelistaJugador, duelistaOponente);
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
 
@@ -69,20 +55,23 @@ public class TableroController {
 	/*
 	 * FASES: Robo, invocacion, batalla, invocacion, otro turno
 	 */
-
+	
 	public void Partida() {
-
-		// los duelistas roban 5 cartas --> Actualizar la vista.
+		
+		// los duelistas roban 5 cartas --> Actualizar la vista. 
 		for (int i = 0; i < 5; i++) {
 			duelistaJugador.robarCarta();
 			duelistaOponente.robarCarta();
 		}
-
-		// mientras ninguno pierda, sigue la partida.
-		while (duelistaJugador.getGanador() && duelistaOponente.getGanador()) {
-
+		
+		//mientras ninguno pierda, sigue la partida. 
+		while(duelistaJugador.getGanador() && duelistaOponente.getGanador()) {
+			
 		}
-
+				 
+		
+		
 	}
-
+	
+	
 }
