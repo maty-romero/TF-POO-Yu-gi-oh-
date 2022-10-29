@@ -21,6 +21,15 @@ public class Deck {
 		return hechizos.pollLast();
 	}
 
+	
+	public LinkedList<CartaMonstruo> getMonstruos() {
+		return monstruos;
+	}
+
+	public LinkedList<CartaHechizo> getHechizos() {
+		return hechizos;
+	}
+
 	public void setMonstruos(LinkedList<CartaMonstruo> monstruos) {
 		this.monstruos = monstruos;
 	}

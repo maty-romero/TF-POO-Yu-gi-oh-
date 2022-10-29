@@ -39,18 +39,9 @@ public class Duelista {
 	public void robarCarta() {
 		try {
 			if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
-				CartaMonstruo monstruo = this.getDeck().getMonstruo(); 
-				if(monstruo != null) { 
-					this.getMano().agregarCarta(monstruo);
-				}
-				throw new IndexOutOfBoundsException();
-				
-			} else { // Se obtiene un hechizo en la mano
-				CartaHechizo hechizo = this.getDeck().getHechizo(); 
-				if(hechizo != null) { 
-					this.getMano().agregarCarta(hechizo);
-				}
-				throw new IndexOutOfBoundsException();
+				this.getMano().agregarCarta(this.getDeck().getMonstruo());
+			} else {
+				this.getMano().agregarCarta(this.getDeck().getHechizo());
 			}
 
 		} catch (IndexOutOfBoundsException e) {

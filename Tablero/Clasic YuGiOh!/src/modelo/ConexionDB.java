@@ -14,11 +14,12 @@ public class ConexionDB {
 
 	private static ConexionDB db = null; 
 	private Connection connection;
-	//private String url = "jdbc:postgresql://localhost/YUGIOH_DB";
-	private String url = "jdbc:postgresql://localhost/postgres";
+	private String url = "jdbc:postgresql://localhost/YUGIOH_DB";
+//	private String url = "jdbc:postgresql://localhost/postgres";
 	private String username = "postgres";
-	private String password = "juanijo123";
-	 
+//	private String password = "juanijo123";
+	private String password = "gatos123";
+	
 	private ConexionDB() {
 		try {
 			this.setConnection(DriverManager.getConnection(url, username, password));
