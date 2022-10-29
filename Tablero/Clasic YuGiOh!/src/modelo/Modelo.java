@@ -20,7 +20,6 @@ public class Modelo {
 		ImageIcon iconURL = new ImageIcon(
 				new ImageIcon(urlCarta).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
 		return new JLabel(iconURL);
-
 	}
 
 }

@@ -43,7 +43,7 @@ public class TableroController {
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
 
 		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX DEBERÌA TRAER CARTAS DESDE EL DECK DEL
-		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR
+		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR (CON BASE DATOS)
 		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
@@ -90,7 +90,7 @@ public class TableroController {
 			// traigo directo desde la vista, mando ambos a la vista para que me asocie esa
 			// imagen a esa mano (meto en el panel mano, el otro panel que le inserté esa
 			// imagen traida desde el modelo)
-			panelCarta = this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(cartaMonstruo), mano);
+			panelCarta = this.vista.agregoCartaMano(this.modelo.generoImagenCarta(cartaMonstruo), mano);
 			panelCarta.setVisible(true);
 			panelCarta.setFocusable(true);
 
@@ -111,7 +111,7 @@ public class TableroController {
 			// traigo directo desde la vista, mando ambos a la vista para que me asocie esa
 			// imagen a esa mano (meto en el panel mano, el otro panel que le inserté esa
 			// imagen traida desde el modelo)
-			panelCarta = this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(cartaHechizo), mano);
+			panelCarta = this.vista.agregoCartaMano(this.modelo.generoImagenCarta(cartaHechizo), mano);
 			panelCarta.setVisible(true);
 			panelCarta.setFocusable(true);
 
