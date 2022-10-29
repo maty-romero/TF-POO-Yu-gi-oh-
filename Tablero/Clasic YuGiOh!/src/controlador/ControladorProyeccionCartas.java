@@ -49,7 +49,6 @@ public class ControladorProyeccionCartas implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 		{
-			System.out.println("HOLAAAAAAAAAAAAAAAA");
 			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
 
 			this.vista.getManoBot().setFocusable(true);
@@ -66,14 +65,12 @@ public class ControladorProyeccionCartas implements MouseListener {
 				for (JPanel key : hashCartas.keySet()) {
 					if (e.getSource() == key) {
 						String stringCarta = hashCartas.get(key).getPathImagen();
-						// String stringCarta = hashCartas.get(key);
 
 						java.net.URL urlCarta = getClass().getResource(stringCarta);
 						ImageIcon iconCarta = new ImageIcon(
 								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
 						JLabel label = new JLabel(iconCarta);
 						vista.getCartaSeleccionada().removeAll();
-						System.out.println("entre");
 						vista.mostrar();
 
 						vista.getCartaSeleccionada().add(label);

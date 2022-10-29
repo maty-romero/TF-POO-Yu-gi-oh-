@@ -203,74 +203,6 @@ public class VistaTablero {
 		this.contadorBot.setBackground(new Color(0, 0, 153));
 		tablero.getContentPane().add(this.contadorBot);
 
-//Cartas de la mano del bot
-		this.carta1ManoBot = new JPanel();
-		carta1ManoBot.setBounds(310, 10, 74, 96);
-		this.carta1ManoBot.setBackground(new Color(153, 0, 0));
-
-		java.net.URL url_carta = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
-																							// projecto
-		ImageIcon icon1_URL = new ImageIcon(
-				new ImageIcon(url_carta).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagenCarta1ManoBot = new JLabel(icon1_URL);
-		this.carta1ManoBot.add(imagenCarta1ManoBot);
-
-//tablero.getContentPane().add(this.carta1_bot);
-
-		this.carta2ManoBot = new JPanel();
-		carta2ManoBot.setBounds(310, 10, 74, 96);
-		this.carta2ManoBot.setBackground(new Color(153, 0, 0));
-
-		java.net.URL url_carta2 = getClass().getResource("/cartas/dark_magician.jpg"); // imagen local relativa al
-																						// projecto
-		ImageIcon icon2_URL = new ImageIcon(
-				new ImageIcon(url_carta2).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagenCarta2ManoBot = new JLabel(icon2_URL);
-		this.carta2ManoBot.add(imagenCarta2ManoBot);
-
-//tablero.getContentPane().add(this.carta2_bot); //para añadir panel al frame tablero, sirve para pruebas
-
-		this.carta3ManoBot = new JPanel();
-		carta3ManoBot.setBounds(453, 10, 74, 96);
-		this.carta3ManoBot.setBackground(new Color(153, 0, 0));
-
-		java.net.URL url_carta3 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg");
-		ImageIcon icon3_URL = new ImageIcon(
-				new ImageIcon(url_carta3).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagenCarta3ManoBot = new JLabel(icon3_URL);
-		this.carta3ManoBot.add(imagenCarta3ManoBot);
-
-//tablero.getContentPane().add(this.carta3_bot);
-
-		this.carta4ManoBot = new JPanel();
-		carta4ManoBot.setBounds(605, 10, 74, 96);
-		this.carta4ManoBot.setBackground(new Color(153, 0, 0));
-
-		java.net.URL url_carta4 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
-																								// projecto
-		ImageIcon icon4_URL = new ImageIcon(
-				new ImageIcon(url_carta4).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagenCarta4ManoBot = new JLabel(icon4_URL);
-
-		this.carta4ManoBot.add(imagenCarta4ManoBot); // Al Panel carta le añado la imagen
-
-//tablero.getContentPane().add(this.carta4_bot);
-
-		this.carta5ManoBot = new JPanel();
-		carta5ManoBot.setBounds(749, 10, 74, 96);
-		this.carta5ManoBot.setBackground(new Color(153, 0, 0));
-
-		java.net.URL url_carta5 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
-																								// projecto
-		ImageIcon icon5_URL = new ImageIcon(
-				new ImageIcon(url_carta5).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-		this.imagenCarta5ManoBot = new JLabel(icon5_URL);
-//
-		// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-//		
-
-		this.carta5ManoBot.add(imagenCarta5ManoBot);
-
 //deck del bot
 		this.deck_bot = new JPanel();
 		deck_bot.setBounds(10, 10, 74, 96);
@@ -301,10 +233,7 @@ public class VistaTablero {
 		tablero.getContentPane().add(this.cem_bot);
 
 //campo de batalla del bot
-		this.carta1CampoBot = new JPanel();
 
-		// carta1CampoBot.addMouseListener(new ControladorProyeccionCartas(this,
-		// tableroController));
 
 		carta1CampoBot.setBounds(226, 249, 135, 96);
 		this.carta1CampoBot.setBackground(Color.BLACK);
@@ -466,11 +395,7 @@ public class VistaTablero {
 				new ImageIcon(url_carta5jug).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
 		this.imagenCarta5Jug = new JLabel(iconCampo5_URLjugador);
 		this.carta5_jug.add(imagenCarta5Jug);
-//		this.manoJugador.add(this.carta1_jug);
-//		this.manoJugador.add(this.carta2_jug);
-//		this.manoJugador.add(this.carta3_jug);
-//		this.manoJugador.add(this.carta4_jug);
-//		this.manoJugador.add(this.carta5_jug);
+
 
 //deck del jugador
 		this.deck_jug = new JPanel();
@@ -660,7 +585,6 @@ public class VistaTablero {
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
-		this.generarHashCartas(new JPanel());
 	}
 
 	public JPanel agregoCartaManoBot(JLabel labelCarta, JPanel mano) {
@@ -674,19 +598,9 @@ public class VistaTablero {
 		mano.add(cartaPanel);
 
 		mano.setFocusable(true);
-		this.generarHashCartas(cartaPanel);
 		return cartaPanel;
 	}
 
-	public void generarHashCartas(JPanel carta) {
-//		this.cartasTablero.put(carta1CampoBot, StringCarta1CampoBot);
-//		this.cartasTablero.put(carta2CampoBot, StringCarta2CampoBot);
-//		this.cartasTablero.put(carta3CampoBot, StringCarta3CampoBot);
-//		this.cartasTablero.put(carta4CampoBot, StringCarta4CampoBot);
-//		this.cartasTablero.put(carta5CampoBot, StringCarta5CampoBot);
-//		this.cartasTablero.put(carta6CampoBot, StringCarta6CampoBot);
-
-	}
 
 	public JFrame getTablero() {
 		return tablero;
