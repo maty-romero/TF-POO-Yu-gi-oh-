@@ -234,7 +234,7 @@ public class VistaTablero {
 
 //campo de batalla del bot
 
-
+		this.carta1CampoBot = new JPanel();
 		carta1CampoBot.setBounds(226, 249, 135, 96);
 		this.carta1CampoBot.setBackground(Color.BLACK);
 		StringCarta1CampoBot = "/cartas/cambio_de_fidelidad.jpg";
