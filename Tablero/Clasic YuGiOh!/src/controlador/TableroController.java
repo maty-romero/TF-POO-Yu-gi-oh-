@@ -45,11 +45,11 @@ public class TableroController {
 		batallaJugador = new Batalla(duelistaJugador, duelistaOponente);
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
 		
-		//se roban cartas para probar. 
-		duelistaJugador.robarCarta();
-		duelistaJugador.robarCarta();
-		duelistaOponente.robarCarta();
-		duelistaOponente.robarCarta();
+//		//se roban cartas para probar. 
+//		duelistaJugador.robarCarta();
+//		duelistaJugador.robarCarta();
+//		duelistaOponente.robarCarta();
+//		duelistaOponente.robarCarta();
 		
 		try {
 			//setteo monstruos usando HashMap
