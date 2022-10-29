@@ -128,7 +128,6 @@ public class VistaTablero {
 	private JButton btnAtacar;
 	private JButton btnInvocar;
 
-
 // Array de cartas
 
 	private HashMap<JPanel, String> cartasTablero = new HashMap<JPanel, String>();
@@ -157,6 +156,7 @@ public class VistaTablero {
 		manoJugador.setBounds(10, 589, 726, 100);
 		manoJugador.setSize(730, 100);
 		tablero.getContentPane().add(manoJugador);
+
 		manoJugador.setLayout(new GridLayout(1, 0, 0, 0));
 		manoJugador.setFocusable(true);
 
@@ -169,6 +169,8 @@ public class VistaTablero {
 		tablero.getContentPane().add(manoBot);
 		manoBot.setLayout(new GridLayout(1, 0, 0, 0));
 		manoBot.setVisible(true);
+		manoBot.setFocusable(true);
+		manoBot.requestFocus();
 		// this.carta2ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		// this.carta1ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
 		// this.carta3ManoBot.addMouseListener(new ControladorProyeccionCartas(this));
@@ -178,7 +180,6 @@ public class VistaTablero {
 		// manoBot.add(this.carta3ManoBot);
 		// manoBot.add(this.carta4ManoBot);
 		// manoBot.add(this.carta5ManoBot);
-		manoBot.setFocusable(true);
 
 //		btnInvocar = new JButton("INVOCAR");
 //		btnInvocar.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -664,12 +665,14 @@ public class VistaTablero {
 
 	public JPanel agregoCartaManoBot(JLabel labelCarta, JPanel mano) {
 		JPanel cartaPanel = new JPanel();
-		// carta.addMouseListener(new ControladorProyeccionCartas(this,
-		// this.getTableroController()));
 		cartaPanel.setBounds(605, 593, 74, 96);
 		cartaPanel.setBackground(new Color(153, 0, 0));
+		cartaPanel.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+		cartaPanel.add(labelCarta);
 		cartaPanel.setFocusable(true);
-		mano.add(cartaPanel.add(labelCarta));
+		cartaPanel.requestFocus();
+		mano.add(cartaPanel);
+
 		mano.setFocusable(true);
 		this.generarHashCartas(cartaPanel);
 		return cartaPanel;

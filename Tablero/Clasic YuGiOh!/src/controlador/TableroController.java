@@ -28,7 +28,7 @@ public class TableroController {
 	private HashMap<JPanel, CartaHechizo> manoHechizoOponente = new HashMap<JPanel, CartaHechizo>();
 	private HashMap<JPanel, CartaMonstruo> manoMonstruoJugador = new HashMap<JPanel, CartaMonstruo>();
 	private HashMap<JPanel, CartaHechizo> manoHechizoJugador = new HashMap<JPanel, CartaHechizo>();
-
+	private JPanel panelCarta;
 	private VistaTablero vista;
 
 	public TableroController() {
@@ -44,69 +44,81 @@ public class TableroController {
 
 		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX DEBERÌA TRAER CARTAS DESDE EL DECK DEL
 		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR
-		ArrayList<CartaMonstruo> monstruos = duelistaOponente.getMano().getManoMonstruos();
-		ArrayList<CartaHechizo> hechizos = duelistaJugador.getMano().getManoHechizos();
+		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
+		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
+		ArrayList<CartaHechizo> hechizosOponente = duelistaOponente.getMano().getManoHechizos();
+		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
+		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
+		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
+		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/IconoPersonajes/yugi_moto.jpg", 1, 1));
 
-		monstruos.add(new CartaMonstruo(1, "hola", "jaja", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
-		monstruos.add(new CartaMonstruo(1, "hola", "jaja", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
+		
+		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg", 1, 1));
+		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
+		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg", 1, 1));
 
-		hechizos.add(new CartaHechizo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg"));
-		hechizos.add(new CartaHechizo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg"));
-
-		System.out.println();
-		// XXXXXXXXXXX
+		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
+		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
+		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
+		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
+       
+		
+////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
+		
+		
 		try {
-			this.envioImagenesManoMonstruoVista(monstruos, this.vista.getManoBot(), this.manoMonstruoOponente);
+		this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(monstruosOponente, this.vista.getManoBot()));
 			Thread.sleep(330);
-			this.envioImagenesHechizoVista(hechizos, this.vista.getManoJugador());
-			this.envioImagenesManoMonstruoVista(monstruos, this.vista.getManoJugador(), this.manoMonstruoJugador);
+		this.setManoMonstruoJugador(this.envioImagenesManoMonstruoVista(monstruosJugador, this.vista.getManoJugador()));
+		this.setManoHechizoOponente(this.envioImagenesManoHechizoVista(hechizosOponente, this.vista.getManoBot()));
+           this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(hechizosJugador,  this.vista.getManoJugador()));
+		
+		
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
-		
-		
-		System.out.println(this.getManoMonstruoOponente());
+			System.out.println(this.getManoMonstruoOponente());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+//traigo las cartas cargadas con informacion desde base de datos, y las asocio con un panel que creo a partir traer una imagen desde el modelo y cargar esa imagen en el panel en la vista. Luego traigo ese panel y lo asocio a la carta de la cual saqué esa imagen
 //me sirve tener metodos separados; de monstruo y hechizo, porque luego en el hash de monstruos solo van a ir monstruos, y no cartas genericas del tipo Carta
-	public void envioImagenesManoMonstruoVista(ArrayList<CartaMonstruo> monstruos, JPanel mano,
-			HashMap<JPanel, CartaMonstruo> hashMano) {
+	public HashMap<JPanel, CartaMonstruo> envioImagenesManoMonstruoVista(ArrayList<CartaMonstruo> monstruos, JPanel mano) {
+		 HashMap<JPanel, CartaMonstruo> hashAuxiliar= new HashMap<JPanel,CartaMonstruo>();
 		for (CartaMonstruo cartaMonstruo : monstruos) {
-			JPanel panel = this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(cartaMonstruo), mano);
-//			panel.addMouseListener(new ControladorProyeccionCartas(this.vista,this));
-
-
-			panel.addMouseListener(c);
-			panel.setVisible(true);
-			panel.setFocusable(true);
-			this.generoArrayMonstruo(panel, cartaMonstruo, hashMano);
+			//Genero la imagen de esa cartaMonstruo en el modelo, y junto al panel mano que traigo directo desde la vista, mando ambos a la vista para que me asocie esa imagen a esa mano (meto en el panel mano, el otro panel que le inserté esa imagen traida desde el modelo)
+			panelCarta = this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(cartaMonstruo), mano);
+			panelCarta.setVisible(true);
+			panelCarta.setFocusable(true);
+			
+            hashAuxiliar.put(panelCarta, cartaMonstruo);
+			
 			this.vista.getManoBot().setFocusable(true);
 		}
 		this.vista.getManoBot().setFocusable(true);
 
 		this.vista.getTablero().setVisible(true);
-		
-//	this.vista.getManoBot().addMouseListener(c);
+		return hashAuxiliar;
 	}
-
-//Si tengo 3 cartas hechizo en la mano, por ejemplo, se cargaran 3 imagenes.
-	public void envioImagenesHechizoVista(ArrayList<CartaHechizo> cartas, JPanel mano) {
-		for (Carta carta : cartas) {
-			this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(carta), mano);
+	
+	public HashMap<JPanel, CartaHechizo> envioImagenesManoHechizoVista(ArrayList<CartaHechizo> hechizos, JPanel mano) {
+		 HashMap<JPanel, CartaHechizo> hashAuxiliar= new HashMap<JPanel,CartaHechizo>();
+		for (CartaHechizo cartaHechizo : hechizos) {
+			//Genero la imagen de esa cartaMonstruo en el modelo, y junto al panel mano que traigo directo desde la vista, mando ambos a la vista para que me asocie esa imagen a esa mano (meto en el panel mano, el otro panel que le inserté esa imagen traida desde el modelo)
+			panelCarta = this.vista.agregoCartaManoBot(this.modelo.generoImagenCarta(cartaHechizo), mano);
+			panelCarta.setVisible(true);
+			panelCarta.setFocusable(true);
+			
+           hashAuxiliar.put(panelCarta, cartaHechizo);
+			
+			this.vista.getManoBot().setFocusable(true);
 		}
+		this.vista.getManoBot().setFocusable(true);
 
+		this.vista.getTablero().setVisible(true);
+		return hashAuxiliar;
 	}
 
-	public void generoArrayMonstruo(JPanel panel, CartaMonstruo monstruo, HashMap<JPanel, CartaMonstruo> monstruos) {
-		monstruos.put(panel, monstruo);
-		this.setManoMonstruoOponente(monstruos);
-	}
-
-	public void generoArrayHechizo(JPanel panel, CartaHechizo monstruo, HashMap<JPanel, CartaHechizo> hechizos) {
-		hechizos.put(panel, monstruo);
-	}
 
 	// flujo de la partida
 	/*

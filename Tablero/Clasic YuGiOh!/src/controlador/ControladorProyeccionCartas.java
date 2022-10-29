@@ -49,21 +49,19 @@ public class ControladorProyeccionCartas implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 		{
-			HashMap<JPanel, CartaMonstruo> hashCartas = new HashMap<JPanel, CartaMonstruo>();
-			System.out.println("entre");
-			
-			
+			System.out.println("HOLAAAAAAAAAAAAAAAA");
+			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
+
 			this.vista.getManoBot().setFocusable(true);
-			hashCartas = this.tc.getManoMonstruoOponente();
-			System.out.println(hashCartas);
-			System.out.println(hashCartas.size());
-			// HashMap<JPanel, String> hashCartas = this.vista.getCartasTablero() ;
-			
-			
+
+			hashCartas.putAll(this.tc.getManoMonstruoOponente());
+			hashCartas.putAll(this.tc.getManoMonstruoJugador());
+			hashCartas.putAll(this.tc.getManoHechizoOponente());
+			hashCartas.putAll(this.tc.getManoHechizoJugador());
+
 			this.vista.getManoJugador().setFocusable(true);
+			this.vista.getManoBot().setFocusable(true);
 			for (Integer i = 0; i < hashCartas.size(); i++) {
-				// System.out.println(hashCartas);
-				System.out.println("entreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 
 				for (JPanel key : hashCartas.keySet()) {
 					if (e.getSource() == key) {
@@ -75,7 +73,7 @@ public class ControladorProyeccionCartas implements MouseListener {
 								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
 						JLabel label = new JLabel(iconCarta);
 						vista.getCartaSeleccionada().removeAll();
-					System.out.println("entre");
+						System.out.println("entre");
 						vista.mostrar();
 
 						vista.getCartaSeleccionada().add(label);

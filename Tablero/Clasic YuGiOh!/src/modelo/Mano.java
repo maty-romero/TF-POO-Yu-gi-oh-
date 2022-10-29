@@ -8,7 +8,7 @@ public class Mano {
 	
 	public void agregarCarta(CartaMonstruo carta) {
 		this.getManoMonstruos().add(carta); 
-	}
+	}		
 
 	public void agregarCarta(CartaHechizo carta) {
 		this.getManoHechizos().add(carta); 
