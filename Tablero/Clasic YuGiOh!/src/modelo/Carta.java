@@ -9,13 +9,13 @@ public abstract class Carta {
 	protected Integer id;  
 	protected String nombre, descripcion;   
 	
-	private String urlImagen;
+	private String pathImagen;
 	
-	public Carta(Integer id, String nombre, String descripcion, String urlImagen) {
+	public Carta(Integer id, String nombre, String descripcion, String pathImagen) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.urlImagen = urlImagen; 
+		this.pathImagen = pathImagen; 
 	} 
 	
 	//Getters 
@@ -32,9 +32,15 @@ public abstract class Carta {
 		return descripcion;
 	}
 
-	private String getUrlImagen() {
-		return urlImagen;
+	public String getPathImagen() {
+		return pathImagen;
 	}
+
+	public void setPathImagen(String pathImagen) {
+		this.pathImagen = pathImagen;
+	}
+
+
 
 
 	
