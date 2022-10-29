@@ -633,6 +633,18 @@ public class VistaTablero {
 
 		return panelesCampo;
 	}
+	
+	//agrega los paneles del campo del jugador a un array para usarlo en el controlador
+	public void agregacionCampoJugador() {
+		this.cartasCampoJugador.add(this.carta1Campo_jug);
+		this.cartasCampoJugador.add(this.carta2Campo_jug);
+		this.cartasCampoJugador.add(this.carta3Campo_jug);
+		this.cartasCampoJugador.add(this.carta4Campo_jug);
+		this.cartasCampoJugador.add(this.carta5Campo_jug);
+	
+	}
+	
+	
 
 	public JFrame getTablero() {
 		return tablero;
@@ -822,13 +834,6 @@ public class VistaTablero {
 		this.tablero.setVisible(true);
 	}
 
-	public HashMap<JPanel, String> getCartasTablero() {
-		return cartasTablero;
-	}
-
-	public void setCartasTablero(HashMap<JPanel, String> cartasTablero) {
-		this.cartasTablero = cartasTablero;
-	}
 
 	public JPanel getManoJugador() {
 		return manoJugador;
@@ -847,7 +852,7 @@ public class VistaTablero {
 	}
 
 	
-	//Boton Atacar
+	//Boton Atacar -----------------------
 	public JButton getBtnAtacar() {
 		return btnAtacar;
 	}
@@ -855,6 +860,26 @@ public class VistaTablero {
 	public void setBtnAtacar(JButton btnAtacar) {
 		this.btnAtacar = btnAtacar;
 	}
+
+	//getters paneles del campo Jugador -----------
+	
+	public JPanel getCarta1_jug() {
+		return carta1_jug;
+	}
+
+	public JPanel getCarta2_jug() {
+		return carta2_jug;
+	}
+
+	public JPanel getCarta3_jug() {
+		return carta3_jug;
+	}
+
+	//------------------------
+	
+	
+	
+	
 	
 	
 }
