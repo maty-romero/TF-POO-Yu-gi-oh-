@@ -1,7 +1,13 @@
 package controlador;
 
+import java.util.ArrayList;
+
 import modelo.Batalla;
+import modelo.Carta;
+import modelo.CartaHechizo;
+import modelo.CartaMonstruo;
 import modelo.Duelista;
+import modelo.Modelo;
 import vista.Vista_tablero;
 
 public class TableroController {
@@ -9,15 +15,16 @@ public class TableroController {
 	private static Duelista duelistaJugador, duelistaOponente; 
 	private static Batalla batallaJugador, batallaOponente; //para los cambios de turno
 	
-	private Vista_tablero vista; 
-	
+	private Vista_tablero vista;	
+	private Modelo modelo;
 	public TableroController() {
-//		vista = new Vista_tablero(this);
+  		vista = new Vista_tablero();
 		duelistaJugador = new Duelista("YUGI"); 
 		duelistaOponente = new Duelista("KIRA"); 
 		batallaJugador = new Batalla(duelistaJugador, duelistaOponente);
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
-
+        
+		
 		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX
 		ArrayList<CartaMonstruo> monstruos = duelistaOponente.getMano().getManoMonstruos();
 		monstruos.add(new CartaMonstruo(1,"hola","jaja","/cartas/cambio_de_fidelidad.jpg", 12, 32 ) );		
