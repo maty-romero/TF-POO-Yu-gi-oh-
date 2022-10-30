@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
@@ -14,7 +16,7 @@ import modelo.CartaMonstruo;
 import modelo.Modelo;
 import vista.VistaTablero;
 
-public class ControladorBatalla implements MouseListener{
+public class ControladorBatalla implements MouseListener, ActionListener{
 
 	/*
 	 * Al seleccionar una carta monstruo habilita boton Atacar 
@@ -28,49 +30,13 @@ public class ControladorBatalla implements MouseListener{
 	private Modelo modelo;
 	private TableroController tControler;
 	
-	public ControladorBatalla(VistaTablero vista, Modelo modelo, TableroController tableroControler) {
+	private CartaMonstruo monstruoJugadorTurno; 
+	
+	
+	public ControladorBatalla(VistaTablero vista, TableroController tableroControler) {
 		this.vista = vista; 
 		this.tControler = tableroControler;
 		this.modelo = new Modelo();
-	}
-	
-	//clikear y soltar = 1 click 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		
-			HashMap<JPanel, CartaMonstruo> hashCartasCampo = new HashMap<JPanel, CartaMonstruo>();
-
-			this.vista.getManoBot().setFocusable(true);
-
-			hashCartasCampo.putAll(this.tControler.getCampoMonstruosJugador());
-		
-
-			this.vista.getManoJugador().setFocusable(true);
-			this.vista.getManoBot().setFocusable(true);
-			for (Integer i = 0; i < hashCartas.size(); i++) {
-
-				for (JPanel key : hashCartas.keySet()) {
-					if (e.getSource() == key) {
-						String stringCarta = hashCartas.get(key).getPathImagen();
-
-						java.net.URL urlCarta = getClass().getResource(stringCarta);
-						ImageIcon iconCarta = new ImageIcon(
-								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-						JLabel label = new JLabel(iconCarta);
-						vista.getCartaSeleccionada().removeAll();
-						vista.mostrar();
-
-						vista.getCartaSeleccionada().add(label);
-						vista.mostrar();
-						vista.getCartaSeleccionada().setVisible(true);
-					}
-
-				}
-
-			}
-		
-		
-		
 	}
 	
 	@Override
@@ -90,6 +56,42 @@ public class ControladorBatalla implements MouseListener{
 	public void mouseExited(MouseEvent e) {
 		
 	}
+	
+	//clikear y soltar = 1 click 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+
+		// si el evento es igual a alguno de los paneles del campo Monstruo Jugador, se activa el boton Atacar.
+		
+		if (e.getSource() == this.vista.getCarta1Campo_jug() || e.getSource() == this.vista.getCarta2Campo_jug()
+				|| e.getSource() == this.vista.getCarta3Campo_jug()) {
+			
+			System.out.println("Campo Monstruos del Jugador seleccionado!!");
+			this.vista.getBtnAtacar().setEnabled(true);
+//				this.vista.getBtnAtacar().setVisible(true);
+		}
+		
+		//Hago click y extraigo el objeto Montruo del Hash CampoJugador.
+		//Recorro las claves (JPanel) del hash Campo 
+		for (JPanel key : this.tControler.getCampoMonstruosJugador().keySet()) {
+			if (e.getSource() == key) {
+				//obtengo el monstruo Jugador y lo agrego al atributo
+				monstruoJugadorTurno = this.tControler.getCampoMonstruosJugador().get(key); 
+			}
+		}
+		
+	}
+	
+	//Presiono el boton Atacar y el panel del monstruo Objetivo
+	//	Recorro el hashMap y el que coincida usar la instancia de batalla atacar 
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
+	
 	
 	
 	

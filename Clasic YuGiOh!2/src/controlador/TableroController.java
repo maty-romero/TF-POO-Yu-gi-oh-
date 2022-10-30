@@ -21,6 +21,8 @@ import vista.VistaTablero;
 public class TableroController {
 	private Modelo modelo;
 	private ControladorProyeccionCartas c;
+	private ControladorBatalla cBatalla; // NUEVO ****
+	
 
 	private Duelista duelistaJugador, duelistaOponente;
 	private Batalla batallaJugador, batallaOponente; // para los cambios de turno
@@ -42,6 +44,8 @@ public class TableroController {
 		this.vista = vista;
 		this.modelo = new Modelo();
 		this.c = new ControladorProyeccionCartas(this.vista, this);
+		
+		this.cBatalla = new ControladorBatalla(this.vista, this); //NUEVO ****
 
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("KIRA");

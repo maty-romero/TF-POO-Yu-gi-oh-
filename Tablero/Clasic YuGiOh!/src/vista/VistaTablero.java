@@ -822,13 +822,6 @@ public class VistaTablero {
 		this.tablero.setVisible(true);
 	}
 
-	public HashMap<JPanel, String> getCartasTablero() {
-		return cartasTablero;
-	}
-
-	public void setCartasTablero(HashMap<JPanel, String> cartasTablero) {
-		this.cartasTablero = cartasTablero;
-	}
 
 	public JPanel getManoJugador() {
 		return manoJugador;

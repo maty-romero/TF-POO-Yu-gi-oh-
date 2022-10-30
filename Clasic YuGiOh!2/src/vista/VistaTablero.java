@@ -1,35 +1,27 @@
 package vista;
 
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import javax.imageio.ImageIO;
-import javax.print.DocFlavor.URL;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
+import controlador.ControladorBatalla;
 import controlador.ControladorProyeccionCartas;
 //import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.Button;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class VistaTablero {
 	// Controlador
 	private TableroController tableroController;
+	private ControladorBatalla controladorBatalla; 
+	
 //tablero
 	private JFrame tablero;
 	private JPanel manoJugador;
@@ -129,9 +121,6 @@ public class VistaTablero {
 
 // Array de cartas
 
-	private ArrayList<JPanel> cartasCampoJugador = new ArrayList<>(); 
-
-	
 
 	public VistaTablero(TableroController tableroController) {
 		this.setTableroController(tableroController);
@@ -151,7 +140,8 @@ public class VistaTablero {
 		
 		//Boton atacar
 		btnAtacar = new JButton("ATACAR");
-		btnAtacar.setEnabled(false);
+//		btnAtacar.addActionListener(new ControladorBatalla(this, this.tableroController));  //NUEVO ******* agrego actionListener al boton
+		btnAtacar.setEnabled(false); 
 		btnAtacar.setBounds(910, 479, 89, 23);
 		tablero.getContentPane().add(btnAtacar);
 
@@ -314,6 +304,7 @@ public class VistaTablero {
 
 //Cartas de mano del jugador
 		this.carta1_jug = new JPanel();
+		
 		carta1_jug.setBounds(10, 593, 74, 96);
 		this.carta1_jug.setBackground(new Color(153, 0, 0));
 
@@ -408,6 +399,10 @@ public class VistaTablero {
 
 //campo de batalla del jugador
 		this.carta1Campo_jug = new JPanel();
+		
+		this.carta1Campo_jug.addMouseListener(new ControladorBatalla(this, this.tableroController)); //NUEVO *********
+		
+		// ControladorProyeccionCartas(this,tableroController));
 		carta1Campo_jug.setBounds(226, 385, 135, 96);
 		this.carta1Campo_jug.setBackground(Color.BLACK);
 
@@ -422,6 +417,9 @@ public class VistaTablero {
 		tablero.getContentPane().add(this.carta1Campo_jug);
 
 		this.carta2Campo_jug = new JPanel();
+		
+		this.carta2Campo_jug.addMouseListener(new ControladorBatalla(this, this.tableroController)); //NUEVO *********
+		
 		carta2Campo_jug.setBounds(380, 385, 135, 96);
 		this.carta2Campo_jug.setBackground(Color.BLACK);
 		java.net.URL url_cartaCampo2Jug = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local
@@ -435,6 +433,9 @@ public class VistaTablero {
 		tablero.getContentPane().add(this.carta2Campo_jug);
 
 		this.carta3Campo_jug = new JPanel();
+		
+		this.carta3Campo_jug.addMouseListener(new ControladorBatalla(this, this.tableroController)); //NUEVO *********
+		
 		carta3Campo_jug.setBounds(535, 385, 135, 96);
 		this.carta3Campo_jug.setBackground(Color.BLACK);
 
@@ -632,16 +633,6 @@ public class VistaTablero {
 		tablero.getContentPane().add(carta6CampoOponente);
 
 		return panelesCampo;
-	}
-	
-	//agrega los paneles del campo del jugador a un array para usarlo en el controlador
-	public void agregacionCampoJugador() {
-		this.cartasCampoJugador.add(this.carta1Campo_jug);
-		this.cartasCampoJugador.add(this.carta2Campo_jug);
-		this.cartasCampoJugador.add(this.carta3Campo_jug);
-		this.cartasCampoJugador.add(this.carta4Campo_jug);
-		this.cartasCampoJugador.add(this.carta5Campo_jug);
-	
 	}
 	
 	
@@ -863,19 +854,30 @@ public class VistaTablero {
 
 	//getters paneles del campo Jugador -----------
 	
-	public JPanel getCarta1_jug() {
-		return carta1_jug;
+	public JPanel getCarta1Campo_jug() {
+		return carta1Campo_jug;
 	}
 
-	public JPanel getCarta2_jug() {
-		return carta2_jug;
+	public JPanel getCarta2Campo_jug() {
+		return carta2Campo_jug;
 	}
 
-	public JPanel getCarta3_jug() {
-		return carta3_jug;
+	public JPanel getCarta3Campo_jug() {
+		return carta3Campo_jug;
+	}
+
+	//-----------------------------
+	//getter y setter controladorBatalla
+	public ControladorBatalla getControladorBatalla() {
+		return controladorBatalla;
+	}
+
+	public void setControladorBatalla(ControladorBatalla controladorBatalla) {
+		this.controladorBatalla = controladorBatalla;
 	}
 
 	//------------------------
+	
 	
 	
 	
