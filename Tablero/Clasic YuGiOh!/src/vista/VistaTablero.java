@@ -126,7 +126,6 @@ public class VistaTablero {
 
 //Botones 
 	private JButton btnAtacar;
-	private JButton btnInvocar;
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -149,6 +148,12 @@ public class VistaTablero {
 		ImageIcon icon_URL = new ImageIcon(
 				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
 		tablero.getContentPane().setLayout(null);
+		
+		//Boton atacar
+		btnAtacar = new JButton("ATACAR");
+		btnAtacar.setEnabled(false);
+		btnAtacar.setBounds(910, 479, 89, 23);
+		tablero.getContentPane().add(btnAtacar);
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
