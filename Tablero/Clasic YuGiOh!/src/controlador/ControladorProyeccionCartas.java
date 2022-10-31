@@ -24,7 +24,7 @@ public class ControladorProyeccionCartas implements MouseListener {
 	private VistaTablero vista;
 	private Modelo modelo;
 	private TableroController tc;
-
+    private JPanel panelRelacionado;
 	public ControladorProyeccionCartas(VistaTablero vista, TableroController tc) {
 		this.vista = vista;
 		modelo = new Modelo();
@@ -33,7 +33,6 @@ public class ControladorProyeccionCartas implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("hola");
 	}
 
 	@Override
@@ -53,6 +52,7 @@ public class ControladorProyeccionCartas implements MouseListener {
 
 			this.vista.getManoBot().setFocusable(true);
 
+			hashCartas.putAll(this.tc.getCampoMonstruosJugador());
 			hashCartas.putAll(this.tc.getManoMonstruoOponente());
 			hashCartas.putAll(this.tc.getManoMonstruoJugador());
 			hashCartas.putAll(this.tc.getManoHechizoOponente());
@@ -64,8 +64,9 @@ public class ControladorProyeccionCartas implements MouseListener {
 
 				for (JPanel key : hashCartas.keySet()) {
 					if (e.getSource() == key) {
+						
 						String stringCarta = hashCartas.get(key).getPathImagen();
-
+                         
 						java.net.URL urlCarta = getClass().getResource(stringCarta);
 						ImageIcon iconCarta = new ImageIcon(
 								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
@@ -76,6 +77,8 @@ public class ControladorProyeccionCartas implements MouseListener {
 						vista.getCartaSeleccionada().add(label);
 						vista.mostrar();
 						vista.getCartaSeleccionada().setVisible(true);
+						
+					
 					}
 
 				}

@@ -8,7 +8,9 @@ import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 import modelo.Batalla;
 import modelo.Carta;
@@ -28,8 +30,10 @@ public class TableroController {
 	private HashMap<JPanel, CartaHechizo> manoHechizoOponente = new HashMap<JPanel, CartaHechizo>();
 	private HashMap<JPanel, CartaMonstruo> manoMonstruoJugador = new HashMap<JPanel, CartaMonstruo>();
 	private HashMap<JPanel, CartaHechizo> manoHechizoJugador = new HashMap<JPanel, CartaHechizo>();
+	private HashMap<JPanel, CartaMonstruo> campoMonstruosJugador= new HashMap<JPanel,CartaMonstruo>();
 	private JPanel panelCarta;
 	private VistaTablero vista;
+	private JPopupMenu pm;
 
 	public TableroController() {
 		VistaTablero vista = new VistaTablero(this);
@@ -43,24 +47,27 @@ public class TableroController {
 		batallaOponente = new Batalla(duelistaOponente, duelistaJugador);
 
 		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX DEBERÌA TRAER CARTAS DESDE EL DECK DEL
-		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR (CON BASE DATOS)
+		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR
+		/// (CON BASE DATOS)
 		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
 		ArrayList<CartaHechizo> hechizosOponente = duelistaOponente.getMano().getManoHechizos();
-		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
+		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 20));
 		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/IconoPersonajes/yugi_moto.jpg", 1, 1));
 
 		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg", 1, 1));
-		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
+		monstruosOponente.add(new CartaMonstruo(20, "hola", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
 		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg", 1, 1));
 
 		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
 		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
+		
+		
 
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
 
@@ -75,6 +82,11 @@ public class TableroController {
 					this.envioImagenesManoHechizoVista(hechizosJugador, this.vista.getManoJugador()));
 
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
+ 
+			 
+			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
+			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -93,7 +105,6 @@ public class TableroController {
 			panelCarta = this.vista.agregoCartaMano(this.modelo.generoImagenCarta(cartaMonstruo), mano);
 			panelCarta.setVisible(true);
 			panelCarta.setFocusable(true);
-
 			hashAuxiliar.put(panelCarta, cartaMonstruo);
 
 			this.vista.getManoBot().setFocusable(true);
@@ -144,7 +155,18 @@ public class TableroController {
 		}
 
 	}
-
+	
+	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash ) {
+		for (JPanel cartaPanel : hash.keySet()) {
+			cartaPanel.addMouseListener(new MouseListenerInvocacion(this.vista,this));
+		}
+	}
+	public void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash ) {
+		for (JPanel cartaPanel : hash.keySet()) {
+			cartaPanel.addMouseListener(new MouseListenerInvocacion(this.vista,this));
+		}
+	}
+	
 	public HashMap<JPanel, CartaMonstruo> getManoMonstruoOponente() {
 		return manoMonstruoOponente;
 	}
@@ -176,5 +198,16 @@ public class TableroController {
 	public void setManoHechizoJugador(HashMap<JPanel, CartaHechizo> manoHechizoJugador) {
 		this.manoHechizoJugador = manoHechizoJugador;
 	}
+
+	public HashMap<JPanel, CartaMonstruo> getCampoMonstruosJugador() {
+		return campoMonstruosJugador;
+	}
+
+	public void setCampoMonstruosJugador(HashMap<JPanel, CartaMonstruo> campoMonstruosJugador) {
+		this.campoMonstruosJugador = campoMonstruosJugador;
+	}
+
+
+	
 
 }
