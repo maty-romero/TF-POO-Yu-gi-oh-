@@ -51,7 +51,7 @@ public class MouseListenerInvocacion implements MouseListener {
 		this.tc.getVista().getManoJugador().setFocusable(true);
 		this.tc.getVista().getManoBot().setFocusable(true);
 
-		JPanel panel = (JPanel) e.getSource();
+		JPanel panel = (JPanel) e.getSource(); //panel apunta a la posicion del panel que activó el mouselistener, no es una copia del panel; es el panel mismo
 
 		pm = new JPopupMenu();
 
@@ -90,7 +90,7 @@ public class MouseListenerInvocacion implements MouseListener {
 			this.setPanelRelacionado(panel);
 			System.out.println("invocar");
 			m1.addActionListener(new ControladorActionListenerInvocacionMonstruo(this));
-		} else {
+		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			this.tc.getCampoMonstruosJugador().containsKey(panel);
 			System.out.println("invocado");
 			pm.add(m3);
