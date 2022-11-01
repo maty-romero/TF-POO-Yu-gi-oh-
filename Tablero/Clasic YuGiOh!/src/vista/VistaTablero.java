@@ -452,19 +452,19 @@ public class VistaTablero {
 		JPanel carta1CampoOponente = new JPanel();
 		carta1CampoOponente.setBounds(226, 249, 135, 96);
 		carta1CampoOponente.setBackground(Color.BLACK);
-		carta1CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		carta1CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta1CampoOponente);
 
 		JPanel carta2CampoOponente = new JPanel();
 		carta2CampoOponente.setBounds(380, 249, 135, 96);
 		carta2CampoOponente.setBackground(Color.BLACK);
-		carta2CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		carta2CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta2CampoOponente);
 
 		JPanel carta3CampoOponente = new JPanel();
 		carta3CampoOponente.setBounds(535, 249, 135, 96);
 		carta3CampoOponente.setBackground(Color.BLACK);
-		carta3CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		carta3CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta3CampoOponente);
 		this.panelesMonstruosCampoOponente.add(carta1CampoOponente);
 		this.panelesMonstruosCampoOponente.add(carta2CampoOponente);
@@ -473,19 +473,19 @@ public class VistaTablero {
 		JPanel carta4CampoOponente = new JPanel();
 		carta4CampoOponente.setBounds(226, 117, 135, 96);
 		carta4CampoOponente.setBackground(Color.BLACK);
-		carta4CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		carta4CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta4CampoOponente);
 
 		JPanel carta5CampoOponente = new JPanel();
 		carta5CampoOponente.setBounds(380, 117, 135, 96);
 		carta5CampoOponente.setBackground(Color.BLACK);
-		carta5CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		carta5CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta5CampoOponente);
 
 		JPanel carta6CampoOponente = new JPanel();
 		carta6CampoOponente.setBounds(535, 117, 135, 96);
 		carta6CampoOponente.setBackground(Color.BLACK);
-		carta6CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		carta6CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta6CampoOponente);
 		this.panelesHechizosCampoOponente.add(carta4CampoOponente);
 		this.panelesHechizosCampoOponente.add(carta5CampoOponente);
@@ -498,21 +498,20 @@ public class VistaTablero {
 
 
 		this.carta1CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
-
 		tablero.getContentPane().add(this.carta1CampoJug);
 /////
 
 		this.carta2CampoJug = new JPanel();
 		carta2CampoJug.setBounds(380, 385, 135, 96);
 		this.carta2CampoJug.setBackground(Color.BLACK);
-		this.carta2CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		this.carta2CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta2CampoJug);
 
 		this.carta3CampoJug = new JPanel();
 		carta3CampoJug.setBounds(535, 385, 135, 96);
 		this.carta3CampoJug.setBackground(Color.BLACK);
-		this.carta3CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		this.carta3CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta3CampoJug);
 		this.panelesMonstruosCampoJugador.add(this.carta1CampoJug);
@@ -522,21 +521,21 @@ public class VistaTablero {
 		this.carta4CampoJug = new JPanel();
 		carta4CampoJug.setBounds(226, 492, 135, 96);
 		this.carta4CampoJug.setBackground(Color.BLACK);
-		this.carta4CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		this.carta4CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta4CampoJug);
 
 		this.carta5CampoJug = new JPanel();
 		this.carta5CampoJug.setBounds(380, 492, 135, 96);
 		this.carta5CampoJug.setBackground(Color.BLACK);
-		this.carta5CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		this.carta5CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta5CampoJug);
 
 		this.carta6CampoJug = new JPanel();
 		carta6CampoJug.setBounds(535, 492, 135, 96);
 		this.carta6CampoJug.setBackground(Color.BLACK);
-		this.carta6CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+//		this.carta6CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta6CampoJug);
 		this.panelesMonstruosCampoJugador.add(this.carta4CampoJug);

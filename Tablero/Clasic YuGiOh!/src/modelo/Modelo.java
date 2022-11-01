@@ -18,7 +18,7 @@ public class Modelo {
 	public JLabel generoImagenCarta(Carta carta) {
 		java.net.URL urlCarta = getClass().getResource(carta.getPathImagen());
 		ImageIcon iconURL = new ImageIcon(
-				new ImageIcon(urlCarta).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
+				new ImageIcon(urlCarta).getImage().getScaledInstance(150, 90, Image.SCALE_AREA_AVERAGING));
 		return new JLabel(iconURL);
 	}
 

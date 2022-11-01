@@ -39,10 +39,12 @@ public class TableroController {
 	private JPanel panelCarta;
 	private VistaTablero vista;
 	private JPopupMenu pm;
+	private MouseListener mouse;
 
 	public TableroController() {
 		VistaTablero vista = new VistaTablero(this);
 		this.vista = vista;
+		 mouse=new MouseListenerInvocacion(this);
 		this.modelo = new Modelo();
 		this.c = new ControladorProyeccionCartas(this.vista, this);
 
@@ -177,15 +179,26 @@ public class TableroController {
 	
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash ) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new MouseListenerInvocacion(this.vista,this));
+//			cartaPanel.addMouseListener(this.mouse);
+			cartaPanel.addMouseListener(new MouseListenerInvocacion(this));
+
 		}
 	}
 	public void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash ) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new MouseListenerInvocacion(this.vista,this));
+			cartaPanel.addMouseListener(new MouseListenerInvocacion(this));
 		}
 	}
 	
+	
+	public VistaTablero getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaTablero vista) {
+		this.vista = vista;
+	}
+
 	public HashMap<JPanel, CartaMonstruo> getManoMonstruoOponente() {
 		return manoMonstruoOponente;
 	}
@@ -235,7 +248,6 @@ public class TableroController {
 		this.campoHechizosJugador = campoHechizosJugador;
 	}
 	
-	//-------------------
 	
 	
 }
