@@ -19,12 +19,12 @@ import modelo.CartaMonstruo;
 import modelo.Modelo;
 import vista.VistaTablero;
 
-public class MouseListenerInvocacion implements MouseListener {
+public class MonstruosInvocacion implements MouseListener {
 	private TableroController tc;
 	private JPanel panelRelacionado;
 	private JPopupMenu pm;
 
-	public MouseListenerInvocacion(TableroController tc) {
+	public MonstruosInvocacion(TableroController tc) {
 		this.tc = tc;
 	}
 
@@ -51,7 +51,8 @@ public class MouseListenerInvocacion implements MouseListener {
 		this.tc.getVista().getManoJugador().setFocusable(true);
 		this.tc.getVista().getManoBot().setFocusable(true);
 
-		JPanel panel = (JPanel) e.getSource(); //panel apunta a la posicion del panel que activó el mouselistener, no es una copia del panel; es el panel mismo
+		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
+												// es una copia del panel; es el panel mismo
 
 		pm = new JPopupMenu();
 
@@ -84,14 +85,14 @@ public class MouseListenerInvocacion implements MouseListener {
 		 * nuestra logica nos avisa que estamos haciendo todo bien, pero en realidad
 		 * salió un bug inesperado por no usar la clase mouselistener como se suponia.
 		 */
+
 		if (this.tc.getManoMonstruoJugador().containsKey(panel)) {
 			pm.add(m1);
 			pm.add(m2);
 			this.setPanelRelacionado(panel);
 			System.out.println("invocar");
-			m1.addActionListener(new ControladorActionListenerInvocacionMonstruo(this));
+			m1.addActionListener(new MenuInvocacionMonstruo(this));
 		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
-			this.tc.getCampoMonstruosJugador().containsKey(panel);
 			System.out.println("invocado");
 			pm.add(m3);
 		}

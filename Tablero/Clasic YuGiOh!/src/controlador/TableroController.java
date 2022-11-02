@@ -44,7 +44,7 @@ public class TableroController {
 	public TableroController() {
 		VistaTablero vista = new VistaTablero(this);
 		this.vista = vista;
-		 mouse=new MouseListenerInvocacion(this);
+		 mouse=new MonstruosInvocacion(this);
 		this.modelo = new Modelo();
 		this.c = new ControladorProyeccionCartas(this.vista, this);
 
@@ -180,13 +180,13 @@ public class TableroController {
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash ) {
 		for (JPanel cartaPanel : hash.keySet()) {
 //			cartaPanel.addMouseListener(this.mouse);
-			cartaPanel.addMouseListener(new MouseListenerInvocacion(this));
+			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
 
 		}
 	}
 	public void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash ) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new MouseListenerInvocacion(this));
+			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
 		}
 	}
 	

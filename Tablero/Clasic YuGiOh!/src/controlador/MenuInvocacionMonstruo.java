@@ -11,10 +11,10 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
-public class ControladorActionListenerInvocacionMonstruo implements ActionListener {
-	private MouseListenerInvocacion mouse;
+public class MenuInvocacionMonstruo implements ActionListener {
+	private MonstruosInvocacion mouse;
 
-	public ControladorActionListenerInvocacionMonstruo(MouseListenerInvocacion mouse) {
+	public MenuInvocacionMonstruo(MonstruosInvocacion mouse) {
 		this.mouse = mouse;
 	}
 
