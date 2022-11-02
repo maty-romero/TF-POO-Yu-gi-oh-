@@ -99,7 +99,7 @@ public class MonstruosInvocacion implements MouseListener {
 
 		pm.addSeparator();
 		panel.setComponentPopupMenu(pm);
-
+		pm.setBackground(Color.BLUE);
 	}
 
 	@Override

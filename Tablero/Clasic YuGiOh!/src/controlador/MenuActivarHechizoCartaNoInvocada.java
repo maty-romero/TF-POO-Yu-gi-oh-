@@ -11,10 +11,10 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
-public class MenuActivarHechizo implements ActionListener {
+public class MenuActivarHechizoCartaNoInvocada implements ActionListener {
 	private HechizosInvocacion mouse;
 
-	public MenuActivarHechizo(HechizosInvocacion mouse) {
+	public MenuActivarHechizoCartaNoInvocada(HechizosInvocacion mouse) {
 		this.mouse = mouse;
 	}
 
@@ -22,25 +22,23 @@ public class MenuActivarHechizo implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());
 		System.out.println(this.mouse.getTc().getManoHechizoJugador().size());
-		
+
 		if (this.mouse.getTc().getCampoHechizosJugador().size() < 3) {
 			this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()
-					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(mouse.getPanelRelacionado())
+					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(mouse.getPanelSeleccionado())
 					.setFocusable(false);
 
 			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
 			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A
 			// QUEDAR ABAJO DE LA IMAGEN DEL TABLERO. no le añadas nada al tablero. solo
 			// cambia de lugar lo que ya tiene
-			mouse.getPanelRelacionado().setVisible(true);
-			mouse.getPanelRelacionado().setFocusable(true);
-			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelRelacionado(),
-					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelRelacionado()));
+			mouse.getPanelSeleccionado().setVisible(true);
+			mouse.getPanelSeleccionado().setFocusable(true);
+			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelSeleccionado(),
+					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelSeleccionado()));
 			System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());
-			
-			this.mouse.getPanelRelacionado().setBackground(Color.GRAY);
+			this.mouse.getPanelSeleccionado().setBackground(Color.GRAY);
 			mouse.getTc().getVista().mostrar();
-
 		}
 
 	}

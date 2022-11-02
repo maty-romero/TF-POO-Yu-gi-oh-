@@ -22,11 +22,15 @@ import vista.VistaTablero;
 //cuando el bot use esta clase, va a hacer exactamente lo mismo, pero usando su hash de cartasOponente. El resto es lo mismo
 public class HechizosInvocacion implements MouseListener {
 	private TableroController tc;
-	private JPanel panelRelacionado;
+	private JPanel panelSeleccionado; // panel que activó el mouselistener
+	private JPanel panelCartaBocaAbajo; // panel de la carta que se invocó boca abajo (no es la carta por default boca
+										// abajo)
 	private JPopupMenu pm;
+	private Boolean bocaAbajo;
 
-	public HechizosInvocacion(TableroController tc) {
+	public HechizosInvocacion(TableroController tc, Boolean bocaAbajo) {
 		this.tc = tc;
+		this.bocaAbajo = bocaAbajo;
 	}
 
 	@Override
@@ -81,33 +85,25 @@ public class HechizosInvocacion implements MouseListener {
 		 * nuestra logica nos avisa que estamos haciendo todo bien, pero en realidad
 		 * salió un bug inesperado por no usar la clase mouselistener como se suponia.
 		 */
-
+		this.setPanelSeleccionado(panel);
 		if (this.tc.getManoHechizoJugador().containsKey(panel)) {
 			// create menuItems
 			JMenuItem m1 = new JMenuItem("Activar hechizo");
 			JMenuItem m2 = new JMenuItem("Invocar boca abajo");
+
 			pm.add(m1);
 			pm.add(m2);
-			this.setPanelRelacionado(panel);
-			System.out.println("invocar");
-			m1.addActionListener(new MenuActivarHechizo(this));
+			m1.addActionListener(new MenuActivarHechizoCartaNoInvocada(this));
 			m2.addActionListener(new MenuInvocarBocaAbajoHechizo(this));
 
-		} 
-//		else if (this.tc.getCampoHechizosJugador().containsKey(panel) && panel.getBackground() == Color.GRAY) {
-			/*
-			 * DEBERIA NO HACER NADA, EL USUARIO DEBE SELECCIONAR A QUIEN LE BUFEA SU
-			 * ATAQUE(A UNA CARTA CAMPO MONSTRUO JUGADOR). SI NO LO HACE, LA CARTA MUERE AL
-			 * FINAL DEL TURNO Y DESAPARECE DEL MAPA
-			 * 
-			 */
+		} else if (bocaAbajo) {
+			JMenuItem m3 = new JMenuItem("Activar hechizo");
+			pm.add(m3);
+			m3.addActionListener(new MenuActivarHechizoCartaInvocada(this));
 
-//			 JMenuItem m3 = new JMenuItem("Activar Efecto");
-//			System.out.println("invocado");
-//			pm.add(m3);
-//		}
-
+		}
 		pm.addSeparator();
+		pm.setBackground(Color.CYAN);
 		panel.setComponentPopupMenu(pm);
 
 	}
@@ -125,12 +121,28 @@ public class HechizosInvocacion implements MouseListener {
 		this.tc = tc;
 	}
 
-	public JPanel getPanelRelacionado() {
-		return panelRelacionado;
+	public JPanel getPanelSeleccionado() {
+		return panelSeleccionado;
 	}
 
-	public void setPanelRelacionado(JPanel panelRelacionado) {
-		this.panelRelacionado = panelRelacionado;
+	public void setPanelSeleccionado(JPanel panelRelacionado) {
+		this.panelSeleccionado = panelRelacionado;
+	}
+
+	public Boolean getBocaAbajo() {
+		return bocaAbajo;
+	}
+
+	public void setBocaAbajo(Boolean bocaAbajo) {
+		this.bocaAbajo = bocaAbajo;
+	}
+
+	public JPanel getPanelCartaBocaAbajo() {
+		return panelCartaBocaAbajo;
+	}
+
+	public void setPanelCartaBocaAbajo(JPanel panelCartaBocaAbajo) {
+		this.panelCartaBocaAbajo = panelCartaBocaAbajo;
 	}
 
 }

@@ -14,6 +14,7 @@ import javax.print.DocFlavor.URL;
 import javax.swing.*;
 
 import controlador.ControladorProyeccionCartas;
+import controlador.HechizosInvocacion;
 //import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
 import modelo.Carta;
@@ -454,6 +455,7 @@ public class VistaTablero {
 		JLabel img = new JLabel(icon);
 		panel.add(img);
         panel.addMouseListener(new ControladorProyeccionCartas(tableroController));
+        
 		tablero.getContentPane().add(panel);
 		return panel;
 

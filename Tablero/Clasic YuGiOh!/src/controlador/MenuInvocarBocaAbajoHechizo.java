@@ -29,19 +29,23 @@ public class MenuInvocarBocaAbajoHechizo implements ActionListener {
 			this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()
 					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(panel).setFocusable(false);
 
-			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
-			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A
-			// QUEDAR ABAJO DE LA IMAGEN DEL TABLERO. no le añadas nada al tablero. solo
-			// cambia de lugar lo que ya tiene
 			panel.setVisible(true);
 			panel.setFocusable(true);
+			// el panel que acabo de crear, el de boca abajo default, tiene el mismo
+			// controlador.
+			panel.addMouseListener(mouse);
+			mouse.setPanelCartaBocaAbajo(mouse.getPanelSeleccionado());
+			// las cartas hechizo del campo del jugador van a tener 1 panel boca abajo, y el
+			// panel que tiene la imagen de la carta. Ambos tienen clave a la carta pues
+			// ambos estan relacionados a la carta.
 
-			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelRelacionado(),
-					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelRelacionado()));
-
-			this.mouse.getPanelRelacionado().setBackground(Color.GRAY);
+			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelSeleccionado(),
+					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelSeleccionado()));
+            this.mouse.getTc().getVista().getManoJugador().remove(mouse.getPanelSeleccionado());
+			this.mouse.getPanelSeleccionado().setBackground(Color.GRAY);
+			this.mouse.setBocaAbajo(true);
 			mouse.getTc().getVista().mostrar();
-			
+
 		}
 
 	}

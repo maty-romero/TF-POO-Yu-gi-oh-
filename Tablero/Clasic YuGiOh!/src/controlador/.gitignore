@@ -20,3 +20,7 @@
 /MenuInvocarAtaqueMonstruo.class
 /MenuInvocarBocaAbajoHechizo.class
 /MenuInvocacionBocaAbajoHechizo.class
+/MenuActivarHechizoNoInvocada.class
+/MenuActivarHechizoInvocada.class
+/MenuActivarHechizoCartaInvocada.class
+/MenuActivarHechizoCartaNoInvocada.class

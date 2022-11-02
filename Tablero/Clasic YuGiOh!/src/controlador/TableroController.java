@@ -186,7 +186,7 @@ public class TableroController {
 	}
 	public void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash ) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new HechizosInvocacion(this));
+			cartaPanel.addMouseListener(new HechizosInvocacion(this,false));
 		}
 	}
 	
