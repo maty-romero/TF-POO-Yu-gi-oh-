@@ -52,7 +52,8 @@ public class ControladorProyeccionCartas implements MouseListener {
 	 * proyectar las cartas al costado del tablero, necesitamos agarrar el hash de
 	 * cartas en el campo del jugador y de las manos, y proyectarlas. Ese hash
 	 * incluye al panel vacío por default pues este tiene al panel con carta e
-	 * imagen cargada. Solucion cutre y desprolija; ponerle una imagen al panel vacío por defecto, y se proyecatara eso enves de que salgan excepciones
+	 * imagen cargada. Solucion cutre y desprolija; ponerle una imagen al panel
+	 * vacío por defecto, y se proyecatara eso enves de que salgan excepciones
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
@@ -70,31 +71,28 @@ public class ControladorProyeccionCartas implements MouseListener {
 
 			this.vista.getManoJugador().setFocusable(true);
 			this.vista.getManoBot().setFocusable(true);
-			for (Integer i = 0; i < hashCartas.size(); i++) {
 
-				for (JPanel key : hashCartas.keySet()) {
-					if (e.getSource() == key) {
+			for (JPanel key : hashCartas.keySet()) {
+				if (e.getSource() == key) {
 
-						String stringCarta = hashCartas.get(key).getPathImagen();
+					String stringCarta = hashCartas.get(key).getPathImagen();
 
-						java.net.URL urlCarta = getClass().getResource(stringCarta);
-						ImageIcon iconCarta = new ImageIcon(
-								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-						JLabel label = new JLabel(iconCarta);
-						vista.getCartaSeleccionada().removeAll();
-						vista.mostrar();
+					java.net.URL urlCarta = getClass().getResource(stringCarta);
+					ImageIcon iconCarta = new ImageIcon(
+							new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
+					JLabel label = new JLabel(iconCarta);
+					vista.getCartaSeleccionada().removeAll();
+					vista.mostrar();
 
-						vista.getCartaSeleccionada().add(label);
-						vista.mostrar();
-						vista.getCartaSeleccionada().setVisible(true);
-
-					}
+					vista.getCartaSeleccionada().add(label);
+					vista.mostrar();
+					vista.getCartaSeleccionada().setVisible(true);
 
 				}
 
 			}
-		}
 
+		}
 	}
 
 	@Override

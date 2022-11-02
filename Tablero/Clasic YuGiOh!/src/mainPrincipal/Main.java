@@ -13,12 +13,10 @@ import vista.VistaTablero;
 public class Main {
 	public static void main(String[] args) {
 		Modelo modelo = new Modelo();
-		TableroController tableroController= new TableroController();        
-         
+		TableroController tableroController = new TableroController();
+
 		System.out.println(tableroController.getManoMonstruoOponente());
 
-	 
-	
 	}
 
 }

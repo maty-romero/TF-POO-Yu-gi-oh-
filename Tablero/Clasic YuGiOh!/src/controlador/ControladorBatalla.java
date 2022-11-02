@@ -38,36 +38,36 @@ public class ControladorBatalla implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-			HashMap<JPanel, CartaMonstruo> hashCartasCampo = new HashMap<JPanel, CartaMonstruo>();
-
-			this.vista.getManoBot().setFocusable(true);
-
-			hashCartasCampo.putAll(this.tControler.getCampoMonstruosJugador());
-		
-
-			this.vista.getManoJugador().setFocusable(true);
-			this.vista.getManoBot().setFocusable(true);
-			for (Integer i = 0; i < hashCartas.size(); i++) {
-
-				for (JPanel key : hashCartas.keySet()) {
-					if (e.getSource() == key) {
-						String stringCarta = hashCartas.get(key).getPathImagen();
-
-						java.net.URL urlCarta = getClass().getResource(stringCarta);
-						ImageIcon iconCarta = new ImageIcon(
-								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-						JLabel label = new JLabel(iconCarta);
-						vista.getCartaSeleccionada().removeAll();
-						vista.mostrar();
-
-						vista.getCartaSeleccionada().add(label);
-						vista.mostrar();
-						vista.getCartaSeleccionada().setVisible(true);
-					}
-
-				}
-
-			}
+//			HashMap<JPanel, CartaMonstruo> hashCartasCampo = new HashMap<JPanel, CartaMonstruo>();
+//
+//			this.vista.getManoBot().setFocusable(true);
+//
+//			hashCartasCampo.putAll(this.tControler.getCampoMonstruosJugador());
+//		
+//
+//			this.vista.getManoJugador().setFocusable(true);
+//			this.vista.getManoBot().setFocusable(true);
+//			for (Integer i = 0; i < hashCartas.size(); i++) {
+//
+//				for (JPanel key : hashCartas.keySet()) {
+//					if (e.getSource() == key) {
+//						String stringCarta = hashCartas.get(key).getPathImagen();
+//
+//						java.net.URL urlCarta = getClass().getResource(stringCarta);
+//						ImageIcon iconCarta = new ImageIcon(
+//								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
+//						JLabel label = new JLabel(iconCarta);
+//						vista.getCartaSeleccionada().removeAll();
+//						vista.mostrar();
+//
+//						vista.getCartaSeleccionada().add(label);
+//						vista.mostrar();
+//						vista.getCartaSeleccionada().setVisible(true);
+//					}
+//
+//				}
+//
+//			}
 		
 		
 		
