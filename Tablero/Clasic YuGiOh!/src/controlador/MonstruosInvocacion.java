@@ -34,14 +34,10 @@ public class MonstruosInvocacion implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -90,10 +86,8 @@ public class MonstruosInvocacion implements MouseListener {
 			pm.add(m1);
 			pm.add(m2);
 			this.setPanelRelacionado(panel);
-			System.out.println("invocar");
 			m1.addActionListener(new MenuInvocarAtaqueMonstruo(this));
 		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
-			System.out.println("invocado");
 			pm.add(m3);
 		}
 

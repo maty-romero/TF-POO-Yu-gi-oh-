@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +23,13 @@ import modelo.Carta;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -437,11 +442,39 @@ public class VistaTablero {
 	// de archivo(pathImagen)
 	public JLabel generoImagenCarta(Carta carta) {
 
-		java.net.URL urlCarta = getClass().getResource(carta.getPathImagen());
-		ImageIcon iconURL = new ImageIcon(
-				new ImageIcon(urlCarta).getImage().getScaledInstance(150, 90, Image.SCALE_AREA_AVERAGING));
-		return new JLabel(iconURL);
+//		java.net.URL urlCarta = getClass().getResource(carta.getPathImagen());
+//		ImageIcon iconURL = new ImageIcon(
+//				new ImageIcon(urlCarta).getImage().getScaledInstance(155, 90, Image.SCALE_AREA_AVERAGING));		
+//		
+		JLabel jlabel = null;
+		try {
+			BufferedImage original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
+			original = this.resize(original, 155, 90);
+			jlabel = new JLabel( new ImageIcon(original));
+
+			
+	//		jlabel=new JLabel(new ImageIcon(original));
+
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return jlabel;
+
+		
+		
 	}
+	public  BufferedImage resize(BufferedImage img, int newW, int newH) { 
+	    Image tmp = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+	    BufferedImage dimg = new BufferedImage(newW, newH, BufferedImage.TYPE_INT_ARGB);
+
+	    Graphics2D g2d = dimg.createGraphics();
+	    g2d.drawImage(tmp, 0, 0, null);
+	    g2d.dispose();
+       // g2d.rotate(Math.toRadians(100));
+	    g2d.rotate(Math.toRadians(70));
+	    return dimg;
+	}  
 
 	public JPanel generoBocaAbajoDefault() {
 		JPanel panel = new JPanel();
@@ -457,9 +490,12 @@ public class VistaTablero {
         panel.addMouseListener(new ControladorProyeccionCartas(tableroController));
         
 		tablero.getContentPane().add(panel);
+			
 		return panel;
 
 	}
+
+	
 
 	public JFrame getTablero() {
 		return tablero;

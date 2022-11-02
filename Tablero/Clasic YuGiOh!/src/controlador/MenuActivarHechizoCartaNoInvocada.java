@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -28,6 +29,8 @@ public class MenuActivarHechizoCartaNoInvocada implements ActionListener {
 					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(mouse.getPanelSeleccionado())
 					.setFocusable(false);
 
+			
+
 			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
 			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A
 			// QUEDAR ABAJO DE LA IMAGEN DEL TABLERO. no le añadas nada al tablero. solo
@@ -40,7 +43,9 @@ public class MenuActivarHechizoCartaNoInvocada implements ActionListener {
 			this.mouse.getPanelSeleccionado().setBackground(Color.GRAY);
 			mouse.getTc().getVista().mostrar();
 		}
-
+         
 	}
+	
+
 
 }
