@@ -39,7 +39,7 @@ public class MenuActivarHechizo implements ActionListener {
 			System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());
 			
 			this.mouse.getPanelRelacionado().setBackground(Color.GRAY);
-			mouse.getTc().getVista().getTablero().setVisible(true);
+			mouse.getTc().getVista().mostrar();
 
 		}
 

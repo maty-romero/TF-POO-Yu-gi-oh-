@@ -129,6 +129,7 @@ public class VistaTablero {
 	private JButton btnAtacar;
 //genero panel carta boca abajo default
 	private JPanel cartaDefault;
+	private String pathCartaDefault;
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -146,8 +147,6 @@ public class VistaTablero {
 	}
 
 	private void generarTablero() {
-		this.cartaDefault=this.generoBocaAbajoDefault();
-		
 		java.net.URL url_carta1 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
 																								// projecto
 		ImageIcon icon_URL = new ImageIcon(
@@ -187,8 +186,9 @@ public class VistaTablero {
 		deck_bot.setBounds(10, 10, 74, 96);
 		this.deck_bot.setForeground(new Color(204, 0, 0));
 		this.deck_bot.setBackground(new Color(0, 0, 0));
+        this.pathCartaDefault="/boca_abajo_default/boca_abajo.jpg";
 
-		java.net.URL urlDeckBot = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
+		java.net.URL urlDeckBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																								// al projecto
 		ImageIcon iconDeckBot = new ImageIcon(
 				new ImageIcon(urlDeckBot).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
@@ -202,7 +202,7 @@ public class VistaTablero {
 		cem_bot.setBounds(10, 172, 74, 96);
 		this.cem_bot.setBackground(new Color(0, 0, 0));
 
-		java.net.URL urlCemBot = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
+		java.net.URL urlCemBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																								// al projecto
 		ImageIcon IconCemBot = new ImageIcon(
 				new ImageIcon(urlCemBot).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
@@ -217,7 +217,7 @@ public class VistaTablero {
 		this.deck_jug.setForeground(new Color(153, 0, 0));
 		this.deck_jug.setBackground(new Color(102, 102, 0));
 
-		java.net.URL urlDeckJug = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
+		java.net.URL urlDeckJug = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																								// al projecto
 		ImageIcon iconDeckJug = new ImageIcon(
 				new ImageIcon(urlDeckJug).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
@@ -232,7 +232,7 @@ public class VistaTablero {
 		this.cem_jug.setForeground(new Color(0, 0, 0));
 		this.cem_jug.setBackground(new Color(153, 102, 0));
 
-		java.net.URL urlCemJug = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
+		java.net.URL urlCemJug = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																								// al projecto
 		ImageIcon iconCemJug = new ImageIcon(
 				new ImageIcon(urlCemJug).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
@@ -250,12 +250,12 @@ public class VistaTablero {
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
 
-		java.net.URL url_descCarta = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local
-																									// relativa al
-		// projecto
-		ImageIcon iconDescCart = new ImageIcon(
-				new ImageIcon(url_descCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-		this.imagenDescCarta = new JLabel(iconDescCart);
+//		java.net.URL url_descCarta = getClass().getResource(this.pathCartaDefault); // imagen local
+//																									// relativa al
+//		// projecto
+//		ImageIcon iconDescCart = new ImageIcon(
+//				new ImageIcon(url_descCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
+//		this.imagenDescCarta = new JLabel(iconDescCart);
 
 		// this.cartaSeleccionada.add(imagenDescCarta);
 
@@ -324,7 +324,7 @@ public class VistaTablero {
 		JPanel cartaPanel = new JPanel();
 		cartaPanel.setBounds(605, 593, 74, 96);
 		cartaPanel.setBackground(new Color(153, 0, 0));
-		cartaPanel.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
 		cartaPanel.add(labelCarta);
 		cartaPanel.setFocusable(true);
 		cartaPanel.requestFocus();
@@ -338,7 +338,7 @@ public class VistaTablero {
 	public JPanel agregoCartaCampo(JLabel labelCarta) {
 
 		this.cartaCampo.add(imagenCartaCampo1Bot);
-		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(tableroController));
 
 		tablero.getContentPane().add(this.cartaCampo);
 		return this.cartaCampo;
@@ -350,19 +350,17 @@ public class VistaTablero {
 		JPanel carta1CampoOponente = new JPanel();
 		carta1CampoOponente.setBounds(226, 249, 135, 96);
 		carta1CampoOponente.setBackground(Color.BLACK);
-//		carta1CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta1CampoOponente);
 
 		JPanel carta2CampoOponente = new JPanel();
 		carta2CampoOponente.setBounds(380, 249, 135, 96);
 		carta2CampoOponente.setBackground(Color.BLACK);
-//		carta2CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta2CampoOponente);
 
 		JPanel carta3CampoOponente = new JPanel();
 		carta3CampoOponente.setBounds(535, 249, 135, 96);
 		carta3CampoOponente.setBackground(Color.BLACK);
-//		carta3CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+
 		tablero.getContentPane().add(carta3CampoOponente);
 		this.panelesMonstruosCampoOponente.add(carta1CampoOponente);
 		this.panelesMonstruosCampoOponente.add(carta2CampoOponente);
@@ -371,19 +369,18 @@ public class VistaTablero {
 		JPanel carta4CampoOponente = new JPanel();
 		carta4CampoOponente.setBounds(226, 117, 135, 96);
 		carta4CampoOponente.setBackground(Color.BLACK);
-//		carta4CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta4CampoOponente);
 
 		JPanel carta5CampoOponente = new JPanel();
 		carta5CampoOponente.setBounds(380, 117, 135, 96);
 		carta5CampoOponente.setBackground(Color.BLACK);
-//		carta5CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+
 		tablero.getContentPane().add(carta5CampoOponente);
 
 		JPanel carta6CampoOponente = new JPanel();
 		carta6CampoOponente.setBounds(535, 117, 135, 96);
 		carta6CampoOponente.setBackground(Color.BLACK);
-//		carta6CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+
 		tablero.getContentPane().add(carta6CampoOponente);
 		this.panelesHechizosCampoOponente.add(carta4CampoOponente);
 		this.panelesHechizosCampoOponente.add(carta5CampoOponente);
@@ -394,21 +391,18 @@ public class VistaTablero {
 		carta1CampoJug.setBounds(226, 385, 135, 96);
 		this.carta1CampoJug.setBackground(Color.BLACK);
 
-		this.carta1CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(this.carta1CampoJug);
-/////
-
+//
+		
 		this.carta2CampoJug = new JPanel();
 		carta2CampoJug.setBounds(380, 385, 135, 96);
 		this.carta2CampoJug.setBackground(Color.BLACK);
-//		this.carta2CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta2CampoJug);
 
 		this.carta3CampoJug = new JPanel();
 		carta3CampoJug.setBounds(535, 385, 135, 96);
 		this.carta3CampoJug.setBackground(Color.BLACK);
-//		this.carta3CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta3CampoJug);
 		this.panelesMonstruosCampoJugador.add(this.carta1CampoJug);
@@ -418,21 +412,18 @@ public class VistaTablero {
 		this.carta4CampoJug = new JPanel();
 		carta4CampoJug.setBounds(226, 492, 135, 96);
 		this.carta4CampoJug.setBackground(Color.BLACK);
-//		this.carta4CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta4CampoJug);
 
 		this.carta5CampoJug = new JPanel();
 		this.carta5CampoJug.setBounds(380, 492, 135, 96);
 		this.carta5CampoJug.setBackground(Color.BLACK);
-//		this.carta5CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta5CampoJug);
 
 		this.carta6CampoJug = new JPanel();
 		carta6CampoJug.setBounds(535, 492, 135, 96);
 		this.carta6CampoJug.setBackground(Color.BLACK);
-//		this.carta6CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta6CampoJug);
 		this.panelesHechizosCampoJugador.add(this.carta4CampoJug);
@@ -455,16 +446,14 @@ public class VistaTablero {
 		JPanel panel = new JPanel();
 
 		panel = new JPanel();
-		panel.setBounds(500, 414, 74, 96);
 		panel.setForeground(new Color(153, 0, 0));
 		panel.setBackground(new Color(102, 102, 0));
-
-		java.net.URL url = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
+		java.net.URL url = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																							// al projecto
-		ImageIcon icon = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
+		ImageIcon icon = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(120, 100, Image.SCALE_DEFAULT));
 		JLabel img = new JLabel(icon);
 		panel.add(img);
-
+        panel.addMouseListener(new ControladorProyeccionCartas(tableroController));
 		tablero.getContentPane().add(panel);
 		return panel;
 
@@ -705,5 +694,22 @@ public class VistaTablero {
 	public void setPanelesHechizosCampoOponente(ArrayList<JPanel> panelesHechizosCampoOponente) {
 		this.panelesHechizosCampoOponente = panelesHechizosCampoOponente;
 	}
+
+	public JPanel getCartaDefault() {
+		return cartaDefault;
+	}
+
+	public void setCartaDefault(JPanel cartaDefault) {
+		this.cartaDefault = cartaDefault;
+	}
+
+	public String getPathCartaDefault() {
+		return pathCartaDefault;
+	}
+
+	public void setPathCartaDefault(String pathCartaDefault) {
+		this.pathCartaDefault = pathCartaDefault;
+	}
+	
 
 }

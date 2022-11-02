@@ -24,6 +24,7 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
 					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelRelacionado())
 					.setFocusable(false);
+		//	this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador().get(this.mouse.getTc().getCampoMonstruosJugador().size()).setEnabled(false); ;
 
 			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
 			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A
@@ -35,7 +36,7 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelRelacionado(),
 					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelRelacionado()));
 			this.mouse.getPanelRelacionado().setBackground(Color.GREEN);
-			mouse.getTc().getVista().getTablero().setVisible(true);
+			mouse.getTc().getVista().mostrar();
 
 		}
 
