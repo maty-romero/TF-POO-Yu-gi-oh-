@@ -11,17 +11,16 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
-public class MenuInvocacionMonstruo implements ActionListener {
+public class MenuInvocarAtaqueMonstruo implements ActionListener {
 	private MonstruosInvocacion mouse;
 
-	public MenuInvocacionMonstruo(MonstruosInvocacion mouse) {
+	public MenuInvocarAtaqueMonstruo(MonstruosInvocacion mouse) {
 		this.mouse = mouse;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3
-				&& this.mouse.getTc().getManoMonstruoJugador().containsKey(mouse.getPanelRelacionado())) {
+		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
 					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelRelacionado())
 					.setFocusable(false);

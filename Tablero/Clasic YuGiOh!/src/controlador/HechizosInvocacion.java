@@ -19,6 +19,7 @@ import modelo.CartaMonstruo;
 import modelo.Modelo;
 import vista.VistaTablero;
 
+//cuando el bot use esta clase, va a hacer exactamente lo mismo, pero usando su hash de cartasOponente. El resto es lo mismo
 public class HechizosInvocacion implements MouseListener {
 	private TableroController tc;
 	private JPanel panelRelacionado;
@@ -83,18 +84,28 @@ public class HechizosInvocacion implements MouseListener {
 
 		if (this.tc.getManoHechizoJugador().containsKey(panel)) {
 			// create menuItems
-			JMenuItem m1 = new JMenuItem("Invocar Ataque");
-			JMenuItem m2 = new JMenuItem("Invocar defensa");
+			JMenuItem m1 = new JMenuItem("Activar hechizo");
+			JMenuItem m2 = new JMenuItem("Invocar boca abajo");
 			pm.add(m1);
 			pm.add(m2);
 			this.setPanelRelacionado(panel);
 			System.out.println("invocar");
-			m1.addActionListener(new MenuInvocacionHechizo(this));
-		} else if (this.tc.getCampoHechizosJugador().containsKey(panel)) {
-			JMenuItem m3 = new JMenuItem("ATACAR CAPO");
-			System.out.println("invocado");
-			pm.add(m3);
-		}
+			m1.addActionListener(new MenuActivarHechizo(this));
+			m2.addActionListener(new MenuInvocarBocaAbajoHechizo(this));
+
+		} 
+//		else if (this.tc.getCampoHechizosJugador().containsKey(panel) && panel.getBackground() == Color.GRAY) {
+			/*
+			 * DEBERIA NO HACER NADA, EL USUARIO DEBE SELECCIONAR A QUIEN LE BUFEA SU
+			 * ATAQUE(A UNA CARTA CAMPO MONSTRUO JUGADOR). SI NO LO HACE, LA CARTA MUERE AL
+			 * FINAL DEL TURNO Y DESAPARECE DEL MAPA
+			 * 
+			 */
+
+//			 JMenuItem m3 = new JMenuItem("Activar Efecto");
+//			System.out.println("invocado");
+//			pm.add(m3);
+//		}
 
 		pm.addSeparator();
 		panel.setComponentPopupMenu(pm);

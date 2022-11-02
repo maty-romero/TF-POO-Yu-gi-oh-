@@ -16,6 +16,7 @@ import javax.swing.*;
 import controlador.ControladorProyeccionCartas;
 //import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
+import modelo.Carta;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -126,6 +127,8 @@ public class VistaTablero {
 
 //Botones 
 	private JButton btnAtacar;
+//genero panel carta boca abajo default
+	private JPanel cartaDefault;
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -143,17 +146,13 @@ public class VistaTablero {
 	}
 
 	private void generarTablero() {
+		this.cartaDefault=this.generoBocaAbajoDefault();
+		
 		java.net.URL url_carta1 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
 																								// projecto
 		ImageIcon icon_URL = new ImageIcon(
 				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
 		tablero.getContentPane().setLayout(null);
-		
-		//Boton atacar
-		btnAtacar = new JButton("ATACAR");
-		btnAtacar.setEnabled(false);
-		btnAtacar.setBounds(910, 479, 89, 23);
-		tablero.getContentPane().add(btnAtacar);
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
@@ -317,6 +316,7 @@ public class VistaTablero {
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
+		//
 
 	}
 
@@ -394,7 +394,6 @@ public class VistaTablero {
 		carta1CampoJug.setBounds(226, 385, 135, 96);
 		this.carta1CampoJug.setBackground(Color.BLACK);
 
-
 		this.carta1CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(this.carta1CampoJug);
 /////
@@ -436,10 +435,38 @@ public class VistaTablero {
 //		this.carta6CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta6CampoJug);
-		this.panelesMonstruosCampoJugador.add(this.carta4CampoJug);
-		this.panelesMonstruosCampoJugador.add(this.carta5CampoJug);
-		this.panelesMonstruosCampoJugador.add(this.carta6CampoJug);
+		this.panelesHechizosCampoJugador.add(this.carta4CampoJug);
+		this.panelesHechizosCampoJugador.add(this.carta5CampoJug);
+		this.panelesHechizosCampoJugador.add(this.carta6CampoJug);
 
+	}
+
+	// Devuelvo la imagen de la carta, gracias a que el objeto carta tiene una ruta
+	// de archivo(pathImagen)
+	public JLabel generoImagenCarta(Carta carta) {
+
+		java.net.URL urlCarta = getClass().getResource(carta.getPathImagen());
+		ImageIcon iconURL = new ImageIcon(
+				new ImageIcon(urlCarta).getImage().getScaledInstance(150, 90, Image.SCALE_AREA_AVERAGING));
+		return new JLabel(iconURL);
+	}
+
+	public JPanel generoBocaAbajoDefault() {
+		JPanel panel = new JPanel();
+
+		panel = new JPanel();
+		panel.setBounds(500, 414, 74, 96);
+		panel.setForeground(new Color(153, 0, 0));
+		panel.setBackground(new Color(102, 102, 0));
+
+		java.net.URL url = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
+																							// al projecto
+		ImageIcon icon = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
+		JLabel img = new JLabel(icon);
+		panel.add(img);
+
+		tablero.getContentPane().add(panel);
+		return panel;
 
 	}
 
@@ -678,6 +705,5 @@ public class VistaTablero {
 	public void setPanelesHechizosCampoOponente(ArrayList<JPanel> panelesHechizosCampoOponente) {
 		this.panelesHechizosCampoOponente = panelesHechizosCampoOponente;
 	}
-	
 
 }

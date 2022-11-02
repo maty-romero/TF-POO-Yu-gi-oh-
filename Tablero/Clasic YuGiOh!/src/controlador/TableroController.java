@@ -22,7 +22,7 @@ import vista.VistaTablero;
 
 public class TableroController {
 	private Modelo modelo;
-	private ControladorProyeccionCartas c;
+	private ControladorProyeccionCartas controladorProyeccionCartas;
 
 	private Duelista duelistaJugador, duelistaOponente;
 	private Batalla batallaJugador, batallaOponente; // para los cambios de turno
@@ -46,7 +46,7 @@ public class TableroController {
 		this.vista = vista;
 		 mouse=new MonstruosInvocacion(this);
 		this.modelo = new Modelo();
-		this.c = new ControladorProyeccionCartas(this.vista, this);
+		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this.vista, this);
 
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("KIRA");
@@ -121,7 +121,7 @@ public class TableroController {
 			// traigo directo desde la vista, mando ambos a la vista para que me asocie esa
 			// imagen a esa mano (meto en el panel mano, el otro panel que le inserté esa
 			// imagen traida desde el modelo)
-			panelCarta = this.vista.agregoCartaMano(this.modelo.generoImagenCarta(cartaMonstruo), mano);
+			panelCarta = this.vista.agregoCartaMano(this.vista.generoImagenCarta(cartaMonstruo), mano);
 			panelCarta.setVisible(true);
 			panelCarta.setFocusable(true);
 			hashAuxiliar.put(panelCarta, cartaMonstruo);
@@ -141,7 +141,7 @@ public class TableroController {
 			// traigo directo desde la vista, mando ambos a la vista para que me asocie esa
 			// imagen a esa mano (meto en el panel mano, el otro panel que le inserté esa
 			// imagen traida desde el modelo)
-			panelCarta = this.vista.agregoCartaMano(this.modelo.generoImagenCarta(cartaHechizo), mano);
+			panelCarta = this.vista.agregoCartaMano(this.vista.generoImagenCarta(cartaHechizo), mano);
 			panelCarta.setVisible(true);
 			panelCarta.setFocusable(true);
 
@@ -186,7 +186,7 @@ public class TableroController {
 	}
 	public void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash ) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
+			cartaPanel.addMouseListener(new HechizosInvocacion(this));
 		}
 	}
 	
