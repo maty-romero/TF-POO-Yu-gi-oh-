@@ -35,7 +35,7 @@ public class Barajador {
 
 				// se obtienen los monstruos y se añade al deck.
 
-				id = rsMonstruos.getInt("id_monstruo");
+				id = rsMonstruos.getInt("id_carta");
 				nombre = rsMonstruos.getString("nombre");
 				descripcion = rsMonstruos.getString("descripcion");
 				url = rsMonstruos.getString("pathImagen");
@@ -46,7 +46,7 @@ public class Barajador {
 	
 				// se obtienen los hechizos y se añade al deck.
 
-				id = rsHechizos.getInt("id_hechizo");
+				id = rsHechizos.getInt("id_carta");
 				nombre = rsHechizos.getString("nombre");
 				descripcion = rsHechizos.getString("descripcion");
 				url = rsHechizos.getString("pathImagen");

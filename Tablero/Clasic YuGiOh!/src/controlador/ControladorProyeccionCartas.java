@@ -47,9 +47,10 @@ public class ControladorProyeccionCartas implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 		{
+			System.out.println("entre al proyectador");
+			
 			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
 
-			this.tc.getVista().getManoBot().setFocusable(true);
 			hashCartas.putAll(this.tc.getCampoMonstruosJugador());
 			hashCartas.putAll(this.tc.getCampoHechizosJugador());
 			hashCartas.putAll(this.tc.getManoMonstruoOponente());

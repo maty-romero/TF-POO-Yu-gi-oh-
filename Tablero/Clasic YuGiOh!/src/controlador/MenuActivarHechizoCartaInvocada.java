@@ -22,15 +22,12 @@ public class MenuActivarHechizoCartaInvocada implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) { // el e aquí es un boton JMenuItem, no el panel desde donde se hizo
 													// click en el JMenuItem
-//		System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());
-//		System.out.println(this.mouse.getTc().getManoHechizoJugador().size());
-
-		if (this.mouse.getTc().getCampoHechizosJugador().size() < 3) {
+		if (this.mouse.getTc().getCampoHechizosJugador().size() < 4) {
 			
 			JPanel coincidencia = new JPanel();
 			for (JPanel panelCampo : mouse.getTc().getVista().getPanelesHechizosCampoJugador()) {
 				for (Component componente : panelCampo.getComponents()) {
-					if (((JPanel) componente).equals(mouse.getPanelSeleccionado())) {
+					if (( componente)==(mouse.getPanelSeleccionado())) {
 						coincidencia = panelCampo;
 					}
 				}

@@ -26,6 +26,8 @@ public class MenuInvocarBocaAbajoHechizo implements ActionListener {
 		if (this.mouse.getTc().getCampoHechizosJugador().size() < 3) {
 			JPanel panel = new JPanel();
 			panel = this.mouse.getTc().getVista().generoBocaAbajoDefault();
+			
+			
 			this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()
 					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(panel).setFocusable(false);
 

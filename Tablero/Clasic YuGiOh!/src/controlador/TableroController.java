@@ -116,9 +116,7 @@ public class TableroController {
 			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 
-//			this.vista.getManoJugador()
-//					.add(new JLabel(new ImageIcon(this.vista.rotarImagenGrados(this.vista.getBfimage(), 90))));
-//			this.vista.mostrar();
+			this.vista.mostrar();
 		
 			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
 			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
@@ -243,7 +241,6 @@ public class TableroController {
 	
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
-//			cartaPanel.addMouseListener(this.mouse);
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
 
 		}

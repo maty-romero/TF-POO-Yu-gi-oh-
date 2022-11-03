@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VistaTablero {
+public class VistaTablero implements ImageObserver {
 	// Controlador
 	private TableroController tableroController;
 //tablero
@@ -137,7 +138,6 @@ public class VistaTablero {
 	private JPanel cartaDefault;
 	private String pathCartaDefault;
 //
-	private BufferedImage bfimage;
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -145,7 +145,7 @@ public class VistaTablero {
 	private ArrayList<JPanel> panelesMonstruosCampoOponente = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesHechizosCampoOponente = new ArrayList<JPanel>();
 
-	public VistaTablero(TableroController tableroController) {
+	public VistaTablero(TableroController tableroController){
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("TABLERO");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -454,11 +454,7 @@ public class VistaTablero {
 
 			BufferedImage original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
 			original = this.cambioTamaño(original, 155, 90);
-			this.bfimage = original;
 			jlabel = new JLabel(new ImageIcon(original));
-
-			ImageIcon icon = (ImageIcon) jlabel.getIcon();
-			BufferedImage img = (BufferedImage) ((Image) icon.getImage());
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -496,7 +492,7 @@ public class VistaTablero {
 
 		at.rotate(rads, x, y);
 		g2d.setTransform(at);
-		g2d.drawImage(img, 0, 0, null);
+		g2d.drawImage(img, 0, 0,this);
 
 		g2d.setColor(Color.RED);
 		g2d.drawRect(0, 0, newAltura - 1, newAnchura - 1);
@@ -524,6 +520,7 @@ public class VistaTablero {
 
 	}
 
+	
 	public JFrame getTablero() {
 		return tablero;
 	}
@@ -674,9 +671,6 @@ public class VistaTablero {
 		this.carta2CampoBot = carta2CampoBot;
 	}
 
-	public void setCarta1CampoBot(JPanel carta1Campo_bot) {
-		this.cartaCampo = carta1Campo_bot;
-	}
 
 	public JLabel getImagenCartaCampo1Bot() {
 		return imagenCartaCampo1Bot;
