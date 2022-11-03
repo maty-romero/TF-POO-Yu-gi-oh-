@@ -113,7 +113,7 @@ public class VistaTablero {
 	private JLabel imagenDescCarta;
 	private JPanel descCartaSeleccionada;
 	private JLabel descCarta;
-//Contador de vida del bot
+//Contador de vida del bot y Jugador
 
 	private JLabel contadorBot;
 	private JLabel contadorJug;
@@ -781,6 +781,24 @@ public class VistaTablero {
 	public void setPanelesHechizosCampoOponente(ArrayList<JPanel> panelesHechizosCampoOponente) {
 		this.panelesHechizosCampoOponente = panelesHechizosCampoOponente;
 	}
+
+	public JLabel getContadorBot() {
+		return contadorBot;
+	}
+
+	public void setContadorBot(JLabel contadorBot) {
+		this.contadorBot = contadorBot;
+	}
+
+	public JLabel getContadorJug() {
+		return contadorJug;
+	}
+
+	public void setContadorJug(JLabel contadorJug) {
+		this.contadorJug = contadorJug;
+	}
+	
+	
 	
 
 }

@@ -24,6 +24,7 @@ public class MouseListenerInvocacion implements MouseListener {
 	private TableroController tc;
 	private JPanel panelRelacionado;
 	private JPopupMenu pm;
+	
 
 	public MouseListenerInvocacion(VistaTablero vista, TableroController tc) {
 		this.vista = vista;
@@ -33,6 +34,7 @@ public class MouseListenerInvocacion implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
 	}
 
 	@Override
@@ -50,11 +52,11 @@ public class MouseListenerInvocacion implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
-		HashMap<JPanel, CartaMonstruo> hashCartas = new HashMap();
+		HashMap<JPanel, CartaMonstruo> hashCartas;
 
 		this.vista.getManoBot().setFocusable(true);
 
-		hashCartas.putAll(this.tc.getManoMonstruoJugador());
+		hashCartas = this.tc.getManoMonstruoJugador();
 
 		this.vista.getManoJugador().setFocusable(true);
 		this.vista.getManoBot().setFocusable(true);
@@ -73,7 +75,7 @@ public class MouseListenerInvocacion implements MouseListener {
 								hashCartas.get(key)));
 						m2.addActionListener(new ControladorActionListenerInvocacionMonstruo(this.vista, this, tc, key,
 								hashCartas.get(key)));
-
+						
 						pm.add(m1);
 						pm.add(m2);
 						pm.add(m3);

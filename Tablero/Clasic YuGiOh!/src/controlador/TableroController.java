@@ -36,6 +36,9 @@ public class TableroController {
 	private HashMap<JPanel, CartaMonstruo> campoMonstruosJugador = new HashMap<JPanel, CartaMonstruo>();
 	private HashMap<JPanel, CartaHechizo> campoHechizosJugador = new HashMap<JPanel, CartaHechizo>();
 	
+	private HashMap<JPanel, CartaMonstruo> campoMonstruosOponente = new HashMap<JPanel, CartaMonstruo>();
+	private HashMap<JPanel, CartaHechizo> campoHechizosOponente = new HashMap<JPanel, CartaHechizo>();
+	
 	private JPanel panelCarta;
 	private VistaTablero vista;
 	private JPopupMenu pm;
@@ -78,6 +81,7 @@ public class TableroController {
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
 
 		try {
+			
 			//setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(
 					this.envioImagenesManoMonstruoVista(duelistaOponente.getMano().getManoMonstruos(), this.vista.getManoBot()));
@@ -233,6 +237,54 @@ public class TableroController {
 
 	public void setCampoHechizosJugador(HashMap<JPanel, CartaHechizo> campoHechizosJugador) {
 		this.campoHechizosJugador = campoHechizosJugador;
+	}
+
+	public HashMap<JPanel, CartaMonstruo> getCampoMonstruosOponente() {
+		return campoMonstruosOponente;
+	}
+
+	public void setCampoMonstruosOponente(HashMap<JPanel, CartaMonstruo> campoMonstruosOponente) {
+		this.campoMonstruosOponente = campoMonstruosOponente;
+	}
+
+	public HashMap<JPanel, CartaHechizo> getCampoHechizosOponente() {
+		return campoHechizosOponente;
+	}
+
+	public void setCampoHechizosOponente(HashMap<JPanel, CartaHechizo> campoHechizosOponente) {
+		this.campoHechizosOponente = campoHechizosOponente;
+	}
+
+	public Batalla getBatallaJugador() {
+		return batallaJugador;
+	}
+
+	public Batalla getBatallaOponente() {
+		return batallaOponente;
+	}
+
+	public Duelista getDuelistaJugador() {
+		return duelistaJugador;
+	}
+
+	public void setDuelistaJugador(Duelista duelistaJugador) {
+		this.duelistaJugador = duelistaJugador;
+	}
+
+	public Duelista getDuelistaOponente() {
+		return duelistaOponente;
+	}
+
+	public void setDuelistaOponente(Duelista duelistaOponente) {
+		this.duelistaOponente = duelistaOponente;
+	}
+
+	public VistaTablero getVista() {
+		return vista;
+	}
+
+	public void setVista(VistaTablero vista) {
+		this.vista = vista;
 	}
 	
 	//-------------------
