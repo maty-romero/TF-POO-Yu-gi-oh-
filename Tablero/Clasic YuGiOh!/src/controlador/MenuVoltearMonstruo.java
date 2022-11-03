@@ -3,10 +3,13 @@ package controlador;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,37 +43,50 @@ public class MenuVoltearMonstruo implements ActionListener {
 			coincidencia.removeAll();
 
 			// Get the icon
-			Icon ico = mouse.getLabel().getIcon();
-			// Create a buffered image
-			BufferedImage bimg = new BufferedImage(ico.getIconWidth(), ico.getIconHeight(), BufferedImage.TYPE_INT_RGB);
-			// Create the graphics context
-			Graphics g = bimg.createGraphics();
-			// Now paint the icon
-			ico.paintIcon(null, g, 0, 0);
-			g.dispose();
+//			Icon ico = mouse.getLabel().getIcon();
+//			// Create a buffered image
+//			BufferedImage bimg = new BufferedImage(ico.getIconWidth(), ico.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+//			// Create the graphics context
+//			Graphics g = bimg.createGraphics();
+//			// Now paint the icon
+//			ico.paintIcon(null, g, 0, 0);
+//			g.dispose();
 
-	
-			coincidencia.removeAll();
 
-			//al panel del campo le añado el panel de la carta boca abajo que tiene una imagen rotada y cambiada de tamaño
-			coincidencia.add(mouse.getPanelCartaBocaAbajo().add(new JLabel(new ImageIcon(mouse.getTc().getVista()
-					.rotarImagenGrados(this.mouse.getTc().getVista().cambioTamaño(bimg, 130, 130), 90)))));
-								
+			JLabel label = null;
+			try {
+				BufferedImage original = ImageIO.read(getClass().getResource(mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelCartaBocaAbajo()).getPathImagen()));
+//				original = mouse.getTc().getVista().cambioTamaño(original, 100,280);
+				original=  mouse.getTc().getVista().rotarImagenGrados(original, -90);
+
+				label = new JLabel(new ImageIcon(original));
+            
+		
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+
+
+
+			mouse.getPanelCartaBocaAbajo().add(label);
+
+			
+			coincidencia.add(mouse.getPanelCartaBocaAbajo());
+
 
 			coincidencia.setVisible(true);
 			coincidencia.setFocusable(false);
-					
-			
+
 			mouse.getPanelCartaBocaAbajo().setVisible(true);
+			mouse.getPanelCartaBocaAbajo().setBackground(Color.black);
 			mouse.getPanelCartaBocaAbajo().setFocusable(true);
-	
-			coincidencia.addMouseListener(new ControladorProyeccionCartas (this.mouse.getTc()));
 
-			//mouse.getPanelCartaBocaAbajo().addMouseListener(new ControladorProyeccionCartas (this.mouse.getTc()));
+			// mouse.getPanelCartaBocaAbajo().addMouseListener(new
+			// ControladorProyeccionCartas (this.mouse.getTc()));
 
-			mouse.getTc().getVista().mostrar();
 			mouse.setBocaAbajo(false);
-			
+			mouse.getTc().getVista().mostrar();
+
 		}
 
 	}

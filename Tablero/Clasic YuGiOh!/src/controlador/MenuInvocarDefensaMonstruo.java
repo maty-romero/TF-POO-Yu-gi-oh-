@@ -34,20 +34,19 @@ public class MenuInvocarDefensaMonstruo implements ActionListener {
 
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
 					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(panel).setFocusable(false);
-		
+
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
 					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
-	
-			
+
 			panel.setVisible(true);
 			panel.setFocusable(true);
 			panel.addMouseListener(mouse);
-            mouse.setLabel((JLabel) mouse.getPanelSeleccionado().getComponent(0));
+			mouse.setLabel((JLabel) mouse.getPanelSeleccionado().getComponent(0)); // solo tiene 1 componente; la imagen
+																					// JLabel
 			mouse.setPanelCartaBocaAbajo(mouse.getPanelSeleccionado());
 
-
 			mouse.getPanelSeleccionado().setBackground(Color.black);
-			
+
 			this.mouse.getTc().getVista().getManoJugador().remove(mouse.getPanelSeleccionado());
 			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
 			this.mouse.setBocaAbajo(true);
