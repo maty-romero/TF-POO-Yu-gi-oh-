@@ -328,6 +328,8 @@ public class VistaTablero {
 
 	}
 
+	//el parametro de mano no esta de mas ???? 
+	
 	public JPanel agregoCartaMano(JLabel labelCarta, JPanel mano) {
 		JPanel cartaPanel = new JPanel();
 		cartaPanel.setBounds(605, 593, 74, 96);
@@ -340,19 +342,23 @@ public class VistaTablero {
 
 		mano.setFocusable(true);
 		return cartaPanel;
+	}
+
+	public JPanel devuelvoPanelCampo(JLabel labelCarta) {
+
+		JPanel cartaPanel = new JPanel(); 
+		
+		cartaPanel.setBounds(605, 593, 74, 96);
+		cartaPanel.setBackground(new Color(153, 0, 0));
+		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
+		cartaPanel.add(labelCarta);
+		cartaPanel.setFocusable(true);
+		cartaPanel.requestFocus();
+		return cartaPanel;
 
 	}
 
-	public JPanel agregoCartaCampo(JLabel labelCarta) {
-
-		this.cartaCampo.add(imagenCartaCampo1Bot);
-		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(tableroController));
-
-		tablero.getContentPane().add(this.cartaCampo);
-		return this.cartaCampo;
-
-	}
-
+	
 	public void seteoPanelesCampo() {
 
 		JPanel carta1CampoOponente = new JPanel();
@@ -458,7 +464,6 @@ public class VistaTablero {
 			e.printStackTrace();
 		}
 		return jlabel;
-
 	}
 
 	public BufferedImage cambioTamaño(BufferedImage img, int altura, int anchura) {
@@ -639,6 +644,8 @@ public class VistaTablero {
 		return cartaCampo;
 	}
 
+	
+	
 	public JPanel getCarta4CampoBot() {
 		return carta4CampoBot;
 	}
@@ -769,6 +776,10 @@ public class VistaTablero {
 
 	public void setContadorJug(JLabel contadorJug) {
 		this.contadorJug = contadorJug;
+	}
+
+	public String getPathCartaDefault() {
+		return pathCartaDefault;
 	}
 	
 	

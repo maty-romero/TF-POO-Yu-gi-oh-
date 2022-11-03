@@ -14,7 +14,7 @@ public class Batalla {
 	 */
 
 	private Duelista duelistaJugador;
-	private Duelista duelistaOponente; 
+	private Duelista duelistaOponente;
 
 //	  Luego de una Batalla se obtienen los monstruos que muerieron 
 //	  De acuerdo a que duelista pertenece. 

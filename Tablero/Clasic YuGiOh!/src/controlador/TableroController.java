@@ -25,6 +25,8 @@ import vista.VistaTablero;
 public class TableroController {
 	private Modelo modelo;
 	private ControladorProyeccionCartas controladorProyeccionCartas;
+	
+	private ControladorBatalla controladorBatalla; 
 
 	private Duelista duelistaJugador, duelistaOponente;
 	private Batalla batallaJugador, batallaOponente; // para los cambios de turno
@@ -56,6 +58,8 @@ public class TableroController {
 		this.modelo = new Modelo();
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
 
+		this.controladorBatalla = new ControladorBatalla(this);
+		
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("KIRA");
 
@@ -91,6 +95,8 @@ public class TableroController {
 		
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
 
+		
+		
 		try {
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
@@ -114,7 +120,48 @@ public class TableroController {
 //					.add(new JLabel(new ImageIcon(this.vista.rotarImagenGrados(this.vista.getBfimage(), 90))));
 //			this.vista.mostrar();
 		
-		
+			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
+			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
+			JPanel panel1 = new JPanel(); 
+			panel1.add(label1); 
+			
+			//Se agrega al hash 
+			this.campoMonstruosOponente.put(panel1, monstruo1); 
+			//se agrega una carta al campo Monstruo Oponente a la vista 
+			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+			
+			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
+			JLabel label2 = this.getVista().generoImagenCarta(monstruo1); 
+			JPanel panel2 = new JPanel(); 
+			panel2.add(label2);
+			
+			//Se agrega al hash 
+			this.campoMonstruosOponente.put(panel2, monstruo2);
+			//se agrega una carta al campo Monstruo Oponente
+			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+			
+			CartaMonstruo monstruo3 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
+			JLabel label3 = this.getVista().generoImagenCarta(monstruo1); 
+			JPanel panel3 = new JPanel(); 
+			panel3.add(label3);
+			
+			//Se agrega al hash 
+			this.campoMonstruosOponente.put(panel3, monstruo3);
+			//se agrega una carta al campo Monstruo Oponente
+			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel3); 
+			
+			//Se añade los controladores a los paneles de los campos. 
+			this.getVista().getPanelesMonstruosCampoJugador().get(0).addMouseListener(this.controladorBatalla); 
+			this.getVista().getPanelesMonstruosCampoJugador().get(1).addMouseListener(this.controladorBatalla); 
+			this.getVista().getPanelesMonstruosCampoJugador().get(2).addMouseListener(this.controladorBatalla); 
+			
+			this.getVista().getPanelesMonstruosCampoOponente().get(0).addMouseListener((this.controladorBatalla)); 
+			this.getVista().getPanelesMonstruosCampoOponente().get(1).addMouseListener((this.controladorBatalla)); 
+			this.getVista().getPanelesMonstruosCampoOponente().get(2).addMouseListener((this.controladorBatalla)); 
+			
+			System.out.println();
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -192,7 +239,8 @@ public class TableroController {
 		}
 
 	}
-
+	
+	
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 //			cartaPanel.addMouseListener(this.mouse);
@@ -304,13 +352,6 @@ public class TableroController {
 		this.duelistaOponente = duelistaOponente;
 	}
 
-	public VistaTablero getVista() {
-		return vista;
-	}
-
-	public void setVista(VistaTablero vista) {
-		this.vista = vista;
-	}
 	
 	//-------------------
 	
