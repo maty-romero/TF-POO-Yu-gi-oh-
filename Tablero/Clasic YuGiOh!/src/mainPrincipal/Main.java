@@ -17,7 +17,6 @@ public class Main {
          
 		System.out.println(tableroController.getManoMonstruoOponente());
 
-	 
 	
 	}
 

@@ -76,6 +76,8 @@ public class MouseListenerInvocacion implements MouseListener {
 						m2.addActionListener(new ControladorActionListenerInvocacionMonstruo(this.vista, this, tc, key,
 								hashCartas.get(key)));
 						
+						m3.addActionListener(new ControladorBatalla(this.tc));
+						
 						pm.add(m1);
 						pm.add(m2);
 						pm.add(m3);
