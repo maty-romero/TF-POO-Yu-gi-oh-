@@ -343,15 +343,15 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
-	public JPanel agregoCartaCampo(JLabel labelCarta) {
-
-		this.cartaCampo.add(imagenCartaCampo1Bot);
-		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(tableroController));
-
-		tablero.getContentPane().add(this.cartaCampo);
-		return this.cartaCampo;
-
-	}
+//	public JPanel agregoCartaCampo(JLabel labelCarta) {
+//
+//		this.cartaCampo.add(imagenCartaCampo1Bot);
+//		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(tableroController));
+//
+//		tablero.getContentPane().add(this.cartaCampo);
+//		return this.cartaCampo;
+//
+//	}
 
 	public void seteoPanelesCampo() {
 
@@ -664,9 +664,6 @@ public class VistaTablero implements ImageObserver {
 		this.carta2CampoBot = carta2CampoBot;
 	}
 
-	public void setCarta1CampoBot(JPanel carta1Campo_bot) {
-		this.cartaCampo = carta1Campo_bot;
-	}
 
 	public JLabel getImagenCartaCampo1Bot() {
 		return imagenCartaCampo1Bot;
