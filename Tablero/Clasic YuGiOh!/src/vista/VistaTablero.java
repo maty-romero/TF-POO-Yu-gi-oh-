@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class VistaTablero {
+public class VistaTablero implements ImageObserver {
 	// Controlador
 	private TableroController tableroController;
 //tablero
@@ -145,7 +146,7 @@ public class VistaTablero {
 	private ArrayList<JPanel> panelesMonstruosCampoOponente = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesHechizosCampoOponente = new ArrayList<JPanel>();
 
-	public VistaTablero(TableroController tableroController) {
+	public VistaTablero(TableroController tableroController){
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("TABLERO");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -491,7 +492,7 @@ public class VistaTablero {
 
 		at.rotate(rads, x, y);
 		g2d.setTransform(at);
-		g2d.drawImage(img, 0, 0, null);
+		g2d.drawImage(img, 0, 0,this);
 
 		g2d.setColor(Color.RED);
 		g2d.drawRect(0, 0, newAltura - 1, newAnchura - 1);
@@ -518,7 +519,25 @@ public class VistaTablero {
 		return panel;
 
 	}
+	public static BufferedImage toBufferedImage(Image img)
+	{
+	    if (img instanceof BufferedImage)
+	    {
+	        return (BufferedImage) img;
+	    }
 
+	    // Create a buffered image with transparency
+	    BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+	    // Draw the image on to the buffered image
+	    Graphics2D bGr = bimage.createGraphics();
+	    bGr.drawImage(img, 0, 0, null);
+	    bGr.dispose();
+
+	    // Return the buffered image
+	    return bimage;
+	}
+	
 	public JFrame getTablero() {
 		return tablero;
 	}
@@ -777,6 +796,11 @@ public class VistaTablero {
 
 	public void setBfimage(BufferedImage bfimage) {
 		this.bfimage = bfimage;
+	}
+
+	@Override
+	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+		return false;
 	}
 
 }

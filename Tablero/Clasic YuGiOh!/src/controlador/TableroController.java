@@ -100,9 +100,9 @@ public class TableroController {
 			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 
-//			this.vista.getManoJugador()
-//					.add(new JLabel(new ImageIcon(this.vista.rotarImagenGrados(this.vista.getBfimage(), 90))));
-//			this.vista.mostrar();
+			this.vista.getManoJugador()
+					.add(new JLabel(new ImageIcon(this.vista.rotarImagenGrados(this.vista.getBfimage(), 90))));
+			this.vista.mostrar();
 		
 		
 		} catch (InterruptedException e) {
@@ -185,7 +185,6 @@ public class TableroController {
 
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
-//			cartaPanel.addMouseListener(this.mouse);
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
 
 		}

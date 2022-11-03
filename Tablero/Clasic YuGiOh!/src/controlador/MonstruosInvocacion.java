@@ -21,9 +21,11 @@ import vista.VistaTablero;
 
 public class MonstruosInvocacion implements MouseListener {
 	private TableroController tc;
-	private JPanel panelRelacionado;
+	private JPanel panelSeleccionado;
 	private JPopupMenu pm;
-
+	private JPanel panelCartaBocaAbajo;
+	private Boolean bocaAbajo;
+private JLabel label;
 	public MonstruosInvocacion(TableroController tc) {
 		this.tc = tc;
 	}
@@ -43,7 +45,6 @@ public class MonstruosInvocacion implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 
-		this.tc.getVista().getManoBot().setFocusable(true);
 		this.tc.getVista().getManoJugador().setFocusable(true);
 		this.tc.getVista().getManoBot().setFocusable(true);
 
@@ -56,6 +57,7 @@ public class MonstruosInvocacion implements MouseListener {
 		JMenuItem m1 = new JMenuItem("Invocar Ataque");
 		JMenuItem m2 = new JMenuItem("Invocar defensa");
 		JMenuItem m3 = new JMenuItem("ATACAR CAPO");
+		JMenuItem m4 = new JMenuItem("VOLTEAR");
 
 		/*
 		 * Cuando haces el for(jpanel key this.tc.getmanomonstruoJugador.keyset(){
@@ -81,14 +83,19 @@ public class MonstruosInvocacion implements MouseListener {
 		 * nuestra logica nos avisa que estamos haciendo todo bien, pero en realidad
 		 * salió un bug inesperado por no usar la clase mouselistener como se suponia.
 		 */
+		this.setPanelSeleccionado(panel);
 
 		if (this.tc.getManoMonstruoJugador().containsKey(panel)) {
 			pm.add(m1);
 			pm.add(m2);
-			this.setPanelRelacionado(panel);
 			m1.addActionListener(new MenuInvocarAtaqueMonstruo(this));
+			m2.addActionListener(new MenuInvocarDefensaMonstruo(this));
 		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			pm.add(m3);
+		}else if (bocaAbajo) {
+			pm.add(m4);
+			m4.addActionListener(new MenuVoltearMonstruo(this));
+
 		}
 
 		pm.addSeparator();
@@ -109,12 +116,36 @@ public class MonstruosInvocacion implements MouseListener {
 		this.tc = tc;
 	}
 
-	public JPanel getPanelRelacionado() {
-		return panelRelacionado;
+	public JPanel getPanelSeleccionado() {
+		return panelSeleccionado;
 	}
 
-	public void setPanelRelacionado(JPanel panelRelacionado) {
-		this.panelRelacionado = panelRelacionado;
+	public void setPanelSeleccionado(JPanel panelSeleccionado) {
+		this.panelSeleccionado = panelSeleccionado;
+	}
+
+	public JPanel getPanelCartaBocaAbajo() {
+		return panelCartaBocaAbajo;
+	}
+
+	public void setPanelCartaBocaAbajo(JPanel panelCartaBocaAbajo) {
+		this.panelCartaBocaAbajo = panelCartaBocaAbajo;
+	}
+
+	public Boolean getBocaAbajo() {
+		return bocaAbajo;
+	}
+
+	public void setBocaAbajo(Boolean bocaAbajo) {
+		this.bocaAbajo = bocaAbajo;
+	}
+
+	public JLabel getLabel() {
+		return label;
+	}
+
+	public void setLabel(JLabel label) {
+		this.label = label;
 	}
 
 }

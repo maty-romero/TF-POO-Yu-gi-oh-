@@ -24,7 +24,7 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
-					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelRelacionado())
+					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado())
 					.setFocusable(false);
 
 			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
@@ -32,11 +32,11 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			// QUEDAR ABAJO DE LA IMAGEN DEL TABLERO. no le añadas nada al tablero. solo
 			// cambia de lugar lo que ya tiene
 
-			mouse.getPanelRelacionado().setVisible(true);
-			mouse.getPanelRelacionado().setFocusable(true);
-			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelRelacionado(),
-					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelRelacionado()));
-			this.mouse.getPanelRelacionado().setBackground(Color.GREEN);
+			mouse.getPanelSeleccionado().setVisible(true);
+			mouse.getPanelSeleccionado().setFocusable(true);
+			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
+					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
+			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
 			mouse.getTc().getVista().mostrar();
 
 		}
