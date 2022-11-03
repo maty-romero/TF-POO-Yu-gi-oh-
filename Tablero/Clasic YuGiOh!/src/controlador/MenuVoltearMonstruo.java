@@ -42,7 +42,11 @@ public class MenuVoltearMonstruo implements ActionListener {
 			}
 			coincidencia.removeAll();
 
-			// Get the icon
+			// LO SIGUIENTE SIRVE PARA DIBUJAR UNA IMAGEN, PERO YO LA ESTOY DIBUJANDO DENTRO
+			// DE ROTAR IMAGEN, ASÌ QUE NO PUEDO DIBUJARLA DOS VECES. SINO VOY A TENER UNA
+			// IMAGEN CON 2 IMAGENES PINTADAS!!
+
+//			 Get the icon
 //			Icon ico = mouse.getLabel().getIcon();
 //			// Create a buffered image
 //			BufferedImage bimg = new BufferedImage(ico.getIconWidth(), ico.getIconHeight(), BufferedImage.TYPE_INT_RGB);
@@ -52,27 +56,24 @@ public class MenuVoltearMonstruo implements ActionListener {
 //			ico.paintIcon(null, g, 0, 0);
 //			g.dispose();
 
-
 			JLabel label = null;
 			try {
-				BufferedImage original = ImageIO.read(getClass().getResource(mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelCartaBocaAbajo()).getPathImagen()));
-//				original = mouse.getTc().getVista().cambioTamaño(original, 100,280);
-				original=  mouse.getTc().getVista().rotarImagenGrados(original, -90);
+				BufferedImage original = ImageIO.read(getClass().getResource(
+						mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelCartaBocaAbajo()).getPathImagen()));
+				original = mouse.getTc().getVista().cambioTamaño(original, 90, 150);
+
+				original = mouse.getTc().getVista().rotarImagenGrados(original, -90);
 
 				label = new JLabel(new ImageIcon(original));
-            
-		
+
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 
-
-
+			mouse.getPanelCartaBocaAbajo().removeAll();
 			mouse.getPanelCartaBocaAbajo().add(label);
 
-			
 			coincidencia.add(mouse.getPanelCartaBocaAbajo());
-
 
 			coincidencia.setVisible(true);
 			coincidencia.setFocusable(false);
@@ -80,9 +81,6 @@ public class MenuVoltearMonstruo implements ActionListener {
 			mouse.getPanelCartaBocaAbajo().setVisible(true);
 			mouse.getPanelCartaBocaAbajo().setBackground(Color.black);
 			mouse.getPanelCartaBocaAbajo().setFocusable(true);
-
-			// mouse.getPanelCartaBocaAbajo().addMouseListener(new
-			// ControladorProyeccionCartas (this.mouse.getTc()));
 
 			mouse.setBocaAbajo(false);
 			mouse.getTc().getVista().mostrar();

@@ -138,7 +138,6 @@ public class VistaTablero implements ImageObserver {
 	private JPanel cartaDefault;
 	private String pathCartaDefault;
 //
-	private BufferedImage bfimage;
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -449,11 +448,7 @@ public class VistaTablero implements ImageObserver {
 
 			BufferedImage original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
 			original = this.cambioTamaño(original, 155, 90);
-			this.bfimage = original;
 			jlabel = new JLabel(new ImageIcon(original));
-
-			ImageIcon icon = (ImageIcon) jlabel.getIcon();
-			BufferedImage img = (BufferedImage) ((Image) icon.getImage());
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -790,13 +785,7 @@ public class VistaTablero implements ImageObserver {
 		this.pathCartaDefault = pathCartaDefault;
 	}
 
-	public BufferedImage getBfimage() {
-		return bfimage;
-	}
 
-	public void setBfimage(BufferedImage bfimage) {
-		this.bfimage = bfimage;
-	}
 
 	@Override
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {

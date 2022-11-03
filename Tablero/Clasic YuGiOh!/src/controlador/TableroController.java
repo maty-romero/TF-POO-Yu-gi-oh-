@@ -100,8 +100,6 @@ public class TableroController {
 			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 
-			this.vista.getManoJugador()
-					.add(new JLabel(new ImageIcon(this.vista.rotarImagenGrados(this.vista.getBfimage(), 90))));
 			this.vista.mostrar();
 		
 		
