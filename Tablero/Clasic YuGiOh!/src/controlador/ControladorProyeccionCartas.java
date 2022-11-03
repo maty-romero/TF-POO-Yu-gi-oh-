@@ -21,12 +21,11 @@ import modelo.Modelo;
 import vista.VistaTablero;
 
 public class ControladorProyeccionCartas implements MouseListener {
-	private VistaTablero vista;
 	private Modelo modelo;
 	private TableroController tc;
-    private JPanel panelRelacionado;
-	public ControladorProyeccionCartas(VistaTablero vista, TableroController tc) {
-		this.vista = vista;
+	private JPanel panelRelacionado;
+
+	public ControladorProyeccionCartas(TableroController tc) {
 		modelo = new Modelo();
 		this.tc = tc;
 	}
@@ -50,42 +49,48 @@ public class ControladorProyeccionCartas implements MouseListener {
 		{
 			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
 
-			this.vista.getManoBot().setFocusable(true);
-
+			this.tc.getVista().getManoBot().setFocusable(true);
 			hashCartas.putAll(this.tc.getCampoMonstruosJugador());
+			hashCartas.putAll(this.tc.getCampoHechizosJugador());
 			hashCartas.putAll(this.tc.getManoMonstruoOponente());
 			hashCartas.putAll(this.tc.getManoMonstruoJugador());
 			hashCartas.putAll(this.tc.getManoHechizoOponente());
 			hashCartas.putAll(this.tc.getManoHechizoJugador());
 
-			this.vista.getManoJugador().setFocusable(true);
-			this.vista.getManoBot().setFocusable(true);
-			for (Integer i = 0; i < hashCartas.size(); i++) {
+			this.tc.getVista().getManoJugador().setFocusable(true);
+			this.tc.getVista().getManoBot().setFocusable(true);
 
-				for (JPanel key : hashCartas.keySet()) {
-					if (e.getSource() == key) {
-						
-						String stringCarta = hashCartas.get(key).getPathImagen();
-                         
-						java.net.URL urlCarta = getClass().getResource(stringCarta);
-						ImageIcon iconCarta = new ImageIcon(
-								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-						JLabel label = new JLabel(iconCarta);
-						vista.getCartaSeleccionada().removeAll();
-						vista.mostrar();
+			if (hashCartas.containsKey(e.getSource())) {
+				String stringCarta = hashCartas.get(e.getSource()).getPathImagen();
 
-						vista.getCartaSeleccionada().add(label);
-						vista.mostrar();
-						vista.getCartaSeleccionada().setVisible(true);
-						
-					
-					}
+				java.net.URL urlCarta = getClass().getResource(stringCarta);
+				ImageIcon iconCarta = new ImageIcon(
+						new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
+				JLabel label = new JLabel(iconCarta);
+				this.tc.getVista().getCartaSeleccionada().removeAll();
+				this.tc.getVista().mostrar();
 
-				}
+				this.tc.getVista().getCartaSeleccionada().add(label);
+				this.tc.getVista().mostrar();
+				this.tc.getVista().getCartaSeleccionada().setVisible(true);
+
+			} else {
+
+				String stringDefault = this.tc.getVista().getPathCartaDefault();
+
+				java.net.URL urlCartaDefault = getClass().getResource(stringDefault);
+				ImageIcon iconCartaDefault = new ImageIcon(
+						new ImageIcon(urlCartaDefault).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
+				JLabel labelDefault = new JLabel(iconCartaDefault);
+				this.tc.getVista().getCartaSeleccionada().removeAll();
+				this.tc.getVista().mostrar();
+
+				this.tc.getVista().getCartaSeleccionada().add(labelDefault);
+				this.tc.getVista().mostrar();
+				this.tc.getVista().getCartaSeleccionada().setVisible(true);
 
 			}
 		}
-
 	}
 
 	@Override

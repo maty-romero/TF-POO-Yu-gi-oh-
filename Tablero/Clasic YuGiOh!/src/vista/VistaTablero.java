@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.Shape;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,15 +16,20 @@ import javax.print.DocFlavor.URL;
 import javax.swing.*;
 
 import controlador.ControladorProyeccionCartas;
+import controlador.HechizosInvocacion;
 //import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
+import modelo.Carta;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.AffineTransform;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -126,6 +133,11 @@ public class VistaTablero {
 
 //Botones 
 	private JButton btnAtacar;
+//genero panel carta boca abajo default
+	private JPanel cartaDefault;
+	private String pathCartaDefault;
+//
+	private BufferedImage bfimage;
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -148,12 +160,6 @@ public class VistaTablero {
 		ImageIcon icon_URL = new ImageIcon(
 				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
 		tablero.getContentPane().setLayout(null);
-		
-		//Boton atacar
-		btnAtacar = new JButton("ATACAR");
-		btnAtacar.setEnabled(false);
-		btnAtacar.setBounds(910, 479, 89, 23);
-		tablero.getContentPane().add(btnAtacar);
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
@@ -188,9 +194,10 @@ public class VistaTablero {
 		deck_bot.setBounds(10, 10, 74, 96);
 		this.deck_bot.setForeground(new Color(204, 0, 0));
 		this.deck_bot.setBackground(new Color(0, 0, 0));
+		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
 
-		java.net.URL urlDeckBot = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
-																								// al projecto
+		java.net.URL urlDeckBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
+																					// al projecto
 		ImageIcon iconDeckBot = new ImageIcon(
 				new ImageIcon(urlDeckBot).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
 		this.imagen_DeckBot = new JLabel(iconDeckBot);
@@ -203,8 +210,8 @@ public class VistaTablero {
 		cem_bot.setBounds(10, 172, 74, 96);
 		this.cem_bot.setBackground(new Color(0, 0, 0));
 
-		java.net.URL urlCemBot = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
-																								// al projecto
+		java.net.URL urlCemBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
+																				// al projecto
 		ImageIcon IconCemBot = new ImageIcon(
 				new ImageIcon(urlCemBot).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
 		this.imagenCemBot = new JLabel(IconCemBot);
@@ -212,116 +219,14 @@ public class VistaTablero {
 
 		tablero.getContentPane().add(this.cem_bot);
 
-//campo de batalla del bot
-
-//        this.cartaCampo = new JPanel();
-//		cartaCampo.setBounds(226, 249, 135, 96);
-//		this.cartaCampo.setBackground(Color.BLACK);
-//		StringCarta1CampoBot = "/cartas/cambio_de_fidelidad.jpg";
-//		java.net.URL url_cartaCampo1 = getClass().getResource(StringCarta1CampoBot); // imagen local
-//																						// relativa al
-//																						// projecto
-//		ImageIcon iconCampo1_URL = new ImageIcon(
-//				new ImageIcon(url_cartaCampo1).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-//		this.imagenCartaCampo1Bot = new JLabel(iconCampo1_URL);
-//		this.cartaCampo.add(imagenCartaCampo1Bot);
-//
-//		tablero.getContentPane().add(this.cartaCampo);
-//
-//		this.carta2CampoBot = new JPanel();
-//		// this.carta2CampoBot.addMouseListener(new
-//		// ControladorProyeccionCartas(this,tableroController));
-//		carta2CampoBot.setBounds(380, 249, 135, 96);
-//		this.carta2CampoBot.setBackground(Color.BLACK);
-//
-//		StringCarta2CampoBot = "/cartas/dark_magician.jpg";
-//		java.net.URL url_cartaCampo2 = getClass().getResource(StringCarta2CampoBot); // imagen local relativa al
-//																						// projecto
-//		ImageIcon iconCampo2_URL = new ImageIcon(
-//				new ImageIcon(url_cartaCampo2).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-//		this.imagenCartaCampo2Bot = new JLabel(iconCampo2_URL);
-//		this.carta2CampoBot.add(imagenCartaCampo2Bot);
-//
-//		tablero.getContentPane().add(this.carta2CampoBot);
-//
-//		this.carta3CampoBot = new JPanel();
-//		// this.carta3CampoBot.addMouseListener(new
-//		// ControladorProyeccionCartas(this,tableroController));
-//		carta3CampoBot.setBounds(535, 249, 135, 96);
-//		this.carta3CampoBot.setBackground(Color.BLACK);
-//
-//		StringCarta3CampoBot = "/cartas/dragonBlancoOjosAzules.jpg";
-//
-//		java.net.URL url_cartaCampo3 = getClass().getResource(StringCarta3CampoBot); // imagen local relativa al
-//																						// projecto
-//		ImageIcon iconCampo3_URL = new ImageIcon(
-//				new ImageIcon(url_cartaCampo3).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-//		this.imagenCartaCampo3Bot = new JLabel(iconCampo3_URL);
-//		this.carta3CampoBot.add(imagenCartaCampo3Bot);
-//
-//		tablero.getContentPane().add(this.carta3CampoBot);
-//
-//		this.carta4CampoBot = new JPanel();
-//		// this.carta4CampoBot.addMouseListener(new
-//		// ControladorProyeccionCartas(this,tableroController));
-//		carta4CampoBot.setBounds(226, 117, 135, 96);
-//		this.carta4CampoBot.setBackground(Color.BLACK);
-//
-//		StringCarta4CampoBot = "/cartas/dragonBlancoOjosAzules.jpg";
-//
-//		java.net.URL url_cartaCampo4 = getClass().getResource(StringCarta4CampoBot); // imagen local relativa al
-//																						// projecto
-//		ImageIcon iconCampo4_URL = new ImageIcon(
-//				new ImageIcon(url_cartaCampo4).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-//		this.imagenCartaCampo4Bot = new JLabel(iconCampo4_URL);
-//		this.carta4CampoBot.add(imagenCartaCampo4Bot);
-//
-////		tablero.getContentPane().add(this.carta4CampoBot);
-//
-//		this.carta5CampoBot = new JPanel();
-//		// this.carta5CampoBot.addMouseListener(new
-//		// ControladorProyeccionCartas(this,tableroController));
-//		carta5CampoBot.setBounds(380, 117, 135, 96);
-//		this.carta5CampoBot.setBackground(Color.BLACK);
-//
-//		StringCarta5CampoBot = "/cartas/darkMagicianGirl.jpg";
-//
-//		java.net.URL url_cartaCampo5 = getClass().getResource(StringCarta5CampoBot); // imagen local relativa al
-//																						// projecto
-//		ImageIcon iconCampo5_URL = new ImageIcon(
-//				new ImageIcon(url_cartaCampo5).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-//		this.imagenCartaCampo5Bot = new JLabel(iconCampo5_URL);
-//		this.carta5CampoBot.add(imagenCartaCampo5Bot);
-//
-//		tablero.getContentPane().add(this.carta5CampoBot);
-//
-//		StringCarta6CampoBot = "/cartas/dark_magician.jpg";
-//
-//		this.carta6CampoBot = new JPanel();
-//		// this.carta6CampoBot.addMouseListener(new
-//		// ControladorProyeccionCartas(this,tableroController));
-//		carta6CampoBot.setBounds(535, 117, 135, 96);
-//		this.carta6CampoBot.setBackground(Color.BLACK);
-//
-//		java.net.URL url_cartaCampo6 = getClass().getResource(StringCarta6CampoBot); // imagen local relativa al
-//																						// projecto
-//		ImageIcon iconCampo6_URL = new ImageIcon(
-//				new ImageIcon(url_cartaCampo6).getImage().getScaledInstance(150, 90, Image.SCALE_DEFAULT));
-//		this.imagenCartaCampo6Bot = new JLabel(iconCampo6_URL);
-//		this.carta6CampoBot.add(imagenCartaCampo6Bot);
-//
-//		tablero.getContentPane().add(this.carta6CampoBot);
-
-//Cartas de mano del jugador
-
 //deck del jugador
 		this.deck_jug = new JPanel();
 		deck_jug.setBounds(749, 414, 74, 96);
 		this.deck_jug.setForeground(new Color(153, 0, 0));
 		this.deck_jug.setBackground(new Color(102, 102, 0));
 
-		java.net.URL urlDeckJug = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
-																								// al projecto
+		java.net.URL urlDeckJug = getClass().getResource(this.pathCartaDefault); // imagen local relativa
+																					// al projecto
 		ImageIcon iconDeckJug = new ImageIcon(
 				new ImageIcon(urlDeckJug).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
 		JLabel imagen_DeckJug = new JLabel(iconDeckJug);
@@ -335,8 +240,8 @@ public class VistaTablero {
 		this.cem_jug.setForeground(new Color(0, 0, 0));
 		this.cem_jug.setBackground(new Color(153, 102, 0));
 
-		java.net.URL urlCemJug = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local relativa
-																								// al projecto
+		java.net.URL urlCemJug = getClass().getResource(this.pathCartaDefault); // imagen local relativa
+																				// al projecto
 		ImageIcon iconCemJug = new ImageIcon(
 				new ImageIcon(urlCemJug).getImage().getScaledInstance(70, 100, Image.SCALE_DEFAULT));
 		JLabel imagenCemJug = new JLabel(iconCemJug);
@@ -353,12 +258,12 @@ public class VistaTablero {
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
 
-		java.net.URL url_descCarta = getClass().getResource("/boca_abajo_default/boca_abajo.jpg"); // imagen local
-																									// relativa al
-		// projecto
-		ImageIcon iconDescCart = new ImageIcon(
-				new ImageIcon(url_descCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-		this.imagenDescCarta = new JLabel(iconDescCart);
+//		java.net.URL url_descCarta = getClass().getResource(this.pathCartaDefault); // imagen local
+//																									// relativa al
+//		// projecto
+//		ImageIcon iconDescCart = new ImageIcon(
+//				new ImageIcon(url_descCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
+//		this.imagenDescCarta = new JLabel(iconDescCart);
 
 		// this.cartaSeleccionada.add(imagenDescCarta);
 
@@ -419,6 +324,7 @@ public class VistaTablero {
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
+		//
 
 	}
 
@@ -426,7 +332,7 @@ public class VistaTablero {
 		JPanel cartaPanel = new JPanel();
 		cartaPanel.setBounds(605, 593, 74, 96);
 		cartaPanel.setBackground(new Color(153, 0, 0));
-		cartaPanel.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
 		cartaPanel.add(labelCarta);
 		cartaPanel.setFocusable(true);
 		cartaPanel.requestFocus();
@@ -440,7 +346,7 @@ public class VistaTablero {
 	public JPanel agregoCartaCampo(JLabel labelCarta) {
 
 		this.cartaCampo.add(imagenCartaCampo1Bot);
-		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(tableroController));
 
 		tablero.getContentPane().add(this.cartaCampo);
 		return this.cartaCampo;
@@ -452,19 +358,17 @@ public class VistaTablero {
 		JPanel carta1CampoOponente = new JPanel();
 		carta1CampoOponente.setBounds(226, 249, 135, 96);
 		carta1CampoOponente.setBackground(Color.BLACK);
-		carta1CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta1CampoOponente);
 
 		JPanel carta2CampoOponente = new JPanel();
 		carta2CampoOponente.setBounds(380, 249, 135, 96);
 		carta2CampoOponente.setBackground(Color.BLACK);
-		carta2CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta2CampoOponente);
 
 		JPanel carta3CampoOponente = new JPanel();
 		carta3CampoOponente.setBounds(535, 249, 135, 96);
 		carta3CampoOponente.setBackground(Color.BLACK);
-		carta3CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+
 		tablero.getContentPane().add(carta3CampoOponente);
 		this.panelesMonstruosCampoOponente.add(carta1CampoOponente);
 		this.panelesMonstruosCampoOponente.add(carta2CampoOponente);
@@ -473,19 +377,18 @@ public class VistaTablero {
 		JPanel carta4CampoOponente = new JPanel();
 		carta4CampoOponente.setBounds(226, 117, 135, 96);
 		carta4CampoOponente.setBackground(Color.BLACK);
-		carta4CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 		tablero.getContentPane().add(carta4CampoOponente);
 
 		JPanel carta5CampoOponente = new JPanel();
 		carta5CampoOponente.setBounds(380, 117, 135, 96);
 		carta5CampoOponente.setBackground(Color.BLACK);
-		carta5CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+
 		tablero.getContentPane().add(carta5CampoOponente);
 
 		JPanel carta6CampoOponente = new JPanel();
 		carta6CampoOponente.setBounds(535, 117, 135, 96);
 		carta6CampoOponente.setBackground(Color.BLACK);
-		carta6CampoOponente.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
+
 		tablero.getContentPane().add(carta6CampoOponente);
 		this.panelesHechizosCampoOponente.add(carta4CampoOponente);
 		this.panelesHechizosCampoOponente.add(carta5CampoOponente);
@@ -496,23 +399,17 @@ public class VistaTablero {
 		carta1CampoJug.setBounds(226, 385, 135, 96);
 		this.carta1CampoJug.setBackground(Color.BLACK);
 
-
-		this.carta1CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
-
 		tablero.getContentPane().add(this.carta1CampoJug);
-/////
 
 		this.carta2CampoJug = new JPanel();
 		carta2CampoJug.setBounds(380, 385, 135, 96);
 		this.carta2CampoJug.setBackground(Color.BLACK);
-		this.carta2CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta2CampoJug);
 
 		this.carta3CampoJug = new JPanel();
 		carta3CampoJug.setBounds(535, 385, 135, 96);
 		this.carta3CampoJug.setBackground(Color.BLACK);
-		this.carta3CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta3CampoJug);
 		this.panelesMonstruosCampoJugador.add(this.carta1CampoJug);
@@ -522,27 +419,103 @@ public class VistaTablero {
 		this.carta4CampoJug = new JPanel();
 		carta4CampoJug.setBounds(226, 492, 135, 96);
 		this.carta4CampoJug.setBackground(Color.BLACK);
-		this.carta4CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta4CampoJug);
 
 		this.carta5CampoJug = new JPanel();
 		this.carta5CampoJug.setBounds(380, 492, 135, 96);
 		this.carta5CampoJug.setBackground(Color.BLACK);
-		this.carta5CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta5CampoJug);
 
 		this.carta6CampoJug = new JPanel();
 		carta6CampoJug.setBounds(535, 492, 135, 96);
 		this.carta6CampoJug.setBackground(Color.BLACK);
-		this.carta6CampoJug.addMouseListener(new ControladorProyeccionCartas(this, tableroController));
 
 		tablero.getContentPane().add(this.carta6CampoJug);
-		this.panelesMonstruosCampoJugador.add(this.carta4CampoJug);
-		this.panelesMonstruosCampoJugador.add(this.carta5CampoJug);
-		this.panelesMonstruosCampoJugador.add(this.carta6CampoJug);
+		this.panelesHechizosCampoJugador.add(this.carta4CampoJug);
+		this.panelesHechizosCampoJugador.add(this.carta5CampoJug);
+		this.panelesHechizosCampoJugador.add(this.carta6CampoJug);
 
+	}
+
+	// Devuelvo la imagen de la carta, gracias a que el objeto carta tiene una ruta
+	// de archivo(pathImagen)
+	public JLabel generoImagenCarta(Carta carta) {
+
+		JLabel jlabel = null;
+		try {
+
+			BufferedImage original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
+			original = this.cambioTamaño(original, 155, 90);
+			this.bfimage = original;
+			jlabel = new JLabel(new ImageIcon(original));
+
+			ImageIcon icon = (ImageIcon) jlabel.getIcon();
+			BufferedImage img = (BufferedImage) ((Image) icon.getImage());
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return jlabel;
+
+	}
+
+	public BufferedImage cambioTamaño(BufferedImage img, int altura, int anchura) {
+		Image tmp = img.getScaledInstance(altura, anchura, Image.SCALE_SMOOTH);
+		BufferedImage dimg = new BufferedImage(altura, anchura, BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D g2d = dimg.createGraphics();
+		g2d.drawImage(tmp, 0, 0, null);
+		g2d.dispose();
+		g2d.rotate(190, 10, 20);
+
+		return dimg;
+	}
+
+	public BufferedImage rotarImagenGrados(BufferedImage img, double ang) {
+		double rads = Math.toRadians(ang);
+		double sin = Math.abs(Math.sin(rads)), cos = Math.abs(Math.cos(rads));
+		int w = img.getWidth();
+		int h = img.getHeight();
+		int newAltura = (int) Math.floor(w * cos + h * sin);
+		int newAnchura = (int) Math.floor(h * cos + w * sin);
+
+		BufferedImage rotada = new BufferedImage(newAltura, newAnchura, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = rotada.createGraphics();
+		AffineTransform at = new AffineTransform();
+		at.translate((newAltura - w) / 2, (newAnchura - h) / 2);
+
+		int x = w / 2;
+		int y = h / 2;
+
+		at.rotate(rads, x, y);
+		g2d.setTransform(at);
+		g2d.drawImage(img, 0, 0, null);
+
+		g2d.setColor(Color.RED);
+		g2d.drawRect(0, 0, newAltura - 1, newAnchura - 1);
+		g2d.dispose();
+
+		return rotada;
+	}
+
+	public JPanel generoBocaAbajoDefault() {
+		JPanel panel = new JPanel();
+
+		panel = new JPanel();
+		panel.setForeground(new Color(153, 0, 0));
+		panel.setBackground(new Color(102, 102, 0));
+		java.net.URL url = getClass().getResource(this.pathCartaDefault); // imagen local relativa
+																			// al projecto
+		ImageIcon icon = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(120, 100, Image.SCALE_DEFAULT));
+		JLabel img = new JLabel(icon);
+		panel.add(img);
+		panel.addMouseListener(new ControladorProyeccionCartas(tableroController));
+
+		tablero.getContentPane().add(panel);
+
+		return panel;
 
 	}
 

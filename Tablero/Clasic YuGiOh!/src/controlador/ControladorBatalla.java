@@ -40,6 +40,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	public void mouseClicked(MouseEvent e) {
 		this.panelMonstruoObjetivo = (JPanel) e.getSource(); //panel que se selecciono 
 		
+
 		this.monstruoObjetivo = this.tc.getManoMonstruoOponente().get(this.panelMonstruoObjetivo); 
 		
 		Batalla(); 
@@ -49,6 +50,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		this.panelMonstruoAtacante = (JPanel) e.getSource(); //panel que se apunta al monstruo Atacante
+
 		
 		this.monstruoAtacante = this.tc.getCampoMonstruosJugador().get(this.panelMonstruoAtacante); //obtengo el monstruo que coincida con el campo del Jugador
 	}
