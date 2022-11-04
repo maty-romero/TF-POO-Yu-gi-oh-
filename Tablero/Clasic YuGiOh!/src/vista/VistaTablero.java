@@ -775,6 +775,12 @@ public class VistaTablero implements ImageObserver {
 	public String getPathCartaDefault() {
 		return pathCartaDefault;
 	}
+
+	@Override
+	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 	

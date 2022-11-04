@@ -118,6 +118,9 @@ public class TableroController {
 
 			this.vista.mostrar();
 		
+			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+			
+			
 			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
 			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
 			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
@@ -159,6 +162,9 @@ public class TableroController {
 			this.getVista().getPanelesMonstruosCampoOponente().get(2).addMouseListener((this.controladorBatalla)); 
 			
 			System.out.println();
+			
+			
+			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
