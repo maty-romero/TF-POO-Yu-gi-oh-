@@ -40,6 +40,8 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	public void mouseClicked(MouseEvent e) {
 		JPanel panel = (JPanel) e.getSource();
 		
+		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - ACTIVADO");
+		
 		if(this.tc.getCampoMonstruosOponente().containsKey(panel)) {
 			
 			System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
@@ -58,6 +60,8 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	@Override //seleccion de monstruo Atacante (Jugador) 
 	public void mouseEntered(MouseEvent e) {
 		JPanel panel = (JPanel) e.getSource();
+		
+		System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - ACTIVADO");
 		
 		if(this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			
