@@ -41,13 +41,14 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 		JPanel panel = (JPanel) e.getSource();
 		
 		if(this.tc.getCampoMonstruosOponente().containsKey(panel)) {
+			
+			System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
+			
 			this.panelMonstruoObjetivo = panel; //panel que se selecciono 
 
 			this.monstruoObjetivo = this.tc.getManoMonstruoOponente().get(this.panelMonstruoObjetivo); 
 			
-			System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
-			
-			//si la carta estaboca abajo, se voltea sin rotar --> AGREGAR
+			//si la carta estaboca abajo, se voltea sin rotar --> AGREGAR *******
 			
 			Batalla(); 
 			aplicarResultadoBatalla(); 
@@ -60,11 +61,12 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 		
 		if(this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			
+			System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - SELECCION");
+			
 			this.panelMonstruoAtacante = panel; //panel que se apunta al monstruo Atacante
 
 			this.monstruoAtacante = this.tc.getCampoMonstruosJugador().get(this.panelMonstruoAtacante); //obtengo el monstruo que coincida con el campo del Jugador
 			
-			System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - SELECCION");
 //			System.out.println("Monstruo atacante: " + this.monstruoAtacante.getNombre());
 		}
 	}
