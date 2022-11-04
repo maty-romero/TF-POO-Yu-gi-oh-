@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.print.DocFlavor.URL;
 import javax.swing.*;
 
+import controlador.ControladorBatalla;
 import controlador.ControladorProyeccionCartas;
 import controlador.HechizosInvocacion;
 //import controlador.ControladorProyeccionCartas;
@@ -351,6 +352,7 @@ public class VistaTablero implements ImageObserver {
 		cartaPanel.setBounds(605, 593, 74, 96);
 		cartaPanel.setBackground(new Color(153, 0, 0));
 		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
+		cartaPanel.addMouseListener(new ControladorBatalla(tableroController));
 		cartaPanel.add(labelCarta);
 		cartaPanel.setFocusable(true);
 		cartaPanel.requestFocus();
