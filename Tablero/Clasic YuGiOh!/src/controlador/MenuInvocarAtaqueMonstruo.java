@@ -23,9 +23,8 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
-			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
-					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado())
-					.setFocusable(false);
+			
+			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador().get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado()).setFocusable(false);
 
 			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
 			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A
@@ -34,8 +33,11 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 
 			mouse.getPanelSeleccionado().setVisible(true);
 			mouse.getPanelSeleccionado().setFocusable(true);
-			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
-					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
+			
+			mouse.getPanelSeleccionado().addMouseListener(new ControladorBatalla(mouse.getTc())); //SE AÑADE EL CONTROLADOR BATALLA A LA CARTA INVOCADA
+			
+			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(), this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado() ) );
+			
 			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
 			mouse.getTc().getVista().mostrar();
 

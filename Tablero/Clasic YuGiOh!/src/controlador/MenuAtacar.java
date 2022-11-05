@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -22,37 +23,24 @@ public class MenuAtacar implements MouseListener{
 		
 		JPanel panel = (JPanel) e.getSource();
 		
-		pm = new JPopupMenu();
-		
 		if(this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			
-			this.setPanelMonstruoSeleccionado(panel);
+			pm = new JPopupMenu();
+			
+//			this.setPanelMonstruoSeleccionado(panel);
 			JMenuItem m1 = new JMenuItem("ATACAR");
 			m1.addActionListener(new ControladorBatalla(this.tc));
 			
 			pm.add(m1);
 			
 		}
+		
+		pm.addSeparator();
+		pm.setBackground(Color.CYAN);
+		panel.setComponentPopupMenu(pm);
 			
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

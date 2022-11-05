@@ -48,6 +48,8 @@ public class TableroController {
 	private VistaTablero vista;
 	private JPopupMenu pm;
 	private MouseListener mouse;
+	
+//	private MouseListener mouseBatalla; 
 
 	public TableroController() {
 
@@ -58,7 +60,9 @@ public class TableroController {
 		this.modelo = new Modelo();
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
 
-		this.controladorBatalla = new ControladorBatalla(this);
+//		this.controladorBatalla = new ControladorBatalla(this);
+		
+//		this.mouseBatalla = new MenuAtacar(this); 
 		
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("KIRA");
@@ -121,6 +125,8 @@ public class TableroController {
 			
 			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
 			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
+			monstruo1.setPosicionAtaque(true); 
+			
 			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
 			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
 		
@@ -128,7 +134,8 @@ public class TableroController {
 			this.campoMonstruosOponente.put(panel1, monstruo1); 
 //			//se agrega una carta al campo Monstruo Oponente a la vista 
 			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
-			this.getVista().getPanelesMonstruosCampoOponente().get(0).setFocusable(true); 
+			
+//			this.getVista().getPanelesMonstruosCampoOponente().get(0).setFocusable(true); 
 			
 //			//Se añade los controladores a los paneles de los campos. 
 //			this.getVista().getPanelesMonstruosCampoJugador().get(0).addMouseListener(this.controladorBatalla); 
@@ -143,6 +150,10 @@ public class TableroController {
 			
 			this.aniadoControladorBatallaMonstruos();  
 			
+			this.aniadoMouseListenerMonstruo(this.campoMonstruosJugador);
+			
+//			this.anidadoMouseListenerBatalla(this.campoMonstruosJugador); 
+			
 			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
 			this.vista.mostrar();
@@ -154,15 +165,13 @@ public class TableroController {
 		}
 	}
 
-	public void aniadoControladorBatallaMonstruos() {
-		for (JPanel cartaPanel : this.getVista().getPanelesMonstruosCampoJugador()) {
-			cartaPanel.addMouseListener(this.controladorBatalla);
-		}
-		
+	private void aniadoControladorBatallaMonstruos() {
+//		for (JPanel cartaPanel : this.getVista().getPanelesMonstruosCampoJugador()) {
+//			cartaPanel.addMouseListener(this.controladorBatalla);
+//		}
+		System.out.println("Anidado de Controlador Batalla");
 		for (JPanel cartaPanel : this.getCampoMonstruosJugador().keySet()) {
-			cartaPanel.addMouseListener(this.controladorBatalla);
-			cartaPanel.setFocusable(true);
-
+			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
 		}
 		
 	}
@@ -239,6 +248,14 @@ public class TableroController {
 
 		}
 
+	}
+	
+	//PRUEBAA ***************** SE añade el menu atacar a las cartas
+	public void anidadoMouseListenerBatalla(HashMap<JPanel, CartaMonstruo> hash) {
+		for (JPanel cartaPanel : hash.keySet()) {
+			cartaPanel.addMouseListener(new MenuAtacar(this));
+
+		}
 	}
 	
 	

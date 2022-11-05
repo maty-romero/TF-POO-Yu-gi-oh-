@@ -40,9 +40,13 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	
 	@Override //seleccion de monstruo Objetivo (Bot)
 	public void mouseClicked(MouseEvent e) {
+		
+		
 		JPanel panel = (JPanel) e.getSource();
 		
 		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - ACTIVADO");
+		
+		System.out.println(e.getSource().getClass());
 		
 		if(this.tc.getCampoMonstruosOponente().containsKey(panel)) {
 			
@@ -52,7 +56,9 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 
 			this.monstruoObjetivo = this.tc.getManoMonstruoOponente().get(this.panelMonstruoObjetivo); 
 			
-			//si la carta estaboca abajo, se voltea sin rotar --> AGREGAR ***********************************
+			System.out.println("Monstruo atacante: " + this.monstruoObjetivo.toString());
+			
+			//si la carta esta boca abajo, se voltea sin rotar --> AGREGAR ***********************************
 			
 			Batalla(); 
 			aplicarResultadoBatalla(); 
@@ -61,9 +67,13 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	
 	@Override //seleccion de monstruo Atacante (Jugador) 
 	public void mouseEntered(MouseEvent e) {
+		
 		JPanel panel = (JPanel) e.getSource();
 		
+		
 		System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - ACTIVADO");
+		
+		System.out.println(e.getSource().getClass()); 
 		
 		if(this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			
@@ -73,7 +83,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 
 			this.monstruoAtacante = this.tc.getCampoMonstruosJugador().get(this.panelMonstruoAtacante); //obtengo el monstruo que coincida con el campo del Jugador
 			
-//			System.out.println("Monstruo atacante: " + this.monstruoAtacante.getNombre());
+			System.out.println("Monstruo atacante: " + this.monstruoAtacante.toString());
 		}
 	}
 	
