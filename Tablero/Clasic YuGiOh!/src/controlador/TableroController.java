@@ -104,7 +104,7 @@ public class TableroController {
 			this.setManoMonstruoJugador(this.envioImagenesManoMonstruoVista(
 					duelistaJugador.getMano().getManoMonstruos(), this.vista.getManoJugador()));
 
-			// setteo monstruos usando HashMap
+			// setteo hechizos usando HashMap
 			this.setManoHechizoOponente(this.envioImagenesManoHechizoVista(duelistaOponente.getMano().getManoHechizos(),
 					this.vista.getManoBot()));
 			this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(duelistaJugador.getMano().getManoHechizos(),
