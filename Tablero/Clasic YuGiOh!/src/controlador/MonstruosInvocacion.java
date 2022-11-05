@@ -45,8 +45,8 @@ public class MonstruosInvocacion implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
-		this.tc.getVista().getManoJugador().setFocusable(true);
+		//Grids Layouts
+		this.tc.getVista().getManoJugador().setFocusable(true);  
 		this.tc.getVista().getManoBot().setFocusable(true);
 
 		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
