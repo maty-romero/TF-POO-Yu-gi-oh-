@@ -59,10 +59,6 @@ public class TableroController {
 		mouse = new MonstruosInvocacion(this);
 		this.modelo = new Modelo();
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
-
-//		this.controladorBatalla = new ControladorBatalla(this);
-		
-//		this.mouseBatalla = new MenuAtacar(this); 
 		
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("KIRA");
@@ -124,7 +120,7 @@ public class TableroController {
 			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
 			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 50000, 60000); 
+			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 5000, 6000); 
 			monstruo1.setPosicionAtaque(true); 
 			
 			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
@@ -135,28 +131,19 @@ public class TableroController {
 //			//se agrega una carta al campo Monstruo Oponente a la vista 
 			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
 			
-//			this.getVista().getPanelesMonstruosCampoOponente().get(0).setFocusable(true); 
-			
-//			//Se añade los controladores a los paneles de los campos. 
-//			this.getVista().getPanelesMonstruosCampoJugador().get(0).addMouseListener(this.controladorBatalla); 
-//			this.getVista().getPanelesMonstruosCampoJugador().get(1).addMouseListener(this.controladorBatalla); 
-//			this.getVista().getPanelesMonstruosCampoJugador().get(2).addMouseListener(this.controladorBatalla); 
-//			
-//			this.getVista().getPanelesMonstruosCampoOponente().get(0).addMouseListener((this.controladorBatalla)); 
-//			this.getVista().getPanelesMonstruosCampoOponente().get(1).addMouseListener((this.controladorBatalla)); 
-//			this.getVista().getPanelesMonstruosCampoOponente().get(2).addMouseListener((this.controladorBatalla)); 
-			
 			System.out.println();
 			
-			this.aniadoControladorBatallaMonstruos();  
-			
-			this.aniadoMouseListenerMonstruo(this.campoMonstruosJugador);
+//			this.aniadoMouseListenerMonstruo(this.campoMonstruosJugador);
 			
 //			this.anidadoMouseListenerBatalla(this.campoMonstruosJugador); 
 			
 			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
+			this.vista.setContadorJug(new JLabel("5000")); 
+			
 			this.vista.mostrar();
+			
+			
 			
 			System.out.println("Size hash campo monstruos Oponente " + this.campoMonstruosOponente.size());
 			
@@ -165,18 +152,7 @@ public class TableroController {
 		}
 	}
 
-	private void aniadoControladorBatallaMonstruos() {
-//		for (JPanel cartaPanel : this.getVista().getPanelesMonstruosCampoJugador()) {
-//			cartaPanel.addMouseListener(this.controladorBatalla);
-//		}
-		System.out.println("Anidado de Controlador Batalla");
-		for (JPanel cartaPanel : this.getCampoMonstruosJugador().keySet()) {
-			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
-		}
-		
-	}
-	
-	
+
 	/*
 	 * traigo las cartas cargadas con informacion desde base de datos, y las asocio
 	 * con un panel que creo a partir traer una imagen desde el modelo y cargar esa
@@ -250,13 +226,13 @@ public class TableroController {
 
 	}
 	
-	//PRUEBAA ***************** SE añade el menu atacar a las cartas
-	public void anidadoMouseListenerBatalla(HashMap<JPanel, CartaMonstruo> hash) {
-		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new MenuAtacar(this));
-
-		}
-	}
+//	//PRUEBAA ***************** SE añade el menu atacar a las cartas
+//	public void anidadoMouseListenerBatalla(HashMap<JPanel, CartaMonstruo> hash) {
+//		for (JPanel cartaPanel : hash.keySet()) {
+//			cartaPanel.addMouseListener(new MenuAtacar(this));
+//
+//		}
+//	}
 	
 	
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {

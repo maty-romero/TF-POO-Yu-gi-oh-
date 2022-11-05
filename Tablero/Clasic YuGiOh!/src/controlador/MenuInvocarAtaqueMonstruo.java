@@ -34,7 +34,7 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			mouse.getPanelSeleccionado().setVisible(true);
 			mouse.getPanelSeleccionado().setFocusable(true);
 			
-			mouse.getPanelSeleccionado().addMouseListener(new ControladorBatalla(mouse.getTc())); //SE AÑADE EL CONTROLADOR BATALLA A LA CARTA INVOCADA
+//			mouse.getPanelSeleccionado().addMouseListener(new ControladorBatalla(mouse.getTc())); //SE AÑADE EL CONTROLADOR BATALLA A LA CARTA INVOCADA
 			
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(), this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado() ) );
 			

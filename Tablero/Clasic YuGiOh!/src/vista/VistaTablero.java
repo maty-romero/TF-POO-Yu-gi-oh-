@@ -324,7 +324,6 @@ public class VistaTablero implements ImageObserver {
 		cartaPanel.setBounds(605, 593, 74, 96);
 		cartaPanel.setBackground(new Color(153, 0, 0));
 		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
-		cartaPanel.addMouseListener(new ControladorBatalla(tableroController));
 		cartaPanel.add(labelCarta);
 		cartaPanel.setFocusable(true);
 		cartaPanel.requestFocus();
@@ -494,6 +493,16 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
+	public void setearVidaDuelistaJugador(Integer vida) {
+		this.contadorBot = new JLabel(String.valueOf(vida)); 
+//		contadorBot.setBounds(1053, 10, 200, 57);
+//		contadorBot.setFont(new Font("Tahoma", Font.PLAIN, 30));
+//		contadorBot.setForeground(new Color(0, 0, 204));
+//		this.contadorBot.setBackground(new Color(0, 0, 153));
+		tablero.getContentPane().add(this.contadorBot);
+	}
+	
+	
 	
 	public JFrame getTablero() {
 		return tablero;

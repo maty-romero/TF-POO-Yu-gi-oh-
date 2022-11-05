@@ -92,7 +92,7 @@ public class MonstruosInvocacion implements MouseListener {
 			m1.addActionListener(new MenuInvocarAtaqueMonstruo(this));
 		} 
 		if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
-			m3.addActionListener(new ControladorBatalla(this.tc));
+			m3.addActionListener(new ControladorBatalla(this));
 			pm.add(m3);
 		}
 //		if (bocaAbajo) {
