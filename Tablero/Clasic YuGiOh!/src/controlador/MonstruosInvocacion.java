@@ -25,7 +25,8 @@ public class MonstruosInvocacion implements MouseListener {
 	private JPopupMenu pm;
 	private JPanel panelCartaBocaAbajo;
 	private Boolean bocaAbajo;
-private JLabel label;
+	private JLabel label;
+	
 	public MonstruosInvocacion(TableroController tc) {
 		this.tc = tc;
 	}

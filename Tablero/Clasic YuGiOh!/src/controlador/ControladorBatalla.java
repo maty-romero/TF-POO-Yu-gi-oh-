@@ -29,6 +29,8 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	private TableroController tc;
 	
 	//Se obtienen objetos y Paneles por separado con los mouseListener 
+	//monstruoAtacante --> Del jugador 
+	//monstruoObjetivo --> Del bot 
 	private CartaMonstruo monstruoAtacante, monstruoObjetivo; 
 	private JPanel panelMonstruoAtacante, panelMonstruoObjetivo;  
 	
@@ -50,7 +52,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 
 			this.monstruoObjetivo = this.tc.getManoMonstruoOponente().get(this.panelMonstruoObjetivo); 
 			
-			//si la carta estaboca abajo, se voltea sin rotar --> AGREGAR *******
+			//si la carta estaboca abajo, se voltea sin rotar --> AGREGAR ***********************************
 			
 			Batalla(); 
 			aplicarResultadoBatalla(); 
@@ -65,7 +67,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 		
 		if(this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			
-			System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - SELECCION");
+			System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - SELECCION CARTA ATACANTE");
 			
 			this.panelMonstruoAtacante = panel; //panel que se apunta al monstruo Atacante
 
@@ -80,6 +82,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 		//si no tiene monstruos el Bot --> AtaqueDirecto 
 		if(this.tc.getCampoMonstruosOponente().size() == 0) {
 			this.tc.getBatallaJugador().ataqueDirecto(this.monstruoAtacante);
+			
 		}else {
 			tc.getBatallaJugador().atacar(this.monstruoAtacante, this.monstruoObjetivo); 
 		}
