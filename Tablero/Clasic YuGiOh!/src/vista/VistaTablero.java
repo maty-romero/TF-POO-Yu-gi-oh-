@@ -324,7 +324,6 @@ public class VistaTablero implements ImageObserver {
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
-		//
 
 	}
 
@@ -343,15 +342,6 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
-//	public JPanel agregoCartaCampo(JLabel labelCarta) {
-//
-//		this.cartaCampo.add(imagenCartaCampo1Bot);
-//		this.cartaCampo.addMouseListener(new ControladorProyeccionCartas(tableroController));
-//
-//		tablero.getContentPane().add(this.cartaCampo);
-//		return this.cartaCampo;
-//
-//	}
 
 	public void seteoPanelesCampo() {
 
