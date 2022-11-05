@@ -94,6 +94,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	/*
 	 * Verifica si mueriron cartas, para eliminar paneles del tablero Actualiza la
 	 * vida de los duelistas en la vista.
+	 * 
+	 * Tanto la actualizacion de la vida, como el remover paneles de monstruos muertos no Funciona
 	 */
 
 	public void aplicarResultadoBatalla() {
