@@ -24,7 +24,8 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
 			
-			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador().get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado()).setFocusable(false);
+			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador().get(this.mouse.getTc().getCampoMonstruosJugador().size())
+				.add(mouse.getPanelSeleccionado()).setFocusable(false);
 
 			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
 			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A

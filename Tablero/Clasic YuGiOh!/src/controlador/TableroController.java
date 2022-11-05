@@ -131,6 +131,19 @@ public class TableroController {
 			//se agrega una carta al campo Monstruo Oponente a la vista 
 			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
 			
+			
+			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Fish_02.jpg", 5000, 6000); 
+			monstruo2.setPosicionAtaque(false); 
+			
+			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
+			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
+		
+			//Se agrega al hash 
+			this.campoMonstruosOponente.put(panel2, monstruo2); 
+			//se agrega una carta al campo Monstruo Oponente a la vista 
+			this.getVista().getPanelesMonstruosCampoOponente().get(1).add(panel2); 
+			
 			System.out.println();
 			
 			
@@ -220,14 +233,6 @@ public class TableroController {
 		}
 
 	}
-	
-//	//PRUEBAA ***************** SE añade el menu atacar a las cartas
-//	public void anidadoMouseListenerBatalla(HashMap<JPanel, CartaMonstruo> hash) {
-//		for (JPanel cartaPanel : hash.keySet()) {
-//			cartaPanel.addMouseListener(new MenuAtacar(this));
-//
-//		}
-//	}
 	
 	
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
