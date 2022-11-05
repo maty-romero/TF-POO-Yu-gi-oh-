@@ -35,7 +35,7 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 	private JPanel panelMonstruoAtacante, panelMonstruoObjetivo;  
 	
 	public ControladorBatalla(TableroController tableroControler) {
-		this.tc = tableroControler;
+		this.tc = tableroControler; 
 	}
 	
 	@Override //seleccion de monstruo Objetivo (Bot)
@@ -53,10 +53,11 @@ public class ControladorBatalla implements MouseListener, ActionListener{
 			System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
 			
 			this.panelMonstruoObjetivo = panel; //panel que se selecciono 
-
-			this.monstruoObjetivo = this.tc.getManoMonstruoOponente().get(this.panelMonstruoObjetivo); 
+			System.out.println(panel);
 			
-			System.out.println("Monstruo atacante: " + this.monstruoObjetivo.toString());
+			this.monstruoObjetivo = this.tc.getCampoMonstruosOponente().get(panel); 
+			
+			System.out.println("Monstruo objetivo: " + this.monstruoObjetivo.toString());
 			
 			//si la carta esta boca abajo, se voltea sin rotar --> AGREGAR ***********************************
 			
