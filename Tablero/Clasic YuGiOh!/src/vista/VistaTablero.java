@@ -121,7 +121,7 @@ public class VistaTablero implements ImageObserver {
 	private JLabel imagenDescCarta;
 	private JPanel descCartaSeleccionada;
 	private JLabel descCarta;
-//Contador de vida del bot
+//Contador de vida del bot y Jugador
 
 	private JLabel contadorBot;
 	private JLabel contadorJug;
@@ -327,6 +327,8 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
+	//el parametro de mano no esta de mas ???? 
+	
 	public JPanel agregoCartaMano(JLabel labelCarta, JPanel mano) {
 		JPanel cartaPanel = new JPanel();
 		cartaPanel.setBounds(605, 593, 74, 96);
@@ -339,10 +341,23 @@ public class VistaTablero implements ImageObserver {
 
 		mano.setFocusable(true);
 		return cartaPanel;
+	}
+
+	public JPanel devuelvoPanelCampo(JLabel labelCarta) {
+
+		JPanel cartaPanel = new JPanel(); 
+		
+		cartaPanel.setBounds(605, 593, 74, 96);
+		cartaPanel.setBackground(new Color(153, 0, 0));
+		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
+		cartaPanel.add(labelCarta);
+		cartaPanel.setFocusable(true);
+		cartaPanel.requestFocus();
+		return cartaPanel;
 
 	}
 
-
+	
 	public void seteoPanelesCampo() {
 
 		JPanel carta1CampoOponente = new JPanel();
@@ -444,7 +459,6 @@ public class VistaTablero implements ImageObserver {
 			e.printStackTrace();
 		}
 		return jlabel;
-
 	}
 
 	public BufferedImage cambioTamaño(BufferedImage img, int altura, int anchura) {
@@ -626,6 +640,8 @@ public class VistaTablero implements ImageObserver {
 		return cartaCampo;
 	}
 
+	
+	
 	public JPanel getCarta4CampoBot() {
 		return carta4CampoBot;
 	}
@@ -739,27 +755,33 @@ public class VistaTablero implements ImageObserver {
 		this.panelesHechizosCampoOponente = panelesHechizosCampoOponente;
 	}
 
-	public JPanel getCartaDefault() {
-		return cartaDefault;
+	public JLabel getContadorBot() {
+		return contadorBot;
 	}
 
-	public void setCartaDefault(JPanel cartaDefault) {
-		this.cartaDefault = cartaDefault;
+	public void setContadorBot(JLabel contadorBot) {
+		this.contadorBot = contadorBot;
+	}
+
+	public JLabel getContadorJug() {
+		return contadorJug;
+	}
+
+	public void setContadorJug(JLabel contadorJug) {
+		this.contadorJug = contadorJug;
 	}
 
 	public String getPathCartaDefault() {
 		return pathCartaDefault;
 	}
 
-	public void setPathCartaDefault(String pathCartaDefault) {
-		this.pathCartaDefault = pathCartaDefault;
-	}
-
-
-
 	@Override
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
+		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	
+	
 
 }

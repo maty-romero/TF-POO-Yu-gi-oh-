@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
@@ -14,7 +16,7 @@ import modelo.CartaMonstruo;
 import modelo.Modelo;
 import vista.VistaTablero;
 
-public class ControladorBatalla implements MouseListener{
+public class ControladorBatalla implements MouseListener, ActionListener{
 
 	/*
 	 * Al seleccionar una carta monstruo habilita boton Atacar 
@@ -24,53 +26,97 @@ public class ControladorBatalla implements MouseListener{
 	 * 		tiene --> metodo atacar de Batalla
 	 */
 	
-	private VistaTablero vista;
-	private Modelo modelo;
-	private TableroController tControler;
+	private TableroController tc;
 	
-	public ControladorBatalla(VistaTablero vista, Modelo modelo, TableroController tableroControler) {
-		this.vista = vista; 
-		this.tControler = tableroControler;
-		this.modelo = new Modelo();
+	//Se obtienen objetos y Paneles por separado con los mouseListener 
+	private CartaMonstruo monstruoAtacante, monstruoObjetivo; 
+	private JPanel panelMonstruoAtacante, panelMonstruoObjetivo;  
+	
+	public ControladorBatalla(TableroController tableroControler) {
+		this.tc = tableroControler;
 	}
 	
-	//clikear y soltar = 1 click 
-	@Override
+	@Override //seleccion de monstruo Objetivo (Bot)
 	public void mouseClicked(MouseEvent e) {
+		JPanel panel = (JPanel) e.getSource();
 		
-//			HashMap<JPanel, CartaMonstruo> hashCartasCampo = new HashMap<JPanel, CartaMonstruo>();
-//
-//			this.vista.getManoBot().setFocusable(true);
-//
-//			hashCartasCampo.putAll(this.tControler.getCampoMonstruosJugador());
-//		
-//
-//			this.vista.getManoJugador().setFocusable(true);
-//			this.vista.getManoBot().setFocusable(true);
-//			for (Integer i = 0; i < hashCartas.size(); i++) {
-//
-//				for (JPanel key : hashCartas.keySet()) {
-//					if (e.getSource() == key) {
-//						String stringCarta = hashCartas.get(key).getPathImagen();
-//
-//						java.net.URL urlCarta = getClass().getResource(stringCarta);
-//						ImageIcon iconCarta = new ImageIcon(
-//								new ImageIcon(urlCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-//						JLabel label = new JLabel(iconCarta);
-//						vista.getCartaSeleccionada().removeAll();
-//						vista.mostrar();
-//
-//						vista.getCartaSeleccionada().add(label);
-//						vista.mostrar();
-//						vista.getCartaSeleccionada().setVisible(true);
-//					}
-//
-//				}
-//
-//			}
+		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - ACTIVADO");
 		
+		if(this.tc.getCampoMonstruosOponente().containsKey(panel)) {
+			
+			System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
+			
+			this.panelMonstruoObjetivo = panel; //panel que se selecciono 
+
+			this.monstruoObjetivo = this.tc.getManoMonstruoOponente().get(this.panelMonstruoObjetivo); 
+			
+			//si la carta estaboca abajo, se voltea sin rotar --> AGREGAR *******
+			
+			Batalla(); 
+			aplicarResultadoBatalla(); 
+		}
+	}
+	
+	@Override //seleccion de monstruo Atacante (Jugador) 
+	public void mouseEntered(MouseEvent e) {
+		JPanel panel = (JPanel) e.getSource();
 		
+		System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - ACTIVADO");
 		
+		if(this.tc.getCampoMonstruosJugador().containsKey(panel)) {
+			
+			System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - SELECCION");
+			
+			this.panelMonstruoAtacante = panel; //panel que se apunta al monstruo Atacante
+
+			this.monstruoAtacante = this.tc.getCampoMonstruosJugador().get(this.panelMonstruoAtacante); //obtengo el monstruo que coincida con el campo del Jugador
+			
+//			System.out.println("Monstruo atacante: " + this.monstruoAtacante.getNombre());
+		}
+	}
+	
+	
+	public void Batalla() {
+		//si no tiene monstruos el Bot --> AtaqueDirecto 
+		if(this.tc.getCampoMonstruosOponente().size() == 0) {
+			this.tc.getBatallaJugador().ataqueDirecto(this.monstruoAtacante);
+		}else {
+			tc.getBatallaJugador().atacar(this.monstruoAtacante, this.monstruoObjetivo); 
+		}
+	}
+	
+	/*
+	 * Verifica si mueriron cartas, para eliminar paneles del tablero 
+	 * Actualiza la vida de los duelistas en la vista. 
+	 */
+	
+	public void aplicarResultadoBatalla() {
+		//verificacion de vida de los duelistas 
+		
+		//obtengo la vida vida de los duelistas en String --> Para el JLabel
+		String vidaDuelistaJugador = String.valueOf(tc.getDuelistaJugador().getVida());
+		String vidaDuelistaOponente = String.valueOf(tc.getDuelistaOponente().getVida());
+		//seteo la nueva vida la vista
+		this.tc.getVista().setContadorJug(new JLabel(vidaDuelistaJugador));
+		this.tc.getVista().setContadorBot(new JLabel(vidaDuelistaOponente));
+		
+		//Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
+		if(this.tc.getBatallaJugador().getMonstruoMuertoJugador() != null) {
+			this.tc.getCampoMonstruosJugador().remove(this.panelMonstruoAtacante); 
+		}
+		
+		if(this.tc.getBatallaJugador().getMonstruoMuertoJugador() != null) {
+			this.tc.getCampoMonstruosOponente().remove(this.panelMonstruoAtacante); 
+		}
+		
+	}
+
+	
+	//Metodos sobrescritos que no se usan 
+	
+	//actionPerformed Vacio
+	@Override
+	public void actionPerformed(ActionEvent e) {
 	}
 	
 	@Override
@@ -82,13 +128,7 @@ public class ControladorBatalla implements MouseListener{
 	}
 	
 	@Override
-	public void mouseEntered(MouseEvent e) {
-
-		
-	}
-	@Override
 	public void mouseExited(MouseEvent e) {
-		
 	}
 	
 	

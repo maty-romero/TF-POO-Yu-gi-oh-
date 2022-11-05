@@ -89,14 +89,16 @@ private JLabel label;
 			pm.add(m1);
 			pm.add(m2);
 			m1.addActionListener(new MenuInvocarAtaqueMonstruo(this));
-			m2.addActionListener(new MenuInvocarDefensaMonstruo(this));
-		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
+		} 
+		if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
+			m3.addActionListener(new ControladorBatalla(this.tc));
 			pm.add(m3);
-		}else if (bocaAbajo) {
-			pm.add(m4);
-			m4.addActionListener(new MenuVoltearMonstruo(this));
-
 		}
+//		if (bocaAbajo) {
+//			pm.add(m4);
+//			m4.addActionListener(new MenuVoltearMonstruo(this));
+//
+//		}
 
 		pm.addSeparator();
 		panel.setComponentPopupMenu(pm);
