@@ -41,8 +41,8 @@ public class VistaTablero implements ImageObserver {
 	private TableroController tableroController;
 //tablero
 	private JFrame tablero;
-	private JPanel manoJugador;
-	private JPanel manoBot;
+	private JPanel manoJugador; //Grid Layout 
+	private JPanel manoBot; 	//Grid Layout
 	private JPanel panel_Tablero;
 	private JLabel imagenFondoTablero;
 
@@ -65,7 +65,7 @@ public class VistaTablero implements ImageObserver {
 	private JPanel cem_bot;
 	private JLabel imagenCemBot;
 
-	private JPanel cartaCampo;
+	private JPanel cartaCampo; //carta1CampoBot 
 	private JPanel carta2CampoBot;
 	private JPanel carta3CampoBot;
 	private JPanel carta4CampoBot;
@@ -87,11 +87,6 @@ public class VistaTablero implements ImageObserver {
 	private String StringCarta6CampoBot;
 
 //Carta de campo, de mano, cementerio y deck del JUGADOR
-	private JPanel carta1_jug;
-	private JPanel carta2_jug;
-	private JPanel carta3_jug;
-	private JPanel carta4_jug;
-	private JPanel carta5_jug;
 
 	private JPanel deck_jug;
 	private JPanel cem_jug;
@@ -102,19 +97,6 @@ public class VistaTablero implements ImageObserver {
 	private JPanel carta4CampoJug;
 	private JPanel carta5CampoJug;
 	private JPanel carta6CampoJug;
-
-	private JLabel imagenCarta1Jug;
-	private JLabel imagenCarta2Jug;
-	private JLabel imagenCarta3Jug;
-	private JLabel imagenCarta4Jug;
-	private JLabel imagenCarta5Jug;
-
-	private JLabel imagenCartaCampo1Jug;
-	private JLabel imagenCartaCampo2Jug;
-	private JLabel imagenCartaCampo3Jug;
-	private JLabel imagenCartaCampo4Jug;
-	private JLabel imagenCartaCampo5Jug;
-	private JLabel imagenCartaCampo6Jug;
 
 //Descripcion completa de la carta seleccionada por el jugador
 
@@ -135,10 +117,11 @@ public class VistaTablero implements ImageObserver {
 
 //Botones 
 	private JButton btnAtacar;
+	
 //genero panel carta boca abajo default
 	private JPanel cartaDefault;
 	private String pathCartaDefault;
-//
+
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -156,12 +139,11 @@ public class VistaTablero implements ImageObserver {
 	}
 
 	private void generarTablero() {
-		java.net.URL url_carta1 = getClass().getResource("/cartas/cambio_de_fidelidad.jpg"); // imagen local relativa al
-																								// projecto
-		ImageIcon icon_URL = new ImageIcon(
-				new ImageIcon(url_carta1).getImage().getScaledInstance(130, 90, Image.SCALE_DEFAULT));
+
 		tablero.getContentPane().setLayout(null);
 
+		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg"; 
+		
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
 		manoJugador.setBackground(Color.BLACK);
@@ -195,8 +177,7 @@ public class VistaTablero implements ImageObserver {
 		deck_bot.setBounds(10, 10, 74, 96);
 		this.deck_bot.setForeground(new Color(204, 0, 0));
 		this.deck_bot.setBackground(new Color(0, 0, 0));
-		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
-
+		
 		java.net.URL urlDeckBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																					// al projecto
 		ImageIcon iconDeckBot = new ImageIcon(
@@ -258,15 +239,7 @@ public class VistaTablero implements ImageObserver {
 		cartaSeleccionada.setBounds(862, 78, 391, 390);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
-
-//		java.net.URL url_descCarta = getClass().getResource(this.pathCartaDefault); // imagen local
-//																									// relativa al
-//		// projecto
-//		ImageIcon iconDescCart = new ImageIcon(
-//				new ImageIcon(url_descCarta).getImage().getScaledInstance(400, 380, Image.SCALE_DEFAULT));
-//		this.imagenDescCarta = new JLabel(iconDescCart);
-
-		// this.cartaSeleccionada.add(imagenDescCarta);
+		
 
 		this.descCartaSeleccionada = new JPanel();
 		descCartaSeleccionada.setBounds(862, 514, 391, 120);
