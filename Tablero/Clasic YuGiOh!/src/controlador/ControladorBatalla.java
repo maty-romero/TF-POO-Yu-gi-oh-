@@ -37,7 +37,7 @@ public class ControladorBatalla implements ActionListener, MouseListener{
 		this.monstruoAtacante = this.monstruosInvocacion.getTc().getCampoMonstruosJugador()
 				.get(this.panelMonstruoAtacante); // obtengo el monstruo
 
-		System.out.println("CONTROLADOR BATALLA MOUSE ENTERED - ACTIVADO");
+		System.out.println("CONTROLADOR BATALLA ACTION PERFORMED - ACTIVADO");
 
 		System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
 		System.out.println("Monstruo Atacante posAtaque: " + this.monstruoAtacante.getPosicionAtaque());
@@ -45,10 +45,6 @@ public class ControladorBatalla implements ActionListener, MouseListener{
 		for (JPanel panel : this.monstruosInvocacion.getTc().getCampoMonstruosOponente().keySet()) {
 			panel.addMouseListener(this);
 		}
-			
-		
-		
-		
 		
 	}
 	
@@ -70,7 +66,7 @@ public class ControladorBatalla implements ActionListener, MouseListener{
 			
 			System.out.println("Monstruo objetivo: " + this.monstruoObjetivo.toString());
 			
-			Batalla(); 
+			Batalla();
 			aplicarResultadoBatalla();
 			
 			for (JPanel panelCampo : this.monstruosInvocacion.getTc().getCampoMonstruosOponente().keySet()) {
@@ -107,10 +103,7 @@ public class ControladorBatalla implements ActionListener, MouseListener{
 		//obtengo la vida vida de los duelistas en String --> Para el JLabel
 		String vidaDuelistaJugador = String.valueOf(this.monstruosInvocacion.getTc().getDuelistaJugador().getVida());
 		String vidaDuelistaOponente = String.valueOf(this.monstruosInvocacion.getTc().getDuelistaOponente().getVida());
-		//seteo la nueva vida la vista
-		
-		
-		this.monstruosInvocacion.getTc().getVista().setearVidaDuelistaJugador(this.monstruosInvocacion.getTc().getDuelistaJugador().getVida());
+		//seteo la nueva vida en la vista
 		
 		
 //		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().remove(panelMonstruoAtacante);

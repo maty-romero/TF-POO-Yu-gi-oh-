@@ -19,7 +19,7 @@ public class Batalla {
 //	  Luego de una Batalla se obtienen los monstruos que muerieron 
 //	  De acuerdo a que duelista pertenece segun el turno. 
 	 
-	private CartaMonstruo monstruoMuertoJugador, monstruoMuertoOponente;
+	private CartaMonstruo monstruoMuertoJugador = null, monstruoMuertoOponente = null;
 	
 	public Batalla(Duelista duelistaJugador, Duelista duelistaOponente) {
 		this.duelistaJugador = duelistaJugador;

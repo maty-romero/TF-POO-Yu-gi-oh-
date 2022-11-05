@@ -492,16 +492,6 @@ public class VistaTablero implements ImageObserver {
 		return panel;
 
 	}
-
-	public void setearVidaDuelistaJugador(Integer vida) {
-		this.contadorBot = new JLabel(String.valueOf(vida)); 
-//		contadorBot.setBounds(1053, 10, 200, 57);
-//		contadorBot.setFont(new Font("Tahoma", Font.PLAIN, 30));
-//		contadorBot.setForeground(new Color(0, 0, 204));
-//		this.contadorBot.setBackground(new Color(0, 0, 153));
-		tablero.getContentPane().add(this.contadorBot);
-	}
-	
 	
 	
 	public JFrame getTablero() {

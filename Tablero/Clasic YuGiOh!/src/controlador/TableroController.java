@@ -126,24 +126,19 @@ public class TableroController {
 			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
 			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
 		
-//			//Se agrega al hash 
+			//Se agrega al hash 
 			this.campoMonstruosOponente.put(panel1, monstruo1); 
-//			//se agrega una carta al campo Monstruo Oponente a la vista 
+			//se agrega una carta al campo Monstruo Oponente a la vista 
 			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
 			
 			System.out.println();
 			
-//			this.aniadoMouseListenerMonstruo(this.campoMonstruosJugador);
-			
-//			this.anidadoMouseListenerBatalla(this.campoMonstruosJugador); 
 			
 			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
 			this.vista.setContadorJug(new JLabel("5000")); 
 			
 			this.vista.mostrar();
-			
-			
 			
 			System.out.println("Size hash campo monstruos Oponente " + this.campoMonstruosOponente.size());
 			
