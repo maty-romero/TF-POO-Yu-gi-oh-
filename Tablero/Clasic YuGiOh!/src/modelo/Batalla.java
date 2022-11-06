@@ -56,6 +56,8 @@ public class Batalla {
 				
 				this.getDuelistaOponente().getCampo().eliminarCarta(cartaObjetivo); // se remueve el monstruo del campo
 				
+				this.getDuelistaOponente().recibirDanio(Math.abs(dmg)); //duelista recibe el daño restante del enfrentamiento 
+				
 			}
 			if (dmg < 0) {
 				System.out.println("cartaObjetivo gano, duelista recibe daño restante");

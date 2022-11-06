@@ -120,31 +120,15 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		
 		this.monstruosInvocacion.getTc().getVista().mostrar();
 		
+		//------------------------------
+		
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
+		
 		if (this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoJugador() != null) {
-			System.out.println("ELIMINACION CARTA JUGADOR EN EL CAMPO");
+			System.out.println("**ELIMINACION CARTA JUGADOR EN EL CAMPO**");
 
-			System.out.println("Size array panelesMonstruoJugador - ANTES: "
-					+ this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size());
+			// Eliminacion panel en la vista. 
 
-			// recorro el array de paneles de la vista para eliminacion
-
-			// ========================================
-
-			// Obtener JPanel del hash
-//
-//			for (int i = 0; i < this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()
-//					.size(); i++) {
-//
-//				System.out.println("FOR PANELES, PANEL: "
-//						+ this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().get(i));
-//
-//				if (this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().get(i)
-//						.equals(this.panelMonstruoAtacante)) {
-//
-//					this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().remove(i);
-//				}
-//			}
 			JPanel coincidencia = new JPanel();
 			for (JPanel panel : this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()) {
 				for (Component componente : panel.getComponents()) {
@@ -161,52 +145,45 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 			coincidencia.setVisible(true);
 			this.monstruosInvocacion.getTc().getVista().mostrar();
 			this.monstruosInvocacion.getTc().getVista().getTablero().setVisible(true);
-			;
-
+			
 			System.out.println("PANEL MONSTRUO ATACANTE: " + this.panelMonstruoAtacante);
-
-			// No funciona
-//			JPanel coincidencia = new JPanel();
-//
-//			for (JPanel panelCampo : this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()) {
-//				for (Component componente : panelCampo.getComponents()) {
-//					if (componente == this.panelMonstruoAtacante) {
-//						panelCampo.removeAll();
-//					}
-//				}
-//			}
-//			coincidencia.removeAll();
-//			coincidencia.setVisible(true);
-
-			// ========================================
-
-			this.monstruosInvocacion.getTc().getVista().mostrar();
-			System.out.println("Size array panelesMonstruoJugador - DESPUES: "
-					+ this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size());
-
+			
 			// elinimacion del hash
-			System.out.println("Size Hash MonstruosJugador - ANTES: "
-					+ this.monstruosInvocacion.getTc().getCampoMonstruosJugador().size());
 			this.monstruosInvocacion.getTc().getCampoMonstruosJugador().remove(this.panelMonstruoAtacante);
-
-			System.out.println("Size Hash MonstruosJugador - DESPUES: "
-					+ this.monstruosInvocacion.getTc().getCampoMonstruosJugador().size());
 
 			this.monstruosInvocacion.getTc().getVista().mostrar();
 		}
 
-//		if (this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoOponente() != null) {
-//			System.out.println("ELIMINACION CARTA OPONENTE EN EL CAMPO");
-//			
-//			//elinimacion del hash
-//			this.monstruosInvocacion.getTc().getCampoMonstruosOponente().remove(this.panelMonstruoAtacante);
-//			//recorro el array de paneles de la vista para eliminacion
-//			for (int i = 0; i < this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size(); i++) {
-//				if(this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoOponente().get(i) == this.panelMonstruoObjetivo) { 
-//					this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoOponente().remove(i); 
-//				}
-//			}
-//		}
+		
+		if(this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoOponente() != null) {
+			
+			// Eliminacion panel en la vista. 
+			
+			JPanel coincidencia = new JPanel();
+			for (JPanel panel : this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoOponente()) {
+				for (Component componente : panel.getComponents()) {
+					if (componente == this.panelMonstruoObjetivo) {
+						coincidencia = panel;
+						componente.setVisible(false);
+						System.out.println("hubo coincidencia AAAAAAAAAAAAAAAA");
+						break;
+					}
+				}
+			}
+			coincidencia.removeAll();
+			coincidencia.setVisible(true);
+			this.monstruosInvocacion.getTc().getVista().mostrar();
+			this.monstruosInvocacion.getTc().getVista().getTablero().setVisible(true);
+			
+			// elinimacion del hash
+			this.monstruosInvocacion.getTc().getCampoMonstruosOponente().remove(this.panelMonstruoObjetivo);
+
+			this.monstruosInvocacion.getTc().getVista().mostrar();
+			
+			
+		}
+		
+		
 
 		System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
 	}

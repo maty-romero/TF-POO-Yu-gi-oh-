@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -41,15 +42,15 @@ public class TableroController {
 	private HashMap<JPanel, CartaMonstruo> campoMonstruosJugador = new HashMap<JPanel, CartaMonstruo>();
 	private HashMap<JPanel, CartaHechizo> campoHechizosJugador = new HashMap<JPanel, CartaHechizo>();
 
-	// cartas del campo del Oponente
+	//cartas del campo del Oponente
 	private HashMap<JPanel, CartaMonstruo> campoMonstruosOponente = new HashMap<JPanel, CartaMonstruo>();
 	private HashMap<JPanel, CartaHechizo> campoHechizosOponente = new HashMap<JPanel, CartaHechizo>();
-
+	
 	private JPanel panelCarta;
 	private VistaTablero vista;
 	private JPopupMenu pm;
 	private MouseListener mouse;
-
+	
 //	private MouseListener mouseBatalla; 
 
 	public TableroController() {
@@ -60,7 +61,7 @@ public class TableroController {
 		mouse = new MonstruosInvocacion(this);
 		this.modelo = new Modelo();
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
-
+		
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("KIRA");
 
@@ -70,14 +71,16 @@ public class TableroController {
 		/// XXXXXXXXXXXXXXX PRUEBA XXXXXXXXXXX DEBERÌA TRAER CARTAS DESDE EL DECK DEL
 		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR
 		/// (CON BASE DATOS)
-		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
+		
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
-		ArrayList<CartaHechizo> hechizosOponente = duelistaOponente.getMano().getManoHechizos();
+		
+		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
+		ArrayList<CartaHechizo> hechizosOponente = this.duelistaOponente.getMano().getManoHechizos();
 		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 20));
-		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 2500, 1));
-		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 2500, 1));
-		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/IconoPersonajes/yugi_moto.jpg", 1, 1));
+		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1200, 1));
+//		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
+//		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/IconoPersonajes/yugi_moto.jpg", 1, 1));
 
 		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg", 1, 1));
 		monstruosOponente.add(new CartaMonstruo(20, "hola", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
@@ -87,13 +90,13 @@ public class TableroController {
 		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
-
-//		
+  
+		
 //		ArrayList<CartaMonstruo> monstruosOponenteCampo = new ArrayList<>(); 
 //		monstruosOponenteCampo.add(new CartaMonstruo(20, "20", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 20));
 //		monstruosOponenteCampo.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 //		monstruosOponenteCampo.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
-
+		
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
 //		duelistaJugador.robarCarta(); 
 //		duelistaJugador.robarCarta();
@@ -123,17 +126,17 @@ public class TableroController {
 		
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 //			
-//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-//			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 5000, 6000); 
-//			monstruo1.setPosicionAtaque(true); 
-//			
-//			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
-//			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
-//		
-//			//Se agrega al hash 
-//			this.campoMonstruosOponente.put(panel1, monstruo1); 
-//			//se agrega una carta al campo Monstruo Oponente a la vista 
-//			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
+			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
+			
+			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
+			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
+		
+			//Se agrega al hash 
+			this.campoMonstruosOponente.put(panel1, monstruo1); 
+			//se agrega una carta al campo Monstruo Oponente a la vista 
+			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
 //			
 //			
 //			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
@@ -171,19 +174,19 @@ public class TableroController {
 			
 			
 			
-			this.controladorBot = new CerebroBot(this); 
-			
-			this.controladorBot.robarCarta(); 
-			System.out.println("BOT ha robado una carta!");
-			
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			this.controladorBot.invocarCarta();
-			System.out.println("BOT ha invocado una carta!");
+//			this.controladorBot = new CerebroBot(this); 
+//			
+//			this.controladorBot.robarCarta(); 
+//			System.out.println("BOT ha robado una carta!");
+//			
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			this.controladorBot.invocarCarta();
+//			System.out.println("BOT ha invocado una carta!");
 			
 			//PRUEBA BOT XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
@@ -191,6 +194,7 @@ public class TableroController {
 			e.printStackTrace();
 		}
 	}
+
 
 	/*
 	 * traigo las cartas cargadas con informacion desde base de datos, y las asocio
@@ -264,7 +268,8 @@ public class TableroController {
 		}
 
 	}
-
+	
+	
 	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
@@ -375,6 +380,8 @@ public class TableroController {
 		this.duelistaOponente = duelistaOponente;
 	}
 
-	// -------------------
-
+	
+	//-------------------
+	
+	
 }
