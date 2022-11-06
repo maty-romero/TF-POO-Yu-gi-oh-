@@ -120,12 +120,13 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		// this.monstruosInvocacion.getTc().getVista().setContadorBot(new
 		// JLabel(vidaDuelistaOponente));
 
+
 		this.monstruosInvocacion.getTc().getVista().getContadorBot().setText(vidaDuelistaJugador);
 		this.monstruosInvocacion.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
-		this.monstruosInvocacion.getTc().getVista().getContadorJug().setVisible(true);
-
 		this.monstruosInvocacion.getTc().getVista().mostrar();
+
+		this.monstruosInvocacion.getTc().getVista().getContadorJug().setVisible(true);
 
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
 		if (this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoJugador() != null) {
@@ -152,23 +153,24 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 //					this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().remove(i);
 //				}
 //			}
-			JPanel coincidencia=new JPanel();
+			JPanel coincidencia = new JPanel();
 			for (JPanel panel : this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()) {
 				for (Component componente : panel.getComponents()) {
 					if (componente == this.panelMonstruoAtacante) {
-                        coincidencia=panel;
-                        componente.setVisible(false);
-                        System.out.println("hubo coincidencia AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                        break;
+						coincidencia = panel;
+						componente.setVisible(false);
+						System.out.println(
+								"hubo coincidencia AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+						break;
 					}
 				}
 			}
 			coincidencia.removeAll();
-            coincidencia.setVisible(true);
+			coincidencia.setVisible(true);
 			this.monstruosInvocacion.getTc().getVista().mostrar();
-			this.monstruosInvocacion.getTc().getVista().getTablero().setVisible(true); ;
+			this.monstruosInvocacion.getTc().getVista().getTablero().setVisible(true);
+			;
 
-			
 			System.out.println("PANEL MONSTRUO ATACANTE: " + this.panelMonstruoAtacante);
 
 			// No funciona

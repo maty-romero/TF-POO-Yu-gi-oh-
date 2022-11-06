@@ -51,6 +51,7 @@ public class ControladorProyeccionCartas implements MouseListener {
 			
 			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
 
+			hashCartas.putAll(this.tc.getCampoMonstruosOponente());
 			hashCartas.putAll(this.tc.getCampoMonstruosJugador());
 			hashCartas.putAll(this.tc.getCampoHechizosJugador());
 			hashCartas.putAll(this.tc.getManoMonstruoOponente());
