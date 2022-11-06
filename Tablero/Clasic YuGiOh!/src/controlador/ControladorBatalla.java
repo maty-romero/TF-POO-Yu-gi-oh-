@@ -114,20 +114,12 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		String vidaDuelistaOponente = String.valueOf(this.monstruosInvocacion.getTc().getDuelistaOponente().getVida());
 		// seteo la nueva vida en la vista
 
-//		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().remove(panelMonstruoAtacante);
-//		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().add(new JLabel(vidaDuelistaJugador)); 
-//		this.monstruosInvocacion.getTc().getVista().setContadorJug(new JLabel(vidaDuelistaJugador));
-		// this.monstruosInvocacion.getTc().getVista().setContadorBot(new
-		// JLabel(vidaDuelistaOponente));
 
-
-		this.monstruosInvocacion.getTc().getVista().getContadorBot().setText(vidaDuelistaJugador);
+		this.monstruosInvocacion.getTc().getVista().getContadorBot().setText(vidaDuelistaOponente);
 		this.monstruosInvocacion.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
-
+		
 		this.monstruosInvocacion.getTc().getVista().mostrar();
-
-		this.monstruosInvocacion.getTc().getVista().getContadorJug().setVisible(true);
-
+		
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
 		if (this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoJugador() != null) {
 			System.out.println("ELIMINACION CARTA JUGADOR EN EL CAMPO");

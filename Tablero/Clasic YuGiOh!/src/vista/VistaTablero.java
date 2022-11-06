@@ -164,7 +164,8 @@ public class VistaTablero implements ImageObserver {
 		manoBot.requestFocus();
 
 		// Contador vida jugador
-		this.contadorJug = new JLabel("8000");
+		this.contadorJug = new JLabel();
+		this.contadorJug.setText("8000");
 		contadorJug.setBounds(1007, 637, 200, 57);
 		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		contadorJug.setForeground(new Color(0, 0, 0));
@@ -298,7 +299,9 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
-	// el parametro de mano no esta de mas ????
+	// el parametro de mano no esta de mas ????no, porque la idea es que le añada a
+	// la mano del bot o del jugador, y el metodo funcione para ambos ahorrando
+	// codigo
 
 	public JPanel agregoCartaMano(JLabel labelCarta, JPanel mano) {
 		JPanel cartaPanel = new JPanel();
@@ -412,6 +415,10 @@ public class VistaTablero implements ImageObserver {
 		this.panelesHechizosCampoJugador.add(this.carta5CampoJug);
 		this.panelesHechizosCampoJugador.add(this.carta6CampoJug);
 
+	}
+
+	public void seteoTextoJugador(String texto) {
+		this.contadorJug.setText(texto);
 	}
 
 	// Devuelvo la imagen de la carta, gracias a que el objeto carta tiene una ruta
