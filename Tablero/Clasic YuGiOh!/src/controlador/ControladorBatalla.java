@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -24,11 +25,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	// monstruoAtacante --> Del jugador
 	// monstruoObjetivo --> Del bot
 	private CartaMonstruo monstruoAtacante, monstruoObjetivo;
-	private JPanel panelMonstruoAtacante = new JPanel(); 
-	private JPanel panelMonstruoObjetivo = new JPanel(); 
+	private JPanel panelMonstruoAtacante = new JPanel();
+	private JPanel panelMonstruoObjetivo = new JPanel();
 
-	private Boolean batallaFinalizada = false; 
-	
+	private Boolean batallaFinalizada = false;
+
 	public ControladorBatalla(MonstruosInvocacion monstruosInvocacion) {
 		this.monstruosInvocacion = monstruosInvocacion;
 	}
@@ -36,7 +37,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	// Seleccion de carta Atacante (Jugador)
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		this.panelMonstruoAtacante = this.monstruosInvocacion.getPanelSeleccionado();
 		this.monstruoAtacante = this.monstruosInvocacion.getTc().getCampoMonstruosJugador()
 				.get(this.panelMonstruoAtacante); // obtengo el monstruo
@@ -72,11 +73,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 			Batalla();
 			aplicarResultadoBatalla();
-			
+
 			for (JPanel panelCampo : this.monstruosInvocacion.getTc().getCampoMonstruosOponente().keySet()) {
 				panel.removeMouseListener(this);
 			}
-			
+
 		}
 	}
 
@@ -95,7 +96,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	 * Verifica si mueriron cartas, para eliminar paneles del tablero Actualiza la
 	 * vida de los duelistas en la vista.
 	 * 
-	 * Tanto la actualizacion de la vida, como el remover paneles de monstruos muertos no Funciona
+	 * Tanto la actualizacion de la vida, como el remover paneles de monstruos
+	 * muertos no Funciona
 	 */
 
 	public void aplicarResultadoBatalla() {
@@ -115,38 +117,63 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 //		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().remove(panelMonstruoAtacante);
 //		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().add(new JLabel(vidaDuelistaJugador)); 
 //		this.monstruosInvocacion.getTc().getVista().setContadorJug(new JLabel(vidaDuelistaJugador));
-		this.monstruosInvocacion.getTc().getVista().setContadorBot(new JLabel(vidaDuelistaOponente));
+		// this.monstruosInvocacion.getTc().getVista().setContadorBot(new
+		// JLabel(vidaDuelistaOponente));
 
-//		tablero.getContentPane().add(this.contadorBot);
+
+		this.monstruosInvocacion.getTc().getVista().getContadorBot().setText(vidaDuelistaJugador);
+		this.monstruosInvocacion.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
+
 		this.monstruosInvocacion.getTc().getVista().mostrar();
-		
+
+		this.monstruosInvocacion.getTc().getVista().getContadorJug().setVisible(true);
 
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
 		if (this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoJugador() != null) {
 			System.out.println("ELIMINACION CARTA JUGADOR EN EL CAMPO");
-			
-			System.out.println("Size array panelesMonstruoJugador - ANTES: " + this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size());
-			
-			//recorro el array de paneles de la vista para eliminacion 
 
-			
-			//========================================
-			
-			//Obtener JPanel del hash 
-			
-			for (int i = 0; i < this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size(); i++) {
-				
-				System.out.println("FOR PANELES, PANEL: " + this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().get(i));
-				
-				if(this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().get(i).equals(this.panelMonstruoAtacante)) { 
-					
-					this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().remove(i); 
+			System.out.println("Size array panelesMonstruoJugador - ANTES: "
+					+ this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size());
+
+			// recorro el array de paneles de la vista para eliminacion
+
+			// ========================================
+
+			// Obtener JPanel del hash
+//
+//			for (int i = 0; i < this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()
+//					.size(); i++) {
+//
+//				System.out.println("FOR PANELES, PANEL: "
+//						+ this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().get(i));
+//
+//				if (this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().get(i)
+//						.equals(this.panelMonstruoAtacante)) {
+//
+//					this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().remove(i);
+//				}
+//			}
+			JPanel coincidencia = new JPanel();
+			for (JPanel panel : this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()) {
+				for (Component componente : panel.getComponents()) {
+					if (componente == this.panelMonstruoAtacante) {
+						coincidencia = panel;
+						componente.setVisible(false);
+						System.out.println(
+								"hubo coincidencia AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+						break;
+					}
 				}
 			}
-			
+			coincidencia.removeAll();
+			coincidencia.setVisible(true);
+			this.monstruosInvocacion.getTc().getVista().mostrar();
+			this.monstruosInvocacion.getTc().getVista().getTablero().setVisible(true);
+			;
+
 			System.out.println("PANEL MONSTRUO ATACANTE: " + this.panelMonstruoAtacante);
 
-			//			No funciona 
+			// No funciona
 //			JPanel coincidencia = new JPanel();
 //
 //			for (JPanel panelCampo : this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador()) {
@@ -158,23 +185,24 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 //			}
 //			coincidencia.removeAll();
 //			coincidencia.setVisible(true);
-			
 
-			//========================================
-			
+			// ========================================
+
 			this.monstruosInvocacion.getTc().getVista().mostrar();
-			System.out.println("Size array panelesMonstruoJugador - DESPUES: " + this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size());
-		
-			//elinimacion del hash 
-			System.out.println("Size Hash MonstruosJugador - ANTES: " + this.monstruosInvocacion.getTc().getCampoMonstruosJugador().size());
+			System.out.println("Size array panelesMonstruoJugador - DESPUES: "
+					+ this.monstruosInvocacion.getTc().getVista().getPanelesMonstruosCampoJugador().size());
+
+			// elinimacion del hash
+			System.out.println("Size Hash MonstruosJugador - ANTES: "
+					+ this.monstruosInvocacion.getTc().getCampoMonstruosJugador().size());
 			this.monstruosInvocacion.getTc().getCampoMonstruosJugador().remove(this.panelMonstruoAtacante);
-			
-			System.out.println("Size Hash MonstruosJugador - DESPUES: " + this.monstruosInvocacion.getTc().getCampoMonstruosJugador().size());
-			
+
+			System.out.println("Size Hash MonstruosJugador - DESPUES: "
+					+ this.monstruosInvocacion.getTc().getCampoMonstruosJugador().size());
+
 			this.monstruosInvocacion.getTc().getVista().mostrar();
 		}
 
-		
 //		if (this.monstruosInvocacion.getTc().getBatallaJugador().getMonstruoMuertoOponente() != null) {
 //			System.out.println("ELIMINACION CARTA OPONENTE EN EL CAMPO");
 //			
@@ -188,8 +216,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 //			}
 //		}
 
-		
-		
 		System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
 	}
 

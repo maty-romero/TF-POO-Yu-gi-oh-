@@ -41,8 +41,8 @@ public class VistaTablero implements ImageObserver {
 	private TableroController tableroController;
 //tablero
 	private JFrame tablero;
-	private JPanel manoJugador; //Grid Layout 
-	private JPanel manoBot; 	//Grid Layout
+	private JPanel manoJugador; // Grid Layout
+	private JPanel manoBot; // Grid Layout
 	private JPanel panel_Tablero;
 	private JLabel imagenFondoTablero;
 
@@ -65,7 +65,7 @@ public class VistaTablero implements ImageObserver {
 	private JPanel cem_bot;
 	private JLabel imagenCemBot;
 
-	private JPanel cartaCampo; //carta1CampoBot 
+	private JPanel cartaCampo; // carta1CampoBot
 	private JPanel carta2CampoBot;
 	private JPanel carta3CampoBot;
 	private JPanel carta4CampoBot;
@@ -117,11 +117,10 @@ public class VistaTablero implements ImageObserver {
 
 //Botones 
 	private JButton btnAtacar;
-	
+
 //genero panel carta boca abajo default
 	private JPanel cartaDefault;
 	private String pathCartaDefault;
-
 
 // Array de cartas
 	private ArrayList<JPanel> panelesMonstruosCampoJugador = new ArrayList<JPanel>();
@@ -129,7 +128,7 @@ public class VistaTablero implements ImageObserver {
 	private ArrayList<JPanel> panelesMonstruosCampoOponente = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesHechizosCampoOponente = new ArrayList<JPanel>();
 
-	public VistaTablero(TableroController tableroController){
+	public VistaTablero(TableroController tableroController) {
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("TABLERO");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -142,8 +141,8 @@ public class VistaTablero implements ImageObserver {
 
 		tablero.getContentPane().setLayout(null);
 
-		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg"; 
-		
+		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
+
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
 		manoJugador.setBackground(Color.BLACK);
@@ -164,6 +163,14 @@ public class VistaTablero implements ImageObserver {
 		manoBot.setFocusable(true);
 		manoBot.requestFocus();
 
+		// Contador vida jugador
+		this.contadorJug = new JLabel("8000");
+		contadorJug.setBounds(1007, 637, 200, 57);
+		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		contadorJug.setForeground(new Color(0, 0, 0));
+		this.contadorJug.setBackground(new Color(153, 0, 153));
+		tablero.getContentPane().add(this.contadorJug);
+
 //contador vida bot
 		this.contadorBot = new JLabel("8000");
 		contadorBot.setBounds(1053, 10, 200, 57);
@@ -177,7 +184,7 @@ public class VistaTablero implements ImageObserver {
 		deck_bot.setBounds(10, 10, 74, 96);
 		this.deck_bot.setForeground(new Color(204, 0, 0));
 		this.deck_bot.setBackground(new Color(0, 0, 0));
-		
+
 		java.net.URL urlDeckBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																					// al projecto
 		ImageIcon iconDeckBot = new ImageIcon(
@@ -239,7 +246,6 @@ public class VistaTablero implements ImageObserver {
 		cartaSeleccionada.setBounds(862, 78, 391, 390);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
-		
 
 		this.descCartaSeleccionada = new JPanel();
 		descCartaSeleccionada.setBounds(862, 514, 391, 120);
@@ -248,15 +254,6 @@ public class VistaTablero implements ImageObserver {
 		descCarta.setBackground(new Color(255, 255, 255));
 		this.descCartaSeleccionada.add(descCarta);
 		tablero.getContentPane().add(this.descCartaSeleccionada);
-
-//Contador vida jugador
-		this.contadorJug = new JLabel("8000");
-		contadorJug.setBounds(1053, 667, 200, 57);
-		contadorJug.setForeground(new Color(0, 0, 0));
-		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		this.contadorJug.setIcon(null);
-		this.contadorJug.setBackground(new Color(153, 0, 153));
-		tablero.getContentPane().add(this.contadorJug);
 
 //icono del bot
 		iconoBot = new JPanel();
@@ -301,8 +298,8 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
-	//el parametro de mano no esta de mas ???? 
-	
+	// el parametro de mano no esta de mas ????
+
 	public JPanel agregoCartaMano(JLabel labelCarta, JPanel mano) {
 		JPanel cartaPanel = new JPanel();
 		cartaPanel.setBounds(605, 593, 74, 96);
@@ -319,8 +316,8 @@ public class VistaTablero implements ImageObserver {
 
 	public JPanel devuelvoPanelCampo(JLabel labelCarta) {
 
-		JPanel cartaPanel = new JPanel(); 
-		
+		JPanel cartaPanel = new JPanel();
+
 		cartaPanel.setBounds(605, 593, 74, 96);
 		cartaPanel.setBackground(new Color(153, 0, 0));
 		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
@@ -331,7 +328,6 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
-	
 	public void seteoPanelesCampo() {
 
 		JPanel carta1CampoOponente = new JPanel();
@@ -465,7 +461,7 @@ public class VistaTablero implements ImageObserver {
 
 		at.rotate(rads, x, y);
 		g2d.setTransform(at);
-		g2d.drawImage(img, 0, 0,this);
+		g2d.drawImage(img, 0, 0, this);
 
 		g2d.setColor(Color.RED);
 		g2d.drawRect(0, 0, newAltura - 1, newAnchura - 1);
@@ -492,8 +488,7 @@ public class VistaTablero implements ImageObserver {
 		return panel;
 
 	}
-	
-	
+
 	public JFrame getTablero() {
 		return tablero;
 	}
@@ -614,8 +609,6 @@ public class VistaTablero implements ImageObserver {
 		return cartaCampo;
 	}
 
-	
-	
 	public JPanel getCarta4CampoBot() {
 		return carta4CampoBot;
 	}
@@ -643,7 +636,6 @@ public class VistaTablero implements ImageObserver {
 	public void setCarta2CampoBot(JPanel carta2CampoBot) {
 		this.carta2CampoBot = carta2CampoBot;
 	}
-
 
 	public JLabel getImagenCartaCampo1Bot() {
 		return imagenCartaCampo1Bot;
@@ -754,8 +746,5 @@ public class VistaTablero implements ImageObserver {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-	
 
 }
