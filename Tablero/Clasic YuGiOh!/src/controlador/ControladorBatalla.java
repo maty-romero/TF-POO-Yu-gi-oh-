@@ -118,7 +118,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	//	this.monstruosInvocacion.getTc().getVista().setContadorBot(new JLabel(vidaDuelistaOponente));
 	
 		this.monstruosInvocacion.getTc().getVista().getContadorBot().setText(vidaDuelistaJugador);
-		this.monstruosInvocacion.getTc().getVista().getContadorJug().setText("vidaDuelistaOponente");
+		this.monstruosInvocacion.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.monstruosInvocacion.getTc().getVista().mostrar();
 		

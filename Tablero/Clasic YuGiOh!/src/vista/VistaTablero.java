@@ -254,10 +254,10 @@ public class VistaTablero implements ImageObserver {
 		contadorJug.setBounds(1007, 637, 200, 57);
 		contadorJug.setForeground(new Color(0, 0, 0));
 		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		this.contadorJug.setIcon(null);
 		this.contadorJug.setBackground(new Color(153, 0, 153));
 		tablero.getContentPane().add(this.contadorJug);
 
+		
 //icono del bot
 		iconoBot = new JPanel();
 		iconoBot.setBounds(910, 10, 87, 62);
