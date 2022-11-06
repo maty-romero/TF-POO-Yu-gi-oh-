@@ -15,10 +15,15 @@ public class CerebroBot {
 	private TableroController tc;
 	private Random rnd = new Random(); 
 	
+	/*
+	 * Los sleeps pueden estar en el metodo Partida de TableroController o en cada metodo del Bot. 
+	 */
 	
 	public CerebroBot(TableroController tc) {
 		this.tc = tc;
 	} 
+	
+	//ROBAR CARTA
 	
 	public void robarCarta() {
 		try {
@@ -40,7 +45,10 @@ public class CerebroBot {
 
 	
 	
-	//INVOCAR --> Consistir desde el flujo de partida si es posible realizar una invocacion. 
+	//INVOCAR 
+	
+	//--> Consistir desde el flujo de partida si es posible realizar una invocacion.
+	
 	public void invocarCarta() { 
 		
 		//Invocacion carta monstruo
@@ -108,7 +116,32 @@ public class CerebroBot {
 	}
 	
 	
+	
+	
 	//BATALLA
+	
+	//elige una carta al azar del campo (panel y monstruo) 
+	//ataca 
+	//Aplicar cambios (paneles y vida). 
+	public void Batalla() {
+		
+		//obtengo un panel aleatorio para elegir el monstruo  
+		Object[] panlesKeys = this.getTc().getManoHechizoOponente().keySet().toArray(); //convierto las claves en un array. 
+		Object panelMonstruoAtacante = panlesKeys[new Random().nextInt(panlesKeys.length)]; //obtengo una panel aleatorio
+		
+		CartaMonstruo monstruoAtacante = this.getTc().getCampoMonstruosOponente().get(panelMonstruoAtacante); //obtengo el monstruo aleatorio
+		
+		
+		
+		
+		
+		this.getTc().getBatallaOponente().atacar(monstruoAtacante, monstruoAtacante);
+		
+		
+		
+		
+	}
+	
 	
 	
 	

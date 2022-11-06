@@ -47,6 +47,13 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
 		System.out.println("Monstruo Atacante posAtaque: " + this.monstruoAtacante.getPosicionAtaque());
 
+		// si no tiene monstruos el Bot --> AtaqueDirecto
+		if (this.monstruosInvocacion.getTc().getCampoMonstruosOponente().size() == 0) {
+			this.monstruosInvocacion.getTc().getBatallaJugador().ataqueDirecto(this.monstruoAtacante);
+			aplicarResultadoBatalla();
+		}
+		
+		//Se agregan listener a paneles Campo Oponente (Monstruos) 
 		for (JPanel panel : this.monstruosInvocacion.getTc().getCampoMonstruosOponente().keySet()) {
 			panel.addMouseListener(this);
 		}
@@ -71,9 +78,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 			System.out.println("Monstruo objetivo: " + this.monstruoObjetivo.toString());
 
-			Batalla();
+			this.monstruosInvocacion.getTc().getBatallaJugador().atacar(this.monstruoAtacante, this.monstruoObjetivo); //BATALLA
+			
 			aplicarResultadoBatalla();
 
+			//remuevo los listener para que no se puedan seleccionar. 
 			for (JPanel panelCampo : this.monstruosInvocacion.getTc().getCampoMonstruosOponente().keySet()) {
 				panel.removeMouseListener(this);
 			}
@@ -83,13 +92,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 	public void Batalla() {
 
-		// si no tiene monstruos el Bot --> AtaqueDirecto
-		if (this.monstruosInvocacion.getTc().getCampoMonstruosOponente().size() == 0) {
-			this.monstruosInvocacion.getTc().getBatallaJugador().ataqueDirecto(this.monstruoAtacante);
+			
 
-		} else {
-			this.monstruosInvocacion.getTc().getBatallaJugador().atacar(this.monstruoAtacante, this.monstruoObjetivo);
-		}
 	}
 
 	/*

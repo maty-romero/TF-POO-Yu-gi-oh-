@@ -91,7 +91,6 @@ public class TableroController {
 		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
   
-		
 //		ArrayList<CartaMonstruo> monstruosOponenteCampo = new ArrayList<>(); 
 //		monstruosOponenteCampo.add(new CartaMonstruo(20, "20", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 20));
 //		monstruosOponenteCampo.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
@@ -126,17 +125,17 @@ public class TableroController {
 		
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 //			
-			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
-			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
-			
-			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
-			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
-		
-			//Se agrega al hash 
-			this.campoMonstruosOponente.put(panel1, monstruo1); 
-			//se agrega una carta al campo Monstruo Oponente a la vista 
-			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+//			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
+//			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
+//			
+//			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
+//			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
+//		
+//			//Se agrega al hash 
+//			this.campoMonstruosOponente.put(panel1, monstruo1); 
+//			//se agrega una carta al campo Monstruo Oponente a la vista 
+//			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
 //			
 //			
 //			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
