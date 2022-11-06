@@ -53,9 +53,13 @@ public class ControladorProyeccionCartas implements MouseListener {
 
 			hashCartas.putAll(this.tc.getCampoMonstruosOponente());
 			hashCartas.putAll(this.tc.getCampoMonstruosJugador());
+			
 			hashCartas.putAll(this.tc.getCampoHechizosJugador());
+			hashCartas.putAll(this.tc.getCampoHechizosOponente());
+			
 			hashCartas.putAll(this.tc.getManoMonstruoOponente());
 			hashCartas.putAll(this.tc.getManoMonstruoJugador());
+			
 			hashCartas.putAll(this.tc.getManoHechizoOponente());
 			hashCartas.putAll(this.tc.getManoHechizoJugador());
 

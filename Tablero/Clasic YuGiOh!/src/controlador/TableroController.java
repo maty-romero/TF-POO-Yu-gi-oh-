@@ -24,8 +24,10 @@ import vista.VistaTablero;
 public class TableroController {
 	private Modelo modelo;
 	private ControladorProyeccionCartas controladorProyeccionCartas;
-
-	private ControladorBatalla controladorBatalla;
+	
+	private ControladorBatalla controladorBatalla; 
+	
+	private CerebroBot controladorBot; 
 
 	private Duelista duelistaJugador, duelistaOponente;
 	private Batalla batallaJugador, batallaOponente; // para los cambios de turno
@@ -93,7 +95,12 @@ public class TableroController {
 //		monstruosOponenteCampo.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
-
+//		duelistaJugador.robarCarta(); 
+//		duelistaJugador.robarCarta();
+//		
+//		duelistaOponente.robarCarta();
+//		duelistaOponente.robarCarta();
+		
 		try {
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
@@ -112,49 +119,74 @@ public class TableroController {
 
 			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
-
-			// PRUEBA
-			// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 5000,
-					6000);
-			monstruo1.setPosicionAtaque(true);
-
-			JLabel label1 = this.getVista().generoImagenCarta(monstruo1);
-			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1); // lo focuseo y le agrego el label al panel
-
-			// Se agrega al hash
-			this.campoMonstruosOponente.put(panel1, monstruo1);
-			// se agrega una carta al campo Monstruo Oponente a la vista
-			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1);
-
-			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Fish_02.jpg", 5000, 6000);
-			monstruo2.setPosicionAtaque(false);
-
-			JLabel label2 = this.getVista().generoImagenCarta(monstruo2);
-			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2); // lo focuseo y le agrego el label al panel
-
-			// Se agrega al hash
-			this.campoMonstruosOponente.put(panel2, monstruo2);
-			// se agrega una carta al campo Monstruo Oponente a la vista
-			this.getVista().getPanelesMonstruosCampoOponente().get(1).add(panel2);
-
-			System.out.println();
-
-			// PRUEBA
-			// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-			// Si seteas un jlabel luego del panel, lo que estas haciendo es que el nuevo
-			// JLabel està seteado pero el tablero tiene el label anterior agregado y visible ( por eso no se te actualiza el tablero cuando seteas el JLabel)
-//Ademàs, si el nuevo JLabel lo queres hacer visible y lo añadis al panel, tampoco se va a ver porque al panel JFrame Tablero, le añadis algo luego de que le agregaste la imagen del tablero, entonces el label va a quedar debajo de la imagen del tablero,
-			//entonces finalmente te va a quedar un JFrame tablero con la imagen del tablero arriba del nuevo JLabel. nunca setees el JLabel o no te va a responder la vista, porque tenemos una imagen Tablero cargada abajo de todos.
 			
-	//		this.vista.setContadorJug(new JLabel("5000"));
-			this.vista.mostrar();
-
-			System.out.println("Size hash campo monstruos Oponente " + this.campoMonstruosOponente.size());
-
+		
+//			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//			
+//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+//			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 5000, 6000); 
+//			monstruo1.setPosicionAtaque(true); 
+//			
+//			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
+//			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
+//		
+//			//Se agrega al hash 
+//			this.campoMonstruosOponente.put(panel1, monstruo1); 
+//			//se agrega una carta al campo Monstruo Oponente a la vista 
+//			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+//			
+//			
+//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+//			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Fish_02.jpg", 5000, 6000); 
+//			monstruo2.setPosicionAtaque(false); 
+//			
+//			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
+//			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
+//		
+//			//Se agrega al hash 
+//			this.campoMonstruosOponente.put(panel2, monstruo2); 
+//			//se agrega una carta al campo Monstruo Oponente a la vista 
+//			this.getVista().getPanelesMonstruosCampoOponente().get(1).add(panel2); 
+//			
+//			System.out.println();
+//			
+//			
+//			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+//			
+//			this.vista.setContadorJug(new JLabel("5000")); 
+//			
+//			this.vista.mostrar();
+//			
+//			System.out.println("Size hash campo monstruos Oponente " + this.campoMonstruosOponente.size());
+			
+			
+			//PRUEBA BOT XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+			
+//			try {
+//				Thread.sleep(5000); 
+//			}catch(InterruptedException e) {
+//				e.printStackTrace(); 
+//			}
+			
+			
+			
+			
+			this.controladorBot = new CerebroBot(this); 
+			
+			this.controladorBot.robarCarta(); 
+			System.out.println("BOT ha robado una carta!");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			this.controladorBot.invocarCarta();
+			System.out.println("BOT ha invocado una carta!");
+			
+			//PRUEBA BOT XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

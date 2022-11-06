@@ -18,7 +18,7 @@ public class Duelista {
 	// private String iconoUrl;
 
 	public Duelista(String nombre) {
-//		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
+		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
 		this.mano = new Mano();
 		this.campo = new Campo();
 		this.cementerio = new Cementerio();
