@@ -251,7 +251,7 @@ public class VistaTablero implements ImageObserver {
 
 //Contador vida jugador
 		this.contadorJug = new JLabel("8000");
-		contadorJug.setBounds(1053, 667, 200, 57);
+		contadorJug.setBounds(1007, 637, 200, 57);
 		contadorJug.setForeground(new Color(0, 0, 0));
 		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		this.contadorJug.setIcon(null);

@@ -115,9 +115,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 //		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().remove(panelMonstruoAtacante);
 //		this.monstruosInvocacion.getTc().getVista().getTablero().getContentPane().add(new JLabel(vidaDuelistaJugador)); 
 //		this.monstruosInvocacion.getTc().getVista().setContadorJug(new JLabel(vidaDuelistaJugador));
-		this.monstruosInvocacion.getTc().getVista().setContadorBot(new JLabel(vidaDuelistaOponente));
+	//	this.monstruosInvocacion.getTc().getVista().setContadorBot(new JLabel(vidaDuelistaOponente));
+	
+		this.monstruosInvocacion.getTc().getVista().getContadorBot().setText(vidaDuelistaJugador);
+		this.monstruosInvocacion.getTc().getVista().getContadorJug().setText("vidaDuelistaOponente");
 
-//		tablero.getContentPane().add(this.contadorBot);
 		this.monstruosInvocacion.getTc().getVista().mostrar();
 		
 
