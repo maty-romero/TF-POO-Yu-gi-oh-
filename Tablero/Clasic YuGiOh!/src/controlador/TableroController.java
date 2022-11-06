@@ -98,9 +98,11 @@ public class TableroController {
 //		monstruosOponenteCampo.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 		
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
-		duelistaJugador.robarCarta(); 
-		
-		duelistaOponente.robarCarta();
+//		duelistaJugador.robarCarta(); 
+//		duelistaJugador.robarCarta();
+//		
+//		duelistaOponente.robarCarta();
+//		duelistaOponente.robarCarta();
 		
 		try {
 			// setteo monstruos usando HashMap
