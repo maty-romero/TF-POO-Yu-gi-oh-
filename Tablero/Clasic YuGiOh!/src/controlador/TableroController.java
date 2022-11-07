@@ -75,9 +75,9 @@ public class TableroController {
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
 		
-		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
-		ArrayList<CartaHechizo> hechizosOponente = this.duelistaOponente.getMano().getManoHechizos();
-//		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 20));
+//		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
+//		ArrayList<CartaHechizo> hechizosOponente = this.duelistaOponente.getMano().getManoHechizos();
+////		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 20));
 //		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1200, 1));
 //		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 //		monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/IconoPersonajes/yugi_moto.jpg", 1, 1));
@@ -97,11 +97,11 @@ public class TableroController {
 //		monstruosOponenteCampo.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 1, 1));
 		
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
-//		duelistaJugador.robarCarta(); 
+		duelistaJugador.robarCarta(); 
 //		duelistaJugador.robarCarta();
 //		
 //		duelistaOponente.robarCarta();
-//		duelistaOponente.robarCarta();
+		duelistaOponente.robarCarta();
 		
 		try {
 			// setteo monstruos usando HashMap
@@ -129,7 +129,7 @@ public class TableroController {
 			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO BOT --> CartaAtacante 
 			
 			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
+			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 300, 800); 
 			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
 			
 			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
@@ -144,8 +144,8 @@ public class TableroController {
 			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO JUGADOR --> CartaObjetivo
 			
 			System.out.println("COLOCO CARTAS EN CAMPO DEL JUGADOR Y EN EL HASH");
-			CartaMonstruo monstruo2 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
-			monstruo2.setPosicionAtaque(true); //SETEO POS ATQUE 
+			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 1200, 300); 
+			monstruo2.setPosicionAtaque(false); //SETEO POS ATQUE 
 			
 			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
 			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
@@ -155,23 +155,9 @@ public class TableroController {
 			//se agrega una carta al campo Monstruo Oponente a la vista 
 			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
 			
-			
+			this.getVista().mostrar(); //actualizo JFrame 
 		
-//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-//			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Fish_02.jpg", 5000, 6000); 
-//			monstruo2.setPosicionAtaque(false); 
-//			
-//			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
-//			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
-//		
-//			//Se agrega al hash 
-//			this.campoMonstruosOponente.put(panel2, monstruo2); 
-//			//se agrega una carta al campo Monstruo Oponente a la vista 
-//			this.getVista().getPanelesMonstruosCampoOponente().get(1).add(panel2); 
-//			
-//			System.out.println();
-//			
-//			
+			
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 //			
 //			this.vista.setContadorJug(new JLabel("5000")); 

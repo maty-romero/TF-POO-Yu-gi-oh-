@@ -46,7 +46,6 @@ public class CerebroBot {
 	}
 
 	
-	
 	//INVOCAR 
 	
 	//--> Consistir desde el flujo de partida si es posible realizar una invocacion.
@@ -127,8 +126,6 @@ public class CerebroBot {
 	}
 	
 	
-	
-	
 	//BATALLA
 	
 	/*
@@ -147,30 +144,18 @@ public class CerebroBot {
 	 * 
 	 * CartaJug posAtaque = false 
 	 * 	dmg > 0 -> CartaJugador muere
-	 * 	dmg < 0 -> Bot recibe dmg restante. 
-	 * 
-	 * 
-	 *  ------------------------------------------
-	 *  PENDIENTE: 
-	 *  	Probar algoritmo de ataque compuesto, verificando las posibles situaciones. 
+	 * 	dmg < 0 -> Bot recibe dmg restante.  
 	 * 
 	 * 
 	 */
 	
 	
-	
-	
-	
-	
-	//elige una carta al azar del campo (panel y monstruo) 
-	//ataca 
-	//Aplicar cambios (paneles y vida). 
 	public void Batalla() {
 		
 		//si hay monstruos en el campoMonstruosOponente es posible atacar 
 		if(this.getTc().getCampoMonstruosOponente().size() > 0) {
 			
-			//obtengo un panel y monstruo aleatorio del campo monstruo del BOt 
+			//obtengo un panel y monstruo aleatorio del campo monstruo del BOT 
 			
 			List<JPanel> keysBot = new ArrayList<JPanel>(this.getTc().getCampoMonstruosOponente().keySet()); //convierto las claves en una lista. 
 			JPanel panelMonstruoAtacante = keysBot.get(rnd.nextInt(keysBot.size())); //obtengo una clave aleatoria 
@@ -185,11 +170,6 @@ public class CerebroBot {
 			
 			}else { //Ataque con 2 cartas 
 				
-				/*
-				 * Tengo el panelAtacante y MonstruoAtacante 
-				 * 
-				 * Falta el panelObjetivo y monstruoObjetivo (DuelistaJugador)
-				 */
 				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");
 				
 				
@@ -197,24 +177,17 @@ public class CerebroBot {
 				List<JPanel> keysJugador = new ArrayList<JPanel>(this.getTc().getCampoMonstruosJugador().keySet()); //convierto las claves en una lista. 
 				JPanel panelMonstruoObjetivo = keysJugador.get(rnd.nextInt(keysJugador.size())); //obtengo una clave aleatoria 
 				
-				CartaMonstruo monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoAtacante); //obtengo el monstruo aleatorio
-				
-				this.getTc().getBatallaOponente().atacar(monstruoAtacante, monstruoAtacante);
+				CartaMonstruo monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoObjetivo); //obtengo el monstruo aleatorio
+
+				this.getTc().getBatallaOponente().atacar(monstruoAtacante, monstruoObjetivo);
 				
 				actualizarVida(); //se actualiza la vida de los Duelistas 
 				
-				actualizarPaneles(panelMonstruoAtacante, panelMonstruoObjetivo); 
+				actualizarPaneles(panelMonstruoAtacante, panelMonstruoObjetivo); //remover paneles de cartas muertas. 
 				
 			}
 			
-			
 		}
-		
-		
-
-		
-		
-		
 		
 	}
 	
@@ -248,7 +221,7 @@ public class CerebroBot {
 		
 		//eliminacion panel monstruo del bot (monstruoAtacante) 
 		if(this.getTc().getBatallaOponente().getMonstruoMuertoJugador() != null) {
-			
+			System.out.println("Eliminacion Carta Bot");
 			// Eliminacion panel en la vista. 
 			
 			JPanel coincidencia = new JPanel();
@@ -271,11 +244,11 @@ public class CerebroBot {
 		
 		// eliminacion panel monstruo del Jugador (monstruoObjetivo)
 		if (this.getTc().getBatallaOponente().getMonstruoMuertoOponente() != null) {
-
+			System.out.println("Eliminacion Carta Jugador");
 			// Eliminacion panel en la vista.
 
 			JPanel coincidencia = new JPanel();
-			for (JPanel panel : this.getTc().getVista().getPanelesMonstruosCampoOponente()) {
+			for (JPanel panel : this.getTc().getVista().getPanelesMonstruosCampoJugador()) {
 				for (Component componente : panel.getComponents()) {
 					if (componente == panelObjetivo) {
 						coincidencia = panel;
@@ -290,7 +263,6 @@ public class CerebroBot {
 			this.getTc().getVista().mostrar();
 			this.getTc().getVista().getTablero().setVisible(true);
 		}
-		
 		
 	}
 	
