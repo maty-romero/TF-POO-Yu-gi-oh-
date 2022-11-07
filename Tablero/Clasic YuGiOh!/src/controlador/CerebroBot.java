@@ -131,6 +131,37 @@ public class CerebroBot {
 	
 	//BATALLA
 	
+	/*
+	 * Turno del Bot: 
+	 * 
+	 * monstruoMuertoJugador --> Bot
+	 * monstruoMuertoOponente --> Jugador 
+	 * 
+	 * Lo siguiente esta escrito desde nuestra perspectiva. 
+	 * 
+	 * CartaJug posAtaque = true
+	 * 
+	 * 	dmg > 0 -> CartaJugador muere, recibe dmg restante el Jugador
+	 * 	dmg < 0 -> CartaBot muere, Bot recibe dmg restante 
+	 * 	dmg = 0 -> ambas cartas mueren, no hay dmg restante 
+	 * 
+	 * CartaJug posAtaque = false 
+	 * 	dmg > 0 -> CartaJugador muere
+	 * 	dmg < 0 -> Bot recibe dmg restante. 
+	 * 
+	 * 
+	 *  ------------------------------------------
+	 *  PENDIENTE: 
+	 *  	Probar algoritmo de ataque compuesto, verificando las posibles situaciones. 
+	 * 
+	 * 
+	 */
+	
+	
+	
+	
+	
+	
 	//elige una carta al azar del campo (panel y monstruo) 
 	//ataca 
 	//Aplicar cambios (paneles y vida). 
