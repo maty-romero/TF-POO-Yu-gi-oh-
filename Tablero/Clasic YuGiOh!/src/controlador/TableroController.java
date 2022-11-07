@@ -124,20 +124,39 @@ public class TableroController {
 			
 		
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-//			
-//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-//			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
-//			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
-//			
-//			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
-//			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
-//		
-//			//Se agrega al hash 
-//			this.campoMonstruosOponente.put(panel1, monstruo1); 
-//			//se agrega una carta al campo Monstruo Oponente a la vista 
-//			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
-//			
-//			
+
+			
+			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO BOT --> CartaAtacante 
+			
+			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
+			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
+			
+			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
+			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
+		
+			//Se agrega al hash 
+			this.campoMonstruosOponente.put(panel1, monstruo1); 
+			//se agrega una carta al campo Monstruo Oponente a la vista 
+			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+			
+			
+			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO JUGADOR --> CartaObjetivo
+			
+			System.out.println("COLOCO CARTAS EN CAMPO DEL JUGADOR Y EN EL HASH");
+			CartaMonstruo monstruo2 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 900, 800); 
+			monstruo2.setPosicionAtaque(true); //SETEO POS ATQUE 
+			
+			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
+			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
+		
+			//Se agrega al hash 
+			this.campoMonstruosJugador.put(panel2, monstruo2); 
+			//se agrega una carta al campo Monstruo Oponente a la vista 
+			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
+			
+			
+		
 //			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
 //			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Fish_02.jpg", 5000, 6000); 
 //			monstruo2.setPosicionAtaque(false); 
@@ -174,20 +193,20 @@ public class TableroController {
 			
 			
 			this.controladorBot = new CerebroBot(this); 
-			
-			this.controladorBot.robarCarta(); 
-			this.controladorBot.robarCarta();
-			
-			System.out.println("BOT ha robado una carta!");
-			
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			this.controladorBot.invocarCarta();
-			System.out.println("BOT ha invocado una carta!");
+//			
+//			this.controladorBot.robarCarta(); 
+//			this.controladorBot.robarCarta();
+//			
+//			System.out.println("BOT ha robado una carta!");
+//			
+//			try {
+//				Thread.sleep(2000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			this.controladorBot.invocarCarta();
+//			System.out.println("BOT ha invocado una carta!");
 			
 			this.controladorBot.Batalla(); 
 			System.out.println("BOT ha atacado!!");

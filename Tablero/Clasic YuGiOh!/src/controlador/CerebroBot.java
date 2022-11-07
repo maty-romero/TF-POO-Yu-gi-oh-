@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -138,29 +139,48 @@ public class CerebroBot {
 		//si hay monstruos en el campoMonstruosOponente es posible atacar 
 		if(this.getTc().getCampoMonstruosOponente().size() > 0) {
 			
-			//obtengo un panel aleatorio para elegir el monstruo  
-			Object[] panlesKeys = this.getTc().getCampoMonstruosOponente().keySet().toArray(); //convierto las claves en un array. 
-			Object panelMonstruoAtacante = panlesKeys[new Random().nextInt(panlesKeys.length)]; //obtengo una panel aleatorio
+			//obtengo un panel y monstruo aleatorio del campo monstruo del BOt 
+			
+			List<JPanel> keysBot = new ArrayList<JPanel>(this.getTc().getCampoMonstruosOponente().keySet()); //convierto las claves en una lista. 
+			JPanel panelMonstruoAtacante = keysBot.get(rnd.nextInt(keysBot.size())); //obtengo una clave aleatoria 
 			
 			CartaMonstruo monstruoAtacante = this.getTc().getCampoMonstruosOponente().get(panelMonstruoAtacante); //obtengo el monstruo aleatorio
 			
-			System.out.println(monstruoAtacante);
+			// si no tiene monstruos el Bot --> AtaqueDirecto
+			if (this.getTc().getCampoMonstruosJugador().size() == 0) {
+				System.out.println("El duelista Jugador no tiene Defensa! --> ATAQUE DIRECTO");
+				this.getTc().getBatallaOponente().ataqueDirecto(monstruoAtacante);
+				actualizarVida();  
+			
+			}else { //Ataque con 2 cartas 
+				
+				/*
+				 * Tengo el panelAtacante y MonstruoAtacante 
+				 * 
+				 * Falta el panelObjetivo y monstruoObjetivo (DuelistaJugador)
+				 */
+				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");
+				
+				
+				//Obtengo el panelObjetivo y MonstruoObjetivo del Duelista Jugador 
+				List<JPanel> keysJugador = new ArrayList<JPanel>(this.getTc().getCampoMonstruosJugador().keySet()); //convierto las claves en una lista. 
+				JPanel panelMonstruoObjetivo = keysJugador.get(rnd.nextInt(keysJugador.size())); //obtengo una clave aleatoria 
+				
+				CartaMonstruo monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoAtacante); //obtengo el monstruo aleatorio
+				
+				this.getTc().getBatallaOponente().atacar(monstruoAtacante, monstruoAtacante);
+				
+				actualizarVida(); //se actualiza la vida de los Duelistas 
+				
+				actualizarPaneles(panelMonstruoAtacante, panelMonstruoObjetivo); 
+				
+			}
 			
 			
 		}
 		
 		
-//		// si no tiene monstruos el Bot --> AtaqueDirecto
-//		if (this.getTc().getCampoMonstruosJugador().size() == 0) {
-//			System.out.println("El duelista Jugador no tiene Defensa!");
-//			this.getTc().getBatallaOponente().ataqueDirecto(monstruoAtacante);
-//			actualizarVida(); //ACtualizar la vida. 
-//		}
-//		else {
-//			
-//			this.getTc().getBatallaOponente().atacar(monstruoAtacante, monstruoAtacante);
-//			
-//		}
+
 		
 		
 		
@@ -182,8 +202,64 @@ public class CerebroBot {
 		
 	}
 	
+	/* EN BATALLA --> Turno del Bot 
+	 * 
+	 * Monstruo muerto Jugador --> Pertence al bot 
+	 * Monstruo muerto Oponente --> Pertenece al Jugador
+	 * 
+	 * panelAtacante --> panel del Bot
+	 * panelObjetivo --> panel del Jugador
+	 * 
+	 */
+	
 	//actualiza los panales luego de la batalla (si necesitan ser removidos). 
-	private void actualizarPaneles() {
+	private void actualizarPaneles(JPanel panelAtacante, JPanel panelObjetivo) {
+		
+		//eliminacion panel monstruo del bot (monstruoAtacante) 
+		if(this.getTc().getBatallaOponente().getMonstruoMuertoJugador() != null) {
+			
+			// Eliminacion panel en la vista. 
+			
+			JPanel coincidencia = new JPanel();
+			for (JPanel panel : this.getTc().getVista().getPanelesMonstruosCampoOponente()) {
+				for (Component componente : panel.getComponents()) {
+					if (componente == panelAtacante) {
+						coincidencia = panel;
+						componente.setVisible(false);
+						System.out.println("Coincidencia - Eliminacion panel del BOT");
+						break;
+					}
+				}
+			}
+			coincidencia.removeAll();
+			coincidencia.setVisible(true);
+			this.getTc().getVista().mostrar();
+			this.getTc().getVista().getTablero().setVisible(true);
+		}
+		
+		
+		// eliminacion panel monstruo del Jugador (monstruoObjetivo)
+		if (this.getTc().getBatallaOponente().getMonstruoMuertoOponente() != null) {
+
+			// Eliminacion panel en la vista.
+
+			JPanel coincidencia = new JPanel();
+			for (JPanel panel : this.getTc().getVista().getPanelesMonstruosCampoOponente()) {
+				for (Component componente : panel.getComponents()) {
+					if (componente == panelObjetivo) {
+						coincidencia = panel;
+						componente.setVisible(false);
+						System.out.println("Coincidencia - Eliminacion panel del Jugador");
+						break;
+					}
+				}
+			}
+			coincidencia.removeAll();
+			coincidencia.setVisible(true);
+			this.getTc().getVista().mostrar();
+			this.getTc().getVista().getTablero().setVisible(true);
+		}
+		
 		
 	}
 	

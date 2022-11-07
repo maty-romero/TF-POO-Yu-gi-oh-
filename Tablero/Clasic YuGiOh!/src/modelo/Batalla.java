@@ -13,8 +13,8 @@ public class Batalla {
 	 * metodo Atacar() Caso contrario atacar al duelista de maenra directa
 	 */
 
-	private Duelista duelistaJugador;
-	private Duelista duelistaOponente;
+	private Duelista duelistaJugador; //Bot
+	private Duelista duelistaOponente; //Jugador 
 
 //	  Luego de una Batalla se obtienen los monstruos que muerieron 
 //	  De acuerdo a que duelista pertenece segun el turno. 
@@ -42,7 +42,7 @@ public class Batalla {
 	 * dmg > 0 --> CartaObjetivo muere (ATK>DEF), nadie recibe daño dmg < 0 -->
 	 * Ambas cartas sobreviven, duelista recibe daño igual a la diferencia entre ATK
 	 * y DEF dmg = 0 --> Ninguna carta muere, sigue la partida
-	 */
+	 */ 
 
 	public void atacar(CartaMonstruo cartaAtacante, CartaMonstruo cartaObjetivo) {
 		
