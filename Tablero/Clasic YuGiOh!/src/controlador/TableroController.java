@@ -119,12 +119,9 @@ public class TableroController {
 			this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(duelistaJugador.getMano().getManoHechizos(),
 					this.vista.getManoJugador()));
 
-//			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
-
 			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 			
-			this.anidadoMenuAtacar(this.campoMonstruosJugador);
 		
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -300,13 +297,6 @@ public class TableroController {
 			
 		}
 
-	}
-	
-	private void anidadoMenuAtacar(HashMap<JPanel, CartaMonstruo> hash) {
-		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new MenuAtacar(this));
-
-		}
 	}
 	
 	

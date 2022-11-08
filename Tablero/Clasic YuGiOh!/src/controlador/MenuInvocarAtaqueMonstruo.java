@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,7 +36,11 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			mouse.getPanelSeleccionado().setVisible(true);
 			mouse.getPanelSeleccionado().setFocusable(true);
 			
-//			mouse.getPanelSeleccionado().addMouseListener(new ControladorBatalla(mouse.getTc())); //SE AÑADE EL CONTROLADOR BATALLA A LA CARTA INVOCADA
+			/*
+			 * Se agrega el controlador MenuAtacar ya que los que estan en TableroController no son los mismos 
+			 * paneles que hay en el HASH
+			 */
+			mouse.getPanelSeleccionado().addMouseListener(new MenuAtacar(this.mouse.getTc())); 
 			
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(), this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado() ) );
 			
