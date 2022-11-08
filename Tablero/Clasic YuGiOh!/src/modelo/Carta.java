@@ -8,6 +8,7 @@ public abstract class Carta {
 	
 	protected Integer id;  
 	protected String nombre, descripcion;   
+	protected Boolean bocaAbajo; 
 	
 	private String pathImagen;
 	
@@ -40,7 +41,15 @@ public abstract class Carta {
 		this.pathImagen = pathImagen;
 	}
 
+	public Boolean getBocaAbajo() {
+		return bocaAbajo;
+	}
 
+	public void setBocaAbajo(Boolean bocaAbajo) {
+		this.bocaAbajo = bocaAbajo;
+	}
+
+	
 
 
 	

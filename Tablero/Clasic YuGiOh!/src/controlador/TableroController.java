@@ -48,8 +48,8 @@ public class TableroController {
 	
 	private JPanel panelCarta;
 	private VistaTablero vista;
-	private JPopupMenu pm;
-	private MouseListener mouse;
+//	private JPopupMenu pm;
+//	private MouseListener mouse;
 	
 //	private MouseListener mouseBatalla; 
 
@@ -58,7 +58,7 @@ public class TableroController {
 		VistaTablero vista = new VistaTablero(this);
 		this.vista = vista;
 
-		mouse = new MonstruosInvocacion(this);
+//		mouse = new MonstruosInvocacion(this);
 		this.modelo = new Modelo();
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
 		
@@ -103,6 +103,8 @@ public class TableroController {
 //		duelistaOponente.robarCarta();
 //		duelistaOponente.robarCarta();
 		
+		this.duelistaJugador.robarCarta();
+		this.duelistaJugador.robarCarta();
 		try {
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
@@ -117,12 +119,14 @@ public class TableroController {
 			this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(duelistaJugador.getMano().getManoHechizos(),
 					this.vista.getManoJugador()));
 
-			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
+//			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 
 			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 			
+			this.anidadoMenuAtacar(this.campoMonstruosJugador);
 		
+			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 			
@@ -185,7 +189,7 @@ public class TableroController {
 			
 			this.controladorBot.robarCarta(); 
 			this.controladorBot.robarCarta();
-//			
+			
 			System.out.println("BOT ha robado una carta!");
 			
 			try {
@@ -279,22 +283,41 @@ public class TableroController {
 
 			//Turno Jugador 
 			
+			
+			
+			
 			//Turno BOT 
+			this.controladorBot.robarCarta();
+			this.controladorBot.invocarCarta();
+			this.controladorBot.Batalla();
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
 			
 		}
 
 	}
 	
+	private void anidadoMenuAtacar(HashMap<JPanel, CartaMonstruo> hash) {
+		for (JPanel cartaPanel : hash.keySet()) {
+			cartaPanel.addMouseListener(new MenuAtacar(this));
+
+		}
+	}
 	
-	public void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
+	
+	private void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
 
 		}
 	}
 
-	public void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash) {
+	private void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new HechizosInvocacion(this, false));
 		}
