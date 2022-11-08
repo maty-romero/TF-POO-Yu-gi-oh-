@@ -33,8 +33,16 @@ public class CerebroBot {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("BOT Roba una carta");
 		this.getTc().getDuelistaOponente().robarCarta();  //en el modelo ya se elimina y retorna una carta.  
 		
+		System.out.println("");
+		System.out.println("Size mano monstruos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoMonstruos().size());
+		System.out.println("Size mano hechizos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoHechizos().size());
+		
+		
+		this.getTc().getVista().getManoBot().removeAll();
 		//se setean los hash. 
 		this.getTc().setManoMonstruoOponente(this.getTc().envioImagenesManoMonstruoVista(
 				this.getTc().getDuelistaOponente().getMano().getManoMonstruos(), this.getTc().getVista().getManoBot()));
@@ -51,6 +59,12 @@ public class CerebroBot {
 	//--> Consistir desde el flujo de partida si es posible realizar una invocacion.
 	
 	public void invocarCarta() { 
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		//Invocacion carta monstruo
 		if(rnd.nextBoolean()) {
@@ -151,6 +165,12 @@ public class CerebroBot {
 	
 	
 	public void Batalla() {
+		
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		//si hay monstruos en el campoMonstruosOponente es posible atacar 
 		if(this.getTc().getCampoMonstruosOponente().size() > 0) {

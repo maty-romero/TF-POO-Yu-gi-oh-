@@ -132,7 +132,7 @@ public class VistaTablero implements ImageObserver {
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("TABLERO");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.tablero.setSize(2000, 2000);
+		this.tablero.setSize(1389, 910);
 		this.generarTablero();
 
 	}

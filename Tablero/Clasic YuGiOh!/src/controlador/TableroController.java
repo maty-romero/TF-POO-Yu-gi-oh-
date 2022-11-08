@@ -72,8 +72,8 @@ public class TableroController {
 		/// DUELISTA, UNA VEZ LO TENGA CARGADO ASÌ NO GENERO DATOS EN ESTE CONTROLADOR
 		/// (CON BASE DATOS)
 		
-		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
-		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
+//		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+//		ArrayList<CartaHechizo> hechizosJugador = duelistaJugador.getMano().getManoHechizos();
 		
 //		ArrayList<CartaMonstruo> monstruosOponente = duelistaOponente.getMano().getManoMonstruos();
 //		ArrayList<CartaHechizo> hechizosOponente = this.duelistaOponente.getMano().getManoHechizos();
@@ -86,8 +86,8 @@ public class TableroController {
 //		monstruosOponente.add(new CartaMonstruo(20, "hola", "20", "/boca_abajo_default/boca_abajo.jpg", 1, 1));
 //		monstruosOponente.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/cambio_de_fidelidad.jpg", 1, 1));
 
-		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
-		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
+//		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
+//		hechizosJugador.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 //		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/monstruo_renacido.jpg"));
 //		hechizosOponente.add(new CartaHechizo(1, "hola", "jaja", "/hechizos/tifon_espacio_mistico.jpg"));
   
@@ -101,7 +101,7 @@ public class TableroController {
 //		duelistaJugador.robarCarta();
 //		
 //		duelistaOponente.robarCarta();
-		duelistaOponente.robarCarta();
+//		duelistaOponente.robarCarta();
 		
 		try {
 			// setteo monstruos usando HashMap
@@ -128,34 +128,34 @@ public class TableroController {
 			
 			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO BOT --> CartaAtacante 
 			
-			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 300, 800); 
-			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
-			
-			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
-			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
-		
-			//Se agrega al hash 
-			this.campoMonstruosOponente.put(panel1, monstruo1); 
-			//se agrega una carta al campo Monstruo Oponente a la vista 
-			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
-			
-			
-			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO JUGADOR --> CartaObjetivo
-			
-			System.out.println("COLOCO CARTAS EN CAMPO DEL JUGADOR Y EN EL HASH");
-			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 1200, 300); 
-			monstruo2.setPosicionAtaque(false); //SETEO POS ATQUE 
-			
-			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
-			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
-		
-			//Se agrega al hash 
-			this.campoMonstruosJugador.put(panel2, monstruo2); 
-			//se agrega una carta al campo Monstruo Oponente a la vista 
-			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
-			
-			this.getVista().mostrar(); //actualizo JFrame 
+//			System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+//			CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 300, 800); 
+//			monstruo1.setPosicionAtaque(true); //SETEO POS ATQUE 
+//			
+//			JLabel label1 = this.getVista().generoImagenCarta(monstruo1); 
+//			JPanel panel1 = this.getVista().devuelvoPanelCampo(label1);  //lo focuseo y le agrego el label al panel 
+//		
+//			//Se agrega al hash 
+//			this.campoMonstruosOponente.put(panel1, monstruo1); 
+//			//se agrega una carta al campo Monstruo Oponente a la vista 
+//			this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1); 
+//			
+//			
+//			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO JUGADOR --> CartaObjetivo
+//			
+//			System.out.println("COLOCO CARTAS EN CAMPO DEL JUGADOR Y EN EL HASH");
+//			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 1200, 300); 
+//			monstruo2.setPosicionAtaque(true); //SETEO POS ATQUE 
+//			
+//			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
+//			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
+//		
+//			//Se agrega al hash 
+//			this.campoMonstruosJugador.put(panel2, monstruo2); 
+//			//se agrega una carta al campo Monstruo Oponente a la vista 
+//			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
+//			
+//			this.getVista().mostrar(); //actualizo JFrame 
 		
 			
 //			//PRUEBA XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -180,22 +180,25 @@ public class TableroController {
 			
 			this.controladorBot = new CerebroBot(this); 
 //			
-//			this.controladorBot.robarCarta(); 
-//			this.controladorBot.robarCarta();
+			System.out.println("Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
+			System.out.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
+			
+			this.controladorBot.robarCarta(); 
+			this.controladorBot.robarCarta();
 //			
-//			System.out.println("BOT ha robado una carta!");
-//			
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//			
+			System.out.println("BOT ha robado una carta!");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
 //			this.controladorBot.invocarCarta();
 //			System.out.println("BOT ha invocado una carta!");
 			
-			this.controladorBot.Batalla(); 
-			System.out.println("BOT ha atacado!!");
+//			this.controladorBot.Batalla(); 
+//			System.out.println("BOT ha atacado!!");
 			
 			//PRUEBA BOT XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 			
@@ -274,6 +277,11 @@ public class TableroController {
 		// mientras ninguno pierda, sigue la partida.
 		while (duelistaJugador.getGanador() && duelistaOponente.getGanador()) {
 
+			//Turno Jugador 
+			
+			//Turno BOT 
+			
+			
 		}
 
 	}

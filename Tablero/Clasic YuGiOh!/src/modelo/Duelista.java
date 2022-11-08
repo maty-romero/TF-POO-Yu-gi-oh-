@@ -39,6 +39,7 @@ public class Duelista {
 	public void robarCarta() {
 		try {
 			if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
+				System.out.println("Se intenta robar un monstruo!");
 				CartaMonstruo monstruo = this.getDeck().getMonstruo(); 
 				if(monstruo != null) { 
 					this.getMano().agregarCarta(monstruo);
@@ -46,6 +47,7 @@ public class Duelista {
 				throw new IndexOutOfBoundsException();
 				
 			} else { // Se obtiene un hechizo en la mano
+				System.out.println("Se intenta robar un hechizo!");
 				CartaHechizo hechizo = this.getDeck().getHechizo(); 
 				if(hechizo != null) { 
 					this.getMano().agregarCarta(hechizo);

@@ -106,6 +106,35 @@ public class Batalla {
 		}
 	}
 
+	//Duelista Jugador recibe ataque. 
+	public void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaObjetivo) {
+		
+	}
+	
+	
+	//lleva al cemeneterio del duelista y remueve del campo. 
+	private void eliminacionCartaMuerta(Duelista duelista, CartaMonstruo monstruo) {
+		duelista.getCementerio().llevarMonstruoCementerio(monstruo);
+		duelista.getCampo().eliminarCarta(monstruo);	
+	}
+	//a un duelista cualquiera lo hace recibit danio 
+	private void recibirDanioDuelista(Duelista duelista, Integer dmg) {
+		duelista.recibirDanio(Math.abs(dmg));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//Si el duelista no tiene monstruos en el campo de batalla 
 	public void ataqueDirecto(CartaMonstruo cartaAtacante) {
 		this.duelistaOponente.recibirDanio(cartaAtacante.getAtaque());
