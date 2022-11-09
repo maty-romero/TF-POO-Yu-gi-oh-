@@ -1,15 +1,18 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	private JLabel fondoMenuPpal;
 
 	
 	public static void main(String[] args) {
@@ -28,11 +31,22 @@ public class MenuPrincipal extends JFrame {
 
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 708, 718);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-	}
+		contentPane.setLayout(null);
+		
+		
+		//Fondo Menu Principal
+		java.net.URL fondoURL = getClass().getResource("/fondo_tablero/FondoMenuPrincipal.jpg"); // 
+		ImageIcon iconFondoTablero = new ImageIcon(
+				new ImageIcon(fondoURL).getImage().getScaledInstance(700, 700, Image.SCALE_DEFAULT));
 
+		
+		this.fondoMenuPpal = new JLabel(iconFondoTablero);
+		this.fondoMenuPpal.setBounds(0, 0, 698, 679);
+		
+		contentPane.add(fondoMenuPpal);
+	}
 }
