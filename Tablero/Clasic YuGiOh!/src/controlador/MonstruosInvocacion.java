@@ -26,7 +26,7 @@ public class MonstruosInvocacion implements MouseListener {
 	private JPanel panelCartaBocaAbajo;
 	private Boolean bocaAbajo;
 	private JLabel label;
-	
+
 	public MonstruosInvocacion(TableroController tc) {
 		this.tc = tc;
 	}
@@ -45,9 +45,9 @@ public class MonstruosInvocacion implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		//Grids Layouts
-		this.tc.getVista().getManoJugador().setFocusable(true);  
-		this.tc.getVista().getManoBot().setFocusable(true);
+		// Grids Layouts
+		this.tc.getVista().getManoJugador().setFocusable(true);
+//		this.tc.getVista().getManoBot().setFocusable(true);
 
 		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
 												// es una copia del panel; es el panel mismo
@@ -57,7 +57,6 @@ public class MonstruosInvocacion implements MouseListener {
 		// create menuItems
 		JMenuItem m1 = new JMenuItem("Invocar Ataque");
 		JMenuItem m2 = new JMenuItem("Invocar defensa");
-		JMenuItem m3 = new JMenuItem("ATACAR CAPO");
 		JMenuItem m4 = new JMenuItem("VOLTEAR");
 
 		this.setPanelSeleccionado(panel);
@@ -66,13 +65,13 @@ public class MonstruosInvocacion implements MouseListener {
 			pm.add(m1);
 			pm.add(m2);
 			m1.addActionListener(new MenuInvocarAtaqueMonstruo(this));
-		} 
-	
-//		if (bocaAbajo) {
-//			pm.add(m4);
-//			m4.addActionListener(new MenuVoltearMonstruo(this));
-//
-//		}
+			m2.addActionListener(new MenuInvocarDefensaMonstruo(this));
+		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
+
+		} else if (bocaAbajo) {   
+			pm.add(m4);
+			m4.addActionListener(new MenuVoltearMonstruo(this));
+		}
 
 		pm.addSeparator();
 		panel.setComponentPopupMenu(pm);

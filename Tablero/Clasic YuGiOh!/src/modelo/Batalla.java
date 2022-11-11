@@ -2,24 +2,8 @@ package modelo;
 
 public class Batalla {
 
-	/*
-	 * Cada turno se instancia un nuevo objeto Batalla con los duelistas
-	 * correspondientes: duelistaJugador --> Duelista que esta en su turno
-	 * duelistaOponente --> Duelista que se ataca
-	 * 
-	 * CartaAtacante --> pertenece al duelistaJugador CartaObjetivo --> pertence al
-	 * duelistaOponente
-	 * 
-	 * Controlar desde afuera que el campo atacante tenga monstruos para utilizar el
-	 * metodo Atacar() Caso contrario atacar al duelista de maenra directa
-	 */
-
 	private Duelista duelistaAtacante; // Bot
 	private Duelista duelistaAtacado; // Jugador
-
-//	  Luego de una Batalla se obtienen los monstruos que muerieron 
-//	  De acuerdo a que duelista pertenece segun el turno. 
-
 	private CartaMonstruo monstruoMuertoJugador = null, monstruoMuertoOponente = null;
 
 	public Batalla(Duelista duelistaJugador, Duelista duelistaOponente) {
@@ -27,52 +11,26 @@ public class Batalla {
 		this.duelistaAtacado = duelistaOponente;
 	}
 
-	/*
-	 * Ambas Cartas en posicion ataque:
-	 * 
-	 * dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque()
-	 * 
-	 * dmg > 0 --> cartaAtacante gano, duelista no recibe daño dmg < 0 -->
-	 * cartaObjetivo gano, duelista recibe daño restante. dmg = 0 --> ambas cartas
-	 * mueren, duelista no recibe daño.
-	 * 
-	 * Una carta en posicion de ataque y otra en defensa:
-	 * 
-	 * dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque()
-	 * 
-	 * dmg > 0 --> CartaObjetivo muere (ATK>DEF), nadie recibe daño dmg < 0 -->
-	 * Ambas cartas sobreviven, duelista recibe daño igual a la diferencia entre ATK
-	 * y DEF dmg = 0 --> Ninguna carta muere, sigue la partida
-	 */
-
 	public void atacar(CartaMonstruo cartaAtacante, CartaMonstruo cartaObjetivo) {
 
 		if (cartaObjetivo.getPosicionAtaque()) { // Ambas Cartas en posicion ataque
 			Integer dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque();
-			if (dmg > 0) { // duelistaJugador
+			if (dmg > 0) {
 				System.out.println("cartaAtacante gano, duelista no recibe daño");
-				this.getDuelistaAtacado().getCementerio().llevarMonstruoCementerio(cartaObjetivo); // se lo lleva al //
-																									// cementerio
+				this.getDuelistaAtacado().getCementerio().llevarMonstruoCementerio(cartaObjetivo);
+				this.setMonstruoMuertoOponente(cartaObjetivo);
 
-				this.setMonstruoMuertoOponente(cartaObjetivo); // registro de la batalla
-
-				this.getDuelistaAtacado().getCampo().eliminarCarta(cartaObjetivo); // se remueve el monstruo del campo
-
-				this.getDuelistaAtacado().recibirDanio(Math.abs(dmg)); // duelista recibe el daño restante del
-																		// enfrentamiento
+				this.getDuelistaAtacado().getCampo().eliminarCarta(cartaObjetivo);
+				this.getDuelistaAtacado().recibirDanio(Math.abs(dmg));
 
 			}
 			if (dmg < 0) {
 				System.out.println("cartaObjetivo gano, duelista recibe daño restante");
-				this.getDuelistaAtacante().getCementerio().llevarMonstruoCementerio(cartaAtacante); // se lo lleva al //
-																									// cementerio
-
+				this.getDuelistaAtacante().getCementerio().llevarMonstruoCementerio(cartaAtacante);
 				this.setMonstruoMuertoJugador(cartaAtacante); // registro Batalla
 
-				this.getDuelistaAtacante().getCampo().eliminarCarta(cartaAtacante); // se remueve el monstruo del campo
-
-				this.getDuelistaAtacante().recibirDanio(Math.abs(dmg)); // el duelistaJugador recibe el daño restante
-
+				this.getDuelistaAtacante().getCampo().eliminarCarta(cartaAtacante);
+				this.getDuelistaAtacante().recibirDanio(Math.abs(dmg));
 			}
 			if (dmg == 0) {
 				// Se mandan al cementerio y se elemina del campo las 2 cartas
@@ -88,7 +46,7 @@ public class Batalla {
 				this.setMonstruoMuertoOponente(cartaObjetivo); // registro Batalla
 			}
 
-		} else { // Una carta en posicion de ataque y otra en defensa
+		} else {
 
 			Integer dmg = cartaAtacante.getAtaque() - cartaObjetivo.getDefensa();
 			if (dmg > 0) {
@@ -104,7 +62,6 @@ public class Batalla {
 				this.getDuelistaAtacante().recibirDanio(Math.abs(dmg));
 
 			}
-			// caso contrario (dmg = 0) --> no pasa nada y sigue la partida
 
 		}
 	}

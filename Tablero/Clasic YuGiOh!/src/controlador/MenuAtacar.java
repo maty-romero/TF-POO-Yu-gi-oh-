@@ -13,7 +13,7 @@ public class MenuAtacar implements MouseListener {
 	private TableroController tc;
 	private JPanel panelSeleccionado;
 	private JPopupMenu pm;
-	
+
 	public MenuAtacar(TableroController tc) {
 		this.tc = tc;
 	}
@@ -22,40 +22,29 @@ public class MenuAtacar implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
-		
+
 		pm = new JPopupMenu();
 
-		//Focusear los paneles del Campo en la vista 
+		// Focusear los paneles del Campo en la vista
 //		for (JPanel panelVista : this.getTc().getVista().getPanelesMonstruosCampoJugador()) {
 //			panelVista.setFocusable(true);
 //		}
-		
+		this.panelSeleccionado = panel;
 		// create menuItems
 		JMenuItem m1 = new JMenuItem("ATACAR");
 		System.out.println("MENU ATACAR ENTERED!!!!");
 		if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 			System.out.println("MENU ATACAR ACTIVADO!!!!");
-			this.setPanelSeleccionado(panel);
-			
 			m1.addActionListener(new ControladorBatalla(this));
 			pm.add(m1);
 		}
-		
+
 		pm.addSeparator();
 		this.getPanelSeleccionado().setComponentPopupMenu(pm);
 		pm.setBackground(Color.BLUE);
-		
+
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public JPanel getPanelSeleccionado() {
 		return panelSeleccionado;
 	}

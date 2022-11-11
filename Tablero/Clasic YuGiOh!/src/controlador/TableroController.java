@@ -98,10 +98,10 @@ public class TableroController {
 		
 ////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX///////////////
 		duelistaJugador.robarCarta(); 
-//		duelistaJugador.robarCarta();
-//		
-//		duelistaOponente.robarCarta();
-//		duelistaOponente.robarCarta();
+		duelistaJugador.robarCarta();
+		
+		duelistaOponente.robarCarta();
+		duelistaOponente.robarCarta();
 		
 		this.duelistaJugador.robarCarta();
 		this.duelistaJugador.robarCarta();
@@ -186,6 +186,9 @@ public class TableroController {
 			
 			this.controladorBot.robarCarta(); 
 			this.controladorBot.robarCarta();
+	
+			this.controladorBot.invocarCarta();
+
 			
 			System.out.println("BOT ha robado una carta!");
 			
