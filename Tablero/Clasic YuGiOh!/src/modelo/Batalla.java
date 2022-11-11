@@ -109,6 +109,11 @@ public class Batalla {
 		}
 	}
 
+	public void cambiarDuelistaAtacante(Duelista duelistaAtacante) {
+		this.duelistaAtacado = this.duelistaAtacante;
+		this.duelistaAtacante = duelistaAtacante;
+	}
+
 	// Duelista Jugador recibe ataque.
 	public void recibirAtaque(CartaMonstruo cartaAtacante, CartaMonstruo cartaObjetivo) {
 
