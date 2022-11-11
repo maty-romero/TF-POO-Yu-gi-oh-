@@ -7,12 +7,6 @@ public class CartaHechizo extends Carta {
 		super(id, nombre, descripcion, pathImagen);
 	}
 
-	@Override
-	public String toString() {
-		return "CartaHechizo [id=" + super.getId() + ", nombre=" + super.getNombre() + ", descripcion=" 
-				+ super.getDescripcion() + "pathImagen= " + super.getPathImagen() + "]";
-	}
-
 	
 
 }

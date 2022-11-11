@@ -79,6 +79,12 @@ public class ControladorProyeccionCartas implements MouseListener {
 				this.tc.getVista().getCartaSeleccionada().add(label);
 				this.tc.getVista().mostrar();
 				this.tc.getVista().getCartaSeleccionada().setVisible(true);
+				
+				//proyeccion descripcion carta 
+				
+				//obtengo todos los datos necesarios para monstrar en el JTextArea
+				String infoCarta = hashCartas.get(e.getSource()).toString(); 
+				this.tc.getVista().getTextArea().setText(infoCarta);
 
 			} else {
 
