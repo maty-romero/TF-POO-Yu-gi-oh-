@@ -78,8 +78,11 @@ public class CerebroBot {
 			
 			//remuevo el item asociado al keyPanel asociado y obtengo el monstruo 
 			CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio); 
-			  
-			System.out.println("Monstruo por invocar - BOT: " + monstruo);
+			//probabilidad de que este en posicionAtaque o Defensa
+			monstruo.setPosicionAtaque(rnd.nextBoolean());
+			
+			System.out.println("Monstruo por invocar - BOT: " + monstruo + "\nPosicionAtaque = " + monstruo.getPosicionAtaque());
+			
 			
 			JLabel label =  this.getTc().getVista().generoImagenCarta(monstruo); //creo un label con la imagen del monstruo 
 			JPanel panel = this.getTc().getVista().devuelvoPanelCampo(label);  //lo focuseo y le agrego el label al panel 
