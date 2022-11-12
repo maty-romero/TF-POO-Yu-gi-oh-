@@ -16,7 +16,8 @@ public class CerebroBot {
 
 	private TableroController tc;
 	private Random rnd = new Random();
-
+	private CartaMonstruo monstruoAtacante;
+	private CartaMonstruo monstruoObjetivo;
 	/*
 	 * Los sleeps pueden estar en el metodo Partida de TableroController o en cada
 	 * metodo del Bot.
@@ -92,7 +93,7 @@ public class CerebroBot {
 
 			// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
 			CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
-			monstruo.setPosicionAtaque(true); //XXXXXXXXXXXXXXXXXXXXX
+			monstruo.setPosicionAtaque(true); // XXXXXXXXXXXXXXXXXXXXX
 			System.out.println("Monstruo por invocar - BOT: " + monstruo);
 
 			JLabel label = this.getTc().getVista().generoImagenCarta(monstruo); // creo un label con la imagen del
@@ -204,18 +205,18 @@ public class CerebroBot {
 																												// lista.
 			JPanel panelMonstruoAtacante = keysBot.get(rnd.nextInt(keysBot.size())); // obtengo una clave aleatoria
 
-			CartaMonstruo monstruoAtacante = this.getTc().getCampoMonstruosOponente().get(panelMonstruoAtacante); // obtengo
+			this.monstruoAtacante = this.getTc().getCampoMonstruosOponente().get(panelMonstruoAtacante); // obtengo
 																													// el
 																													// monstruo
 																													// aleatorio
 
-			// si no tiene monstruos el Bot --> AtaqueDirecto
+			// si no tiene monstruos el Jugador --> AtaqueDirecto
 			if (this.getTc().getCampoMonstruosJugador().size() == 0) {
 				System.out.println("El duelista Jugador no tiene Defensa! --> ATAQUE DIRECTO");
-				this.getTc().getBatallaOponente().ataqueDirecto(monstruoAtacante);
+				monstruoAtacante.ataqueDirecto(this.getTc().getDuelistaJugador(), monstruoAtacante);
 				actualizarVida();
 
-			} else { // Ataque con 2 cartas
+			} else { 
 
 				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");
 
@@ -229,12 +230,13 @@ public class CerebroBot {
 				JPanel panelMonstruoObjetivo = keysJugador.get(rnd.nextInt(keysJugador.size())); // obtengo una clave
 																									// aleatoria
 
-				CartaMonstruo monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoObjetivo); // obtengo
+				this.monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoObjetivo); // obtengo
 																														// el
 																														// monstruo
 																														// aleatorio
 
-				this.getTc().getBatallaOponente().atacar(monstruoAtacante, monstruoObjetivo);
+				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
+						this.getTc().getDuelistaJugador());
 
 				actualizarVida(); // se actualiza la vida de los Duelistas
 
@@ -275,7 +277,7 @@ public class CerebroBot {
 	private void actualizarPaneles(JPanel panelAtacante, JPanel panelObjetivo) {
 
 		// eliminacion panel monstruo del bot (monstruoAtacante)
-		if (this.getTc().getBatallaOponente().getMonstruoMuertoJugador() != null) {
+		if (!this.monstruoAtacante.getConVida()) {
 			System.out.println("Eliminacion Carta Bot");
 			// Eliminacion panel en la vista.
 
@@ -297,7 +299,7 @@ public class CerebroBot {
 		}
 
 		// eliminacion panel monstruo del Jugador (monstruoObjetivo)
-		if (this.getTc().getBatallaOponente().getMonstruoMuertoOponente() != null) {
+		if (!this.monstruoObjetivo.getConVida()) {
 			System.out.println("Eliminacion Carta Jugador");
 			// Eliminacion panel en la vista.
 
