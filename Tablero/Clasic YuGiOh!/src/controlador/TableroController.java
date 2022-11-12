@@ -18,11 +18,9 @@ import modelo.Carta;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
 import modelo.Duelista;
-import modelo.Modelo;
 import vista.VistaTablero;
 
 public class TableroController {
-	private Modelo modelo;
 	private ControladorProyeccionCartas controladorProyeccionCartas;
 
 	private ControladorBatalla controladorBatalla;
@@ -56,7 +54,6 @@ public class TableroController {
 		this.vista = vista;
 
 //		mouse = new MonstruosInvocacion(this);
-		this.modelo = new Modelo();
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
 
 		this.duelistaJugador = new Duelista("YUGI", 1);
