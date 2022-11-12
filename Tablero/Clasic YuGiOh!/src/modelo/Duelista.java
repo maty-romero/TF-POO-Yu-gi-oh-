@@ -8,16 +8,12 @@ public class Duelista {
 	private Deck deck;
 	private Mano mano;
 	private Cementerio cementerio;
-
 	private Campo campo;
-
 	private Integer vida;
 	private String nombre;
-
 	private Boolean ganador, invocoMonstruo;
-	// private String iconoUrl;
 
-	public Duelista(String nombre) {
+	public Duelista(String nombre, Integer id) {
 		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
 		this.mano = new Mano();
 		this.campo = new Campo();
@@ -26,7 +22,6 @@ public class Duelista {
 		this.nombre = nombre;
 		this.ganador = true; // los duelistas son ganadores hasta que uno de los dos pierda
 		this.invocoMonstruo = false;
-
 		// this.icono = iconoUrl;
 	}
 
@@ -40,16 +35,17 @@ public class Duelista {
 		try {
 			if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
 				System.out.println("Se intenta robar un monstruo!");
-				CartaMonstruo monstruo = this.getDeck().getMonstruo(); 
-				if(monstruo != null) { 
+				CartaMonstruo monstruo = this.getDeck().getMonstruo();
+				if (monstruo != null) {
 					this.getMano().agregarCarta(monstruo);
+					monstruo.setConVida(true);
 				}
 				throw new IndexOutOfBoundsException();
-				
+
 			} else { // Se obtiene un hechizo en la mano
 				System.out.println("Se intenta robar un hechizo!");
-				CartaHechizo hechizo = this.getDeck().getHechizo(); 
-				if(hechizo != null) { 
+				CartaHechizo hechizo = this.getDeck().getHechizo();
+				if (hechizo != null) {
 					this.getMano().agregarCarta(hechizo);
 				}
 				throw new IndexOutOfBoundsException();
@@ -60,6 +56,13 @@ public class Duelista {
 			this.setGanador(false);
 		}
 
+	}
+
+//jugadorAtacante elimina la carta muerta, la suya o del oponente, pues es su turno y él hace los movimientos, él toma la iniciativa.
+	public void eliminacionCartaMuerta(Duelista duelista, CartaMonstruo monstruo) {
+		duelista.getCementerio().llevarMonstruoCementerio(monstruo);
+		duelista.getCampo().eliminarCarta(monstruo);
+		monstruo.setConVida(false);
 	}
 
 	// getters y setters
