@@ -17,16 +17,13 @@ import javax.swing.JPanel;
 
 import modelo.Carta;
 import modelo.CartaMonstruo;
-import modelo.Modelo;
 import vista.VistaTablero;
 
 public class ControladorProyeccionCartas implements MouseListener {
-	private Modelo modelo;
 	private TableroController tc;
 	private JPanel panelRelacionado;
 
 	public ControladorProyeccionCartas(TableroController tc) {
-		modelo = new Modelo();
 		this.tc = tc;
 	}
 

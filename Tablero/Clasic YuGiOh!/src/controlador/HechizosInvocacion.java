@@ -16,7 +16,6 @@ import javax.swing.JPopupMenu;
 
 import modelo.Carta;
 import modelo.CartaMonstruo;
-import modelo.Modelo;
 import vista.VistaTablero;
 
 //cuando el bot use esta clase, va a hacer exactamente lo mismo, pero usando su hash de cartasOponente. El resto es lo mismo

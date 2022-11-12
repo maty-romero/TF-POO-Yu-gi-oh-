@@ -24,31 +24,30 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
-			
-			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador().get(this.mouse.getTc().getCampoMonstruosJugador().size())
-				.add(mouse.getPanelSeleccionado()).setFocusable(false);
+
+			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
+					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado())
+					.setFocusable(false);
 
 			mouse.getPanelSeleccionado().setVisible(true);
 			mouse.getPanelSeleccionado().setFocusable(true);
-			
-			/*
-			 * Se agrega el controlador MenuAtacar ya que los que estan en TableroController no son los mismos 
-			 * paneles que hay en el HASH
-			 */
-			mouse.getPanelSeleccionado().addMouseListener(new MenuAtacar(this.mouse.getTc())); 
-			
-			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(), this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()) );
-			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setPosicionAtaque(true);;
 
-			
+			/*
+			 * Se agrega el controlador MenuAtacar ya que los que estan en TableroController
+			 * no son los mismos paneles que hay en el HASH
+			 */
+			mouse.getPanelSeleccionado().addMouseListener(new MenuAtacar(this.mouse.getTc()));
+			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
+					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
+			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setPosicionAtaque(true);
+			;
+
 			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
+
 			mouse.getTc().getVista().mostrar();
 
 		}
 
 	}
-	
-
-
 
 }
