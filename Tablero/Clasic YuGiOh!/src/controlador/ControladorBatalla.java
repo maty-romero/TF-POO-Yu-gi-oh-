@@ -17,13 +17,11 @@ import javax.swing.JPanel;
 import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Duelista;
-import modelo.Modelo;
 import vista.VistaTablero;
 
 //el que ataca es el jugador, con su carta atacante. siempre, porque este listener se activa con el click del jugador
 public class ControladorBatalla implements ActionListener, MouseListener {
 
-//	private menuAtacar menuAtacar;
 	private MenuAtacar menuAtacar;
 
 	// monstruoAtacante --> Del jugador

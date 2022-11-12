@@ -8,7 +8,6 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import modelo.Carta;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
 

@@ -16,7 +16,6 @@ import javax.swing.JPopupMenu;
 
 import modelo.Carta;
 import modelo.CartaMonstruo;
-import modelo.Modelo;
 import vista.VistaTablero;
 
 public class MonstruosInvocacion implements MouseListener {
