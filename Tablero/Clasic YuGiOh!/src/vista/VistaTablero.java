@@ -116,8 +116,12 @@ public class VistaTablero implements ImageObserver {
 	private JLabel imagenIconoJug;
 
 //Botones 
-	private JButton btnAtacar;
-
+	private JButton btnTerminarTurno;
+	private JButton btnSiguienteFase;
+//Label Fase de la partida
+	private JLabel labelFasePartida;
+	
+	
 //genero panel carta boca abajo default
 	private JPanel cartaDefault;
 	private String pathCartaDefault;
@@ -127,6 +131,7 @@ public class VistaTablero implements ImageObserver {
 	private ArrayList<JPanel> panelesHechizosCampoJugador = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesMonstruosCampoOponente = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesHechizosCampoOponente = new ArrayList<JPanel>();
+	
 
 	public VistaTablero(TableroController tableroController) {
 		this.setTableroController(tableroController);
@@ -153,7 +158,7 @@ public class VistaTablero implements ImageObserver {
 
 		manoJugador.setLayout(new GridLayout(1, 0, 0, 0));
 		manoJugador.setFocusable(true);
-
+		
 		// MANO DEL BOT Panel grid layout
 		manoBot = new JPanel();
 		manoBot.setBounds(94, 10, 726, 100);
@@ -167,6 +172,25 @@ public class VistaTablero implements ImageObserver {
 		manoBot.setFocusable(true);
 		manoBot.requestFocus();
 
+		//Label Fase Partida
+		labelFasePartida = new JLabel("");
+		labelFasePartida.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		labelFasePartida.setForeground(Color.WHITE);
+		labelFasePartida.setBounds(28, 461, 135, 62);
+		tablero.getContentPane().add(labelFasePartida);
+		
+		//Boton Siguiente Fase
+		btnSiguienteFase = new JButton("Siguiente Fase");
+		btnSiguienteFase.setBounds(28, 345, 119, 36);
+		tablero.getContentPane().add(btnSiguienteFase);
+		//Boton Terminar Turno
+		btnTerminarTurno = new JButton("Terminar Turno");
+		btnTerminarTurno.setBounds(31, 298, 119, 36);
+		tablero.getContentPane().add(btnTerminarTurno);
+		
+		
+		
+		
 		// Contador vida jugador
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
@@ -499,6 +523,30 @@ public class VistaTablero implements ImageObserver {
 		return panel;
 
 	}
+	
+	public JButton getBtnTerminarTurno() {
+		return btnTerminarTurno;
+	}
+
+	public void setBtnTerminarTurno(JButton btnTerminarTurno) {
+		this.btnTerminarTurno = btnTerminarTurno;
+	}
+
+	public JButton getBtnSiguienteFase() {
+		return btnSiguienteFase;
+	}
+
+	public void setBtnSiguienteFase(JButton btnSiguienteFase) {
+		this.btnSiguienteFase = btnSiguienteFase;
+	}
+
+	public JLabel getLabelFasePartida() {
+		return labelFasePartida;
+	}
+
+	public void setLabelFasePartida(JLabel labelFasePartida) {
+		this.labelFasePartida = labelFasePartida;
+	}
 
 	public JFrame getTablero() {
 		return tablero;
@@ -765,5 +813,4 @@ public class VistaTablero implements ImageObserver {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

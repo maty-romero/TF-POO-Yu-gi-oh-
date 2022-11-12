@@ -29,6 +29,7 @@ public class CerebroBot {
 	// ROBAR CARTA
 
 	public void robarCarta() {
+		
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -179,7 +180,7 @@ public class CerebroBot {
 	public void Batalla() {
 
 		try {
-			Thread.sleep(1500);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

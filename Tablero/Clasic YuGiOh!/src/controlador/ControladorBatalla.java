@@ -53,7 +53,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
 
-			aplicarResultadoBatalla();
+			aplicarResultadoBatallaVida();
 		}
 
 		// Se agregan listener a paneles Campo Oponente (Monstruos)
@@ -84,7 +84,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 			this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
 					this.menuAtacar.getTc().getDuelistaOponente());
 
-			aplicarResultadoBatalla();
+			aplicarResultadoBatallaVida();
+			aplicarResultadoBatallaPaneles();
 
 			// remuevo los listener para que no se puedan seleccionar.
 			for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
@@ -103,12 +104,12 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	 * muertos no Funciona
 	 */
 
-	public void aplicarResultadoBatalla() {
-
-		System.out.println("SE APLICA RESULTADOS BATALLA");
-
+	
+	private void aplicarResultadoBatallaVida() {
+		
 		System.out.println("Vida Duelista Jugador: " + this.menuAtacar.getTc().getDuelistaJugador().getVida());
 		System.out.println("Vida Duelista Oponente: " + this.menuAtacar.getTc().getDuelistaOponente().getVida());
+		
 		// verificacion de vida de los duelistas
 
 		// obtengo la vida vida de los duelistas en String --> Para el JLabel
@@ -120,8 +121,10 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		this.menuAtacar.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.menuAtacar.getTc().getVista().mostrar();
-
-		// ------------------------------
+	}
+	
+	
+	private void aplicarResultadoBatallaPaneles() {
 
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
 
