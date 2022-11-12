@@ -22,7 +22,6 @@ public class Duelista {
 		this.nombre = nombre;
 		this.ganador = true; // los duelistas son ganadores hasta que uno de los dos pierda
 		this.invocoMonstruo = false;
-		this.IDduelista = id;
 		// this.icono = iconoUrl;
 	}
 
