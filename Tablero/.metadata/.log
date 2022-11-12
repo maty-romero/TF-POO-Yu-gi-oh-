@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 !SESSION 2022-11-12 14:18:49.924 -----------------------------------------------
+=======
+!SESSION 2022-11-12 14:09:27.126 -----------------------------------------------
+>>>>>>> Stashed changes
 =======
 !SESSION 2022-11-12 14:09:27.126 -----------------------------------------------
 >>>>>>> Stashed changes
@@ -10,6 +14,7 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
 Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 !ENTRY org.eclipse.core.resources 2 10035 2022-11-12 14:18:52.612
 !MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
@@ -979,6 +984,8 @@ Caused by: org.eclipse.core.internal.dtree.ObjectNotFoundException: Tree element
 	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:810)
 	... 28 more
 =======
+=======
+>>>>>>> Stashed changes
 !ENTRY org.eclipse.jface 2 0 2022-11-12 14:09:43.791
 !MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
 !SUBENTRY 1 org.eclipse.jface 2 0 2022-11-12 14:09:43.791
@@ -1024,4 +1031,7 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
