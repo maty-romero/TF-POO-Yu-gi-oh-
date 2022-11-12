@@ -81,19 +81,16 @@ public class CerebroBot {
 
 			// sacar un monstruo de un elemento del hash y eliminar el item del hash
 
-			List<JPanel> keysAsArray = new ArrayList<JPanel>(this.getTc().getManoMonstruoOponente().keySet()); // convierto
-																												// las
-																												// claves
-																												// en
-																												// una
-																												// lista
+			//Convierto las claves en una lista 
+			List<JPanel> keysAsArray = new ArrayList<JPanel>(this.getTc().getManoMonstruoOponente().keySet()); 
 			JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
 
 			panelAleatorio.setVisible(false);
 
 			// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
 			CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
-			monstruo.setPosicionAtaque(true); // XXXXXXXXXXXXXXXXXXXXX
+			monstruo.setPosicionAtaque(rnd.nextBoolean()); // XXXXXXXXXXXXXXXXXXXXX
+			
 			System.out.println("Monstruo por invocar - BOT: " + monstruo);
 
 			JLabel label = this.getTc().getVista().generoImagenCarta(monstruo); // creo un label con la imagen del
@@ -116,12 +113,9 @@ public class CerebroBot {
 
 			// sacar un monstruo de un elemento del hash y eliminar el item del hash
 
-			List<JPanel> keysAsArray = new ArrayList<JPanel>(this.getTc().getManoHechizoOponente().keySet()); // convierto
-																												// las
-																												// claves
-																												// en
-																												// una
-																												// lista.
+			
+			// convierto las claves en una lista. 
+			List<JPanel> keysAsArray = new ArrayList<JPanel>(this.getTc().getManoHechizoOponente().keySet()); 
 			JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
 
 			panelAleatorio.setVisible(false);
@@ -135,7 +129,6 @@ public class CerebroBot {
 																				// monstruo
 			JPanel panel = this.getTc().getVista().devuelvoPanelCampo(label); // lo focuseo y le agrego el label al
 																				// panel
-
 			this.getTc().getCampoHechizosOponente().put(panel, hechizo); // Se agrega al hash
 
 			// Obtengo una posicion vacia para invocar
@@ -196,19 +189,13 @@ public class CerebroBot {
 		if (this.getTc().getCampoMonstruosOponente().size() > 0) {
 
 			// obtengo un panel y monstruo aleatorio del campo monstruo del BOT
-
-			List<JPanel> keysBot = new ArrayList<JPanel>(this.getTc().getCampoMonstruosOponente().keySet()); // convierto
-																												// las
-																												// claves
-																												// en
-																												// una
-																												// lista.
+			
+			// convierto las claves en una lista.
+			List<JPanel> keysBot = new ArrayList<JPanel>(this.getTc().getCampoMonstruosOponente().keySet()); 
 			JPanel panelMonstruoAtacante = keysBot.get(rnd.nextInt(keysBot.size())); // obtengo una clave aleatoria
 
-			this.monstruoAtacante = this.getTc().getCampoMonstruosOponente().get(panelMonstruoAtacante); // obtengo
-																													// el
-																													// monstruo
-																													// aleatorio
+			//obtengo el monstruo aleatorio
+			this.monstruoAtacante = this.getTc().getCampoMonstruosOponente().get(panelMonstruoAtacante); 
 
 			// si no tiene monstruos el Jugador --> AtaqueDirecto
 			if (this.getTc().getCampoMonstruosJugador().size() == 0) {
@@ -221,12 +208,9 @@ public class CerebroBot {
 				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");
 
 				// Obtengo el panelObjetivo y MonstruoObjetivo del Duelista Jugador
-				List<JPanel> keysJugador = new ArrayList<JPanel>(this.getTc().getCampoMonstruosJugador().keySet()); // convierto
-																													// las
-																													// claves
-																													// en
-																													// una
-																													// lista.
+				
+				// convierto las claves en una lista.
+				List<JPanel> keysJugador = new ArrayList<JPanel>(this.getTc().getCampoMonstruosJugador().keySet()); 
 				JPanel panelMonstruoObjetivo = keysJugador.get(rnd.nextInt(keysJugador.size())); // obtengo una clave
 																									// aleatoria
 
