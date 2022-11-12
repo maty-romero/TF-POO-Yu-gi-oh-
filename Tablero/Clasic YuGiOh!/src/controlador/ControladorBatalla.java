@@ -53,7 +53,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
 
-			aplicarResultadoBatallaVida();
+			aplicarResultadoBatallaVida(); //solo se actualiza la vida del duelista atacado 
 		}
 
 		// Se agregan listener a paneles Campo Oponente (Monstruos)
@@ -84,8 +84,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 			this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
 					this.menuAtacar.getTc().getDuelistaOponente());
 
-			aplicarResultadoBatallaVida();
-			aplicarResultadoBatallaPaneles();
+			aplicarResultadoBatallaVida(); //actualizo la vida de los duelistas
+			aplicarResultadoBatallaPaneles();  //remuevo paneles si es necesario. 
 
 			// remuevo los listener para que no se puedan seleccionar.
 			for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
@@ -104,12 +104,10 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	 * muertos no Funciona
 	 */
 
-	
 	private void aplicarResultadoBatallaVida() {
 		
 		System.out.println("Vida Duelista Jugador: " + this.menuAtacar.getTc().getDuelistaJugador().getVida());
 		System.out.println("Vida Duelista Oponente: " + this.menuAtacar.getTc().getDuelistaOponente().getVida());
-		
 		// verificacion de vida de los duelistas
 
 		// obtengo la vida vida de los duelistas en String --> Para el JLabel
@@ -121,6 +119,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		this.menuAtacar.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.menuAtacar.getTc().getVista().mostrar();
+		
 	}
 	
 	
@@ -139,10 +138,10 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 					panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
 		}
 
-		System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
+		
 	}
 
-	public void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
+	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
 			HashMap<JPanel, CartaMonstruo> hashModificar) {
 
 		// Eliminacion panel en la vista.

@@ -3,7 +3,7 @@ package controlador;
 import java.util.Arrays;
 import java.util.List;
 
-public class FlujoPartidaController implements mouseAdapter{
+public class FlujoPartidaController {
 
 	//Flujo de la partida --> Jugador 
 	
