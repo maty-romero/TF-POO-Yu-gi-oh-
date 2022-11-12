@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\veram\Documents\TF-POO-Yu-gi-oh-\Clasic YuGiOh!\bin\.metadata\.plugins\org.eclipse.jdt.core
+195505260.index
+3937129032.index
+1865797976.index

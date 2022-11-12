@@ -6,30 +6,20 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-			<item value="C:\Users\veram\Documents\Project copia 2 Tablero_consultar a pablo_si uso lo comentado deberia andar porque no tiene errores logica"/>
-			<item value="C:\Users\veram\Documents\Tablero_maxiç"/>
-			<item value="C:\Users\Alumno\Desktop\Tablero_maxiç\Clasic YuGiOh!"/>
+			<item value="C:\Users\veram\Documents\TF-POO-Yu-gi-oh-\Tablero\Clasic YuGiOh!"/>
+			<item value="C:\Users\celuf\Desktop\Romero Matias 2P"/>
+			<item value="C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\Tablero\Clasic YuGiOh!"/>
+			<item value="C:\Users\celuf\Documents\GitHub\TF-POO-Yu-gi-oh-\Tablero"/>
+			<item value="C:\Users\veram\Documents\TF-POO-Yu-gi-oh-\Tablero"/>
+			<item value="C:\Users\celuf\Desktop\Prueba\Tablero\Clasic YuGiOh!"/>
 		</list>
 	</section>
 	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="372"/>
-		<item key="DIALOG_Y_ORIGIN" value="185"/>
+		<item key="DIALOG_X_ORIGIN" value="652"/>
+		<item key="DIALOG_Y_ORIGIN" value="341"/>
 	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
-		</list>
-	</section>
-	<section name="ExternalProjectImportWizard">
-		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
-		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\Users\veram\Documents\Project copia 2 Tablero_consultar a pablo_si uso lo comentado deberia andar porque no tiene errores logica\Clasic YuGiOh!"/>
-		</list>
-		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
-			<item value=""/>
 		</list>
 	</section>
 </section>
