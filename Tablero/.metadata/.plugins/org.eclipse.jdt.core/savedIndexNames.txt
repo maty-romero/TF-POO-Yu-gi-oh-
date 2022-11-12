@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\veram\Documents\TF-POO-Yu-gi-oh-\Tablero\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-2940657931.index
-162108928.index

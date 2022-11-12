@@ -145,8 +145,7 @@ public class VistaTablero implements ImageObserver {
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
-		manoJugador.setBackground(new Color(153, 0, 0));
-		manoJugador.setVisible(true);
+		manoJugador.setBackground(Color.BLACK);
 		manoJugador.setBounds(10, 589, 726, 100);
 		manoJugador.setSize(730, 100);
 		tablero.getContentPane().add(manoJugador);
@@ -158,9 +157,6 @@ public class VistaTablero implements ImageObserver {
 		manoBot = new JPanel();
 		manoBot.setBounds(94, 10, 726, 100);
 		manoBot.setSize(730, 100);
-		manoBot.setBackground(new Color(153, 0, 0));
-		manoBot.setVisible(true);
-
 		tablero.getContentPane().add(manoBot);
 		manoBot.setLayout(new GridLayout(1, 0, 0, 0));
 		manoBot.setVisible(true);
@@ -570,14 +566,6 @@ public class VistaTablero implements ImageObserver {
 
 	public JPanel getCartaSeleccionada() {
 		return cartaSeleccionada;
-	}
-
-	public void setManoJugador(JPanel manoJugador) {
-		this.manoJugador = manoJugador;
-	}
-
-	public void setManoBot(JPanel manoBot) {
-		this.manoBot = manoBot;
 	}
 
 	public void setCartaSeleccionada(JPanel cartaSeleccionada) {
