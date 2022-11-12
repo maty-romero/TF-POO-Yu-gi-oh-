@@ -12,7 +12,6 @@ public class Batalla {
 	}
 
 	public void atacar(CartaMonstruo cartaAtacante, CartaMonstruo cartaObjetivo) {
-
 		if (cartaObjetivo.getPosicionAtaque()) { // Ambas Cartas en posicion ataque
 			Integer dmg = cartaAtacante.getAtaque() - cartaObjetivo.getAtaque();
 			if (dmg > 0) {
