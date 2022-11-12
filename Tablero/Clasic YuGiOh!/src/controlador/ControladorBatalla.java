@@ -31,8 +31,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	private JPanel panelMonstruoAtacante = new JPanel();
 	private JPanel panelMonstruoObjetivo = new JPanel();
 
-	private Boolean batallaFinalizada = false;
-
 	public ControladorBatalla(MenuAtacar menuAtacar) {
 		this.menuAtacar = menuAtacar;
 	}
@@ -96,9 +94,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		}
 	}
 
-	public void Batalla() {
-
-	}
 
 	/*
 	 * Verifica si mueriron cartas, para eliminar paneles del tablero Actualiza la
