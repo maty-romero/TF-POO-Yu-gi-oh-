@@ -59,8 +59,8 @@ public class TableroController {
 		this.duelistaJugador = new Duelista("YUGI", 1);
 		this.duelistaOponente = new Duelista("KIRA", 2);
 
-//		duelistaJugador.robarCarta();
-//		duelistaJugador.robarCarta();
+		duelistaJugador.robarCarta();
+		duelistaJugador.robarCarta();
 //		duelistaOponente.robarCarta();
 //		duelistaOponente.robarCarta();
 //
@@ -68,9 +68,9 @@ public class TableroController {
 //		this.duelistaJugador.robarCarta();
 		
 		//MONSTRUO JUGADOR 
-		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
-		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
-		
+//		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+//		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
+//		
 		
 		
 		try {
@@ -130,22 +130,47 @@ public class TableroController {
 //			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
 			
 			
+			try {
+				
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
+
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
+
+//				this.controladorBot.robarCarta();
+//				Thread.sleep(1000);
+			//----------
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+			//-----
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
+
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
+			//-----	
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				
+//				this.controladorBot.Batalla();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
-			this.controladorBot.robarCarta();
-			this.controladorBot.robarCarta();
-			this.controladorBot.robarCarta();
-
-			this.controladorBot.invocarCarta();
-			this.controladorBot.invocarCarta();
+			System.out.println("Fin ejecucion Bot");
 			
-			this.controladorBot.Batalla();
+
+			
+			
+			
 
 
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
+			
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();

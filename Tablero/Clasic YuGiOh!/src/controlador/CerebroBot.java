@@ -45,12 +45,6 @@ public class CerebroBot {
 		this.getTc().setManoMonstruoOponente(this.getTc().envioImagenesManoMonstruoVista(
 				this.getTc().getDuelistaOponente().getMano().getManoMonstruos(), this.getTc().getVista().getManoBot()));
 
-//		try {
-//			Thread.sleep(5000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-
 		this.getTc().setManoHechizoOponente(this.getTc().envioImagenesManoHechizoVista(
 				this.getTc().getDuelistaOponente().getMano().getManoHechizos(), this.getTc().getVista().getManoBot()));
 
@@ -67,6 +61,7 @@ public class CerebroBot {
 		// Invocacion carta monstruo
 		if (rnd.nextBoolean()) {
 
+			//si hay cartas monstruo en la mano --> Invoco un monstruo
 			if(this.getTc().getManoMonstruoOponente().size() >= 1) {
 				// sacar un monstruo de un elemento del hash y eliminar el item del hash
 
@@ -92,16 +87,21 @@ public class CerebroBot {
 				// Obtengo una posicion vacia para invocar
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesMonstruosCampoOponente());
 
+				
 				// se agrega una carta al campo Monstruo Oponente a la vista
 				this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panel);
 
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
+				
+				
+				
 			}
 			
 
-			// invocacion carta Hehizo
-		} else {
-
+			
+		} else { // invocacion carta Hehizo
+			
+			//si hay cartas hechizo en la mano --> Invoco un monstruo
 			if(this.getTc().getManoHechizoOponente().size() >= 1) {
 				// convierto las claves en una lista. 
 				List<JPanel> keysAsArray = new ArrayList<JPanel>(this.getTc().getManoHechizoOponente().keySet()); 
@@ -123,28 +123,40 @@ public class CerebroBot {
 				// Obtengo una posicion vacia para invocar
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesHechizosCampoOponente());
 
+				
 				// se agrega una carta al campo Monstruo Oponente a la vista
 				this.getTc().getVista().getPanelesHechizosCampoOponente().get(posi).add(panel);
 
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
+				
 			}
 			
 		}
 
 	}
 
+	/*
+	 * Retorna la primera posicion del array en donde esta vacio, 
+	 * para poder invocar en el tablero.
+	 * 
+	 * En el caso de que no haya posicion libre devuelve un 10. 
+	 */
 	
-	// Retorna la primera posicion del array en donde esta vacio, para poder invocar
-	// en el tablero.
 	private Integer posVaciaCampo(ArrayList<JPanel> paneles) {
-		Integer posicion = null;
+		Integer posicion = 100; 
 		for (int i = 0; i < paneles.size(); i++) {
-			if (paneles.get(i) != null) {
+
+			if (paneles.get(i).getComponentCount() == 0) {
 				posicion = i;
+				return posicion; 
 			}
-		}
-		return posicion;
+		}	
+		return posicion; 
 	}
+		
+		
+	
+
 
 	// BATALLA
 
