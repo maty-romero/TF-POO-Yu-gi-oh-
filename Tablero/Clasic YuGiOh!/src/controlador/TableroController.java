@@ -63,6 +63,8 @@ public class TableroController {
 		this.duelistaJugador = new Duelista("YUGI", 1);
 		this.duelistaOponente = new Duelista("KIRA", 2);
 
+		this.controladorBot = new CerebroBot(this);
+		
 //		duelistaJugador.robarCarta();
 //		duelistaJugador.robarCarta();
 //		duelistaOponente.robarCarta();
@@ -96,7 +98,7 @@ public class TableroController {
 
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 
-			this.controladorBot = new CerebroBot(this);
+			
 			System.out.println(
 					"Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
 			System.out
@@ -115,13 +117,29 @@ public class TableroController {
 			duelistaJugador.robarCarta();
 			this.controladorBot.robarCarta(); 
 		
+			/*
+			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, 
+			 * deberia de saltar una exepcion que termine la ejecucion del hilo principal y salte a la pantalla final. 
+			 */
+			
+			HiloTurnoBot bot = new HiloTurnoBot(controladorBot);
+			
+			//Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
 			this.getVista().getBtnTerminarTurno().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					turnoBot(); 
+					try {
+						bot.start();
+						bot.join();
+						
+						
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+					duelistaJugador.robarCarta(); //se roba el turno y se le sede la ejecucion. 
 				}
 			});
 			
-			this.Partida(); //Comienza la partida. 
+//			this.Partida(); //Comienza la partida. 
 			
 			
 
@@ -135,44 +153,48 @@ public class TableroController {
 	// flujo de la partida
 		/*
 		 * FASES: Robo, invocacion, batalla, invocacion, otro turno
+		 * 
+		 * 
 		 */
 	
-		private void Partida() {
+//		private void Partida() {
+//
+//			List<String> fasesPartida = Arrays.asList("DRAW PHASE",  "MAIN PHASE" , "BATTLE PHASE"); 
+//			
+//			
+//			
+//////			List<String> fasesPartida = Arrays.asList("DRAW PHASE",  "MAIN PHASE" , "BATTLE PHASE");
+////			System.out.println("afuera del while .");
+////			
+////			// mientras ninguno pierda, sigue la partida.
+////				System.out.println("adentro del while . ");
+//				// Turno Jugador
+//				duelistaJugador.robarCarta();
+//				
+//			
+//
+//		}
 
-			
-//			List<String> fasesPartida = Arrays.asList("DRAW PHASE",  "MAIN PHASE" , "BATTLE PHASE");
-			System.out.println("afuera del while .");
-			
-			// mientras ninguno pierda, sigue la partida.
-			while (duelistaJugador.getGanador() && duelistaOponente.getGanador()) {
-				System.out.println("adentro del while . ");
-				// Turno Jugador
-				duelistaJugador.robarCarta();
-				
-			}
-
-		}
-
-		private void turnoBot() {
-			
-			this.controladorBot.robarCarta();
-			this.controladorBot.invocarCarta();
-			
-			if(this.campoMonstruosOponente.size() > 0) {
-				this.controladorBot.Batalla();
-			}
-			
-
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			Partida(); //vuelve al flujo. 
-			
-			
-		}
+//		private void turnoBot() {
+//			
+//			this.controladorBot.robarCarta();
+//			this.controladorBot.invocarCarta();
+//			
+//			if(this.campoMonstruosOponente.size() > 0) {
+//				this.controladorBot.Batalla();
+//			}
+//			
+//
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			Partida(); //vuelve al flujo. 
+//			
+//			
+//		}
 	
 	
 	
