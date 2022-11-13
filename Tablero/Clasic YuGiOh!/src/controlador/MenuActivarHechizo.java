@@ -14,21 +14,28 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
-public class MenuActivarHechizoBocaAbajo implements ActionListener, MouseListener {
+public class MenuActivarHechizo implements ActionListener, MouseListener {
 	private ManuHechizos mouse;
 
-	public MenuActivarHechizoBocaAbajo(ManuHechizos mouse) {
+	public MenuActivarHechizo(ManuHechizos mouse) {
 		this.mouse = mouse;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (this.mouse.getTc().getCampoHechizosJugador().size() < 4) {
-			this.mouse.getTc().getReferee().voltearCartaMagica(mouse.getPanelSeleccionado());
+			if (this.mouse.getTc().getCampoHechizosJugador().get(mouse.getPanelSeleccionado()).getBocaAbajo() == true) {
+				this.mouse.getTc().getReferee().voltearCartaMagica(mouse.getPanelSeleccionado());
+			}
 			for (JPanel panelMonstruo : this.mouse.getTc().getCampoMonstruosJugador().keySet()) {
 				panelMonstruo.addMouseListener(this);
 			}
 
+			if (this.mouse.getTc().getCampoMonstruosJugador().size() == 0) {
+				this.mouse.getTc().getReferee().remuevoPanelCampoHechizo(mouse.getPanelSeleccionado(),
+						this.mouse.getTc().getCampoHechizosJugador(),
+						this.mouse.getTc().getVista().getPanelesHechizosCampoJugador());
+			}
 		}
 	}
 
@@ -42,27 +49,18 @@ public class MenuActivarHechizoBocaAbajo implements ActionListener, MouseListene
 
 		nuevoAtaque = nuevoAtaque + valorEfecto;
 		this.mouse.getTc().getCampoMonstruosJugador().get(panelAplicarEfecto).setAtaque(nuevoAtaque);
-		JPanel coincidencia = new JPanel();
 
-		// Remuevo VISUALMENTE el componente de panel
-		// getVista().panelesHechizosCampoJugador, no uno de esos 3 paneles sino su
-		// componente
-		for (JPanel panel : this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()) {
-			for (Component componente : panel.getComponents()) {
-				if (componente == mouse.getPanelSeleccionado()) {
-					coincidencia = panel;
-					componente.setVisible(false);
-					break;
-				}
-			}
+		this.mouse.getTc().getReferee().AplicarEfectoMagicoAMonstruo(this.mouse.getPanelSeleccionado(),
+				panelAplicarEfecto, this.mouse.getTc().getCampoHechizosJugador(),
+				this.mouse.getTc().getCampoMonstruosJugador());
+
+		this.mouse.getTc().getReferee().remuevoPanelCampoHechizo(mouse.getPanelSeleccionado(),
+				this.mouse.getTc().getCampoHechizosJugador(),
+				this.mouse.getTc().getVista().getPanelesHechizosCampoJugador());
+		for (JPanel panelMonstruo : this.mouse.getTc().getCampoMonstruosJugador().keySet()) {
+			panelMonstruo.removeMouseListener(this);
 		}
-		this.mouse.getTc().getCampoHechizosJugador().remove(this.mouse.getPanelSeleccionado());
 
-		coincidencia.removeAll();
-		coincidencia.setVisible(true);
-		mouse.getTc().getVista().getTablero().setVisible(true);
-
-		this.mouse.getTc().getVista().mostrar();
 	}
 
 	@Override

@@ -134,23 +134,18 @@ public class TableroController {
 			try {
 
 				this.controladorBot.robarCarta();
-				Thread.sleep(1000);
-
-				this.controladorBot.robarCarta();
-				Thread.sleep(1000);
-
-//				this.controladorBot.robarCarta();
 //				Thread.sleep(1000);
-				// ----------
-				this.controladorBot.invocarCarta();
-				Thread.sleep(1000);
-				this.controladorBot.invocarCarta();
-				Thread.sleep(1000);
-				// -----
-				this.controladorBot.robarCarta();
-				Thread.sleep(1000);
 
 				this.controladorBot.robarCarta();
+//				Thread.sleep(1000);
+
+				this.controladorBot.robarCarta();
+//				Thread.sleep(1000);
+
+
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				this.controladorBot.invocarCarta();
 				Thread.sleep(1000);
 				// -----
 				this.controladorBot.invocarCarta();

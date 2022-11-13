@@ -59,17 +59,17 @@ public class ManuHechizos implements MouseListener {
 
 		if (this.tc.getManoHechizoJugador().containsKey(panel)) {
 			// create menuItems
-			JMenuItem m1 = new JMenuItem("Activar hechizo");
+			JMenuItem m1 = new JMenuItem("Invocar hechizo boca arriba");
 			JMenuItem m2 = new JMenuItem("Invocar boca abajo");
 
 			pm.add(m1);
 			pm.add(m2);
-			m1.addActionListener(new MenuActivarHechizoCartaNoInvocada(this));
+			m1.addActionListener(new MenuInvocarBocaArribaHechizo(this));
 			m2.addActionListener(new MenuInvocarBocaAbajoHechizo(this));
 
 		} else {
 			JMenuItem m3 = new JMenuItem("activar efecto");
-			m3.addActionListener(new MenuActivarHechizoBocaAbajo(this));
+			m3.addActionListener(new MenuActivarHechizo(this));
 			pm.add(m3);
 		}
 		pm.addSeparator();

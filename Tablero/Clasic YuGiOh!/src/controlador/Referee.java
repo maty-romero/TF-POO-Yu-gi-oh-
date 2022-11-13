@@ -1,10 +1,16 @@
 package controlador;
 
+import java.awt.Component;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import modelo.CartaHechizo;
+import modelo.CartaMonstruo;
 
 //Esta clase realiza algunas acciones sobre el tablero ( no todas) . la idea es que haya un controlador accesible por el bot y el jugador, y que TableroController no haga todo esto
 
@@ -94,6 +100,44 @@ public class Referee {
 			(panelAVoltear).add(label);
 			this.getTc().getVista().mostrar();
 		}
+	}
+
+	public void AplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo, HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo ) {
+		Integer valorEfecto = hashCartasMagicas.get(cartaMagica).getEfecto();
+
+		Integer nuevoAtaque = hashCartasMonstruo.get(cartaMonstruo).getAtaque();
+
+		nuevoAtaque = nuevoAtaque + valorEfecto;
+		hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
+
+	}
+
+	public void remuevoPanelCampoHechizo(JPanel panelMagico, HashMap<JPanel, CartaHechizo> hashHechizos,
+			ArrayList<JPanel> panelesCampoHechizos) {
+
+		JPanel coincidencia = new JPanel();
+
+		// Remuevo VISUALMENTE el componente de panel
+		// getVista().panelesHechizosCampoJugador, no uno de esos 3 paneles sino su
+		// componente
+		for (JPanel panel : panelesCampoHechizos) {
+			for (Component componente : panel.getComponents()) {
+				if (componente == panelMagico) {
+					coincidencia = panel;
+					componente.setVisible(false);
+					break;
+				}
+			}
+		}
+
+		hashHechizos.remove(panelMagico);
+
+		coincidencia.removeAll();
+		coincidencia.setVisible(true);
+		this.getTc().getVista().getTablero().setVisible(true);
+
+		this.getTc().getVista().mostrar();
+
 	}
 
 	public TableroController getTc() {
