@@ -13,7 +13,7 @@ public class MenuFinalController {
 		this.vista.setVisible(true);
 		this.vista.setLocationRelativeTo(null);
 		
-		
+		this.vista.getMensajeFinalPartida().setText(mensajeGanador);
 	}
 	
 }

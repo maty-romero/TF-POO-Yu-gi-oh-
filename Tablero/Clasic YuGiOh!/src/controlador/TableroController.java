@@ -110,12 +110,12 @@ public class TableroController {
 			//INICIO DE PARTIDA 
 			
 //			// los duelistas roban 5 cartas --> Actualizar la vista.
-			for (int i = 0; i < 2; i++) {
-				duelistaJugador.robarCarta();
-				this.controladorBot.robarCarta();
-			}
+//			for (int i = 0; i < 2; i++) {
+//				duelistaJugador.robarCarta();
+//				this.controladorBot.robarCarta();
+//			}
 			
-//			duelistaJugador.robarCarta();
+			duelistaJugador.robarCarta();
 			 
 		
 			/*

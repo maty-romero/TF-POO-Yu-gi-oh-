@@ -54,4 +54,15 @@ public class MenuFinal extends JFrame {
 		fondoMenuFinal.setBounds(0, 0, 776, 554);
 		contentPane.add(fondoMenuFinal);
 	}
+
+	public JLabel getMensajeFinalPartida() {
+		return mensajeFinalPartida;
+	}
+
+	public void setMensajeFinalPartida(JLabel mensajeFinalPartida) {
+		this.mensajeFinalPartida = mensajeFinalPartida;
+	}
+	
+	
+	
 }

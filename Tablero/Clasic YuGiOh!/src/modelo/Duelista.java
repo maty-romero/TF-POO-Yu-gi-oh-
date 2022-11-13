@@ -38,19 +38,21 @@ public class Duelista {
 		if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
 			System.out.println("Se intenta robar un monstruo!");
 			CartaMonstruo monstruo = this.getDeck().getMonstruo();
-			if (monstruo != null) {
-				this.getMano().agregarCarta(monstruo);
-				monstruo.setConVida(true);
+			if (monstruo == null) {
+				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
 			}
-			throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
+
+			this.getMano().agregarCarta(monstruo);
+			monstruo.setConVida(true);
 
 		} else { // Se obtiene un hechizo en la mano
 			System.out.println("Se intenta robar un hechizo!");
 			CartaHechizo hechizo = this.getDeck().getHechizo();
-			if (hechizo != null) {
-				this.getMano().agregarCarta(hechizo);
+			if (hechizo == null) {
+				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
 			}
-			throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
+			this.getMano().agregarCarta(hechizo);
+			
 		}
 
 		
