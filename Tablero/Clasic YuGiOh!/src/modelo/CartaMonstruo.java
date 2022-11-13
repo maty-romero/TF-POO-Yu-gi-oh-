@@ -14,7 +14,7 @@ public class CartaMonstruo extends Carta {
 		super(id, nombre, descripcion, pathImagen);
 		this.ataque = ataque;
 		this.defensa = defensa;
-		this.conVida = true; 
+		this.conVida = true;
 	}
 
 //sé que el duelistaJugador (sea true o false) es el que ataca al duelistaAtacado
@@ -44,15 +44,16 @@ public class CartaMonstruo extends Carta {
 			if (dmg > 0) {
 				duelistaAtacado.eliminacionCartaMuerta(duelistaAtacado, cartaObjetivo);
 			}
-			if(dmg < 0) {
+			if (dmg < 0) {
 				duelistaAtacante.recibirDanio(Math.abs(dmg));
 			}
-			//dmg = 0 no pasa nada 
+			// dmg = 0 no pasa nada
 
 		}
 	}
 
-	// Si el duelista no tiene monstruos en el campo de batalla, la carta monstruo ataca al duelista
+	// Si el duelista no tiene monstruos en el campo de batalla, la carta monstruo
+	// ataca al duelista
 	public void ataqueDirecto(Duelista duelista, CartaMonstruo cartaAtacante) {
 		duelista.recibirDanio(cartaAtacante.getAtaque());
 	}
@@ -95,7 +96,5 @@ public class CartaMonstruo extends Carta {
 	public String toString() {
 		return super.toString() + "\n\nataque: " + ataque + "\ndefensa: " + defensa;
 	}
-
-	
 
 }
