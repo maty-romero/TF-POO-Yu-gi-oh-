@@ -60,8 +60,8 @@ public class TableroController {
 		this.duelistaJugador = new Duelista("YUGI", 1);
 		this.duelistaOponente = new Duelista("KIRA", 2);
 
-//		duelistaJugador.robarCarta();
-//		duelistaJugador.robarCarta();
+		duelistaJugador.robarCarta();
+		duelistaJugador.robarCarta();
 //		duelistaOponente.robarCarta();
 //		duelistaOponente.robarCarta();
 //
@@ -130,20 +130,49 @@ public class TableroController {
 //			this.campoMonstruosJugador.put(panel2, monstruo2); 
 //			//se agrega una carta al campo Monstruo Oponente a la vista 
 //			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
+			
+			
+			try {
+				
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
 
-			this.controladorBot.robarCarta();
-			this.controladorBot.robarCarta();
-			this.controladorBot.robarCarta();
-			this.controladorBot.invocarCarta();
-			this.controladorBot.invocarCarta();
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
 
-			this.controladorBot.Batalla();
+//				this.controladorBot.robarCarta();
+//				Thread.sleep(1000);
+			//----------
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+			//-----
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
 
-//			try {
-//				Thread.sleep(2000);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
+				this.controladorBot.robarCarta();
+				Thread.sleep(1000);
+			//-----	
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				this.controladorBot.invocarCarta();
+				Thread.sleep(1000);
+				
+//				this.controladorBot.Batalla();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			System.out.println("Fin ejecucion Bot");
+			
+
+			
+			
+			
+
+
+			
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
