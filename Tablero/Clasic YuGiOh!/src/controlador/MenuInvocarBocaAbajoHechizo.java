@@ -12,9 +12,9 @@ import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
 public class MenuInvocarBocaAbajoHechizo implements ActionListener {
-	private HechizosInvocacion mouse;
+	private ManuHechizos mouse;
 
-	public MenuInvocarBocaAbajoHechizo(HechizosInvocacion mouse) {
+	public MenuInvocarBocaAbajoHechizo(ManuHechizos mouse) {
 		this.mouse = mouse;
 	}
 
@@ -24,28 +24,19 @@ public class MenuInvocarBocaAbajoHechizo implements ActionListener {
 		System.out.println(this.mouse.getTc().getManoHechizoJugador().size());
 
 		if (this.mouse.getTc().getCampoHechizosJugador().size() < 3) {
-			JPanel panel = new JPanel();
-			panel = this.mouse.getTc().getVista().generoBocaAbajoDefault();
-			
-			
+			this.mouse.getTc().getReferee().cartaDefaultBocaAbajo(mouse.getPanelSeleccionado());
 			this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()
-					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(panel).setFocusable(false);
-
-			panel.setVisible(true);
-			panel.setFocusable(true);
-			// el panel que acabo de crear, el de boca abajo default, tiene el mismo
-			// controlador.
-			panel.addMouseListener(mouse);
-			mouse.setPanelCartaBocaAbajo(mouse.getPanelSeleccionado());
-			// las cartas hechizo del campo del jugador van a tener 1 panel boca abajo, y el
-			// panel que tiene la imagen de la carta. Ambos tienen clave a la carta pues
-			// ambos estan relacionados a la carta.
+					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(mouse.getPanelSeleccionado())
+					.setFocusable(false);
 
 			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelSeleccionado(),
 					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelSeleccionado()));
-            this.mouse.getTc().getVista().getManoJugador().remove(mouse.getPanelSeleccionado());
-			this.mouse.getPanelSeleccionado().setBackground(Color.GRAY);
-			this.mouse.setBocaAbajo(true);
+
+			this.mouse.getTc().getCampoHechizosJugador().get(mouse.getPanelSeleccionado()).setBocaAbajo(true);
+			mouse.getPanelSeleccionado().addMouseListener(new ManuHechizos(this.mouse.getTc()));
+			mouse.getPanelSeleccionado().setVisible(true);
+			mouse.getPanelSeleccionado().setFocusable(true);
+			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
 			mouse.getTc().getVista().mostrar();
 
 		}

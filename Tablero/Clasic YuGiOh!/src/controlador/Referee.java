@@ -33,7 +33,7 @@ public class Referee {
 	// queremos que el bot rote sus cartas,
 	// solo tenemos que agregar unos if más para chequear la posicion de ataque y
 	// boca abajo de las cartas modelo del bot
-	public void rotarCarta(JPanel panelARotar) {
+	public void rotarCartaMonstruo(JPanel panelARotar) {
 		BufferedImage buferCarta;
 		JLabel label;
 		if (this.getTc().getCampoMonstruosJugador().get(panelARotar).getBocaAbajo() == true
@@ -79,6 +79,21 @@ public class Referee {
 			this.getTc().getVista().mostrar();
 		}
 
+	}
+
+	public void voltearCartaMagica(JPanel panelAVoltear) {
+		BufferedImage buferCarta;
+		JLabel label;
+		if (this.getTc().getCampoHechizosJugador().get(panelAVoltear).getBocaAbajo() == true) {
+			buferCarta = this.getTc().getVista()
+					.leoImagenCarta(this.getTc().getCampoHechizosJugador().get(panelAVoltear));
+			buferCarta = this.getTc().getVista().cambioTamaño(buferCarta, 120, 120);
+			label = new JLabel(new ImageIcon(buferCarta));
+			(panelAVoltear).removeAll();
+			this.getTc().getCampoHechizosJugador().get((panelAVoltear)).setBocaAbajo(false);
+			(panelAVoltear).add(label);
+			this.getTc().getVista().mostrar();
+		}
 	}
 
 	public TableroController getTc() {

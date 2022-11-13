@@ -18,7 +18,7 @@ import javax.swing.*;
 
 import controlador.ControladorBatalla;
 import controlador.ControladorProyeccionCartas;
-import controlador.HechizosInvocacion;
+import controlador.ManuHechizos;
 //import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
 import modelo.Carta;

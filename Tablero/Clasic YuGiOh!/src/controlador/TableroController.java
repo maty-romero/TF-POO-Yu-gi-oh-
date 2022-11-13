@@ -130,10 +130,9 @@ public class TableroController {
 //			this.campoMonstruosJugador.put(panel2, monstruo2); 
 //			//se agrega una carta al campo Monstruo Oponente a la vista 
 //			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
-			
-			
+
 			try {
-				
+
 				this.controladorBot.robarCarta();
 				Thread.sleep(1000);
 
@@ -142,37 +141,29 @@ public class TableroController {
 
 //				this.controladorBot.robarCarta();
 //				Thread.sleep(1000);
-			//----------
+				// ----------
 				this.controladorBot.invocarCarta();
 				Thread.sleep(1000);
 				this.controladorBot.invocarCarta();
 				Thread.sleep(1000);
-			//-----
+				// -----
 				this.controladorBot.robarCarta();
 				Thread.sleep(1000);
 
 				this.controladorBot.robarCarta();
 				Thread.sleep(1000);
-			//-----	
+				// -----
 				this.controladorBot.invocarCarta();
 				Thread.sleep(1000);
 				this.controladorBot.invocarCarta();
 				Thread.sleep(1000);
-				
+
 //				this.controladorBot.Batalla();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
 			System.out.println("Fin ejecucion Bot");
-			
-
-			
-			
-			
-
-
-			
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -268,13 +259,12 @@ public class TableroController {
 	private void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
-
 		}
 	}
 
 	private void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new HechizosInvocacion(this, false));
+			cartaPanel.addMouseListener(new ManuHechizos(this));
 		}
 	}
 
@@ -375,5 +365,4 @@ public class TableroController {
 		this.referee = referee;
 	}
 
-	
 }

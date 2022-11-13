@@ -52,7 +52,7 @@ public class Barajador {
 				descripcion = rsHechizos.getString("descripcion");
 				url = rsHechizos.getString("pathImagen");
 
-				hechizos.add(new CartaHechizo(id, nombre, descripcion, url)); // agrego al deck hechizos
+				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, 100)); // agrego al deck hechizos
 			}
 
 		} catch (SQLException e) {

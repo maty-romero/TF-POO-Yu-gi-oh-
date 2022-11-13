@@ -21,15 +21,14 @@ import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
 public class MenuRotarMonstruo implements ActionListener {
-	private MenuCartaInvocada mouse;
+	private MenuCartaInvocadaMonstruo mouse;
 
-	public MenuRotarMonstruo(MenuCartaInvocada mouse) {
+	public MenuRotarMonstruo(MenuCartaInvocadaMonstruo mouse) {
 		this.mouse = mouse;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		mouse.getTc().getReferee().rotarCarta(this.mouse.getPanelSeleccionado());
-	  
+		mouse.getTc().getReferee().rotarCartaMonstruo(this.mouse.getPanelSeleccionado());
 	}
 }

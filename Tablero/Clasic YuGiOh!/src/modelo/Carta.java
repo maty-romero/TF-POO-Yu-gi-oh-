@@ -9,7 +9,6 @@ public abstract class Carta {
 	protected Integer id;  
 	protected String nombre, descripcion;   
 	protected Boolean bocaAbajo; 
-	
 	private String pathImagen;
 	
 	public Carta(Integer id, String nombre, String descripcion, String pathImagen) {

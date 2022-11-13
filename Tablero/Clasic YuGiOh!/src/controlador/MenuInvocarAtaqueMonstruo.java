@@ -41,7 +41,7 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			 * no son los mismos paneles que hay en el HASH
 			 */
 			JPopupMenu pm = new JPopupMenu();
-			MenuCartaInvocada ma = new MenuCartaInvocada(this.mouse.getTc());
+			MenuCartaInvocadaMonstruo ma = new MenuCartaInvocadaMonstruo(this.mouse.getTc());
 
 			mouse.getPanelSeleccionado().addMouseListener(ma);
 
