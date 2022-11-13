@@ -8,13 +8,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-public class MenuCartaInvocada implements MouseListener {
+public class MenuCartaInvocadaMonstruo implements MouseListener {
 
 	private TableroController tc;
 	private JPanel panelSeleccionado;
-	private Boolean puedoRotar; // debería poder rotar 1 sola vez por turno a cualquier carta monstruo del campo
 
-	public MenuCartaInvocada(TableroController tc) {
+	public MenuCartaInvocadaMonstruo(TableroController tc) {
 		this.tc = tc;
 	}
 
@@ -68,14 +67,6 @@ public class MenuCartaInvocada implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
-	}
-
-	public Boolean getPuedoRotar() {
-		return puedoRotar;
-	}
-
-	public void setPuedoRotar(Boolean puedoRotar) {
-		this.puedoRotar = puedoRotar;
 	}
 
 	public void setTc(TableroController tc) {

@@ -270,13 +270,12 @@ public class TableroController {
 	private void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
-
 		}
 	}
 
 	private void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new HechizosInvocacion(this, false));
+			cartaPanel.addMouseListener(new ManuHechizos(this));
 		}
 	}
 
@@ -377,5 +376,4 @@ public class TableroController {
 		this.referee = referee;
 	}
 
-	
 }

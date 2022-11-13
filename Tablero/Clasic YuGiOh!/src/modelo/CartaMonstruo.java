@@ -8,14 +8,14 @@ public class CartaMonstruo extends Carta {
 	private Integer ataque, defensa;
 	private Boolean posicionAtaque;
 	private Boolean conVida;
-	private Boolean bocaAbajo;
+	private Boolean puedeRotar;
 
 	public CartaMonstruo(Integer id, String nombre, String descripcion, String pathImagen, Integer ataque,
 			Integer defensa) {
 		super(id, nombre, descripcion, pathImagen);
 		this.ataque = ataque;
 		this.defensa = defensa;
-		this.conVida = true; 
+		this.conVida = true;
 	}
 
 //sé que el duelistaJugador (sea true o false) es el que ataca al duelistaAtacado
@@ -45,10 +45,10 @@ public class CartaMonstruo extends Carta {
 			if (dmg > 0) {
 				duelistaAtacado.eliminacionCartaMuerta(duelistaAtacado, cartaObjetivo);
 			}
-			if(dmg < 0) {
+			if (dmg < 0) {
 				duelistaAtacante.recibirDanio(Math.abs(dmg));
 			}
-			//dmg = 0 no pasa nada 
+			// dmg = 0 no pasa nada
 
 		}
 	}
