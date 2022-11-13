@@ -257,7 +257,8 @@ public class VistaTablero implements ImageObserver {
 		descripcionProyeccion.add(scrollPane);
 		
 		textArea = new JTextArea();
-		textArea.setFont(new Font("Malgun Gothic Semilight", Font.PLAIN, 16));
+		textArea.setEditable(false);
+		textArea.setFont(new Font("Consolas", Font.BOLD, 17));
 		scrollPane.setViewportView(textArea);
 		
 
