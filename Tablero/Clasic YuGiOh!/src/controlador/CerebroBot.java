@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import exepciones.PierdeLaPartida;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
 
@@ -28,7 +29,7 @@ public class CerebroBot {
 
 	// ROBAR CARTA
 
-	public void robarCarta() {
+	public void robarCarta() throws PierdeLaPartida {
 
 		System.out.println("BOT Roba una carta");
 		this.getTc().getDuelistaOponente().robarCarta(); // en el modelo ya se elimina y retorna una carta.

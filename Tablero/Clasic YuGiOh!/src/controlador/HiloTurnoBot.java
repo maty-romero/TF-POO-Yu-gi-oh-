@@ -1,5 +1,7 @@
 package controlador;
 
+import exepciones.PierdeLaPartida;
+
 public class HiloTurnoBot extends Thread{
 
 	private CerebroBot bot;
@@ -25,6 +27,9 @@ public class HiloTurnoBot extends Thread{
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		} catch (PierdeLaPartida e) {
+			System.out.println(e.getMessage());
+			this.bot.getTc().getVista().getTablero().dispose(); //cierro la vista. 
 		}
 		
 		

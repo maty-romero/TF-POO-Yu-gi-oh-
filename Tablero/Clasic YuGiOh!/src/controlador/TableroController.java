@@ -18,6 +18,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import exepciones.PierdeLaPartida;
 import modelo.Carta;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
@@ -52,7 +53,7 @@ public class TableroController {
 
 //	private MouseListener mouseBatalla; 
 
-	public TableroController() {
+	public TableroController(){
 
 		VistaTablero vista = new VistaTablero(this);
 		this.vista = vista;
@@ -109,13 +110,13 @@ public class TableroController {
 			//INICIO DE PARTIDA 
 			
 //			// los duelistas roban 5 cartas --> Actualizar la vista.
-//			for (int i = 0; i < 2; i++) {
-//				duelistaJugador.robarCarta();
-//				duelistaOponente.robarCarta();
-//			}
+			for (int i = 0; i < 2; i++) {
+				duelistaJugador.robarCarta();
+				this.controladorBot.robarCarta();
+			}
 			
-			duelistaJugador.robarCarta();
-			this.controladorBot.robarCarta(); 
+//			duelistaJugador.robarCarta();
+			 
 		
 			/*
 			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, 
@@ -135,7 +136,16 @@ public class TableroController {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-					duelistaJugador.robarCarta(); //se roba el turno y se le sede la ejecucion. 
+					
+					try {
+						duelistaJugador.robarCarta(); //se roba el turno y se le sede la ejecucion.
+					} catch (PierdeLaPartida e1) {
+						System.out.println(e1.getMessage());
+						getVista().getTablero().dispose(); 
+					} 
+					
+						
+					 
 				}
 			});
 			
@@ -145,6 +155,9 @@ public class TableroController {
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+		} catch (PierdeLaPartida e1) {
+			System.out.println(e1.getMessage());
+			this.getVista().getTablero().dispose(); 
 		}
 	}
 	
