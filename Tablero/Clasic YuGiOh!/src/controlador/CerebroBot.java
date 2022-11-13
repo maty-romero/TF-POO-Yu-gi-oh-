@@ -215,6 +215,9 @@ public class CerebroBot {
 				JPanel panelMonstruoObjetivo = panelAleatorio(this.getTc().getCampoMonstruosJugador());
 				// obtengo el monstruo aleatorio
 				this.monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoObjetivo);
+				if (monstruoObjetivo.getBocaAbajo() == true) {
+					this.getTc().getReferee().rotarCartaMonstruo(panelMonstruoObjetivo);
+				}	
 
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
