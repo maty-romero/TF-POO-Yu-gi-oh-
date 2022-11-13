@@ -102,8 +102,6 @@ public class VistaTablero implements ImageObserver {
 
 	private JPanel cartaSeleccionada;
 	private JLabel imagenDescCarta;
-	private JPanel descCartaSeleccionada;
-	private JLabel descCarta;
 //Contador de vida del bot y Jugador
 
 	private JLabel contadorBot;
@@ -127,6 +125,7 @@ public class VistaTablero implements ImageObserver {
 	private ArrayList<JPanel> panelesHechizosCampoJugador = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesMonstruosCampoOponente = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesHechizosCampoOponente = new ArrayList<JPanel>();
+	private JTextArea textArea;
 
 	public VistaTablero(TableroController tableroController) {
 		this.setTableroController(tableroController);
@@ -142,6 +141,7 @@ public class VistaTablero implements ImageObserver {
 		tablero.getContentPane().setLayout(null);
 
 		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
+		
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
@@ -242,23 +242,29 @@ public class VistaTablero implements ImageObserver {
 		this.cem_jug.add(imagenCemJug);
 
 		tablero.getContentPane().add(this.cem_jug);
-
-//campo de batalla del jugador
-
-//Descripcion completa de la carta seleccionada
-
+		
+//Proyeccion de Carta		
 		this.cartaSeleccionada = new JPanel();
 		cartaSeleccionada.setBounds(862, 78, 391, 390);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
-
-		this.descCartaSeleccionada = new JPanel();
-		descCartaSeleccionada.setBounds(862, 514, 391, 120);
-		this.descCartaSeleccionada.setBackground(Color.BLACK);
-		this.descCarta = new JLabel("INSERTE DESCRIPCION DE LA CARTA AQUI");
-		descCarta.setBackground(new Color(255, 255, 255));
-		this.descCartaSeleccionada.add(descCarta);
-		tablero.getContentPane().add(this.descCartaSeleccionada);
+		
+		//Proyeccion de Descripcion 
+		JPanel descripcionProyeccion = new JPanel();
+		descripcionProyeccion.setBackground(Color.DARK_GRAY);
+		descripcionProyeccion.setBounds(862, 479, 391, 147);
+		tablero.getContentPane().add(descripcionProyeccion);
+		descripcionProyeccion.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 371, 125);
+		descripcionProyeccion.add(scrollPane);
+		
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setFont(new Font("Consolas", Font.BOLD, 17));
+		scrollPane.setViewportView(textArea);
+		
 
 //icono del bot
 		iconoBot = new JPanel();
@@ -498,6 +504,16 @@ public class VistaTablero implements ImageObserver {
 
 		return panel;
 
+	}
+
+	
+
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
+	public void setTextArea(JTextArea textArea) {
+		this.textArea = textArea;
 	}
 
 	public JFrame getTablero() {
@@ -765,5 +781,4 @@ public class VistaTablero implements ImageObserver {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
