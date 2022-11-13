@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Duelista;
-import modelo.Modelo;
 import vista.VistaTablero;
 
 //el que ataca es el jugador, con su carta atacante. siempre, porque este listener se activa con el click del jugador
@@ -57,7 +56,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
 
-			aplicarResultadoBatalla();
+			aplicarResultadoBatallaVida(); //solo se actualiza la vida del duelista atacado 
 		}
 
 		// Se agregan listener a paneles Campo Oponente (Monstruos)
@@ -88,7 +87,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 			this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
 					this.menuAtacar.getTc().getDuelistaOponente());
 
-			aplicarResultadoBatalla();
+			aplicarResultadoBatallaVida(); //actualizo la vida de los duelistas
+			aplicarResultadoBatallaPaneles();  //remuevo paneles si es necesario. 
 
 			// remuevo los listener para que no se puedan seleccionar.
 			for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
@@ -98,9 +98,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		}
 	}
 
-	public void Batalla() {
-
-	}
 
 	/*
 	 * Verifica si mueriron cartas, para eliminar paneles del tablero Actualiza la
@@ -110,10 +107,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	 * muertos no Funciona
 	 */
 
-	public void aplicarResultadoBatalla() {
-
-		System.out.println("SE APLICA RESULTADOS BATALLA");
-
+	private void aplicarResultadoBatallaVida() {
+		
 		System.out.println("Vida Duelista Jugador: " + this.menuAtacar.getTc().getDuelistaJugador().getVida());
 		System.out.println("Vida Duelista Oponente: " + this.menuAtacar.getTc().getDuelistaOponente().getVida());
 		// verificacion de vida de los duelistas
@@ -127,8 +122,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		this.menuAtacar.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.menuAtacar.getTc().getVista().mostrar();
-
-		// ------------------------------
+		
+	}
+	
+	
+	private void aplicarResultadoBatallaPaneles() {
 
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
 
@@ -143,10 +141,10 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 					panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
 		}
 
-		System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
+		
 	}
 
-	public void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
+	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
 			HashMap<JPanel, CartaMonstruo> hashModificar) {
 
 		// Eliminacion panel en la vista.

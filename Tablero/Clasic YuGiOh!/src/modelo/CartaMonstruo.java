@@ -15,6 +15,7 @@ public class CartaMonstruo extends Carta {
 		super(id, nombre, descripcion, pathImagen);
 		this.ataque = ataque;
 		this.defensa = defensa;
+		this.conVida = true; 
 	}
 
 //sé que el duelistaJugador (sea true o false) es el que ataca al duelistaAtacado
@@ -43,9 +44,11 @@ public class CartaMonstruo extends Carta {
 			Integer dmg = this.getAtaque() - cartaObjetivo.getDefensa();
 			if (dmg > 0) {
 				duelistaAtacado.eliminacionCartaMuerta(duelistaAtacado, cartaObjetivo);
-			} // si son iguales en atk y la def respectiva, no mueren. Tambien, si el de
-				// posicion de
-				// defensa no muere, el atacante no recibe danio
+			}
+			if(dmg < 0) {
+				duelistaAtacante.recibirDanio(Math.abs(dmg));
+			}
+			//dmg = 0 no pasa nada 
 
 		}
 	}
