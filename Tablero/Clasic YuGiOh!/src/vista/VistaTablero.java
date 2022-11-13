@@ -429,17 +429,23 @@ public class VistaTablero implements ImageObserver {
 	// de archivo(pathImagen)
 	public JLabel generoImagenCarta(Carta carta) {
 
-		JLabel jlabel = null;
+		JLabel jlabel = new JLabel();
+		BufferedImage original = leoImagen(carta);
+		original = this.cambioTamaño(original, 155, 90);
+		jlabel = new JLabel(new ImageIcon(original));
+
+		return jlabel;
+	}
+
+	public BufferedImage leoImagen(Carta carta) {
+		BufferedImage original = null;
 		try {
-
-			BufferedImage original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
-			original = this.cambioTamaño(original, 155, 90);
-			jlabel = new JLabel(new ImageIcon(original));
-
+			original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return jlabel;
+		return original;
+
 	}
 
 	public BufferedImage cambioTamaño(BufferedImage img, int altura, int anchura) {

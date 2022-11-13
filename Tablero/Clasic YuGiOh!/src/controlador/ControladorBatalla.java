@@ -24,7 +24,7 @@ import vista.VistaTablero;
 public class ControladorBatalla implements ActionListener, MouseListener {
 
 //	private menuAtacar menuAtacar;
-	private MenuAtacar menuAtacar;
+	private MenuCartaInvocada menuAtacar;
 
 	// monstruoAtacante --> Del jugador
 	// monstruoObjetivo --> Del bot
@@ -35,7 +35,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 	private Boolean batallaFinalizada = false;
 
-	public ControladorBatalla(MenuAtacar menuAtacar) {
+	public ControladorBatalla(MenuCartaInvocada menuAtacar) {
 		this.menuAtacar = menuAtacar;
 	}
 

@@ -15,5 +15,4 @@ public class Main {
 		Modelo modelo = new Modelo();
 		TableroController tableroController = new TableroController();
 	}
-
 }

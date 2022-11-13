@@ -8,6 +8,7 @@ public class CartaMonstruo extends Carta {
 	private Integer ataque, defensa;
 	private Boolean posicionAtaque;
 	private Boolean conVida;
+	private Boolean bocaAbajo;
 
 	public CartaMonstruo(Integer id, String nombre, String descripcion, String pathImagen, Integer ataque,
 			Integer defensa) {
@@ -49,7 +50,8 @@ public class CartaMonstruo extends Carta {
 		}
 	}
 
-	// Si el duelista no tiene monstruos en el campo de batalla, la carta monstruo ataca al duelista
+	// Si el duelista no tiene monstruos en el campo de batalla, la carta monstruo
+	// ataca al duelista
 	public void ataqueDirecto(Duelista duelista, CartaMonstruo cartaAtacante) {
 		duelista.recibirDanio(cartaAtacante.getAtaque());
 	}

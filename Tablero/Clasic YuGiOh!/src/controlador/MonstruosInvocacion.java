@@ -23,8 +23,6 @@ public class MonstruosInvocacion implements MouseListener {
 	private TableroController tc;
 	private JPanel panelSeleccionado;
 	private JPopupMenu pm;
-	private JPanel panelCartaBocaAbajo;
-	private Boolean bocaAbajo;
 	private JLabel label;
 
 	public MonstruosInvocacion(TableroController tc) {
@@ -68,10 +66,11 @@ public class MonstruosInvocacion implements MouseListener {
 			m2.addActionListener(new MenuInvocarDefensaMonstruo(this));
 		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 
-		} else if (bocaAbajo) {   
-			pm.add(m4);
-			m4.addActionListener(new MenuVoltearMonstruo(this));
 		}
+//		} else if (bocaAbajo) {   
+//			pm.add(m4);
+//			m4.addActionListener(new MenuVoltearMonstruo(this));
+//		}
 
 		pm.addSeparator();
 		panel.setComponentPopupMenu(pm);
@@ -97,22 +96,6 @@ public class MonstruosInvocacion implements MouseListener {
 
 	public void setPanelSeleccionado(JPanel panelSeleccionado) {
 		this.panelSeleccionado = panelSeleccionado;
-	}
-
-	public JPanel getPanelCartaBocaAbajo() {
-		return panelCartaBocaAbajo;
-	}
-
-	public void setPanelCartaBocaAbajo(JPanel panelCartaBocaAbajo) {
-		this.panelCartaBocaAbajo = panelCartaBocaAbajo;
-	}
-
-	public Boolean getBocaAbajo() {
-		return bocaAbajo;
-	}
-
-	public void setBocaAbajo(Boolean bocaAbajo) {
-		this.bocaAbajo = bocaAbajo;
 	}
 
 	public JLabel getLabel() {
