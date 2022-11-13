@@ -119,7 +119,7 @@ public class VistaTablero implements ImageObserver {
 	private JButton btnAtacar;
 
 //genero panel carta boca abajo default
-	private JPanel cartaDefault;
+	private Carta cartaDefault;
 	private String pathCartaDefault;
 
 // Array de cartas
@@ -138,8 +138,6 @@ public class VistaTablero implements ImageObserver {
 	}
 
 	private void generarTablero() {
-
-		tablero.getContentPane().setLayout(null);
 
 		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
 
@@ -430,14 +428,14 @@ public class VistaTablero implements ImageObserver {
 	public JLabel generoImagenCarta(Carta carta) {
 
 		JLabel jlabel = new JLabel();
-		BufferedImage original = leoImagen(carta);
+		BufferedImage original = leoImagenCarta(carta);
 		original = this.cambioTamaño(original, 155, 90);
 		jlabel = new JLabel(new ImageIcon(original));
 
 		return jlabel;
 	}
 
-	public BufferedImage leoImagen(Carta carta) {
+	public BufferedImage leoImagenCarta(Carta carta) {
 		BufferedImage original = null;
 		try {
 			original = ImageIO.read(getClass().getResource(carta.getPathImagen()));
@@ -447,6 +445,18 @@ public class VistaTablero implements ImageObserver {
 		return original;
 
 	}
+	
+	public BufferedImage leoImagen(String ruta) {
+		BufferedImage original = null;
+		try {
+			original = ImageIO.read(getClass().getResource(ruta));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return original;
+
+	}
+
 
 	public BufferedImage cambioTamaño(BufferedImage img, int altura, int anchura) {
 		Image tmp = img.getScaledInstance(altura, anchura, Image.SCALE_SMOOTH);
@@ -770,6 +780,14 @@ public class VistaTablero implements ImageObserver {
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public Carta getCartaDefault() {
+		return cartaDefault;
+	}
+
+	public void setCartaDefault(Carta cartaDefault) {
+		this.cartaDefault = cartaDefault;
 	}
 
 }

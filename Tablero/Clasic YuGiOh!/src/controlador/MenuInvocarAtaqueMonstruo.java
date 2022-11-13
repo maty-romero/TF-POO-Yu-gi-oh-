@@ -42,10 +42,8 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			 */
 			JPopupMenu pm = new JPopupMenu();
 			MenuCartaInvocada ma = new MenuCartaInvocada(this.mouse.getTc());
-			RotarMonstruo rm = new RotarMonstruo(this.mouse.getTc());
 
 			mouse.getPanelSeleccionado().addMouseListener(ma);
-			mouse.getPanelSeleccionado().addMouseListener(rm);
 
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
 					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));

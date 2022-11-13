@@ -66,10 +66,6 @@ public class MonstruosInvocacion implements MouseListener {
 		} else if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
 
 		}
-//		} else if (bocaAbajo) {   
-//			pm.add(m4);
-//			m4.addActionListener(new MenuVoltearMonstruo(this));
-//		}
 
 		pm.addSeparator();
 		panel.setComponentPopupMenu(pm);

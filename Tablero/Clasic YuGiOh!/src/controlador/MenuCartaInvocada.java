@@ -12,7 +12,6 @@ public class MenuCartaInvocada implements MouseListener {
 
 	private TableroController tc;
 	private JPanel panelSeleccionado;
-	private JPanel panelCartaBocaAbajo;
 	private Boolean puedoRotar; // debería poder rotar 1 sola vez por turno a cualquier carta monstruo del campo
 
 	public MenuCartaInvocada(TableroController tc) {
@@ -31,12 +30,12 @@ public class MenuCartaInvocada implements MouseListener {
 
 		m1.addActionListener(new ControladorBatalla(this));
 		m2.addActionListener(new MenuRotarMonstruo(this));
-		if (this.getTc().getCampoMonstruosJugador().containsKey(panelSeleccionado)) {
+		if ((this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == false)) {
 			pm.add(m1);
 			pm.add(m2);
-		} else {
+		}
+		if ((this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == true)) {
 			pm.add(m2);
-
 		}
 
 		pm.addSeparator();
@@ -69,14 +68,6 @@ public class MenuCartaInvocada implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
-	}
-
-	public JPanel getPanelCartaBocaAbajo() {
-		return panelCartaBocaAbajo;
-	}
-
-	public void setPanelCartaBocaAbajo(JPanel panelCartaBocaAbajo) {
-		this.panelCartaBocaAbajo = panelCartaBocaAbajo;
 	}
 
 	public Boolean getPuedoRotar() {
