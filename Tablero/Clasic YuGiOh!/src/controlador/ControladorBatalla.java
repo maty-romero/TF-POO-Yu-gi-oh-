@@ -51,7 +51,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 		System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
 		System.out.println("Monstruo Atacante posAtaque: " + this.monstruoAtacante.getPosicionAtaque());
-
 		// si no tiene monstruos el Bot --> AtaqueDirecto
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
@@ -137,12 +136,14 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 					panelMonstruoAtacante, this.menuAtacar.getTc().getCampoMonstruosJugador());
 		}
 
-		if (!monstruoObjetivo.getConVida()) {
-			this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
-					panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
-		}
+		if (monstruoObjetivo != null) {
+			if (!monstruoObjetivo.getConVida()) {
+				this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
+						panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
+			}
 
-		System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
+			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
+		}
 	}
 
 	public void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,

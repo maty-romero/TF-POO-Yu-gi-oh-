@@ -71,7 +71,8 @@ public class TableroController {
 		// MONSTRUO JUGADOR
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 1000));
-
+		ArrayList<CartaHechizo> hechizo = duelistaJugador.getMano().getManoHechizos();
+                     hechizo.add(new CartaHechizo(12,"hola","carta bufeadora","/hechizos/tifon_espacio_mistico.jpg", 100));
 		
 //		this.duelistaJugador.robarCarta();
 //		this.duelistaJugador.robarCarta();
