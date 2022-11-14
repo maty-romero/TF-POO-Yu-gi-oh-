@@ -64,12 +64,14 @@ public class CerebroBot {
 				// Obtengo una posicion vacia para invocar
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesMonstruosCampoOponente());
 				if (posi != null) {
-					// obtengo un panel aleatorio.
+					// obtengo un panel aleatorio de la mano
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
 					panelAleatorio.setVisible(false);
 
 					// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
 					CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
+					//remuveme el monstruo del modelo -> Mano
+					this.getTc().getDuelistaOponente().getMano().getManoMonstruos().remove(monstruo); 
 					monstruo.setPosicionAtaque(true);
 
 					System.out.println("Monstruo por invocar - BOT: " + monstruo);
@@ -92,36 +94,49 @@ public class CerebroBot {
 			// si hay cartas hechizo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoHechizoOponente().size() >= 1
 					&& this.getTc().getCampoMonstruosOponente().size() >= 1) {
-				// obtengo un panel aleatorio.
-				JPanel panelAleatorio = panelAleatorio(this.getTc().getManoHechizoOponente());
-				panelAleatorio.setVisible(false);
-
-				// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
-				CartaHechizo hechizo = this.getTc().getManoHechizoOponente().remove(panelAleatorio);
-				this.getTc().getVista().mostrar();
-
-				System.out.println("Hechizo por invocar - BOT: " + hechizo);
-
-				// obtengo un panel con un label dado un hechizo.
-				JPanel panelHechizo = panelCustomizadoCarta(hechizo);
-
-				this.getTc().getCampoHechizosOponente().put(panelHechizo, hechizo); // Se agrega al hash
-
+				
 				// Obtengo una posicion vacia para invocar
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesHechizosCampoOponente());
+				if(posi != null) {
+				
+					// obtengo un panel aleatorio.
+					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoHechizoOponente());
+					panelAleatorio.setVisible(false);
 
-				// se agrega una carta al campo Monstruo Oponente a la vista
-				this.getTc().getVista().getPanelesHechizosCampoOponente().get(posi).add(panelHechizo);
+					// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
+					CartaHechizo hechizo = this.getTc().getManoHechizoOponente().remove(panelAleatorio);
+					//remuveme el monstruo del modelo -> Mano
+					this.getTc().getDuelistaOponente().getMano().getManoHechizos().remove(hechizo); 
+					this.getTc().getVista().mostrar();
 
-				this.getTc().getReferee().AplicarEfectoMagicoAMonstruo(panelHechizo,
-						panelAleatorio(this.getTc().getCampoMonstruosOponente()),
-						this.getTc().getCampoHechizosOponente(), this.getTc().getCampoMonstruosOponente());
+					System.out.println("Hechizo por invocar - BOT: " + hechizo);
 
-				this.getTc().getReferee().remuevoPanelCampoHechizo(panelHechizo,
-						this.getTc().getCampoHechizosOponente(),
-						this.getTc().getVista().getPanelesHechizosCampoOponente());
-				this.getTc().getVista().mostrar(); // Actualizo JFrame
+					// obtengo un panel con un label dado un hechizo.
+					JPanel panelHechizo = panelCustomizadoCarta(hechizo);
 
+					this.getTc().getCampoHechizosOponente().put(panelHechizo, hechizo); // Se agrega al hash
+
+					// se agrega una carta al campo Monstruo Oponente a la vista
+					this.getTc().getVista().getPanelesHechizosCampoOponente().get(posi).add(panelHechizo);
+					try {
+						// HAY VECES DONDE LOS 3 SEGUNDOS LOS HACE EN 0.1 SEGUNDOS, NO ES BUG
+						Thread.sleep(4500);
+					} catch (Exception e) {
+					}
+
+					this.getTc().getReferee().AplicarEfectoMagicoAMonstruo(panelHechizo,
+							panelAleatorio(this.getTc().getCampoMonstruosOponente()),
+							this.getTc().getCampoHechizosOponente(), this.getTc().getCampoMonstruosOponente());
+
+					this.getTc().getReferee().remuevoPanelCampoHechizo(panelHechizo,
+							this.getTc().getCampoHechizosOponente(),
+							this.getTc().getVista().getPanelesHechizosCampoOponente());
+					this.getTc().getVista().mostrar(); // Actualizo JFrame
+
+					
+					
+				}
+				
 			}
 		}
 	}

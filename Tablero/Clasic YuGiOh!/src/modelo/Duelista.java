@@ -54,7 +54,7 @@ public class Duelista {
 		CartaMonstruo monstruo = this.getDeck().getMonstruo();
 		if (monstruo == null) {
 			this.contadorDuelistaPierde++;
-			if (this.contadorDuelistaPierde == 3) {
+			if (this.contadorDuelistaPierde == 2) {
 				throw new PierdeLaPartida("PERDIO: " + this.getNombre() + " no robo");
 
 			}
@@ -73,7 +73,7 @@ public class Duelista {
 		CartaHechizo hechizo = this.getDeck().getHechizo();
 		if (hechizo == null) {
 			this.contadorDuelistaPierde++;
-			if (this.contadorDuelistaPierde == 3) {
+			if (this.contadorDuelistaPierde == 2) {
 				throw new PierdeLaPartida("PERDIO " + this.getNombre() + "no robo");
 
 			}
