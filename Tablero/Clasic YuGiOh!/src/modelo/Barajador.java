@@ -27,10 +27,10 @@ public class Barajador {
 			// obtengo los resultSet de cada tabla.
 
 			// Se obtiene aproximadamente el 50% de las filas de la tablas
-			ResultSet rsCartaH = ConexionDB.getInstance()
-					.query("SELECT * from cartas c  WHERE c.tipo LIKE '%hechizo%'");
-			ResultSet rsCartaM = ConexionDB.getInstance()
-					.query("SELECT * from cartas c WHERE c.tipo LIKE  '%monstruo%' ");
+			ResultSet rsCartaH = ConexionDB.getInstance().query("SELECT * from cartas c  WHERE  c.tipo = 'hechizo'");
+			ResultSet rsCartaM = ConexionDB.getInstance().query("SELECT * from cartas c WHERE c.tipo =  'monstruo' ");
+			ResultSet rsCartaHechizo_destructor = ConexionDB.getInstance()
+					.query("SELECT * from cartas c WHERE c.tipo =  'hechizo_destructor' ");
 			// pregunta si hay filas.
 			while (rsCartaH.next() && rsCartaM.next()) { // recorre fila por fila asiganando
 				System.out.println(rsCartaH.getString("pathImagen"));
@@ -44,8 +44,6 @@ public class Barajador {
 				defensa = rsCartaM.getInt("defensa");
 
 				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
-				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
-				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
 
 				// se obtienen los hechizos y se añade al deck.
 
@@ -54,8 +52,6 @@ public class Barajador {
 				descripcion = rsCartaH.getString("descripcion");
 				url = rsCartaH.getString("pathImagen");
 				efecto = rsCartaH.getInt("efecto");
-				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
-				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
 				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
 
 			}
@@ -66,8 +62,8 @@ public class Barajador {
 
 		// se retorna el deck obtenido
 		deck.setMonstruos(monstruos);
-		System.out.println("cantidad de monstruos " + deck.getMonstruos().size());
 		deck.setHechizos(hechizos);
+		System.out.println("cantidad de monstruos " + deck.getHechizos().size());
 
 		return deck;
 
