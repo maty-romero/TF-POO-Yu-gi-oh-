@@ -123,21 +123,24 @@ public class TableroController {
 			 * deberia de saltar una exepcion que termine la ejecucion del hilo principal y salte a la pantalla final. 
 			 */
 			
-			HiloTurnoBot bot = new HiloTurnoBot(controladorBot);
+			
 			
 			//Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
 			this.getVista().getBtnTerminarTurno().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
+						HiloTurnoBot bot = new HiloTurnoBot(controladorBot);
+						getVista().getBtnTerminarTurno().setEnabled(false);
 						bot.start();
 						bot.join();
-						
+						getVista().getBtnTerminarTurno().setEnabled(true);
 						
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
 					
 					try {
+						
 						duelistaJugador.robarCarta(); //se roba el turno y se le sede la ejecucion.
 					} catch (PierdeLaPartida e1) {
 						System.out.println(e1.getMessage());

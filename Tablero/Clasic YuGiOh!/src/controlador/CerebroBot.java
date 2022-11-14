@@ -230,9 +230,26 @@ public class CerebroBot {
 		this.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.getTc().getVista().mostrar(); // actualizo JFrame.
+		
+		verificaDuelistasMuertos();
 
 	}
 
+	private void verificaDuelistasMuertos() {
+		try {
+			if(this.getTc().getDuelistaJugador().getVida() <= 0) {
+				throw new PierdeLaPartida("El duelista " + this.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
+			}
+			if(this.getTc().getDuelistaOponente().getVida() <= 0) {
+				throw new PierdeLaPartida("El duelista " + this.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			this.getTc().getVista().getTablero().dispose();
+		}
+		
+	}
+	
 	/*
 	 * EN BATALLA --> Turno del Bot
 	 * 

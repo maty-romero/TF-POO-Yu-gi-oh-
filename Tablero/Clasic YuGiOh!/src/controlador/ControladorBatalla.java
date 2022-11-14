@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import exepciones.PierdeLaPartida;
 import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Duelista;
@@ -119,6 +120,25 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		this.menuAtacar.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.menuAtacar.getTc().getVista().mostrar();
+		
+		verificaDuelistasMuertos();
+		
+		
+		
+	}
+	
+	private void verificaDuelistasMuertos() {
+		try {
+			if(this.menuAtacar.getTc().getDuelistaJugador().getVida() <= 0) {
+				throw new PierdeLaPartida("El duelista " + this.menuAtacar.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
+			}
+			if(this.menuAtacar.getTc().getDuelistaOponente().getVida() <= 0) {
+				throw new PierdeLaPartida("El duelista " + this.menuAtacar.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			this.menuAtacar.getTc().getVista().getTablero().dispose();
+		}
 		
 	}
 	
