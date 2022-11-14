@@ -50,7 +50,7 @@ public class MenuCartaInvocadaMonstruo implements MouseListener{
 			pm.add(m1);
 			pm.add(m2);
 		}
-		if (this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == true && this.puedeAtacar == false) {
+		else{
 			pm.add(m2);
 		}
 
