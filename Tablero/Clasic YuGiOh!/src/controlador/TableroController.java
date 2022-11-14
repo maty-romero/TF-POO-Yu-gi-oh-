@@ -26,6 +26,8 @@ import modelo.Duelista;
 import vista.VistaTablero;
 
 public class TableroController {
+	private Boolean partidaFinalizada;
+
 	private ControladorProyeccionCartas controladorProyeccionCartas;
 
 	private ControladorBatalla controladorBatalla;
@@ -61,8 +63,8 @@ public class TableroController {
 //		mouse = new MonstruosInvocacion(this);
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
 
-		this.duelistaJugador = new Duelista("YUGI", 1);
-		this.duelistaOponente = new Duelista("KIRA", 2);
+		this.duelistaJugador = new Duelista("1", 1);
+		this.duelistaOponente = new Duelista("2", 2);
 
 		this.controladorBot = new CerebroBot(this);
 
@@ -106,8 +108,8 @@ public class TableroController {
 
 //			// los duelistas roban 5 cartas --> Actualizar la vista.
 //			for (int i = 0; i < 2; i++) {
-				duelistaJugador.robarCarta();
-				this.controladorBot.robarCarta();
+//			duelistaJugador.robarCarta();
+//			this.controladorBot.robarCarta();
 //			}
 
 //			duelistaJugador.robarCarta();
@@ -119,40 +121,20 @@ public class TableroController {
 			 */
 
 			// Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
-	
-			
-			this.getVista().getBtnTerminarTurno().addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					try {
-						HiloTurnoBot bot = new HiloTurnoBot(controladorBot);
-						getVista().getBtnTerminarTurno().setEnabled(false);
-						bot.start();
-						bot.join();// Main espera a que termine el hilo bot. Main es el jugador
-						getVista().getBtnTerminarTurno().setEnabled(true);
-
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-
-					try {
-
-						duelistaJugador.robarCarta(); // se roba el turno y se le sede la ejecucion.
-					} catch (PierdeLaPartida e1) {
-						System.out.println(e1.getMessage());
-						getVista().getTablero().dispose();
-					}
-
-				}
-			});
+			partidaFinalizada = false;
+			System.out.println("cuento");
+			Boton boton = new Boton(this);
+			this.getVista().getBtnTerminarTurno().addActionListener(boton);
 
 //			this.Partida(); //Comienza la partida. 
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} catch (PierdeLaPartida e1) {
-			System.out.println(e1.getMessage());
-			this.getVista().getTablero().dispose();
 		}
+//		catch (PierdeLaPartida e1) {
+//			System.out.println(e1.getMessage());
+//			this.getVista().getTablero().dispose();
+//		}
 	}
 
 	// flujo de la partida
@@ -354,6 +336,22 @@ public class TableroController {
 
 	public void setDuelistaOponente(Duelista duelistaOponente) {
 		this.duelistaOponente = duelistaOponente;
+	}
+
+	public Boolean getPartidaFinalizada() {
+		return partidaFinalizada;
+	}
+
+	public void setPartidaFinalizada(Boolean partidaFinalizada) {
+		this.partidaFinalizada = partidaFinalizada;
+	}
+
+	public CerebroBot getControladorBot() {
+		return controladorBot;
+	}
+
+	public void setControladorBot(CerebroBot controladorBot) {
+		this.controladorBot = controladorBot;
 	}
 
 }
