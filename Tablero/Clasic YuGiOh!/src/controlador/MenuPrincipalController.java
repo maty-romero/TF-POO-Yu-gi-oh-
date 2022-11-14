@@ -8,7 +8,7 @@ public class MenuPrincipalController {
 	
 	public MenuPrincipalController() {
 		this.vista = new MenuPrincipal();
-		this.vista.setTitle("YUGIOH");
+		this.vista.setTitle("MENU PRINCIPAL");
 		this.vista.setResizable(false);
 		this.vista.setVisible(true);
 		this.vista.setLocationRelativeTo(null);
