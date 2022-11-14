@@ -106,11 +106,11 @@ public class TableroController {
 
 //			// los duelistas roban 5 cartas --> Actualizar la vista.
 //			for (int i = 0; i < 2; i++) {
-//				duelistaJugador.robarCarta();
-//				this.controladorBot.robarCarta();
+				duelistaJugador.robarCarta();
+				this.controladorBot.robarCarta();
 //			}
 
-			duelistaJugador.robarCarta();
+//			duelistaJugador.robarCarta();
 
 			/*
 			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, deberia

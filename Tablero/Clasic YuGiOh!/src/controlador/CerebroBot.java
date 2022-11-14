@@ -29,33 +29,39 @@ public class CerebroBot {
 
 	// ROBAR CARTA
 
-	public void robarCarta() throws PierdeLaPartida {
+	public void robarCarta() {
+		try {
+			
+			System.out.println("BOT Roba una carta");
+			this.getTc().getDuelistaOponente().robarCarta(); // en el modelo ya se elimina y retorna una carta.
+			
+			System.out.println("");
+			System.out.println(
+					"Size mano monstruos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoMonstruos().size());
+			System.out.println(
+					"Size mano hechizos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoHechizos().size());
 
-		System.out.println("BOT Roba una carta");
-		this.getTc().getDuelistaOponente().robarCarta(); // en el modelo ya se elimina y retorna una carta.
+			this.getTc().getVista().getManoBot().removeAll();
 
-		System.out.println("");
-		System.out.println(
-				"Size mano monstruos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoMonstruos().size());
-		System.out.println(
-				"Size mano hechizos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoHechizos().size());
+			// se setean los hash.
+			this.getTc().setManoMonstruoOponente(this.getTc().envioImagenesManoMonstruoVista(
+					this.getTc().getDuelistaOponente().getMano().getManoMonstruos(), this.getTc().getVista().getManoBot()));
 
-		this.getTc().getVista().getManoBot().removeAll();
+			this.getTc().setManoHechizoOponente(this.getTc().envioImagenesManoHechizoVista(
+					this.getTc().getDuelistaOponente().getMano().getManoHechizos(), this.getTc().getVista().getManoBot()));
 
-		// se setean los hash.
-		this.getTc().setManoMonstruoOponente(this.getTc().envioImagenesManoMonstruoVista(
-				this.getTc().getDuelistaOponente().getMano().getManoMonstruos(), this.getTc().getVista().getManoBot()));
+			 this.getTc().getVista().mostrar(); //Actualizo JFrame
+			
+			
+		} catch (PierdeLaPartida e) {
+			System.out.println(e.getMessage());
+			this.getTc().getVista().getTablero().dispose();
+		}
+		
+		
 
-//		try {
-//			Thread.sleep(5000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-
-		this.getTc().setManoHechizoOponente(this.getTc().envioImagenesManoHechizoVista(
-				this.getTc().getDuelistaOponente().getMano().getManoHechizos(), this.getTc().getVista().getManoBot()));
-
-		// this.getTc().getVista().mostrar(); //Actualizo JFrame
+		
+		
 	}
 
 	// INVOCAR

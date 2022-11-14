@@ -123,8 +123,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		
 		verificaDuelistasMuertos();
 		
-		
-		
 	}
 	
 	private void verificaDuelistasMuertos() {
