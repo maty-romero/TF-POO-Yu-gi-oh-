@@ -30,10 +30,9 @@ public class CerebroBot {
 
 	public void robarCarta() throws PierdeLaPartida {
 
-
 		System.out.println("BOT Roba una carta");
-			this.getTc().getDuelistaOponente().robarCarta();
-	 // en el modelo ya se elimina y retorna una carta.
+		this.getTc().getDuelistaOponente().robarCarta();
+		// en el modelo ya se elimina y retorna una carta.
 
 		System.out.println("");
 		System.out.println(
@@ -58,7 +57,6 @@ public class CerebroBot {
 
 		// Invocacion carta monstruo
 		if (rnd.nextBoolean()) {
-
 
 			// si hay cartas monstruo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
@@ -90,7 +88,6 @@ public class CerebroBot {
 			}
 
 		} else { // invocacion carta Hehizo
-
 
 			// si hay cartas hechizo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoHechizoOponente().size() >= 1
@@ -141,7 +138,6 @@ public class CerebroBot {
 		return panelAleatorio;
 	}
 
-
 	// devuelve un panel con un label dado un monstruo.
 	private JPanel panelCustomizadoCarta(Carta carta) {
 		// creo un label con la imagen del monstruo
@@ -189,13 +185,12 @@ public class CerebroBot {
 	 * 
 	 */
 
-	public void Batalla() {
+	public void Batalla() throws PierdeLaPartida {
 
 		// si hay monstruos en el campoMonstruosOponente es posible atacar
 		if (this.getTc().getCampoMonstruosOponente().size() > 0) {
 
 			// obtengo un panel y monstruo aleatorio del campo monstruo del BOT
-
 
 			// obtengo un panel aleatorio del monstruo Atacante.
 			JPanel panelMonstruoAtacante = panelAleatorio(this.getTc().getCampoMonstruosOponente());
@@ -215,37 +210,29 @@ public class CerebroBot {
 
 				// Obtengo el panelObjetivo y MonstruoObjetivo del Duelista Jugador
 
-
 				// obtengo un panel aleatorio del monstruo Atacante.
 				JPanel panelMonstruoObjetivo = panelAleatorio(this.getTc().getCampoMonstruosJugador());
 				// obtengo el monstruo aleatorio
 				this.monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoObjetivo);
 				if (monstruoObjetivo.getBocaAbajo() == true) {
 					this.getTc().getReferee().rotarCartaMonstruo(panelMonstruoObjetivo);
-				}	
+				}
 
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
 
-				actualizarVida(); // se actualiza la vida de los Duelistas
-
 				actualizarPaneles(panelMonstruoAtacante, panelMonstruoObjetivo); // remover paneles de cartas muertas.
+
+				actualizarVida(); // se actualiza la vida de los Duelistas
 
 			}
 
 		}
 
 	}
-	// retorna un panel aleatorio, dado un hash map.
-		private JPanel panelAleatorio(HashMap<JPanel, ?> hash) {
-			List<JPanel> keysAsArray = new ArrayList<JPanel>(hash.keySet());
-			JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
-			return panelAleatorio;
-		}
-	
 
 	// actualiza la vida de los duelistas.
-	private void actualizarVida() {
+	private void actualizarVida() throws PierdeLaPartida {
 
 		// obtengo la vida vida de los duelistas en String --> Para el JLabel
 		String vidaDuelistaJugador = String.valueOf(this.getTc().getDuelistaJugador().getVida());
@@ -261,19 +248,13 @@ public class CerebroBot {
 
 	}
 
-	private void verificaDuelistasMuertos() {
-		try {
-			if (this.getTc().getDuelistaJugador().getVida() <= 0) {
-				throw new PierdeLaPartida(
-						"El duelista " + this.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
-			}
-			if (this.getTc().getDuelistaOponente().getVida() <= 0) {
-				throw new PierdeLaPartida(
-						"El duelista " + this.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			this.getTc().getVista().getTablero().dispose();
+	private void verificaDuelistasMuertos() throws PierdeLaPartida {
+
+		if (this.getTc().getDuelistaJugador().getVida() <= 0) {
+			throw new PierdeLaPartida("El duelista " + this.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
+		}
+		if (this.getTc().getDuelistaOponente().getVida() <= 0) {
+			throw new PierdeLaPartida("El duelista " + this.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
 		}
 
 	}
