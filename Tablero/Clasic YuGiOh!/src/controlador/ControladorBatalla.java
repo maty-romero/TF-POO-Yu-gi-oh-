@@ -33,8 +33,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	private JPanel panelMonstruoAtacante = new JPanel();
 	private JPanel panelMonstruoObjetivo = new JPanel();
 
-	private Boolean batallaFinalizada = false;
-
 	public ControladorBatalla(MenuCartaInvocadaMonstruo menuAtacar) {
 		this.menuAtacar = menuAtacar;
 	}
