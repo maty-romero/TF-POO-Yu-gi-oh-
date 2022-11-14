@@ -16,7 +16,7 @@ public class Barajador {
 	public static Deck generaDeck() {
 
 		// variables para los campos
-		Integer id, ataque, defensa;
+		Integer id, ataque, defensa, efecto;
 		String nombre, descripcion, url;
 
 		Deck deck = new Deck();
@@ -27,32 +27,37 @@ public class Barajador {
 			// obtengo los resultSet de cada tabla.
 
 			// Se obtiene aproximadamente el 50% de las filas de la tablas
-			ResultSet rsMonstruos = ConexionDB.getInstance().query("SELECT * from monstruos WHERE RANDOM() <=0.5");
-			ResultSet rsHechizos = ConexionDB.getInstance().query("SELECT * from hechizos WHERE RANDOM() <=0.5");
-
+			ResultSet rsCartaH = ConexionDB.getInstance()
+					.query("SELECT * from cartas c  WHERE c.tipo LIKE '%hechizo%'");
+			ResultSet rsCartaM = ConexionDB.getInstance()
+					.query("SELECT * from cartas c WHERE c.tipo LIKE  '%monstruo%' ");
 			// pregunta si hay filas.
-			while (rsMonstruos.next() && rsHechizos.next()) { // recorre fila por fila asiganando
-
+			while (rsCartaH.next() && rsCartaM.next()) { // recorre fila por fila asiganando
+				System.out.println(rsCartaH.getString("pathImagen"));
 				// se obtienen los monstruos y se añade al deck.
 
-				id = rsMonstruos.getInt("id_monstruo");
-				nombre = rsMonstruos.getString("nombre");
-				descripcion = rsMonstruos.getString("descripcion");
-				url = rsMonstruos.getString("pathImagen");
-				ataque = rsMonstruos.getInt("ataque");
-				defensa = rsMonstruos.getInt("defensa");
+				id = rsCartaM.getInt("id_carta");
+				nombre = rsCartaM.getString("nombre");
+				descripcion = rsCartaM.getString("descripcion");
+				url = rsCartaM.getString("pathImagen");
+				ataque = rsCartaM.getInt("ataque");
+				defensa = rsCartaM.getInt("defensa");
 
-				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa)); // agrego al deck
-																									// monstruos
+				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
+				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
+				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
 
 				// se obtienen los hechizos y se añade al deck.
 
-				id = rsHechizos.getInt("id_hechizo");
-				nombre = rsHechizos.getString("nombre");
-				descripcion = rsHechizos.getString("descripcion");
-				url = rsHechizos.getString("pathImagen");
+				id = rsCartaH.getInt("id_carta");
+				nombre = rsCartaH.getString("nombre");
+				descripcion = rsCartaH.getString("descripcion");
+				url = rsCartaH.getString("pathImagen");
+				efecto = rsCartaH.getInt("efecto");
+				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
+				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
+				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
 
-				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, 100)); // agrego al deck hechizos
 			}
 
 		} catch (SQLException e) {
@@ -61,6 +66,7 @@ public class Barajador {
 
 		// se retorna el deck obtenido
 		deck.setMonstruos(monstruos);
+		System.out.println("cantidad de monstruos " + deck.getMonstruos().size());
 		deck.setHechizos(hechizos);
 
 		return deck;

@@ -15,6 +15,8 @@ public class Duelista {
 
 	public Duelista(String nombre, Integer id) {
 		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
+		this.deck.mezclarDeck();
+
 		this.mano = new Mano();
 		this.campo = new Campo();
 		this.cementerio = new Cementerio();

@@ -69,30 +69,32 @@ public class TableroController {
 //		this.duelistaJugador.robarCarta();
 
 		// MONSTRUO JUGADOR
-		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
-		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 1000));
-		ArrayList<CartaHechizo> hechizo = duelistaJugador.getMano().getManoHechizos();
-                     hechizo.add(new CartaHechizo(12,"hola","carta bufeadora","/hechizos/tifon_espacio_mistico.jpg", 10000));
-		
+// 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+//		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/hechizos/dark_magician.jpg", 1000, 1000));
+//		ArrayList<CartaHechizo> hechizo = duelistaJugador.getMano().getManoHechizos();
+//		hechizo.add(new CartaHechizo(12, "hola", "carta bufeadora", "/hechizos/messenger_of_peace.jpg", 10000));
+
 //		this.duelistaJugador.robarCarta();
 //		this.duelistaJugador.robarCarta();
 //		this.duelistaJugador.robarCarta();
 
 		// Monstruo BOT prueba
+//
+//		System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
+//		CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 300, 300);
+//		monstruo1.setPosicionAtaque(true); // SETEO POS ATQUE
 
-		System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-		CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 300, 300);
-		monstruo1.setPosicionAtaque(true); // SETEO POS ATQUE
-
-	//	JLabel label1 = this.getVista().generoImagenCarta(monstruo1);
-	//	JPanel panel1 = this.getVista().devuelvoPanelCampo(label1); // lo focuseo y le agrego el label al panel
+		// JLabel label1 = this.getVista().generoImagenCarta(monstruo1);
+		// JPanel panel1 = this.getVista().devuelvoPanelCampo(label1); // lo focuseo y
+		// le agrego el label al panel
 
 		// Se agrega al hash
-	//	this.campoMonstruosOponente.put(panel1, monstruo1);
+		// this.campoMonstruosOponente.put(panel1, monstruo1);
 		// se agrega una carta al campo Monstruo Oponente a la vista
-	//	this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1);
-		
-		
+		// this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1);
+		this.controladorBot = new CerebroBot(this);
+
+
 		try {
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
@@ -111,14 +113,10 @@ public class TableroController {
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
-
-			this.controladorBot = new CerebroBot(this);
 			System.out.println(
 					"Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
 			System.out
 					.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
-
-			 
 
 //			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO JUGADOR --> CartaObjetivo
 
@@ -133,17 +131,13 @@ public class TableroController {
 //			this.campoMonstruosJugador.put(panel2, monstruo2); 
 //			//se agrega una carta al campo Monstruo Oponente a la vista 
 //			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
-			
-			
+
 			try {
 //				
 				this.controladorBot.robarCarta();
 //				Thread.sleep(1000);
 				this.controladorBot.robarCarta();
 //				Thread.sleep(1000);
-//
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
 
 				this.controladorBot.robarCarta();
 				this.controladorBot.robarCarta();
@@ -151,12 +145,14 @@ public class TableroController {
 				this.controladorBot.robarCarta();
 				this.controladorBot.robarCarta();
 				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+
 
 ////				Thread.sleep(1000);
 //			//----------
-				this.controladorBot.invocarCarta();
-//				Thread.sleep(1000);
-				this.controladorBot.invocarCarta();
+
 //				Thread.sleep(1000);
 //			//-----
 //				this.controladorBot.robarCarta();
@@ -171,21 +167,13 @@ public class TableroController {
 				this.controladorBot.invocarCarta();
 //				Thread.sleep(1000);
 //				this.controladorBot.invocarCarta();
-				
+
 //				this.controladorBot.Batalla();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 //			System.out.println("Fin ejecucion Bot");
-			
-
-			
-			
-			
-
-
-			
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
