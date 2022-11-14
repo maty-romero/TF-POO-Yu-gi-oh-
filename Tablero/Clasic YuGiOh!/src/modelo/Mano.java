@@ -5,7 +5,7 @@ public class Mano {
 
 	private ArrayList<CartaMonstruo> manoMonstruos = new ArrayList<>(); 
 	private ArrayList<CartaHechizo> manoHechizos = new ArrayList<>(); 
-	
+	//Sobrecarga, polimorfismo estatico
 	public void agregarCarta(CartaMonstruo carta) {
 		this.getManoMonstruos().add(carta); 
 	}		

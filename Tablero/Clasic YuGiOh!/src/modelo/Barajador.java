@@ -62,7 +62,8 @@ public class Barajador {
 		// se retorna el deck obtenido
 		deck.setMonstruos(monstruos);
 		deck.setHechizos(hechizos);
-
+		System.out.println("size monstruos" + monstruos);
+		System.out.println("size monstruos" + hechizos);
 		return deck;
 
 	}

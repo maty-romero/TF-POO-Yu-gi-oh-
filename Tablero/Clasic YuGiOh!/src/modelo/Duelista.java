@@ -14,6 +14,7 @@ public class Duelista {
 	private Integer vida;
 	private String nombre;
 	private Boolean ganador, invocoMonstruo;
+	private Integer contadorDuelistaPierde;
 
 	public Duelista(String nombre, Integer id) {
 		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
@@ -36,29 +37,50 @@ public class Duelista {
 	// saca una carta del mazo, la remueve y queda en la mano del Duelista
 	// El robo de carta actua como una pila
 	public void robarCarta() throws PierdeLaPartida {
-		
-		if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
-			System.out.println("Se intenta robar un monstruo!");
-			CartaMonstruo monstruo = this.getDeck().getMonstruo();
-			if (monstruo == null) {
-				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
+		this.contadorDuelistaPierde = 0;
+		if (new Random().nextBoolean()) {
+			this.roboMonstruo();
+		} else {
+			this.roboHechizo();
+
+		}
+	}
+	
+
+
+	public void roboMonstruo() throws PierdeLaPartida {
+
+		System.out.println("Se intenta robar un monstruo!");
+		CartaMonstruo monstruo = this.getDeck().getMonstruo();
+		if (monstruo == null) {
+			this.contadorDuelistaPierde++;
+			if (this.contadorDuelistaPierde == 2) {
+				throw new PierdeLaPartida("PERDIO: " + this.getNombre() + " no robo");
+
 			}
+			this.roboHechizo();
+
+		} else {
 
 			this.getMano().agregarCarta(monstruo);
 			monstruo.setConVida(true);
-
-		} else { // Se obtiene un hechizo en la mano
-			System.out.println("Se intenta robar un hechizo!");
-			CartaHechizo hechizo = this.getDeck().getHechizo();
-			if (hechizo == null) {
-				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
-			}
-			this.getMano().agregarCarta(hechizo);
-			
 		}
+	}
 
-		
+	public void roboHechizo() throws PierdeLaPartida {
 
+		System.out.println("Se intenta robar un hechizo!");
+		CartaHechizo hechizo = this.getDeck().getHechizo();
+		if (hechizo == null) {
+			this.contadorDuelistaPierde++;
+			if (this.contadorDuelistaPierde == 2) {
+				throw new PierdeLaPartida("PERDIO " + this.getNombre() + "no robo");
+
+			}
+			this.roboMonstruo();
+		} else {
+			this.getMano().agregarCarta(hechizo);
+		}
 	}
 
 //jugadorAtacante elimina la carta muerta, la suya o del oponente, pues es su turno y él hace los movimientos, él toma la iniciativa.

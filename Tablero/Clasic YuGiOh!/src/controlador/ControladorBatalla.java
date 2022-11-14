@@ -56,7 +56,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
 
-			aplicarResultadoBatallaVida(); //solo se actualiza la vida del duelista atacado 
+			aplicarResultadoBatallaVida(); // solo se actualiza la vida del duelista atacado
 		}
 
 		// Se agregan listener a paneles Campo Oponente (Monstruos)
@@ -71,7 +71,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		JPanel panel = (JPanel) e.getSource();
 		System.out.println(panel);
 		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - ACTIVADO");
-		
+
 		// remuevo los listener para que no se puedan seleccionar.
 		for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
 			panelCampo.removeMouseListener(menuAtacar);
@@ -81,24 +81,22 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 //		if (this.menuAtacar.getTc().getCampoMonstruosOponente().containsKey(panel)) {
 
-			// si la carta esta boca abajo, se voltea sin rotar --> AGREGAR
-			// ***********************************
+		// si la carta esta boca abajo, se voltea sin rotar --> AGREGAR
+		// ***********************************
 
-			System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
+		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - SELECCION CARTA OBJETIVO");
 
-			this.panelMonstruoObjetivo = panel; // panel que se selecciono
-			this.monstruoObjetivo = this.menuAtacar.getTc().getCampoMonstruosOponente().get(panel);
+		this.panelMonstruoObjetivo = panel; // panel que se selecciono
+		this.monstruoObjetivo = this.menuAtacar.getTc().getCampoMonstruosOponente().get(panel);
 
-			System.out.println("Monstruo objetivo: " + this.monstruoObjetivo.toString());
+		System.out.println("Monstruo objetivo: " + this.monstruoObjetivo.toString());
 
-			this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
-					this.menuAtacar.getTc().getDuelistaOponente());
+		this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
+				this.menuAtacar.getTc().getDuelistaOponente());
 
-			aplicarResultadoBatallaVida(); //actualizo la vida de los duelistas
-			aplicarResultadoBatallaPaneles();  //remuevo paneles si es necesario. 
+		aplicarResultadoBatallaVida(); // actualizo la vida de los duelistas
+		aplicarResultadoBatallaPaneles(); // remuevo paneles si es necesario.
 
-
-			
 //		}
 	}
 
@@ -111,7 +109,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	 */
 
 	private void aplicarResultadoBatallaVida() {
-		
+
 		System.out.println("Vida Duelista Jugador: " + this.menuAtacar.getTc().getDuelistaJugador().getVida());
 		System.out.println("Vida Duelista Oponente: " + this.menuAtacar.getTc().getDuelistaOponente().getVida());
 		// verificacion de vida de los duelistas
@@ -125,27 +123,28 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		this.menuAtacar.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.menuAtacar.getTc().getVista().mostrar();
-		
+
 		verificaDuelistasMuertos();
-		
+
 	}
-	
+
 	private void verificaDuelistasMuertos() {
 		try {
-			if(this.menuAtacar.getTc().getDuelistaJugador().getVida() <= 0) {
-				throw new PierdeLaPartida("El duelista " + this.menuAtacar.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
+			if (this.menuAtacar.getTc().getDuelistaJugador().getVida() <= 0) {
+				throw new PierdeLaPartida(
+						"El duelista " + this.menuAtacar.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
 			}
-			if(this.menuAtacar.getTc().getDuelistaOponente().getVida() <= 0) {
-				throw new PierdeLaPartida("El duelista " + this.menuAtacar.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
+			if (this.menuAtacar.getTc().getDuelistaOponente().getVida() <= 0) {
+				throw new PierdeLaPartida(
+						"El duelista " + this.menuAtacar.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			this.menuAtacar.getTc().getVista().getTablero().dispose();
 		}
-		
+
 	}
-	
-	
+
 	private void aplicarResultadoBatallaPaneles() {
 
 		// Se remueven paneles de monstruos muertos si es necesario (si hay muertos)
@@ -161,9 +160,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 				this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
 						panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
 			}
-
-			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
-
+		}
 	}
 
 	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
