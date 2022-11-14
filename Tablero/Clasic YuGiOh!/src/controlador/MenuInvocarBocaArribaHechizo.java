@@ -35,7 +35,10 @@ public class MenuInvocarBocaArribaHechizo implements ActionListener, MouseListen
 			mouse.getPanelSeleccionado().setFocusable(true);
 
 			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelSeleccionado(),
-					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelSeleccionado()));
+					this.mouse.getTc().getManoHechizoJugador().get(mouse.getPanelSeleccionado()));
+			this.mouse.getTc().getDuelistaJugador().getMano().getManoHechizos()
+					.remove(this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelSeleccionado()));
+
 			this.mouse.getTc().getCampoHechizosJugador().get(mouse.getPanelSeleccionado()).setBocaAbajo(false);
 
 			System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());

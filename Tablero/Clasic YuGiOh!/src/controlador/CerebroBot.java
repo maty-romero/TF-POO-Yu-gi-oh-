@@ -112,11 +112,6 @@ public class CerebroBot {
 
 				// se agrega una carta al campo Monstruo Oponente a la vista
 				this.getTc().getVista().getPanelesHechizosCampoOponente().get(posi).add(panelHechizo);
-				try {
-					// HAY VECES DONDE LOS 3 SEGUNDOS LOS HACE EN 0.1 SEGUNDOS, NO ES BUG
-					Thread.sleep(4500);
-				} catch (Exception e) {
-				}
 
 				this.getTc().getReferee().AplicarEfectoMagicoAMonstruo(panelHechizo,
 						panelAleatorio(this.getTc().getCampoMonstruosOponente()),

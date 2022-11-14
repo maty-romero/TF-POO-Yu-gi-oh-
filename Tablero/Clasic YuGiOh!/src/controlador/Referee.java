@@ -109,6 +109,11 @@ public class Referee {
 
 		nuevoAtaque = nuevoAtaque + valorEfecto;
 		hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
+		
+		try {
+			Thread.sleep(2000);
+		} catch ( Exception e) {
+		}
 
 	}
 

@@ -55,7 +55,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		// si no tiene monstruos el Bot --> AtaqueDirecto
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
-
 			aplicarResultadoBatallaVida(); // solo se actualiza la vida del duelista atacado
 		}
 
@@ -165,6 +164,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 		}
 	}
+
 	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
 			HashMap<JPanel, CartaMonstruo> hashModificar) {
 
