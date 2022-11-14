@@ -48,8 +48,13 @@ public abstract class Carta {
 		this.bocaAbajo = bocaAbajo;
 	}
 
-	
+	@Override
+	public String toString() {
+		return  "Carta: " + nombre + "\n\n"+ descripcion ;
+	}
 
+	
+	
 
 	
 	
