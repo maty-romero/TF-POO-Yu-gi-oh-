@@ -30,10 +30,9 @@ public class CerebroBot {
 
 	public void robarCarta() throws PierdeLaPartida {
 
-
 		System.out.println("BOT Roba una carta");
-			this.getTc().getDuelistaOponente().robarCarta();
-	 // en el modelo ya se elimina y retorna una carta.
+		this.getTc().getDuelistaOponente().robarCarta();
+		// en el modelo ya se elimina y retorna una carta.
 
 		System.out.println("");
 		System.out.println(
@@ -59,38 +58,36 @@ public class CerebroBot {
 		// Invocacion carta monstruo
 		if (rnd.nextBoolean()) {
 
-
 			// si hay cartas monstruo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
 
-				// obtengo un panel aleatorio.
-				JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
-				panelAleatorio.setVisible(false);
-
-				// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
-				CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
-				monstruo.setPosicionAtaque(true);
-
-				System.out.println("Monstruo por invocar - BOT: " + monstruo);
-
-				// obtengo un panel con un label dado un monstruo.
-				JPanel panelMonstruo = panelCustomizadoCarta(monstruo);
-
-				this.getTc().getCampoMonstruosOponente().put(panelMonstruo, monstruo); // Se agrega al hash
-
 				// Obtengo una posicion vacia para invocar
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesMonstruosCampoOponente());
+				if (posi != null) {
+					// obtengo un panel aleatorio.
+					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
+					panelAleatorio.setVisible(false);
 
-				// se agrega una carta al campo Monstruo Oponente a la vista
+					// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
+					CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
+					monstruo.setPosicionAtaque(true);
 
-				this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
+					System.out.println("Monstruo por invocar - BOT: " + monstruo);
 
+					// obtengo un panel con un label dado un monstruo.
+					JPanel panelMonstruo = panelCustomizadoCarta(monstruo);
+
+					this.getTc().getCampoMonstruosOponente().put(panelMonstruo, monstruo); // Se agrega al hash
+
+					// se agrega una carta al campo Monstruo Oponente a la vista
+
+					this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
+				}
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
 
 			}
 
 		} else { // invocacion carta Hehizo
-
 
 			// si hay cartas hechizo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoHechizoOponente().size() >= 1
@@ -140,7 +137,6 @@ public class CerebroBot {
 		JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
 		return panelAleatorio;
 	}
-
 
 	// devuelve un panel con un label dado un monstruo.
 	private JPanel panelCustomizadoCarta(Carta carta) {
@@ -196,7 +192,6 @@ public class CerebroBot {
 
 			// obtengo un panel y monstruo aleatorio del campo monstruo del BOT
 
-
 			// obtengo un panel aleatorio del monstruo Atacante.
 			JPanel panelMonstruoAtacante = panelAleatorio(this.getTc().getCampoMonstruosOponente());
 
@@ -215,14 +210,13 @@ public class CerebroBot {
 
 				// Obtengo el panelObjetivo y MonstruoObjetivo del Duelista Jugador
 
-
 				// obtengo un panel aleatorio del monstruo Atacante.
 				JPanel panelMonstruoObjetivo = panelAleatorio(this.getTc().getCampoMonstruosJugador());
 				// obtengo el monstruo aleatorio
 				this.monstruoObjetivo = this.getTc().getCampoMonstruosJugador().get(panelMonstruoObjetivo);
 				if (monstruoObjetivo.getBocaAbajo() == true) {
 					this.getTc().getReferee().rotarCartaMonstruo(panelMonstruoObjetivo);
-				}	
+				}
 
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
@@ -236,8 +230,6 @@ public class CerebroBot {
 		}
 
 	}
-
-	
 
 	// actualiza la vida de los duelistas.
 	private void actualizarVida() {

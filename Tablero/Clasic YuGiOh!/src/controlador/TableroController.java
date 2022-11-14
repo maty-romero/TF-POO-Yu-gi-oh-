@@ -82,29 +82,25 @@ public class TableroController {
 //		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 //		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
 
-		try {
-			this.duelistaJugador.robarCarta();
+//		try {
 //			this.duelistaJugador.robarCarta();
 //			this.duelistaJugador.robarCarta();
 //			this.duelistaJugador.robarCarta();
 //			this.duelistaJugador.robarCarta();
 //			this.duelistaJugador.robarCarta();
 //			this.duelistaJugador.robarCarta();
-			
-			setManoJugador(); 
-			setManoBot(); 
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
 
-			
-			
+		setManoJugador();
+		setManoBot();
 
-			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
+		this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 
-			System.out.println(
-					"Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
-			System.out
-					.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
+		System.out.println("Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
+		System.out.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
 
-			// INICIO DE PARTIDA
+		// INICIO DE PARTIDA
 
 //			// los duelistas roban 5 cartas --> Actualizar la vista.
 //			for (int i = 0; i < 2; i++) {
@@ -114,46 +110,44 @@ public class TableroController {
 
 //			duelistaJugador.robarCarta();
 
-			/*
-			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, deberia
-			 * de saltar una exepcion que termine la ejecucion del hilo principal y salte a
-			 * la pantalla final.
-			 */
+		/*
+		 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, deberia
+		 * de saltar una exepcion que termine la ejecucion del hilo principal y salte a
+		 * la pantalla final.
+		 */
 
-			// Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
-			partidaFinalizada = false;
-			System.out.println("cuento");
-			Boton boton = new Boton(this);
-			this.getVista().getBtnTerminarTurno().addActionListener(boton);
+		// Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
+		partidaFinalizada = false;
+		System.out.println("cuento");
+		Boton boton = new Boton(this);
+		this.getVista().getBtnTerminarTurno().addActionListener(boton);
 
 //			this.Partida(); //Comienza la partida. 
 
-		} catch (PierdeLaPartida e1) {
-			System.out.println(e1.getMessage());
-			this.getVista().getTablero().dispose();
-		}
-		
+//		} catch (PierdeLaPartida e1) {
+//			System.out.println(e1.getMessage());
+//			this.getVista().getTablero().dispose();
+//		}
+
 	}
 
-	
-	public void setManoJugador(){
-		this.setManoMonstruoJugador(this.envioImagenesManoMonstruoVista(
-				duelistaJugador.getMano().getManoMonstruos(), this.vista.getManoJugador()));
+	public void setManoJugador() {
+		this.setManoMonstruoJugador(this.envioImagenesManoMonstruoVista(duelistaJugador.getMano().getManoMonstruos(),
+				this.vista.getManoJugador()));
 		this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(duelistaJugador.getMano().getManoHechizos(),
 				this.vista.getManoJugador()));
-		
+
 		this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
 		this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 	}
-	
+
 	public void setManoBot() {
-		this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
-				duelistaOponente.getMano().getManoMonstruos(), this.vista.getManoBot()));
+		this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(duelistaOponente.getMano().getManoMonstruos(),
+				this.vista.getManoBot()));
 		this.setManoHechizoOponente(this.envioImagenesManoHechizoVista(duelistaOponente.getMano().getManoHechizos(),
 				this.vista.getManoBot()));
 	}
-	
-	
+
 	// flujo de la partida
 	/*
 	 * FASES: Robo, invocacion, batalla, invocacion, otro turno
@@ -369,7 +363,7 @@ public class TableroController {
 	public void setControladorBot(CerebroBot controladorBot) {
 		this.controladorBot = controladorBot;
 	}
-	
+
 	public Referee getReferee() {
 		return referee;
 	}

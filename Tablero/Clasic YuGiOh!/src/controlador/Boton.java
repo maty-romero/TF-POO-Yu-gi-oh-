@@ -16,20 +16,20 @@ public class Boton implements ActionListener {
 		try {
 			System.out.println("BOT JUGANGO");
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(false);
-			
+
 			this.getTc().getControladorBot().robarCarta();
 //			this.getTc().getVista().getManoBot().removeAll();
 //			this.getTc().setManoBot();
-			
+
 			this.getTc().getControladorBot().invocarCarta();
 			this.getTc().getControladorBot().Batalla();
-			
+
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(true);
-			
+
 			this.getTc().getDuelistaJugador().robarCarta();
 			this.getTc().getVista().getManoJugador().removeAll();
 			this.getTc().setManoJugador();
-			
+
 		} catch (PierdeLaPartida e1) {
 			System.out.println(e1.getMessage());
 			this.getTc().getVista().getTablero().dispose();
