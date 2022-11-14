@@ -23,7 +23,7 @@ public class Duelista {
 		this.mano = new Mano();
 		this.campo = new Campo();
 		this.cementerio = new Cementerio();
-		this.vida = 1000000; // inicializacion de vida
+		this.vida = 8000; // inicializacion de vida
 		this.nombre = nombre;
 		this.ganador = true; // los duelistas son ganadores hasta que uno de los dos pierda
 		this.invocoMonstruo = false;
