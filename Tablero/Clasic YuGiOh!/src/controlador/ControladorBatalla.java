@@ -160,9 +160,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 				this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
 						panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
 			}
+
+			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
+
 		}
 	}
-
 	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
 			HashMap<JPanel, CartaMonstruo> hashModificar) {
 

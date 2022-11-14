@@ -43,12 +43,7 @@ public class CerebroBot {
 
 		this.getTc().getVista().getManoBot().removeAll();
 
-		// se setean los hash.
-		this.getTc().setManoMonstruoOponente(this.getTc().envioImagenesManoMonstruoVista(
-				this.getTc().getDuelistaOponente().getMano().getManoMonstruos(), this.getTc().getVista().getManoBot()));
-
-		this.getTc().setManoHechizoOponente(this.getTc().envioImagenesManoHechizoVista(
-				this.getTc().getDuelistaOponente().getMano().getManoHechizos(), this.getTc().getVista().getManoBot()));
+		this.getTc().setManoBot();
 
 		this.getTc().getVista().mostrar(); // Actualizo JFrame
 
@@ -139,6 +134,12 @@ public class CerebroBot {
 		}
 	}
 
+	// retorna un panel aleatorio, dado un hash map.
+	private JPanel panelAleatorio(HashMap<JPanel, ?> hash) {
+		List<JPanel> keysAsArray = new ArrayList<JPanel>(hash.keySet());
+		JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
+		return panelAleatorio;
+	}
 
 
 	// devuelve un panel con un label dado un monstruo.
