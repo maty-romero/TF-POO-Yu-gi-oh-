@@ -46,7 +46,11 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			mouse.getPanelSeleccionado().addMouseListener(ma);
 
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
-					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
+					this.mouse.getTc().getManoMonstruoJugador().get(mouse.getPanelSeleccionado()));
+
+			this.mouse.getTc().getDuelistaJugador().getMano().getManoMonstruos()
+					.remove(this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
+
 			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setPosicionAtaque(true);
 			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setBocaAbajo(false);
 

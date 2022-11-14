@@ -28,9 +28,10 @@ public class Boton implements ActionListener {
 
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(true);
 
-			this.getTc().getVista().getManoJugador().removeAll();
 			this.getTc().getDuelistaJugador().robarCarta();
-			
+//			this.getTc().getManoMonstruoJugador();
+			this.getTc().getVista().getManoJugador().removeAll();
+
 			this.getTc().setManoJugador();
 
 		} catch (PierdeLaPartida e1) {
