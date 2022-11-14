@@ -53,7 +53,7 @@ public class TableroController {
 
 //	private MouseListener mouseBatalla; 
 
-	public TableroController(){
+	public TableroController() {
 
 		VistaTablero vista = new VistaTablero(this);
 		this.vista = vista;
@@ -65,7 +65,7 @@ public class TableroController {
 		this.duelistaOponente = new Duelista("KIRA", 2);
 
 		this.controladorBot = new CerebroBot(this);
-		
+
 //		duelistaJugador.robarCarta();
 //		duelistaJugador.robarCarta();
 //		duelistaOponente.robarCarta();
@@ -73,13 +73,11 @@ public class TableroController {
 //
 //		this.duelistaJugador.robarCarta();
 //		this.duelistaJugador.robarCarta();
-		
-		//MONSTRUO JUGADOR 
+
+		// MONSTRUO JUGADOR
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
-		
-		
-		
+
 		try {
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
@@ -99,80 +97,71 @@ public class TableroController {
 
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 
-			
 			System.out.println(
 					"Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
 			System.out
 					.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
 
-			
-			
-			//INICIO DE PARTIDA 
-			
+			// INICIO DE PARTIDA
+
 //			// los duelistas roban 5 cartas --> Actualizar la vista.
 //			for (int i = 0; i < 2; i++) {
 //				duelistaJugador.robarCarta();
 //				this.controladorBot.robarCarta();
 //			}
-			
+
 			duelistaJugador.robarCarta();
-			 
-		
+
 			/*
-			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, 
-			 * deberia de saltar una exepcion que termine la ejecucion del hilo principal y salte a la pantalla final. 
+			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, deberia
+			 * de saltar una exepcion que termine la ejecucion del hilo principal y salte a
+			 * la pantalla final.
 			 */
+
+			// Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
+	
 			
-			
-			
-			//Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
 			this.getVista().getBtnTerminarTurno().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					try {
 						HiloTurnoBot bot = new HiloTurnoBot(controladorBot);
 						getVista().getBtnTerminarTurno().setEnabled(false);
 						bot.start();
-						bot.join();
+						bot.join();// Main espera a que termine el hilo bot. Main es el jugador
 						getVista().getBtnTerminarTurno().setEnabled(true);
-						
+
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-					
+
 					try {
-						
-						duelistaJugador.robarCarta(); //se roba el turno y se le sede la ejecucion.
+
+						duelistaJugador.robarCarta(); // se roba el turno y se le sede la ejecucion.
 					} catch (PierdeLaPartida e1) {
 						System.out.println(e1.getMessage());
-						getVista().getTablero().dispose(); 
-					} 
-					
-						
-					 
+						getVista().getTablero().dispose();
+					}
+
 				}
 			});
-			
+
 //			this.Partida(); //Comienza la partida. 
-			
-			
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (PierdeLaPartida e1) {
 			System.out.println(e1.getMessage());
-			this.getVista().getTablero().dispose(); 
+			this.getVista().getTablero().dispose();
 		}
 	}
-	
-	
-	
+
 	// flujo de la partida
-		/*
-		 * FASES: Robo, invocacion, batalla, invocacion, otro turno
-		 * 
-		 * 
-		 */
-	
+	/*
+	 * FASES: Robo, invocacion, batalla, invocacion, otro turno
+	 * 
+	 * 
+	 */
+
 //		private void Partida() {
 //
 //			List<String> fasesPartida = Arrays.asList("DRAW PHASE",  "MAIN PHASE" , "BATTLE PHASE"); 
@@ -211,18 +200,7 @@ public class TableroController {
 //			
 //			
 //		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
 	/*
 	 * traigo las cartas cargadas con informacion desde base de datos, y las asocio
 	 * con un panel que creo a partir traer una imagen desde el modelo y cargar esa
@@ -275,8 +253,7 @@ public class TableroController {
 		this.vista.getTablero().setVisible(true);
 		return hashAuxiliar;
 	}
-	
-	
+
 	private void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
@@ -363,8 +340,6 @@ public class TableroController {
 		this.campoHechizosOponente = campoHechizosOponente;
 	}
 
-
-
 	public Duelista getDuelistaJugador() {
 		return duelistaJugador;
 	}
@@ -380,6 +355,5 @@ public class TableroController {
 	public void setDuelistaOponente(Duelista duelistaOponente) {
 		this.duelistaOponente = duelistaOponente;
 	}
-
 
 }

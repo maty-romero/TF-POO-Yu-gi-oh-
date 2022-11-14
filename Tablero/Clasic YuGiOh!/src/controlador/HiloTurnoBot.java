@@ -14,16 +14,16 @@ public class HiloTurnoBot extends Thread{
 	public void run() {
 		
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(500);
 			this.bot.robarCarta();
 			
 			this.bot.invocarCarta();
-			Thread.sleep(2000);
+			Thread.sleep(500);
 			
 			if(this.bot.getTc().getCampoMonstruosOponente().size() > 0) {
 				this.bot.Batalla();
 			}
-			Thread.sleep(2000);
+			Thread.sleep(500);
 	
 			
 		} catch (InterruptedException e) {
