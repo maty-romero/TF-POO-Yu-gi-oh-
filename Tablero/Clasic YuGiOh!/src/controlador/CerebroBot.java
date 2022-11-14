@@ -236,12 +236,7 @@ public class CerebroBot {
 		}
 
 	}
-	// retorna un panel aleatorio, dado un hash map.
-		private JPanel panelAleatorio(HashMap<JPanel, ?> hash) {
-			List<JPanel> keysAsArray = new ArrayList<JPanel>(hash.keySet());
-			JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
-			return panelAleatorio;
-		}
+
 	
 
 	// actualiza la vida de los duelistas.
