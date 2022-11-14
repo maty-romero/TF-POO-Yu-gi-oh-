@@ -1,11 +1,12 @@
 package mainPrincipal;
-
+import controlador.MenuPrincipalController;
 import controlador.TableroController;
-import exepciones.PierdeLaPartida;
-import vista.VistaTablero;
+
+
 
 public class Main {
 	public static void main(String[] args) {
-		TableroController tableroController = new TableroController();
+		MenuPrincipalController menuInicio = new MenuPrincipalController(); 
+
 	}
 }
