@@ -23,7 +23,8 @@ import vista.VistaTablero;
 //el que ataca es el jugador, con su carta atacante. siempre, porque este listener se activa con el click del jugador
 public class ControladorBatalla implements ActionListener, MouseListener {
 
-	private MenuAtacar menuAtacar;
+//	private menuAtacar menuAtacar;
+	private MenuCartaInvocadaMonstruo menuAtacar;
 
 	// monstruoAtacante --> Del jugador
 	// monstruoObjetivo --> Del bot
@@ -32,7 +33,9 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	private JPanel panelMonstruoAtacante = new JPanel();
 	private JPanel panelMonstruoObjetivo = new JPanel();
 
-	public ControladorBatalla(MenuAtacar menuAtacar) {
+	private Boolean batallaFinalizada = false;
+
+	public ControladorBatalla(MenuCartaInvocadaMonstruo menuAtacar) {
 		this.menuAtacar = menuAtacar;
 	}
 
@@ -49,7 +52,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 		System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
 		System.out.println("Monstruo Atacante posAtaque: " + this.monstruoAtacante.getPosicionAtaque());
-
 		// si no tiene monstruos el Bot --> AtaqueDirecto
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
@@ -69,8 +71,15 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		JPanel panel = (JPanel) e.getSource();
 		System.out.println(panel);
 		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - ACTIVADO");
+		
+		// remuevo los listener para que no se puedan seleccionar.
+		for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
+			panelCampo.removeMouseListener(menuAtacar);
+			panelCampo.removeMouseListener(this);
+			System.out.println("REMUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		}
 
-		if (this.menuAtacar.getTc().getCampoMonstruosOponente().containsKey(panel)) {
+//		if (this.menuAtacar.getTc().getCampoMonstruosOponente().containsKey(panel)) {
 
 			// si la carta esta boca abajo, se voltea sin rotar --> AGREGAR
 			// ***********************************
@@ -88,14 +97,10 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 			aplicarResultadoBatallaVida(); //actualizo la vida de los duelistas
 			aplicarResultadoBatallaPaneles();  //remuevo paneles si es necesario. 
 
-			// remuevo los listener para que no se puedan seleccionar.
-			for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
-				panel.removeMouseListener(this);
-			}
 
-		}
+			
+//		}
 	}
-
 
 	/*
 	 * Verifica si mueriron cartas, para eliminar paneles del tablero Actualiza la
@@ -151,12 +156,14 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 					panelMonstruoAtacante, this.menuAtacar.getTc().getCampoMonstruosJugador());
 		}
 
-		if (!monstruoObjetivo.getConVida()) {
-			this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
-					panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
-		}
+		if (monstruoObjetivo != null) {
+			if (!monstruoObjetivo.getConVida()) {
+				this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
+						panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
+			}
 
-		
+			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
+
 	}
 
 	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,

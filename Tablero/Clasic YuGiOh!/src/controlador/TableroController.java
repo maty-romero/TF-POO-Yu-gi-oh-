@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class TableroController {
 
 	private ControladorBatalla controladorBatalla;
 	private CerebroBot controladorBot;
-
+	private Referee referee;
 	private Duelista duelistaJugador, duelistaOponente;
 
 	private HashMap<JPanel, CartaMonstruo> manoMonstruoOponente = new HashMap<JPanel, CartaMonstruo>();
@@ -62,11 +63,11 @@ public class TableroController {
 
 //		mouse = new MonstruosInvocacion(this);
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
-
 		this.duelistaJugador = new Duelista("1", 1);
 		this.duelistaOponente = new Duelista("2", 2);
 
 		this.controladorBot = new CerebroBot(this);
+		this.referee = new Referee(this);
 
 //		duelistaJugador.robarCarta();
 //		duelistaJugador.robarCarta();
@@ -77,10 +78,19 @@ public class TableroController {
 //		this.duelistaJugador.robarCarta();
 
 		// MONSTRUO JUGADOR
+
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
 
+
 		try {
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
 					duelistaOponente.getMano().getManoMonstruos(), this.vista.getManoBot()));
@@ -111,6 +121,7 @@ public class TableroController {
 //			duelistaJugador.robarCarta();
 //			this.controladorBot.robarCarta();
 //			}
+
 
 //			duelistaJugador.robarCarta();
 
@@ -239,13 +250,12 @@ public class TableroController {
 	private void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
 			cartaPanel.addMouseListener(new MonstruosInvocacion(this));
-
 		}
 	}
 
 	private void aniadoMouseListenerHechizo(HashMap<JPanel, CartaHechizo> hash) {
 		for (JPanel cartaPanel : hash.keySet()) {
-			cartaPanel.addMouseListener(new HechizosInvocacion(this, false));
+			cartaPanel.addMouseListener(new ManuHechizos(this));
 		}
 	}
 
@@ -352,6 +362,12 @@ public class TableroController {
 
 	public void setControladorBot(CerebroBot controladorBot) {
 		this.controladorBot = controladorBot;
+	public Referee getReferee() {
+		return referee;
+	}
+
+	public void setReferee(Referee referee) {
+		this.referee = referee;
 	}
 
 }

@@ -12,26 +12,26 @@ public class ConexionDB {
 	 * Conexion a una BD Postgresql utilizando Singleton
 	 */
 
-	private static ConexionDB db = null; 
+	private static ConexionDB db = null;
 	private Connection connection;
-	//private String url = "jdbc:postgresql://localhost/YUGIOH_DB";
+
+//	private String url = "jdbc:postgresql://localhost/YUGIOH_DB";
 	private String url = "jdbc:postgresql://localhost/CartasDB2";
 	private String username = "postgres";
 	private String password = "juanijo123";
-//	private String password = "gatos123";
-	
-	
+	// private String password = "gatos123";
+
 	private ConexionDB() {
 		try {
 			this.setConnection(DriverManager.getConnection(url, username, password));
 			System.out.println("Conexion establecida con la BD.");
-			
-		} catch(SQLException e) {
+
+		} catch (SQLException e) {
 			System.out.println("Conexion con BD fallida. " + e.getMessage());
 		}
 	}
-	
-	//se devuelve ResultSet dado un query para mas flexibilidad 
+
+	// se devuelve ResultSet dado un query para mas flexibilidad
 	public ResultSet query(String query) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -41,12 +41,12 @@ public class ConexionDB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rs; 
+		return rs;
 	}
-	
-	//retorno de una sola instancia - Singleton
+
+	// retorno de una sola instancia - Singleton
 	public static ConexionDB getInstance() throws SQLException {
-		return db != null? db: new ConexionDB(); 
+		return db != null ? db : new ConexionDB();
 	}
 
 	public Connection getConnection() {
@@ -57,10 +57,4 @@ public class ConexionDB {
 		this.connection = connection;
 	}
 
-	
-	
-  }
-
-	
-	
-
+}

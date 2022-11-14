@@ -29,27 +29,21 @@ public class MenuInvocarDefensaMonstruo implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
-			JPanel panel = new JPanel();
-			panel = this.mouse.getTc().getVista().generoBocaAbajoDefault();
 
+			this.mouse.getTc().getReferee().cartaDefaultBocaAbajo(mouse.getPanelSeleccionado());
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
-					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(panel).setFocusable(false);
+					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado())
+					.setFocusable(false);
 
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
 					this.mouse.getTc().getManoMonstruoJugador().remove(mouse.getPanelSeleccionado()));
 
-			panel.setVisible(true);
-			panel.setFocusable(true);
-			panel.addMouseListener(mouse);
-			mouse.setLabel((JLabel) mouse.getPanelSeleccionado().getComponent(0)); // solo tiene 1 componente; la imagen
-																					// JLabel
-			mouse.setPanelCartaBocaAbajo(mouse.getPanelSeleccionado());
-
-			mouse.getPanelSeleccionado().setBackground(Color.black);
-
-			this.mouse.getTc().getVista().getManoJugador().remove(mouse.getPanelSeleccionado());
+			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setPosicionAtaque(false);
+			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setBocaAbajo(true);
+			mouse.getPanelSeleccionado().addMouseListener(new MenuCartaInvocadaMonstruo(this.mouse.getTc()));
+			mouse.getPanelSeleccionado().setVisible(true);
+			mouse.getPanelSeleccionado().setFocusable(true);
 			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
-			this.mouse.setBocaAbajo(true);
 			mouse.getTc().getVista().mostrar();
 
 		}

@@ -3,6 +3,8 @@ package controlador;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,10 +14,10 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
-public class MenuActivarHechizoCartaNoInvocada implements ActionListener {
-	private HechizosInvocacion mouse;
+public class MenuInvocarBocaArribaHechizo implements ActionListener, MouseListener {
+	private ManuHechizos mouse;
 
-	public MenuActivarHechizoCartaNoInvocada(HechizosInvocacion mouse) {
+	public MenuInvocarBocaArribaHechizo(ManuHechizos mouse) {
 		this.mouse = mouse;
 	}
 
@@ -29,23 +31,42 @@ public class MenuActivarHechizoCartaNoInvocada implements ActionListener {
 					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(mouse.getPanelSeleccionado())
 					.setFocusable(false);
 
-			
-
-			// this.vista.getTablero().getContentPane().add(vista.getPanelesMonstruosCampoJugador().get(1));
-			// IMPORTANTE!!! SI AÑADIS AL TABLERO UN PANEL, LO QUE VA A PASAR ES QUE VA A
-			// QUEDAR ABAJO DE LA IMAGEN DEL TABLERO. no le añadas nada al tablero. solo
-			// cambia de lugar lo que ya tiene
 			mouse.getPanelSeleccionado().setVisible(true);
 			mouse.getPanelSeleccionado().setFocusable(true);
+
 			this.mouse.getTc().getCampoHechizosJugador().put(mouse.getPanelSeleccionado(),
 					this.mouse.getTc().getManoHechizoJugador().remove(mouse.getPanelSeleccionado()));
+			this.mouse.getTc().getCampoHechizosJugador().get(mouse.getPanelSeleccionado()).setBocaAbajo(false);
+
 			System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());
 			this.mouse.getPanelSeleccionado().setBackground(Color.GRAY);
 			mouse.getTc().getVista().mostrar();
 		}
-         
-	}
-	
 
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
+	}
 
 }

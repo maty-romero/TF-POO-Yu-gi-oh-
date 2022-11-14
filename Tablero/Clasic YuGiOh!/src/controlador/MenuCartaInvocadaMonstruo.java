@@ -8,35 +8,33 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-public class MenuAtacar implements MouseListener {
+public class MenuCartaInvocadaMonstruo implements MouseListener {
 
 	private TableroController tc;
 	private JPanel panelSeleccionado;
-	private JPopupMenu pm;
 
-	public MenuAtacar(TableroController tc) {
+	public MenuCartaInvocadaMonstruo(TableroController tc) {
 		this.tc = tc;
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
+		JPopupMenu pm = new JPopupMenu();
 		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
 
-		pm = new JPopupMenu();
-
-		// Focusear los paneles del Campo en la vista
-//		for (JPanel panelVista : this.getTc().getVista().getPanelesMonstruosCampoJugador()) {
-//			panelVista.setFocusable(true);
-//		}
 		this.panelSeleccionado = panel;
 		// create menuItems
 		JMenuItem m1 = new JMenuItem("ATACAR");
-		System.out.println("MENU ATACAR ENTERED!!!!");
-		if (this.tc.getCampoMonstruosJugador().containsKey(panel)) {
-			System.out.println("MENU ATACAR ACTIVADO!!!!");
-			m1.addActionListener(new ControladorBatalla(this));
+		JMenuItem m2 = new JMenuItem("Rotar");
+
+		m1.addActionListener(new ControladorBatalla(this));
+		m2.addActionListener(new MenuRotarMonstruo(this));
+		if ((this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == false)) {
 			pm.add(m1);
+			pm.add(m2);
+		}
+		if ((this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == true)) {
+			pm.add(m2);
 		}
 
 		pm.addSeparator();
@@ -68,10 +66,16 @@ public class MenuAtacar implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	public void setTc(TableroController tc) {
+		this.tc = tc;
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+
 	}
 
 }
