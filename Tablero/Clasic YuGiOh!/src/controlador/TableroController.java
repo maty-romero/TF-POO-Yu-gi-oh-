@@ -79,33 +79,24 @@ public class TableroController {
 
 		// MONSTRUO JUGADOR
 
-		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
-		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
+//		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+//		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
 
 
 		try {
 			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			// setteo monstruos usando HashMap
-			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
-					duelistaOponente.getMano().getManoMonstruos(), this.vista.getManoBot()));
-			Thread.sleep(330);
-			this.setManoMonstruoJugador(this.envioImagenesManoMonstruoVista(
-					duelistaJugador.getMano().getManoMonstruos(), this.vista.getManoJugador()));
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+			
+			setManoJugador(); 
+			setManoBot(); 
 
-			// setteo hechizos usando HashMap
-			this.setManoHechizoOponente(this.envioImagenesManoHechizoVista(duelistaOponente.getMano().getManoHechizos(),
-					this.vista.getManoBot()));
-			this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(duelistaJugador.getMano().getManoHechizos(),
-					this.vista.getManoJugador()));
-
-			this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
-			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
+			
+			
 
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
 
@@ -139,15 +130,32 @@ public class TableroController {
 
 //			this.Partida(); //Comienza la partida. 
 
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (PierdeLaPartida e1) {
+			System.out.println(e1.getMessage());
+			this.getVista().getTablero().dispose();
 		}
-//		catch (PierdeLaPartida e1) {
-//			System.out.println(e1.getMessage());
-//			this.getVista().getTablero().dispose();
-//		}
+		
 	}
 
+	
+	public void setManoJugador(){
+		this.setManoMonstruoJugador(this.envioImagenesManoMonstruoVista(
+				duelistaJugador.getMano().getManoMonstruos(), this.vista.getManoJugador()));
+		this.setManoHechizoJugador(this.envioImagenesManoHechizoVista(duelistaJugador.getMano().getManoHechizos(),
+				this.vista.getManoJugador()));
+		
+		this.aniadoMouseListenerMonstruo(this.manoMonstruoJugador);
+		this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
+	}
+	
+	public void setManoBot() {
+		this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
+				duelistaOponente.getMano().getManoMonstruos(), this.vista.getManoBot()));
+		this.setManoHechizoOponente(this.envioImagenesManoHechizoVista(duelistaOponente.getMano().getManoHechizos(),
+				this.vista.getManoBot()));
+	}
+	
+	
 	// flujo de la partida
 	/*
 	 * FASES: Robo, invocacion, batalla, invocacion, otro turno
@@ -362,6 +370,8 @@ public class TableroController {
 
 	public void setControladorBot(CerebroBot controladorBot) {
 		this.controladorBot = controladorBot;
+	}
+	
 	public Referee getReferee() {
 		return referee;
 	}

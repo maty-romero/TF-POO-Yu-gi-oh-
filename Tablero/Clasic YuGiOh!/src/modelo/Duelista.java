@@ -57,8 +57,6 @@ public class Duelista {
 			
 		}
 
-		
-
 	}
 
 //jugadorAtacante elimina la carta muerta, la suya o del oponente, pues es su turno y él hace los movimientos, él toma la iniciativa.

@@ -164,8 +164,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
 
+		}
 	}
-
 	private void eliminarPanelCartaMuerta(ArrayList<JPanel> panelesMonstruo, JPanel panelRemover,
 			HashMap<JPanel, CartaMonstruo> hashModificar) {
 
