@@ -3,6 +3,8 @@ package modelo;
 import java.util.LinkedList;
 import java.util.Random;
 
+import exepciones.PierdeLaPartida;
+
 public class Duelista {
 
 	private Deck deck;
@@ -33,30 +35,29 @@ public class Duelista {
 
 	// saca una carta del mazo, la remueve y queda en la mano del Duelista
 	// El robo de carta actua como una pila
-	public void robarCarta() {
-		try {
-			if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
-				System.out.println("Se intenta robar un monstruo!");
-				CartaMonstruo monstruo = this.getDeck().getMonstruo();
-				if (monstruo != null) {
-					this.getMano().agregarCarta(monstruo);
-					monstruo.setConVida(true);
-				}
-				throw new IndexOutOfBoundsException();
-
-			} else { // Se obtiene un hechizo en la mano
-				System.out.println("Se intenta robar un hechizo!");
-				CartaHechizo hechizo = this.getDeck().getHechizo();
-				if (hechizo != null) {
-					this.getMano().agregarCarta(hechizo);
-				}
-				throw new IndexOutOfBoundsException();
+	public void robarCarta() throws PierdeLaPartida {
+		
+		if (new Random().nextBoolean()) { // Se obtiene un monstruo en la mano
+			System.out.println("Se intenta robar un monstruo!");
+			CartaMonstruo monstruo = this.getDeck().getMonstruo();
+			if (monstruo == null) {
+				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
 			}
 
-		} catch (IndexOutOfBoundsException e) {
-			System.out.println("El duelista " + this.getNombre() + " ha perdido.");
-			this.setGanador(false);
+			this.getMano().agregarCarta(monstruo);
+			monstruo.setConVida(true);
+
+		} else { // Se obtiene un hechizo en la mano
+			System.out.println("Se intenta robar un hechizo!");
+			CartaHechizo hechizo = this.getDeck().getHechizo();
+			if (hechizo == null) {
+				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido.");
+			}
+			this.getMano().agregarCarta(hechizo);
+			
 		}
+
+		
 
 	}
 

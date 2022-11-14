@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import exepciones.PierdeLaPartida;
 import modelo.Carta;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
@@ -27,10 +28,12 @@ public class CerebroBot {
 
 	// ROBAR CARTA
 
-	public void robarCarta() {
+	public void robarCarta() throws PierdeLaPartida {
+
 
 		System.out.println("BOT Roba una carta");
-		this.getTc().getDuelistaOponente().robarCarta(); // en el modelo ya se elimina y retorna una carta.
+			this.getTc().getDuelistaOponente().robarCarta();
+	 // en el modelo ya se elimina y retorna una carta.
 
 		System.out.println("");
 		System.out.println(
@@ -48,6 +51,7 @@ public class CerebroBot {
 				this.getTc().getDuelistaOponente().getMano().getManoHechizos(), this.getTc().getVista().getManoBot()));
 
 		this.getTc().getVista().mostrar(); // Actualizo JFrame
+
 	}
 
 	// INVOCAR
@@ -59,6 +63,7 @@ public class CerebroBot {
 
 		// Invocacion carta monstruo
 		if (rnd.nextBoolean()) {
+
 
 			// si hay cartas monstruo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
@@ -82,6 +87,7 @@ public class CerebroBot {
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesMonstruosCampoOponente());
 
 				// se agrega una carta al campo Monstruo Oponente a la vista
+
 				this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
 
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
@@ -89,6 +95,7 @@ public class CerebroBot {
 			}
 
 		} else { // invocacion carta Hehizo
+
 
 			// si hay cartas hechizo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoHechizoOponente().size() >= 1
@@ -132,12 +139,7 @@ public class CerebroBot {
 		}
 	}
 
-	// retorna un panel aleatorio, dado un hash map.
-	private JPanel panelAleatorio(HashMap<JPanel, ?> hash) {
-		List<JPanel> keysAsArray = new ArrayList<JPanel>(hash.keySet());
-		JPanel panelAleatorio = keysAsArray.get(rnd.nextInt(keysAsArray.size())); // obtengo una clave aleatoria
-		return panelAleatorio;
-	}
+
 
 	// devuelve un panel con un label dado un monstruo.
 	private JPanel panelCustomizadoCarta(Carta carta) {
@@ -193,6 +195,7 @@ public class CerebroBot {
 
 			// obtengo un panel y monstruo aleatorio del campo monstruo del BOT
 
+
 			// obtengo un panel aleatorio del monstruo Atacante.
 			JPanel panelMonstruoAtacante = panelAleatorio(this.getTc().getCampoMonstruosOponente());
 
@@ -210,6 +213,7 @@ public class CerebroBot {
 				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");
 
 				// Obtengo el panelObjetivo y MonstruoObjetivo del Duelista Jugador
+
 
 				// obtengo un panel aleatorio del monstruo Atacante.
 				JPanel panelMonstruoObjetivo = panelAleatorio(this.getTc().getCampoMonstruosJugador());
@@ -244,6 +248,25 @@ public class CerebroBot {
 		this.getTc().getVista().getContadorJug().setText(vidaDuelistaJugador);
 
 		this.getTc().getVista().mostrar(); // actualizo JFrame.
+
+		verificaDuelistasMuertos();
+
+	}
+
+	private void verificaDuelistasMuertos() {
+		try {
+			if (this.getTc().getDuelistaJugador().getVida() <= 0) {
+				throw new PierdeLaPartida(
+						"El duelista " + this.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
+			}
+			if (this.getTc().getDuelistaOponente().getVida() <= 0) {
+				throw new PierdeLaPartida(
+						"El duelista " + this.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			this.getTc().getVista().getTablero().dispose();
+		}
 
 	}
 

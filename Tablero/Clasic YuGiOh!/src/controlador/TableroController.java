@@ -3,11 +3,15 @@ package controlador;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -15,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import exepciones.PierdeLaPartida;
 import modelo.Carta;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
@@ -22,6 +27,8 @@ import modelo.Duelista;
 import vista.VistaTablero;
 
 public class TableroController {
+	private Boolean partidaFinalizada;
+
 	private ControladorProyeccionCartas controladorProyeccionCartas;
 
 	private ControladorBatalla controladorBatalla;
@@ -56,9 +63,11 @@ public class TableroController {
 
 //		mouse = new MonstruosInvocacion(this);
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
+		this.duelistaJugador = new Duelista("1", 1);
+		this.duelistaOponente = new Duelista("2", 2);
+
+		this.controladorBot = new CerebroBot(this);
 		this.referee = new Referee(this);
-		this.duelistaJugador = new Duelista("YUGI", 1);
-		this.duelistaOponente = new Duelista("KIRA", 2);
 
 //		duelistaJugador.robarCarta();
 //		duelistaJugador.robarCarta();
@@ -69,30 +78,10 @@ public class TableroController {
 //		this.duelistaJugador.robarCarta();
 
 		// MONSTRUO JUGADOR
-// 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
-//		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/hechizos/dark_magician.jpg", 1000, 1000));
-//		ArrayList<CartaHechizo> hechizo = duelistaJugador.getMano().getManoHechizos();
-//		hechizo.add(new CartaHechizo(12, "hola", "carta bufeadora", "/hechizos/messenger_of_peace.jpg", 10000));
 
-//		this.duelistaJugador.robarCarta();
-//		this.duelistaJugador.robarCarta();
-//		this.duelistaJugador.robarCarta();
+		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 20));
 
-		// Monstruo BOT prueba
-//
-//		System.out.println("COLOCO CARTAS EN CAMPO DEL BOT Y EN EL HASH");
-//		CartaMonstruo monstruo1 = new CartaMonstruo(1, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 300, 300);
-//		monstruo1.setPosicionAtaque(true); // SETEO POS ATQUE
-
-		// JLabel label1 = this.getVista().generoImagenCarta(monstruo1);
-		// JPanel panel1 = this.getVista().devuelvoPanelCampo(label1); // lo focuseo y
-		// le agrego el label al panel
-
-		// Se agrega al hash
-		// this.campoMonstruosOponente.put(panel1, monstruo1);
-		// se agrega una carta al campo Monstruo Oponente a la vista
-		// this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1);
-		this.controladorBot = new CerebroBot(this);
 
 		try {
 			this.duelistaJugador.robarCarta();
@@ -119,73 +108,91 @@ public class TableroController {
 			this.aniadoMouseListenerHechizo(this.manoHechizoJugador);
 
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
+
 			System.out.println(
 					"Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
 			System.out
 					.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
 
-//			//INVOCACION POR FUERZA - MONSTRUO EN CAMPO JUGADOR --> CartaObjetivo
+			// INICIO DE PARTIDA
 
-//			System.out.println("COLOCO CARTAS EN CAMPO DEL JUGADOR Y EN EL HASH");
-//			CartaMonstruo monstruo2 = new CartaMonstruo(2, "hola", "jaja", "/monstruos/Acid_Crawler_04_.jpg", 1200, 1200); 
-//			monstruo2.setPosicionAtaque(true); //SETEO POS ATQUE 
-//			
-//			JLabel label2 = this.getVista().generoImagenCarta(monstruo2); 
-//			JPanel panel2 = this.getVista().devuelvoPanelCampo(label2);  //lo focuseo y le agrego el label al panel 
-//		
-//			//Se agrega al hash 
-//			this.campoMonstruosJugador.put(panel2, monstruo2); 
-//			//se agrega una carta al campo Monstruo Oponente a la vista 
-//			this.getVista().getPanelesMonstruosCampoJugador().get(0).add(panel2); 
-
-			try {
-//				
-				this.duelistaJugador.robarCarta();
-				this.controladorBot.robarCarta();
-//				Thread.sleep(1000);
-				this.controladorBot.robarCarta();
-//				Thread.sleep(1000);
-
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-				this.controladorBot.robarCarta();
-
-////				Thread.sleep(1000);
-//			//----------
-
-//				Thread.sleep(1000);
-//			//-----
-//				this.controladorBot.robarCarta();
-//				Thread.sleep(1000);
-//
-//				this.controladorBot.robarCarta();
-//				Thread.sleep(1000);
-//			//-----	
-				this.controladorBot.invocarCarta();
-				this.controladorBot.invocarCarta();
-				this.controladorBot.invocarCarta();
-				this.controladorBot.invocarCarta();
-//				Thread.sleep(1000);
-//				this.controladorBot.invocarCarta();
+//			// los duelistas roban 5 cartas --> Actualizar la vista.
+//			for (int i = 0; i < 2; i++) {
+//			duelistaJugador.robarCarta();
+//			this.controladorBot.robarCarta();
+//			}
 
 
-//				this.controladorBot.Batalla();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+//			duelistaJugador.robarCarta();
 
-//			System.out.println("Fin ejecucion Bot");
+			/*
+			 * Al quedarse sin cartas o que la vida de los duelistas llegan a cero, deberia
+			 * de saltar una exepcion que termine la ejecucion del hilo principal y salte a
+			 * la pantalla final.
+			 */
+
+			// Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
+			partidaFinalizada = false;
+			System.out.println("cuento");
+			Boton boton = new Boton(this);
+			this.getVista().getBtnTerminarTurno().addActionListener(boton);
+
+//			this.Partida(); //Comienza la partida. 
 
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+//		catch (PierdeLaPartida e1) {
+//			System.out.println(e1.getMessage());
+//			this.getVista().getTablero().dispose();
+//		}
 	}
+
+	// flujo de la partida
+	/*
+	 * FASES: Robo, invocacion, batalla, invocacion, otro turno
+	 * 
+	 * 
+	 */
+
+//		private void Partida() {
+//
+//			List<String> fasesPartida = Arrays.asList("DRAW PHASE",  "MAIN PHASE" , "BATTLE PHASE"); 
+//			
+//			
+//			
+//////			List<String> fasesPartida = Arrays.asList("DRAW PHASE",  "MAIN PHASE" , "BATTLE PHASE");
+////			System.out.println("afuera del while .");
+////			
+////			// mientras ninguno pierda, sigue la partida.
+////				System.out.println("adentro del while . ");
+//				// Turno Jugador
+//				duelistaJugador.robarCarta();
+//				
+//			
+//
+//		}
+
+//		private void turnoBot() {
+//			
+//			this.controladorBot.robarCarta();
+//			this.controladorBot.invocarCarta();
+//			
+//			if(this.campoMonstruosOponente.size() > 0) {
+//				this.controladorBot.Batalla();
+//			}
+//			
+//
+//			try {
+//				Thread.sleep(1000);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			Partida(); //vuelve al flujo. 
+//			
+//			
+//		}
 
 	/*
 	 * traigo las cartas cargadas con informacion desde base de datos, y las asocio
@@ -238,39 +245,6 @@ public class TableroController {
 
 		this.vista.getTablero().setVisible(true);
 		return hashAuxiliar;
-	}
-
-	// flujo de la partida
-	/*
-	 * FASES: Robo, invocacion, batalla, invocacion, otro turno
-	 */
-
-	public void Partida() {
-
-		// los duelistas roban 5 cartas --> Actualizar la vista.
-		for (int i = 0; i < 5; i++) {
-			duelistaJugador.robarCarta();
-			duelistaOponente.robarCarta();
-		}
-
-		// mientras ninguno pierda, sigue la partida.
-		while (duelistaJugador.getGanador() && duelistaOponente.getGanador()) {
-
-			// Turno Jugador
-
-			// Turno BOT
-			this.controladorBot.robarCarta();
-			this.controladorBot.invocarCarta();
-			this.controladorBot.Batalla();
-
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-
-		}
-
 	}
 
 	private void aniadoMouseListenerMonstruo(HashMap<JPanel, CartaMonstruo> hash) {
@@ -374,6 +348,20 @@ public class TableroController {
 		this.duelistaOponente = duelistaOponente;
 	}
 
+	public Boolean getPartidaFinalizada() {
+		return partidaFinalizada;
+	}
+
+	public void setPartidaFinalizada(Boolean partidaFinalizada) {
+		this.partidaFinalizada = partidaFinalizada;
+	}
+
+	public CerebroBot getControladorBot() {
+		return controladorBot;
+	}
+
+	public void setControladorBot(CerebroBot controladorBot) {
+		this.controladorBot = controladorBot;
 	public Referee getReferee() {
 		return referee;
 	}

@@ -14,6 +14,7 @@ public class ConexionDB {
 
 	private static ConexionDB db = null;
 	private Connection connection;
+
 //	private String url = "jdbc:postgresql://localhost/YUGIOH_DB";
 	private String url = "jdbc:postgresql://localhost/CartasDB2";
 	private String username = "postgres";
