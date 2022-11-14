@@ -185,7 +185,7 @@ public class CerebroBot {
 	 * 
 	 */
 
-	public void Batalla() {
+	public void Batalla() throws PierdeLaPartida {
 
 		// si hay monstruos en el campoMonstruosOponente es posible atacar
 		if (this.getTc().getCampoMonstruosOponente().size() > 0) {
@@ -221,9 +221,9 @@ public class CerebroBot {
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
 
-				actualizarVida(); // se actualiza la vida de los Duelistas
-
 				actualizarPaneles(panelMonstruoAtacante, panelMonstruoObjetivo); // remover paneles de cartas muertas.
+
+				actualizarVida(); // se actualiza la vida de los Duelistas
 
 			}
 
@@ -232,7 +232,7 @@ public class CerebroBot {
 	}
 
 	// actualiza la vida de los duelistas.
-	private void actualizarVida() {
+	private void actualizarVida() throws PierdeLaPartida {
 
 		// obtengo la vida vida de los duelistas en String --> Para el JLabel
 		String vidaDuelistaJugador = String.valueOf(this.getTc().getDuelistaJugador().getVida());
@@ -248,19 +248,13 @@ public class CerebroBot {
 
 	}
 
-	private void verificaDuelistasMuertos() {
-		try {
-			if (this.getTc().getDuelistaJugador().getVida() <= 0) {
-				throw new PierdeLaPartida(
-						"El duelista " + this.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
-			}
-			if (this.getTc().getDuelistaOponente().getVida() <= 0) {
-				throw new PierdeLaPartida(
-						"El duelista " + this.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			this.getTc().getVista().getTablero().dispose();
+	private void verificaDuelistasMuertos() throws PierdeLaPartida {
+
+		if (this.getTc().getDuelistaJugador().getVida() <= 0) {
+			throw new PierdeLaPartida("El duelista " + this.getTc().getDuelistaJugador().getNombre() + " ha perdido.");
+		}
+		if (this.getTc().getDuelistaOponente().getVida() <= 0) {
+			throw new PierdeLaPartida("El duelista " + this.getTc().getDuelistaOponente().getNombre() + " ha perdido.");
 		}
 
 	}
