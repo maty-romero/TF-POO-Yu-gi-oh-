@@ -61,28 +61,28 @@ public class CerebroBot {
 			// si hay cartas monstruo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
 
-				// obtengo un panel aleatorio.
-				JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
-				panelAleatorio.setVisible(false);
-
-				// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
-				CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
-				monstruo.setPosicionAtaque(true);
-
-				System.out.println("Monstruo por invocar - BOT: " + monstruo);
-
-				// obtengo un panel con un label dado un monstruo.
-				JPanel panelMonstruo = panelCustomizadoCarta(monstruo);
-
-				this.getTc().getCampoMonstruosOponente().put(panelMonstruo, monstruo); // Se agrega al hash
-
 				// Obtengo una posicion vacia para invocar
 				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesMonstruosCampoOponente());
+				if (posi != null) {
+					// obtengo un panel aleatorio.
+					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
+					panelAleatorio.setVisible(false);
 
-				// se agrega una carta al campo Monstruo Oponente a la vista
+					// remuevo el item asociado al keyPanel asociado y obtengo el monstruo
+					CartaMonstruo monstruo = this.getTc().getManoMonstruoOponente().remove(panelAleatorio);
+					monstruo.setPosicionAtaque(true);
 
-				this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
+					System.out.println("Monstruo por invocar - BOT: " + monstruo);
 
+					// obtengo un panel con un label dado un monstruo.
+					JPanel panelMonstruo = panelCustomizadoCarta(monstruo);
+
+					this.getTc().getCampoMonstruosOponente().put(panelMonstruo, monstruo); // Se agrega al hash
+
+					// se agrega una carta al campo Monstruo Oponente a la vista
+
+					this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
+				}
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
 
 			}
