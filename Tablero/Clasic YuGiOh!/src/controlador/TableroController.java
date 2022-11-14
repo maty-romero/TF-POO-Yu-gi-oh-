@@ -140,6 +140,7 @@ public class TableroController {
 
 			try {
 //				
+				this.duelistaJugador.robarCarta();
 				this.controladorBot.robarCarta();
 //				Thread.sleep(1000);
 				this.controladorBot.robarCarta();
