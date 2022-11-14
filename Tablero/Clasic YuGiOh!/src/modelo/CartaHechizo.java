@@ -12,8 +12,7 @@ public class CartaHechizo extends Carta {
 
 	@Override
 	public String toString() {
-		return "CartaHechizo [id=" + super.getId() + ",\n nombre= \n" + super.getNombre() + ", \ndescripcion= \n"
-				+ super.getDescripcion() + "\n Efecto: \n" + this.efecto;
+		return super.toString() + "\nEfecto: " + this.efecto;
 	}
 
 	public Integer getEfecto() {

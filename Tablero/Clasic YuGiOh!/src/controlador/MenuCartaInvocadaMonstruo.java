@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -8,17 +10,30 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-public class MenuCartaInvocadaMonstruo implements MouseListener {
+public class MenuCartaInvocadaMonstruo implements MouseListener{
 
 	private TableroController tc;
 	private JPanel panelSeleccionado;
-
+	private Boolean puedeAtacar; 
+	
 	public MenuCartaInvocadaMonstruo(TableroController tc) {
 		this.tc = tc;
+		this.puedeAtacar = false; 
+		this.getTc().getVista().getBtnBatalla().addActionListener(e -> this.permisoMenuBatalla());
 	}
 
+	private void permisoMenuBatalla() {
+		if(this.puedeAtacar) {
+			this.puedeAtacar = false; 
+		}else {
+			this.puedeAtacar = true; 
+		}
+	}
+	
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {
+		System.out.println("Valor puedeAtacar = " + this.puedeAtacar);
 		JPopupMenu pm = new JPopupMenu();
 		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
 
@@ -29,11 +44,13 @@ public class MenuCartaInvocadaMonstruo implements MouseListener {
 
 		m1.addActionListener(new ControladorBatalla(this));
 		m2.addActionListener(new MenuRotarMonstruo(this));
-		if ((this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == false)) {
+		if (this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == false 
+				&& this.puedeAtacar && this.getTc().getCampoMonstruosJugador().get(panel).getPosicionAtaque()) {
+
 			pm.add(m1);
 			pm.add(m2);
 		}
-		if ((this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == true)) {
+		if (this.getTc().getCampoMonstruosJugador().get(panel).getBocaAbajo() == true && this.puedeAtacar == false) {
 			pm.add(m2);
 		}
 
@@ -77,5 +94,7 @@ public class MenuCartaInvocadaMonstruo implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 
 	}
+
+	
 
 }

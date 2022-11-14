@@ -19,6 +19,7 @@ import javax.swing.*;
 import controlador.ControladorBatalla;
 import controlador.ControladorProyeccionCartas;
 import controlador.ManuHechizos;
+import controlador.MenuCartaInvocadaMonstruo;
 //import controlador.ControladorProyeccionCartas;
 import controlador.TableroController;
 import modelo.Carta;
@@ -115,7 +116,7 @@ public class VistaTablero implements ImageObserver {
 
 //Botones 
 	private JButton btnTerminarTurno;
-	private JButton btnSiguienteFase;
+	private JButton btnBatalla;
 //Label Fase de la partida
 	private JLabel labelFasePartida;
 	
@@ -177,9 +178,9 @@ public class VistaTablero implements ImageObserver {
 		tablero.getContentPane().add(labelFasePartida);
 		
 		//Boton Siguiente Fase
-		btnSiguienteFase = new JButton("Siguiente Fase");
-		btnSiguienteFase.setBounds(28, 345, 119, 36);
-		tablero.getContentPane().add(btnSiguienteFase);
+		btnBatalla = new JButton("Batalla");
+		btnBatalla.setBounds(28, 345, 119, 36);
+		tablero.getContentPane().add(btnBatalla);
 		//Boton Terminar Turno
 		btnTerminarTurno = new JButton("Terminar Turno");
 		btnTerminarTurno.setBounds(31, 298, 119, 36);
@@ -553,12 +554,14 @@ public class VistaTablero implements ImageObserver {
 		this.btnTerminarTurno = btnTerminarTurno;
 	}
 
-	public JButton getBtnSiguienteFase() {
-		return btnSiguienteFase;
+	
+
+	public JButton getBtnBatalla() {
+		return btnBatalla;
 	}
 
-	public void setBtnSiguienteFase(JButton btnSiguienteFase) {
-		this.btnSiguienteFase = btnSiguienteFase;
+	public void setBtnBatalla(JButton btnBatalla) {
+		this.btnBatalla = btnBatalla;
 	}
 
 	public JLabel getLabelFasePartida() {
