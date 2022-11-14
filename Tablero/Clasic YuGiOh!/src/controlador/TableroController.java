@@ -72,7 +72,7 @@ public class TableroController {
 		ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
 		monstruosJugador.add(new CartaMonstruo(20, "20", "20", "/cartas/dark_magician.jpg", 1000, 1000));
 		ArrayList<CartaHechizo> hechizo = duelistaJugador.getMano().getManoHechizos();
-                     hechizo.add(new CartaHechizo(12,"hola","carta bufeadora","/hechizos/tifon_espacio_mistico.jpg", 100));
+                     hechizo.add(new CartaHechizo(12,"hola","carta bufeadora","/hechizos/tifon_espacio_mistico.jpg", 10000));
 		
 //		this.duelistaJugador.robarCarta();
 //		this.duelistaJugador.robarCarta();
@@ -143,6 +143,15 @@ public class TableroController {
 //				Thread.sleep(1000);
 //
 				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+				this.controladorBot.robarCarta();
+
 ////				Thread.sleep(1000);
 //			//----------
 				this.controladorBot.invocarCarta();
@@ -157,12 +166,14 @@ public class TableroController {
 //				Thread.sleep(1000);
 //			//-----	
 				this.controladorBot.invocarCarta();
+				this.controladorBot.invocarCarta();
+				this.controladorBot.invocarCarta();
+				this.controladorBot.invocarCarta();
 //				Thread.sleep(1000);
 //				this.controladorBot.invocarCarta();
-				Thread.sleep(2000);
 				
-				this.controladorBot.Batalla();
-			} catch (InterruptedException e) {
+//				this.controladorBot.Batalla();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			

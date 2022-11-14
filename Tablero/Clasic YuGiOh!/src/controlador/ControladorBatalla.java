@@ -70,8 +70,15 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		JPanel panel = (JPanel) e.getSource();
 		System.out.println(panel);
 		System.out.println("CONTROLADOR BATALLA MOUSE CLICKED - ACTIVADO");
+		
+		// remuevo los listener para que no se puedan seleccionar.
+		for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
+			panelCampo.removeMouseListener(menuAtacar);
+			panelCampo.removeMouseListener(this);
+			System.out.println("REMUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+		}
 
-		if (this.menuAtacar.getTc().getCampoMonstruosOponente().containsKey(panel)) {
+//		if (this.menuAtacar.getTc().getCampoMonstruosOponente().containsKey(panel)) {
 
 			// si la carta esta boca abajo, se voltea sin rotar --> AGREGAR
 			// ***********************************
@@ -88,16 +95,9 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 			aplicarResultadoBatalla();
 
-			// remuevo los listener para que no se puedan seleccionar.
-			for (JPanel panelCampo : this.menuAtacar.getTc().getCampoMonstruosOponente().keySet()) {
-				panel.removeMouseListener(this);
-			}
 
-		}
-	}
-
-	public void Batalla() {
-
+			
+//		}
 	}
 
 	/*
