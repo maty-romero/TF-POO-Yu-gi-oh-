@@ -33,7 +33,6 @@ public class Barajador {
 					.query("SELECT * from cartas c WHERE c.tipo =  'hechizo_destructor' ");
 			// pregunta si hay filas.
 			while (rsCartaH.next() && rsCartaM.next()) { // recorre fila por fila asiganando
-				System.out.println(rsCartaH.getString("pathImagen"));
 				// se obtienen los monstruos y se añade al deck.
 
 				id = rsCartaM.getInt("id_carta");
@@ -63,7 +62,6 @@ public class Barajador {
 		// se retorna el deck obtenido
 		deck.setMonstruos(monstruos);
 		deck.setHechizos(hechizos);
-		System.out.println("cantidad de monstruos " + deck.getHechizos().size());
 
 		return deck;
 

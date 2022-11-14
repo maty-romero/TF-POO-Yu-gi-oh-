@@ -94,8 +94,14 @@ public class TableroController {
 		// this.getVista().getPanelesMonstruosCampoOponente().get(0).add(panel1);
 		this.controladorBot = new CerebroBot(this);
 
-
 		try {
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
+			this.duelistaJugador.robarCarta();
 			// setteo monstruos usando HashMap
 			this.setManoMonstruoOponente(this.envioImagenesManoMonstruoVista(
 					duelistaOponente.getMano().getManoMonstruos(), this.vista.getManoBot()));
@@ -149,7 +155,6 @@ public class TableroController {
 				this.controladorBot.robarCarta();
 				this.controladorBot.robarCarta();
 
-
 ////				Thread.sleep(1000);
 //			//----------
 
@@ -167,6 +172,7 @@ public class TableroController {
 				this.controladorBot.invocarCarta();
 //				Thread.sleep(1000);
 //				this.controladorBot.invocarCarta();
+
 
 //				this.controladorBot.Batalla();
 			} catch (Exception e) {
