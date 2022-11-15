@@ -46,11 +46,14 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 																													// el
 																													// monstruo
 
-		System.out.println("CONTROLADOR BATALLA ACTION PERFORMED - ACTIVADO");
+		// System.out.println("CONTROLADOR BATALLA ACTION PERFORMED - ACTIVADO");
 
-		System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
-		System.out.println("Monstruo Atacante posAtaque: " + this.monstruoAtacante.getPosicionAtaque());
+		// System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
+		// System.out.println("Monstruo Atacante posAtaque: " +
+		// this.monstruoAtacante.getPosicionAtaque());
 		// si no tiene monstruos el Bot --> AtaqueDirecto
+		System.out.println("SYZE                                            EEEEEEEEEEEE      "
+				+ this.menuAtacar.getTc().getCampoMonstruosOponente().size());
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
 			aplicarResultadoBatallaVida(); // solo se actualiza la vida del duelista atacado
@@ -93,7 +96,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 		aplicarResultadoBatallaVida(); // actualizo la vida de los duelistas
 		aplicarResultadoBatallaPaneles(); // remuevo paneles si es necesario.
-
+		this.menuAtacar.getTc().getCampoMonstruosOponente().remove(panelMonstruoObjetivo);
 //		}
 	}
 
