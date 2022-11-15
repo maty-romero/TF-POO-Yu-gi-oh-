@@ -41,6 +41,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("entre al listener de atacar");
+		this.menuAtacar.getPanelSeleccionado().addMouseListener(menuAtacar);
 		this.panelMonstruoAtacante = this.menuAtacar.getPanelSeleccionado();
 		//obtengo el monstruo asociado al panel 
 		this.monstruoAtacante = this.menuAtacar.getTc().getCampoMonstruosJugador().get(this.panelMonstruoAtacante);
