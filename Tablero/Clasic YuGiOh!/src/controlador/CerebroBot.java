@@ -218,7 +218,7 @@ public class CerebroBot {
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
 
-				actualizarPaneles(panelMonstruoAtacante, panelMonstruoObjetivo); // remover paneles de cartas muertas.
+				actualizarPanelesyHash(panelMonstruoAtacante, panelMonstruoObjetivo); // remover paneles de cartas muertas.
 
 				actualizarVida(); // se actualiza la vida de los Duelistas
 
@@ -257,7 +257,7 @@ public class CerebroBot {
 	}
 
 	// actualiza los panales luego de la batalla (si necesitan ser removidos).
-	private void actualizarPaneles(JPanel panelAtacante, JPanel panelObjetivo) {
+	private void actualizarPanelesyHash(JPanel panelAtacante, JPanel panelObjetivo) {
 
 		// eliminacion panel monstruo del bot (monstruoAtacante)
 		if (!this.monstruoAtacante.getConVida()) {
@@ -279,6 +279,7 @@ public class CerebroBot {
 			coincidencia.setVisible(true);
 			this.getTc().getVista().mostrar();
 			this.getTc().getVista().getTablero().setVisible(true);
+			this.getTc().getCampoMonstruosOponente().remove(panelAtacante);
 		}
 
 		// eliminacion panel monstruo del Jugador (monstruoObjetivo)
@@ -301,6 +302,8 @@ public class CerebroBot {
 			coincidencia.setVisible(true);
 			this.getTc().getVista().mostrar();
 			this.getTc().getVista().getTablero().setVisible(true);
+			this.getTc().getCampoMonstruosJugador().remove(panelObjetivo);
+
 		}
 
 	}
