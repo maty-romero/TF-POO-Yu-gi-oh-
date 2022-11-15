@@ -36,6 +36,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class VistaTablero implements ImageObserver {
 	// Controlador
@@ -136,21 +137,19 @@ public class VistaTablero implements ImageObserver {
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("TABLERO");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.tablero.setSize(1389, 910);
+		this.tablero.setSize(1412, 1020);
 		this.generarTablero();
-
 	}
 
 	private void generarTablero() {
 
 		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
-		
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
-		manoJugador.setBackground(new Color(153, 0, 0));
-		manoJugador.setVisible(true);
-		manoJugador.setBounds(10, 589, 726, 100);
+		manoJugador.setBackground(new Color(0, 0, 0));
+		tablero.getContentPane().setLayout(null);
+		manoJugador.setBounds(10, 646, 730, 100);
 		manoJugador.setSize(730, 100);
 		tablero.getContentPane().add(manoJugador);
 
@@ -159,9 +158,9 @@ public class VistaTablero implements ImageObserver {
 		
 		// MANO DEL BOT Panel grid layout
 		manoBot = new JPanel();
-		manoBot.setBounds(94, 10, 726, 100);
+		manoBot.setBounds(125, 6, 730, 100);
 		manoBot.setSize(730, 100);
-		manoBot.setBackground(new Color(153, 0, 0));
+		manoBot.setBackground(new Color(0, 0, 0));
 		manoBot.setVisible(true);
 
 		tablero.getContentPane().add(manoBot);
@@ -179,11 +178,13 @@ public class VistaTablero implements ImageObserver {
 		
 		//Boton Siguiente Fase
 		btnBatalla = new JButton("Batalla");
-		btnBatalla.setBounds(28, 345, 119, 36);
+		btnBatalla.setFont(new Font("Sitka Subheading", Font.BOLD, 18));
+		btnBatalla.setBounds(28, 385, 167, 36);
 		tablero.getContentPane().add(btnBatalla);
 		//Boton Terminar Turno
 		btnTerminarTurno = new JButton("Terminar Turno");
-		btnTerminarTurno.setBounds(31, 298, 119, 36);
+		btnTerminarTurno.setFont(new Font("Sitka Subheading", Font.BOLD, 18));
+		btnTerminarTurno.setBounds(31, 309, 167, 36);
 		tablero.getContentPane().add(btnTerminarTurno);
 		
 		
@@ -192,23 +193,23 @@ public class VistaTablero implements ImageObserver {
 		// Contador vida jugador
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
-		contadorJug.setBounds(1007, 700, 200, 57);
-		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		contadorJug.setForeground(new Color(0, 0, 0));
-		this.contadorJug.setBackground(new Color(153, 0, 153));
+		contadorJug.setBounds(1081, 698, 205, 70);
+		contadorJug.setFont(new Font("Consolas", Font.BOLD, 45));
+		contadorJug.setForeground(Color.WHITE);
+		this.contadorJug.setBackground(new Color(255, 255, 255));
 		tablero.getContentPane().add(this.contadorJug);
 
 //contador vida bot
 		this.contadorBot = new JLabel("8000");
-		contadorBot.setBounds(1053, 10, 200, 57);
-		contadorBot.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		contadorBot.setForeground(new Color(0, 0, 204));
+		contadorBot.setBounds(1066, 30, 200, 57);
+		contadorBot.setFont(new Font("Consolas", Font.BOLD, 45));
+		contadorBot.setForeground(Color.WHITE);
 		this.contadorBot.setBackground(new Color(0, 0, 153));
 		tablero.getContentPane().add(this.contadorBot);
 
 //deck del bot
 		this.deck_bot = new JPanel();
-		deck_bot.setBounds(10, 10, 74, 96);
+		deck_bot.setBounds(10, 10, 87, 96);
 		this.deck_bot.setForeground(new Color(204, 0, 0));
 		this.deck_bot.setBackground(new Color(0, 0, 0));
 
@@ -223,7 +224,7 @@ public class VistaTablero implements ImageObserver {
 
 //cementerio del bot
 		this.cem_bot = new JPanel();
-		cem_bot.setBounds(10, 172, 74, 96);
+		cem_bot.setBounds(10, 156, 87, 96);
 		this.cem_bot.setBackground(new Color(0, 0, 0));
 
 		java.net.URL urlCemBot = getClass().getResource(this.pathCartaDefault); // imagen local relativa
@@ -237,9 +238,9 @@ public class VistaTablero implements ImageObserver {
 
 //deck del jugador
 		this.deck_jug = new JPanel();
-		deck_jug.setBounds(749, 414, 74, 96);
+		deck_jug.setBounds(791, 492, 87, 108);
 		this.deck_jug.setForeground(new Color(153, 0, 0));
-		this.deck_jug.setBackground(new Color(102, 102, 0));
+		this.deck_jug.setBackground(new Color(0, 0, 0));
 
 		java.net.URL urlDeckJug = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																					// al projecto
@@ -252,9 +253,9 @@ public class VistaTablero implements ImageObserver {
 
 //cementerio del jugador
 		this.cem_jug = new JPanel();
-		cem_jug.setBounds(749, 593, 74, 96);
+		cem_jug.setBounds(791, 646, 87, 100);
 		this.cem_jug.setForeground(new Color(0, 0, 0));
-		this.cem_jug.setBackground(new Color(153, 102, 0));
+		this.cem_jug.setBackground(new Color(0, 0, 0));
 
 		java.net.URL urlCemJug = getClass().getResource(this.pathCartaDefault); // imagen local relativa
 																				// al projecto
@@ -267,14 +268,14 @@ public class VistaTablero implements ImageObserver {
 		
 //Proyeccion de Carta		
 		this.cartaSeleccionada = new JPanel();
-		cartaSeleccionada.setBounds(862, 78, 391, 390);
+		cartaSeleccionada.setBounds(924, 101, 391, 367);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
 		
 		//Proyeccion de Descripcion 
 		JPanel descripcionProyeccion = new JPanel();
 		descripcionProyeccion.setBackground(Color.DARK_GRAY);
-		descripcionProyeccion.setBounds(862, 500, 391, 180);
+		descripcionProyeccion.setBounds(924, 492, 391, 180);
 		tablero.getContentPane().add(descripcionProyeccion);
 		descripcionProyeccion.setLayout(null);
 		
@@ -290,7 +291,7 @@ public class VistaTablero implements ImageObserver {
 
 //icono del bot
 		iconoBot = new JPanel();
-		iconoBot.setBounds(910, 10, 87, 62);
+		iconoBot.setBounds(930, 10, 87, 80);
 		iconoBot.setBackground(new Color(0, 0, 0));
 
 		java.net.URL urlIconoBot = getClass().getResource("/IconoPersonajes/seto_kaiba.png"); // imagen local relativa
@@ -304,7 +305,7 @@ public class VistaTablero implements ImageObserver {
 
 //icono del jugador
 		JPanel iconoJug = new JPanel();
-		iconoJug.setBounds(910, 700, 87, 62);
+		iconoJug.setBounds(934, 688, 93, 80);
 
 		java.net.URL urlIconoJug = getClass().getResource("/IconoPersonajes/yugi_moto.jpg"); // imagen local relativa al
 																								// projecto
@@ -317,14 +318,14 @@ public class VistaTablero implements ImageObserver {
 
 //seteo el fondo de pantalla ( imagen) agregandola al frame.
 		this.seteoPanelesCampo();
-		java.net.URL fondoTableroURL = getClass().getResource("/fondo_tablero/yugi_milennium.jpg"); // imagen local
+		java.net.URL fondoTableroURL = getClass().getResource("/fondo_tablero/FondoTablero2.jpg"); // imagen local
 		// relativa al
 		// projecto
 		ImageIcon iconFondoTablero = new ImageIcon(
-				new ImageIcon(fondoTableroURL).getImage().getScaledInstance(1400, 1400, Image.SCALE_DEFAULT));
+				new ImageIcon(fondoTableroURL).getImage().getScaledInstance(1400, 1200, Image.SCALE_DEFAULT));
 
 		imagenFondoTablero = new JLabel(iconFondoTablero);
-		imagenFondoTablero.setBounds(0, 0, 1283, 784);
+		imagenFondoTablero.setBounds(0, 0, 1396, 981);
 		this.imagenFondoTablero.setBackground(new Color(153, 0, 0));
 
 		this.tablero.getContentPane().add(this.imagenFondoTablero);
@@ -427,19 +428,19 @@ public class VistaTablero implements ImageObserver {
 		this.panelesMonstruosCampoJugador.add(this.carta3CampoJug);
 
 		this.carta4CampoJug = new JPanel();
-		carta4CampoJug.setBounds(226, 492, 135, 96);
+		carta4CampoJug.setBounds(226, 504, 135, 96);
 		this.carta4CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta4CampoJug);
 
 		this.carta5CampoJug = new JPanel();
-		this.carta5CampoJug.setBounds(380, 492, 135, 96);
+		this.carta5CampoJug.setBounds(380, 504, 135, 96);
 		this.carta5CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta5CampoJug);
 
 		this.carta6CampoJug = new JPanel();
-		carta6CampoJug.setBounds(535, 492, 135, 96);
+		carta6CampoJug.setBounds(535, 504, 135, 96);
 		this.carta6CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta6CampoJug);
@@ -568,7 +569,12 @@ public class VistaTablero implements ImageObserver {
 		tablero.getContentPane().add(panel);
 
 		return panel;
-
+	}
+	
+	//proyecta texto en el textArea eliminando lo anterior 
+	public void mostrarTextoProyeccion(String mensaje) {
+		this.getTextArea().setText(mensaje);
+		
 	}
 	
 	public JButton getBtnTerminarTurno() {
@@ -596,8 +602,6 @@ public class VistaTablero implements ImageObserver {
 	public void setLabelFasePartida(JLabel labelFasePartida) {
 		this.labelFasePartida = labelFasePartida;
 	}
-
-	
 
 	public JTextArea getTextArea() {
 		return textArea;

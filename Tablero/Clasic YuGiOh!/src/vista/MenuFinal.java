@@ -33,14 +33,14 @@ public class MenuFinal extends JFrame {
 
 	public MenuFinal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 792, 593);
+		setBounds(100, 100, 799, 662);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		
-		java.net.URL fondoURL = getClass().getResource("/fondo_tablero/FondoMenuFinal.png"); //
+		java.net.URL fondoURL = getClass().getResource("/fondo_tablero/FondoFinal.jpg"); //
 		ImageIcon iconFondoTablero = new ImageIcon(
 				new ImageIcon(fondoURL).getImage().getScaledInstance(800, 800, Image.SCALE_DEFAULT));
 		
@@ -51,7 +51,7 @@ public class MenuFinal extends JFrame {
 		contentPane.add(mensajeFinalPartida);
 		
 		fondoMenuFinal = new JLabel(iconFondoTablero);
-		fondoMenuFinal.setBounds(0, 0, 776, 554);
+		fondoMenuFinal.setBounds(0, 0, 783, 625);
 		contentPane.add(fondoMenuFinal);
 	}
 

@@ -35,6 +35,10 @@ public class Boton implements ActionListener {
 
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(true);
 
+			//Se muestra las acciones que realizo el bot en la vista. 
+			this.getTc().getVista().mostrarTextoProyeccion(this.getTc().getControladorBot().getInformeBot());
+			
+			//Turno del jugador, nuevamente. 
 			this.getTc().getDuelistaJugador().robarCarta();
 //			this.getTc().getManoMonstruoJugador();
 			this.getTc().getVista().getManoJugador().removeAll();
