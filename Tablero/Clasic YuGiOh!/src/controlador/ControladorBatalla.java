@@ -40,7 +40,7 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	// Seleccion de carta Atacante (Jugador)
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		System.out.println("entre al listener de atacar");
 		this.panelMonstruoAtacante = this.menuAtacar.getPanelSeleccionado();
 		this.monstruoAtacante = this.menuAtacar.getTc().getCampoMonstruosJugador().get(this.panelMonstruoAtacante); // obtengo
 																													// el
@@ -96,8 +96,8 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 		aplicarResultadoBatallaVida(); // actualizo la vida de los duelistas
 		aplicarResultadoBatallaPaneles(); // remuevo paneles si es necesario.
-		this.menuAtacar.getTc().getCampoMonstruosOponente().remove(panelMonstruoObjetivo);
-//		}
+		
+		//		}
 	}
 
 	/*
@@ -153,12 +153,14 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 			this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoJugador(),
 					panelMonstruoAtacante, this.menuAtacar.getTc().getCampoMonstruosJugador());
+			this.menuAtacar.getTc().getCampoMonstruosJugador().remove(panelMonstruoAtacante);
 		}
 
 		if (monstruoObjetivo != null) {
 			if (!monstruoObjetivo.getConVida()) {
 				this.eliminarPanelCartaMuerta(this.menuAtacar.getTc().getVista().getPanelesMonstruosCampoOponente(),
 						panelMonstruoObjetivo, this.menuAtacar.getTc().getCampoMonstruosOponente());
+				this.menuAtacar.getTc().getCampoMonstruosOponente().remove(panelMonstruoObjetivo);
 			}
 
 			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");

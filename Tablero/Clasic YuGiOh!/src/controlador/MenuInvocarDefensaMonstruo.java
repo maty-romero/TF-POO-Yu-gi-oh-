@@ -28,11 +28,14 @@ public class MenuInvocarDefensaMonstruo implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
+//		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
+		Integer posi = this.mouse.getTc().getReferee()
+				.posVaciaCampo((this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()));
+		if (posi != null) {
 
 			this.mouse.getTc().getReferee().cartaDefaultBocaAbajo(mouse.getPanelSeleccionado());
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
-					.get(this.mouse.getTc().getCampoMonstruosJugador().size()).add(mouse.getPanelSeleccionado())
+					.get(posi).add(mouse.getPanelSeleccionado())
 					.setFocusable(false);
 
 			this.mouse.getTc().getCampoMonstruosJugador().put(mouse.getPanelSeleccionado(),
@@ -49,8 +52,8 @@ public class MenuInvocarDefensaMonstruo implements ActionListener {
 			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
 			mouse.getTc().getVista().mostrar();
 
+//		}
 		}
-
 	}
 
 }

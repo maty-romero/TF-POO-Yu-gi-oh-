@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -19,6 +20,18 @@ public class Referee {
 
 	public Referee(TableroController tc) {
 		this.tc = tc;
+	}
+
+	public Integer posVaciaCampo(ArrayList<JPanel> paneles) {
+		Integer posicion = null;
+		for (int i = 0; i < paneles.size(); i++) {
+			// Si no hay ningun componente en ese panel, retorna la posicion.
+			if (paneles.get(i).getComponentCount() == 0) {
+				posicion = i;
+				break;
+			}
+		}
+		return posicion;
 	}
 
 	// el panel que le mandes, ahora se ve distinto; como boca abajo

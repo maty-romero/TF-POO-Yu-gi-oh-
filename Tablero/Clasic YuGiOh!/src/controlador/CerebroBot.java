@@ -62,7 +62,7 @@ public class CerebroBot {
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
 
 				// Obtengo una posicion vacia para invocar
-				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesMonstruosCampoOponente());
+				Integer posi = this.getTc().getReferee().posVaciaCampo((this.getTc().getVista().getPanelesMonstruosCampoOponente()));
 				if (posi != null) {
 					// obtengo un panel aleatorio de la mano
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
@@ -96,7 +96,7 @@ public class CerebroBot {
 					&& this.getTc().getCampoMonstruosOponente().size() >= 1) {
 
 				// Obtengo una posicion vacia para invocar
-				Integer posi = posVaciaCampo(this.getTc().getVista().getPanelesHechizosCampoOponente());
+				Integer posi = this.getTc().getReferee().posVaciaCampo((this.getTc().getVista().getPanelesHechizosCampoOponente()));
 				if (posi != null) {
 
 					// obtengo un panel aleatorio.
@@ -160,17 +160,6 @@ public class CerebroBot {
 	 * en el tablero.
 	 */
 
-	private Integer posVaciaCampo(ArrayList<JPanel> paneles) {
-		Integer posicion = null;
-		for (int i = 0; i < paneles.size(); i++) {
-			// Si no hay ningun componente en ese panel, retorna la posicion.
-			if (paneles.get(i).getComponentCount() == 0) {
-				posicion = i;
-				break;
-			}
-		}
-		return posicion;
-	}
 
 	// BATALLA
 
