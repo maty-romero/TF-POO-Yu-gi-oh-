@@ -192,7 +192,7 @@ public class VistaTablero implements ImageObserver {
 		// Contador vida jugador
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
-		contadorJug.setBounds(1007, 637, 200, 57);
+		contadorJug.setBounds(1007, 700, 200, 57);
 		contadorJug.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		contadorJug.setForeground(new Color(0, 0, 0));
 		this.contadorJug.setBackground(new Color(153, 0, 153));
@@ -274,12 +274,12 @@ public class VistaTablero implements ImageObserver {
 		//Proyeccion de Descripcion 
 		JPanel descripcionProyeccion = new JPanel();
 		descripcionProyeccion.setBackground(Color.DARK_GRAY);
-		descripcionProyeccion.setBounds(862, 479, 391, 147);
+		descripcionProyeccion.setBounds(862, 500, 391, 180);
 		tablero.getContentPane().add(descripcionProyeccion);
 		descripcionProyeccion.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 371, 125);
+		scrollPane.setBounds(10, 11, 371, 158);
 		descripcionProyeccion.add(scrollPane);
 		
 		textArea = new JTextArea();
@@ -304,7 +304,7 @@ public class VistaTablero implements ImageObserver {
 
 //icono del jugador
 		JPanel iconoJug = new JPanel();
-		iconoJug.setBounds(910, 632, 87, 62);
+		iconoJug.setBounds(910, 700, 87, 62);
 
 		java.net.URL urlIconoJug = getClass().getResource("/IconoPersonajes/yugi_moto.jpg"); // imagen local relativa al
 																								// projecto
@@ -449,6 +449,31 @@ public class VistaTablero implements ImageObserver {
 
 	}
 
+	public void informarUsuario(String mensaje) {
+		
+		int TIME_VISIBLE = 3000;
+		JOptionPane pane = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+		JDialog dialog = pane.createDialog(null, "Informacion de la Partida");
+		dialog.setModal(false);
+		dialog.setVisible(true);
+		
+		new Timer(TIME_VISIBLE, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				dialog.setVisible(false);
+			}
+		}).start();
+		
+	}
+	
+	
+	
+	
 	public void seteoTextoJugador(String texto) {
 		this.contadorJug.setText(texto);
 	}

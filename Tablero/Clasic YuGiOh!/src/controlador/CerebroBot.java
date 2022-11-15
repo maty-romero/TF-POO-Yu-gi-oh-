@@ -31,6 +31,8 @@ public class CerebroBot {
 	public void robarCarta() throws PierdeLaPartida {
 
 		System.out.println("BOT Roba una carta");
+		
+		
 		this.getTc().getDuelistaOponente().robarCarta();
 		// en el modelo ya se elimina y retorna una carta.
 
@@ -44,7 +46,9 @@ public class CerebroBot {
 
 		this.getTc().setManoBot();
 
+		
 		this.getTc().getVista().mostrar(); // Actualizo JFrame
+		
 
 	}
 
@@ -55,6 +59,8 @@ public class CerebroBot {
 
 	public void invocarCarta() {
 
+		
+		
 		// Invocacion carta monstruo
 		if (rnd.nextBoolean()) {
 
@@ -64,6 +70,7 @@ public class CerebroBot {
 				// Obtengo una posicion vacia para invocar
 				Integer posi = this.getTc().getReferee().posVaciaCampo((this.getTc().getVista().getPanelesMonstruosCampoOponente()));
 				if (posi != null) {
+					
 					// obtengo un panel aleatorio de la mano
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
 					panelAleatorio.setVisible(false);
@@ -86,7 +93,6 @@ public class CerebroBot {
 					this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
 				}
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
-
 			}
 
 		} else { // invocacion carta Hehizo
@@ -98,7 +104,7 @@ public class CerebroBot {
 				// Obtengo una posicion vacia para invocar
 				Integer posi = this.getTc().getReferee().posVaciaCampo((this.getTc().getVista().getPanelesHechizosCampoOponente()));
 				if (posi != null) {
-
+				
 					// obtengo un panel aleatorio.
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoHechizoOponente());
 					panelAleatorio.setVisible(false);
@@ -200,6 +206,7 @@ public class CerebroBot {
 				System.out.println("El duelista Jugador no tiene Defensa! --> ATAQUE DIRECTO");
 				monstruoAtacante.ataqueDirecto(this.getTc().getDuelistaJugador(), monstruoAtacante);
 				actualizarVida();
+				
 
 			} else {
 
