@@ -15,6 +15,11 @@ public class Boton implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			System.out.println("BOT JUGANGO");
+			
+//			this.getTc().getReferee().remuevoPanelCampoHechizo(panelHechizo,
+//			this.getTc().getCampoHechizosOponente(),
+//			this.getTc().getVista().getPanelesHechizosCampoOponente());
+
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(false);
 
 			this.getTc().getControladorBot().robarCarta();
@@ -23,8 +28,9 @@ public class Boton implements ActionListener {
 
 			this.getTc().getControladorBot().invocarCarta();
 //			this.getTc().getControladorBot().invocarCarta();
+
+			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			this.getTc().getControladorBot().Batalla();
-//			this.getTc().getControladorBot().Batalla();
 
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(true);
 

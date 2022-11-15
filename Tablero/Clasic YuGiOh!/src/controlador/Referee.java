@@ -102,17 +102,18 @@ public class Referee {
 		}
 	}
 
-	public void AplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo, HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo ) {
+	public void AplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
+			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo) {
 		Integer valorEfecto = hashCartasMagicas.get(cartaMagica).getEfecto();
 
 		Integer nuevoAtaque = hashCartasMonstruo.get(cartaMonstruo).getAtaque();
 
 		nuevoAtaque = nuevoAtaque + valorEfecto;
 		hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
-		
+
 		try {
 			Thread.sleep(2000);
-		} catch ( Exception e) {
+		} catch (Exception e) {
 		}
 
 	}
@@ -143,6 +144,19 @@ public class Referee {
 
 		this.getTc().getVista().mostrar();
 
+	}
+
+	public void remuevoHechizosCampoDuelista(HashMap<JPanel, CartaHechizo> hashHechizosCampoOponente,
+			ArrayList<JPanel> panelesHechizosCampo) {
+		hashHechizosCampoOponente.clear();
+
+		for (JPanel panel : panelesHechizosCampo) {
+			panel.removeAll();
+			panel.setVisible(false);
+
+			panel.setVisible(true);
+		}
+		this.getTc().getVista().mostrar();
 	}
 
 	public TableroController getTc() {

@@ -32,34 +32,35 @@ public class MenuPrincipal extends JFrame {
 		java.net.URL fondoURL = getClass().getResource("/fondo_tablero/FondoMenuPrincipal.jpg"); //
 		ImageIcon iconFondoTablero = new ImageIcon(
 				new ImageIcon(fondoURL).getImage().getScaledInstance(700, 700, Image.SCALE_DEFAULT));
-				
-						//Boton Salir
-						btnSalir = new JButton("Salir");
-						btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-						btnSalir.setBounds(300, 397, 119, 34);
-						contentPane.add(btnSalir);
-		
-				//Boton Opciones
-				btnOpciones = new JButton("Opciones");
-				btnOpciones.setFont(new Font("Tahoma", Font.PLAIN, 14));
-				btnOpciones.setBounds(300, 337, 119, 34);
-				contentPane.add(btnOpciones);
 
-		//Boton Nueva Partida 
+		// Boton Salir
+		btnSalir = new JButton("Salir");
+		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSalir.setBounds(300, 397, 119, 34);
+		contentPane.add(btnSalir);
+
+		// Boton Opciones
+		btnOpciones = new JButton("Opciones");
+		btnOpciones.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnOpciones.setBounds(300, 337, 119, 34);
+		contentPane.add(btnOpciones);
+
+		// Boton Nueva Partida
 		btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNuevaPartida.setBounds(300, 277, 119, 34);
 		contentPane.add(btnNuevaPartida);
-		
+
 		this.fondoMenuPpal = new JLabel(iconFondoTablero);
 		this.fondoMenuPpal.setBounds(0, 0, 698, 679);
 		contentPane.add(fondoMenuPpal);
-		
-		
-		
-	}
 
-	
+		this.fondoMenuPpal = new JLabel(iconFondoTablero);
+		this.fondoMenuPpal.setBounds(0, 0, 698, 679);
+
+		contentPane.add(fondoMenuPpal);
+
+	}
 
 	public JButton getBtnSalir() {
 		return btnSalir;
@@ -77,10 +78,4 @@ public class MenuPrincipal extends JFrame {
 		this.btnNuevaPartida = btnNuevaPartida;
 	}
 
-		
-		this.fondoMenuPpal = new JLabel(iconFondoTablero);
-		this.fondoMenuPpal.setBounds(0, 0, 698, 679);
-		
-		contentPane.add(fondoMenuPpal);
-	}
 }
