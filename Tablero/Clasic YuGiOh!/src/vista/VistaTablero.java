@@ -147,7 +147,7 @@ public class VistaTablero implements ImageObserver {
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
-		manoJugador.setBackground(new Color(0, 0, 0));
+		manoJugador.setBackground(new Color(102, 51, 102));
 		tablero.getContentPane().setLayout(null);
 		manoJugador.setBounds(10, 646, 730, 100);
 		manoJugador.setSize(730, 100);
@@ -339,7 +339,7 @@ public class VistaTablero implements ImageObserver {
 	public JPanel agregoCartaMano(JLabel labelCarta, JPanel mano) {
 		JPanel cartaPanel = new JPanel();
 		cartaPanel.setBounds(605, 593, 74, 96);
-		cartaPanel.setBackground(new Color(153, 0, 0));
+		cartaPanel.setBackground(new Color(102, 51, 102));
 		cartaPanel.addMouseListener(new ControladorProyeccionCartas(tableroController));
 		cartaPanel.add(labelCarta);
 		cartaPanel.setFocusable(true);
