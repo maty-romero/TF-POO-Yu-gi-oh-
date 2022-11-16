@@ -82,8 +82,10 @@ public class Duelista {
 			this.getMano().agregarCarta(hechizo);
 		}
 	}
-
-//jugadorAtacante elimina la carta muerta, la suya o del oponente, pues es su turno y él hace los movimientos, él toma la iniciativa.
+	
+	/*jugadorAtacante elimina la carta muerta, la suya o del oponente, pues es su turno 
+	 *y él hace los movimientos, él toma la iniciativa.  
+	 */
 	public void eliminacionCartaMuerta(Duelista duelista, CartaMonstruo monstruo) {
 		duelista.getCementerio().llevarMonstruoCementerio(monstruo);
 		duelista.getCampo().eliminarCarta(monstruo);

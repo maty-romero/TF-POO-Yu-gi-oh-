@@ -13,7 +13,9 @@ import javax.swing.JPanel;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
 
-//Esta clase realiza algunas acciones sobre el tablero ( no todas) . la idea es que haya un controlador accesible por el bot y el jugador, y que TableroController no haga todo esto
+/* Esta clase realiza algunas acciones sobre el tablero ( no todas) . la idea es que haya
+ * un controlador accesible por el bot y el jugador, y que TableroController no haga todo esto
+ */
 
 public class Referee {
 	private TableroController tc;

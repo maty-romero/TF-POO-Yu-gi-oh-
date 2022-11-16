@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 
 public abstract class CartaHechizo extends Carta {
+	
 	private Integer efecto;
 //en particular, son cartas de hechizo que afectan a uno de tus monstruos.
 	public CartaHechizo(Integer id, String nombre, String descripcion, String pathImagen, Integer efecto) {

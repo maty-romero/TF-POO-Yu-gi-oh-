@@ -6,12 +6,6 @@ import java.util.LinkedList;
 
 public class Barajador {
 
-	/*
-	 * QUERY: SELECT * from monstruos WHERE RANDOM() <=0.5
-	 * 
-	 * Se obtiene aproximadamente el 50% de los datos de la tabla
-	 */
-
 	// se retorna un deck para los duelista
 	public static Deck generaDeck() {
 

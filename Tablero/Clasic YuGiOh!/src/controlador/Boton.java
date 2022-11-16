@@ -15,6 +15,7 @@ public class Boton implements ActionListener {
 		this.tc = tc;
 	}
 
+	//Boton "Terminar Turno" 
 	public void actionPerformed(ActionEvent e) {
 		try {
 			System.out.println("BOT JUGANGO");
