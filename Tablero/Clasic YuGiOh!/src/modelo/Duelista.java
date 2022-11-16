@@ -48,7 +48,7 @@ public class Duelista {
 	
 
 
-	public void roboMonstruo() throws PierdeLaPartida {
+	private void roboMonstruo() throws PierdeLaPartida {
 
 		System.out.println("Se intenta robar un monstruo!");
 		CartaMonstruo monstruo = this.getDeck().getMonstruo();
@@ -67,7 +67,7 @@ public class Duelista {
 		}
 	}
 
-	public void roboHechizo() throws PierdeLaPartida {
+	private void roboHechizo() throws PierdeLaPartida {
 
 		System.out.println("Se intenta robar un hechizo!");
 		CartaHechizo hechizo = this.getDeck().getHechizo();

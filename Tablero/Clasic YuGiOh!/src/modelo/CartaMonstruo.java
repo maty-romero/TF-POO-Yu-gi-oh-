@@ -3,7 +3,9 @@ package modelo;
 import java.net.URL;
 import javax.swing.JPanel;
 
-public class CartaMonstruo extends Carta {
+import exepciones.PierdeLaPartida;
+
+public abstract class CartaMonstruo extends Carta {
 
 	private Integer ataque, defensa;
 	private Boolean posicionAtaque;
@@ -19,39 +21,7 @@ public class CartaMonstruo extends Carta {
 	}
 
 //sé que el duelistaJugador (sea true o false) es el que ataca al duelistaAtacado
-	public void AccionCarta(CartaMonstruo cartaObjetivo, Duelista duelistaAtacante, Duelista duelistaAtacado) {
-		if (cartaObjetivo.getPosicionAtaque()) { // Ambas Cartas en posicion ataque
-			Integer dmg = this.getAtaque() - cartaObjetivo.getAtaque();
-			if (dmg > 0) {
-				// Según la accion de la carta, le ordeno al duelista perdedor que lleve a su
-				// carta al cementerio y saque de su mano, y yo como carta le hago danio directo
-				// a la vida del oponente
-				duelistaAtacado.recibirDanio(Math.abs(dmg));
-				duelistaAtacado.eliminacionCartaMuerta(duelistaAtacado, cartaObjetivo);
-			}
-			if (dmg < 0) {
-				System.out.println("cartaObjetivo gano, duelista recibe daño restante");
-				duelistaAtacante.recibirDanio(Math.abs(dmg));
-				duelistaAtacante.eliminacionCartaMuerta(duelistaAtacante, this);
-			}
-			if (dmg == 0) {
-				duelistaAtacante.eliminacionCartaMuerta(duelistaAtacante, this);
-				duelistaAtacado.eliminacionCartaMuerta(duelistaAtacado, cartaObjetivo);
-			}
-
-		} else { // Carta Objetivo en defensa.
-
-			Integer dmg = this.getAtaque() - cartaObjetivo.getDefensa();
-			if (dmg > 0) {
-				duelistaAtacado.eliminacionCartaMuerta(duelistaAtacado, cartaObjetivo);
-			}
-			if (dmg < 0) {
-				duelistaAtacante.recibirDanio(Math.abs(dmg));
-			}
-			// dmg = 0 no pasa nada
-
-		}
-	}
+	public abstract void AccionCarta(CartaMonstruo cartaObjetivo, Duelista duelistaAtacante, Duelista duelistaAtacado) throws PierdeLaPartida;
 
 	// Si el duelista no tiene monstruos en el campo de batalla, la carta monstruo
 	// ataca al duelista

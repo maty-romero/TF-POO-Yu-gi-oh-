@@ -4,29 +4,17 @@ import java.util.HashMap;
 
 import javax.swing.JPanel;
 
-public class CartaHechizo extends Carta {
+public abstract class CartaHechizo extends Carta {
 	private Integer efecto;
-
+//en particular, son cartas de hechizo que afectan a uno de tus monstruos.
 	public CartaHechizo(Integer id, String nombre, String descripcion, String pathImagen, Integer efecto) {
 		super(id, nombre, descripcion, pathImagen);
 		this.efecto = efecto;
 	}
-
-	public void aplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
-			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo) {
-		Integer valorEfecto = hashCartasMagicas.get(cartaMagica).getEfecto();
-
-		Integer nuevoAtaque = hashCartasMonstruo.get(cartaMonstruo).getAtaque();
-
-		nuevoAtaque = nuevoAtaque + valorEfecto;
-		hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
-
-		try {
-			Thread.sleep(2000);
-		} catch (Exception e) {
-		}
-
-	}
+	
+//sus hijos implementan este metodo con estos parametros. en cambio, la CartaMonstruo no usa un metodo con estos parametros
+	public abstract void aplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
+			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo);
 
 	@Override
 	public String toString() {

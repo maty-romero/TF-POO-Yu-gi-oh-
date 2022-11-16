@@ -79,8 +79,12 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 
 		System.out.println("Monstruo objetivo: " + this.monstruoObjetivo.toString());
 
-		this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
-				this.menuAtacar.getTc().getDuelistaOponente());
+		try {
+			this.monstruoAtacante.AccionCarta(monstruoObjetivo, this.menuAtacar.getTc().getDuelistaJugador(),
+					this.menuAtacar.getTc().getDuelistaOponente());
+		} catch (PierdeLaPartida e1) {
+			e1.printStackTrace();
+		}
 
 		aplicarResultadoBatallaVida(); // actualizo la vida de los duelistas
 		aplicarResultadoBatallaPaneles(); // remuevo paneles si es necesario.
