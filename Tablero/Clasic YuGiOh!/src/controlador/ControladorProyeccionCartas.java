@@ -44,21 +44,20 @@ public class ControladorProyeccionCartas implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 		{
-			System.out.println("entre al proyectador");
-			
+
 			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
 
 			hashCartas.putAll(this.tc.getCampoMonstruosOponente());
 			hashCartas.putAll(this.tc.getCampoMonstruosJugador());
-			
+
 			hashCartas.putAll(this.tc.getCampoHechizosJugador());
 			hashCartas.putAll(this.tc.getCampoHechizosOponente());
-			
-			hashCartas.putAll(this.tc.getManoMonstruoOponente());
+
 			hashCartas.putAll(this.tc.getManoMonstruoJugador());
-			
-			hashCartas.putAll(this.tc.getManoHechizoOponente());
 			hashCartas.putAll(this.tc.getManoHechizoJugador());
+
+//			hashCartas.putAll(this.tc.getManoMonstruoOponente());
+//			hashCartas.putAll(this.tc.getManoHechizoOponente());
 
 			this.tc.getVista().getManoJugador().setFocusable(true);
 			this.tc.getVista().getManoBot().setFocusable(true);
@@ -76,11 +75,11 @@ public class ControladorProyeccionCartas implements MouseListener {
 				this.tc.getVista().getCartaSeleccionada().add(label);
 				this.tc.getVista().mostrar();
 				this.tc.getVista().getCartaSeleccionada().setVisible(true);
-				
-				//proyeccion descripcion carta 
-				
-				//obtengo todos los datos necesarios para monstrar en el JTextArea
-				String infoCarta = hashCartas.get(e.getSource()).toString(); 
+
+				// proyeccion descripcion carta
+
+				// obtengo todos los datos necesarios para monstrar en el JTextArea
+				String infoCarta = hashCartas.get(e.getSource()).toString();
 				this.tc.getVista().getTextArea().setText(infoCarta);
 
 			} else {
