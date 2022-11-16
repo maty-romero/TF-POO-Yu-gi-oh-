@@ -241,7 +241,7 @@ public class VistaTablero implements ImageObserver {
 
 //deck del jugador
 		this.deck_jug = new JPanel();
-		deck_jug.setBounds(791, 522, 87, 108);
+		deck_jug.setBounds(853, 522, 87, 108);
 		this.deck_jug.setForeground(new Color(153, 0, 0));
 		this.deck_jug.setBackground(new Color(0, 0, 0));
 
@@ -294,7 +294,7 @@ public class VistaTablero implements ImageObserver {
 //Proyeccion Informacion del Turno del Bot	
 		JPanel informeTurnoBot = new JPanel();
 		informeTurnoBot.setBackground(new Color(0, 0, 0));
-		informeTurnoBot.setBounds(21, 253, 212, 270);
+		informeTurnoBot.setBounds(21, 253, 339, 270);
 		tablero.getContentPane().add(informeTurnoBot);
 		informeTurnoBot.setLayout(null);
 		
@@ -384,17 +384,17 @@ public class VistaTablero implements ImageObserver {
 	public void seteoPanelesCampo() {
 
 		JPanel carta1CampoOponente = new JPanel();
-		carta1CampoOponente.setBounds(260, 249, 135, 96);
+		carta1CampoOponente.setBounds(402, 249, 135, 121);
 		carta1CampoOponente.setBackground(Color.BLACK);
 		tablero.getContentPane().add(carta1CampoOponente);
 
 		JPanel carta2CampoOponente = new JPanel();
-		carta2CampoOponente.setBounds(446, 249, 135, 96);
+		carta2CampoOponente.setBounds(547, 253, 135, 117);
 		carta2CampoOponente.setBackground(Color.BLACK);
 		tablero.getContentPane().add(carta2CampoOponente);
 
 		JPanel carta3CampoOponente = new JPanel();
-		carta3CampoOponente.setBounds(623, 249, 135, 96);
+		carta3CampoOponente.setBounds(692, 253, 135, 117);
 		carta3CampoOponente.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(carta3CampoOponente);
@@ -403,18 +403,18 @@ public class VistaTablero implements ImageObserver {
 		this.panelesMonstruosCampoOponente.add(carta3CampoOponente);
 
 		JPanel carta4CampoOponente = new JPanel();
-		carta4CampoOponente.setBounds(260, 117, 135, 96);
+		carta4CampoOponente.setBounds(402, 117, 135, 121);
 		carta4CampoOponente.setBackground(Color.BLACK);
 		tablero.getContentPane().add(carta4CampoOponente);
 
 		JPanel carta5CampoOponente = new JPanel();
-		carta5CampoOponente.setBounds(446, 117, 135, 96);
+		carta5CampoOponente.setBounds(547, 117, 135, 121);
 		carta5CampoOponente.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(carta5CampoOponente);
 
 		JPanel carta6CampoOponente = new JPanel();
-		carta6CampoOponente.setBounds(623, 117, 135, 96);
+		carta6CampoOponente.setBounds(692, 117, 135, 121);
 		carta6CampoOponente.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(carta6CampoOponente);
@@ -424,19 +424,19 @@ public class VistaTablero implements ImageObserver {
 
 		/////
 		this.carta1CampoJug = new JPanel();
-		carta1CampoJug.setBounds(260, 408, 135, 96);
+		carta1CampoJug.setBounds(402, 383, 135, 121);
 		this.carta1CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta1CampoJug);
 
 		this.carta2CampoJug = new JPanel();
-		carta2CampoJug.setBounds(446, 408, 135, 96);
+		carta2CampoJug.setBounds(547, 387, 135, 117);
 		this.carta2CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta2CampoJug);
 
 		this.carta3CampoJug = new JPanel();
-		carta3CampoJug.setBounds(623, 408, 135, 96);
+		carta3CampoJug.setBounds(692, 387, 135, 117);
 		this.carta3CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta3CampoJug);
@@ -445,19 +445,19 @@ public class VistaTablero implements ImageObserver {
 		this.panelesMonstruosCampoJugador.add(this.carta3CampoJug);
 
 		this.carta4CampoJug = new JPanel();
-		carta4CampoJug.setBounds(260, 534, 135, 96);
+		carta4CampoJug.setBounds(402, 522, 135, 121);
 		this.carta4CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta4CampoJug);
 
 		this.carta5CampoJug = new JPanel();
-		this.carta5CampoJug.setBounds(446, 534, 135, 96);
+		this.carta5CampoJug.setBounds(547, 522, 135, 121);
 		this.carta5CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta5CampoJug);
 
 		this.carta6CampoJug = new JPanel();
-		carta6CampoJug.setBounds(623, 534, 135, 96);
+		carta6CampoJug.setBounds(692, 522, 135, 121);
 		this.carta6CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta6CampoJug);
