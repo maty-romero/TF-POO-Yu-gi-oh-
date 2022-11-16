@@ -79,15 +79,10 @@ public class TableroController {
 
             this.setManoJugador();
 			this.vista.getTablero().setVisible(true); // Actualizo el JFrame
-
-			System.out.println(
-					"Size Deck Monstruos - BOT: " + this.getDuelistaOponente().getDeck().getMonstruos().size());
-			System.out
-					.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
-
+			
 			// INICIO DE PARTIDA
-			Boton boton = new Boton(this);
-			this.getVista().getBtnTerminarTurno().addActionListener(boton);
+			FlujoPartida partida = new FlujoPartida(this);
+			this.getVista().getBtnTerminarTurno().addActionListener(partida);
 
 		} catch (PierdeLaPartida e1) {
 			System.out.println(e1.getMessage());

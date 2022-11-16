@@ -8,14 +8,13 @@ import javax.swing.JPanel;
 
 import exepciones.PierdeLaPartida;
 
-public class Boton implements ActionListener {
+public class FlujoPartida implements ActionListener {
 	private TableroController tc;
 
-	public Boton(TableroController tc) {
+	public FlujoPartida(TableroController tc) {
 		this.tc = tc;
 	}
 
-	//Boton "Terminar Turno" 
 	public void actionPerformed(ActionEvent e) {
 		try {
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(false);
