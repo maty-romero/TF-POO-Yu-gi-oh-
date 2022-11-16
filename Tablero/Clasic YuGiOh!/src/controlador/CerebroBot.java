@@ -203,8 +203,11 @@ public class CerebroBot {
 				monstruoAtacante.ataqueDirecto(this.getTc().getDuelistaJugador(), monstruoAtacante);
 				actualizarVida();
 				
-				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado con: "+ monstruoAtacante.getNombre()+ "\nDaño causado: " 
-						+ monstruoAtacante.getAtaque() + "\n"; 
+				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + "ha atacado el monstruo: \n"+ monstruoAtacante.getNombre()
+				+"\nAtaque: " + this.monstruoAtacante.getAtaque()
+				+"\nDefensa: " +this.monstruoAtacante.getDefensa() 
+				+ "\nDaño causado al duelista " + this.getTc().getDuelistaJugador().getNombre() + ": "
+						+monstruoAtacante.getAtaque() + "\n"; 
 
 			} else {
 
@@ -229,8 +232,10 @@ public class CerebroBot {
 
 				actualizarVida(); // se actualiza la vida de los Duelistas
 				
-				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado con: "+monstruoAtacante.getNombre()+ 
-						"\nal monstruo: " +monstruoObjetivo.getNombre()+ "\nDaño causado: " + 
+				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado el monstruo: \n"+monstruoAtacante.getNombre()+ 
+						"\nAtaque: " + this.monstruoAtacante.getAtaque()
+						+"\nDefensa: " +this.monstruoAtacante.getDefensa() 
+						+"\nal monstruo: " +monstruoObjetivo.getNombre()+ "\nDaño causado: " + 
 						(vidaAnterior - this.getTc().getDuelistaJugador().getVida()) + "\n"; 
 
 			}

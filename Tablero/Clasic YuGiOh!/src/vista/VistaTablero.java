@@ -135,7 +135,7 @@ public class VistaTablero implements ImageObserver {
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("YUGIOH");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.tablero.setSize(1390, 1004);
+		this.tablero.setSize(1386, 788);
 		this.tablero.setResizable(false);
 		this.generarTablero();
 	}
@@ -149,7 +149,7 @@ public class VistaTablero implements ImageObserver {
 		manoJugador.setBackground(new Color(102, 51, 102));
 		tablero.getContentPane().setLayout(null);
 		
-		manoJugador.setBounds(97, 700, 730, 100);
+		manoJugador.setBounds(97, 638, 730, 100);
 		manoJugador.setSize(730, 100);
 		tablero.getContentPane().add(manoJugador);
 
@@ -183,7 +183,7 @@ public class VistaTablero implements ImageObserver {
 		// Contador vida jugador
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
-		contadorJug.setBounds(1077, 715, 192, 70);
+		contadorJug.setBounds(1068, 668, 192, 70);
 		contadorJug.setFont(new Font("Sitka Subheading", Font.BOLD, 45));
 		contadorJug.setForeground(Color.WHITE);
 		this.contadorJug.setBackground(new Color(255, 255, 255));
@@ -228,7 +228,7 @@ public class VistaTablero implements ImageObserver {
 
 //deck del jugador
 		this.deck_jug = new JPanel();
-		deck_jug.setBounds(853, 522, 87, 121);
+		deck_jug.setBounds(853, 504, 87, 121);
 		this.deck_jug.setForeground(new Color(153, 0, 0));
 		this.deck_jug.setBackground(new Color(0, 0, 0));
 
@@ -243,7 +243,7 @@ public class VistaTablero implements ImageObserver {
 
 //cementerio del jugador
 		this.cem_jug = new JPanel();
-		cem_jug.setBounds(853, 700, 87, 100);
+		cem_jug.setBounds(853, 638, 87, 100);
 		this.cem_jug.setForeground(new Color(0, 0, 0));
 		this.cem_jug.setBackground(new Color(0, 0, 0));
 
@@ -258,14 +258,14 @@ public class VistaTablero implements ImageObserver {
 
 //Proyeccion de Carta		
 		this.cartaSeleccionada = new JPanel();
-		cartaSeleccionada.setBounds(948, 97, 391, 395);
+		cartaSeleccionada.setBounds(948, 97, 391, 356);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
 
 		// Proyeccion de Descripcion
 		JPanel descripcionProyeccion = new JPanel();
 		descripcionProyeccion.setBackground(Color.DARK_GRAY);
-		descripcionProyeccion.setBounds(948, 499, 391, 180);
+		descripcionProyeccion.setBounds(948, 464, 391, 180);
 		tablero.getContentPane().add(descripcionProyeccion);
 		descripcionProyeccion.setLayout(null);
 		
@@ -310,7 +310,7 @@ public class VistaTablero implements ImageObserver {
 
 //icono del jugador
 		JPanel iconoJug = new JPanel();
-		iconoJug.setBounds(950, 704, 93, 80);
+		iconoJug.setBounds(950, 655, 93, 80);
 
 		java.net.URL urlIconoJug = getClass().getResource("/IconoPersonajes/yugi_moto.jpg"); // imagen local relativa al
 																								// projecto
@@ -443,19 +443,19 @@ public class VistaTablero implements ImageObserver {
 		this.panelesMonstruosCampoJugador.add(this.carta3CampoJug);
 
 		this.carta4CampoJug = new JPanel();
-		carta4CampoJug.setBounds(402, 522, 135, 121);
+		carta4CampoJug.setBounds(402, 515, 135, 121);
 		this.carta4CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta4CampoJug);
 
 		this.carta5CampoJug = new JPanel();
-		this.carta5CampoJug.setBounds(547, 522, 135, 121);
+		this.carta5CampoJug.setBounds(547, 515, 135, 121);
 		this.carta5CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta5CampoJug);
 
 		this.carta6CampoJug = new JPanel();
-		carta6CampoJug.setBounds(692, 522, 135, 121);
+		carta6CampoJug.setBounds(692, 515, 135, 121);
 		this.carta6CampoJug.setBackground(Color.BLACK);
 
 		tablero.getContentPane().add(this.carta6CampoJug);
@@ -904,11 +904,5 @@ public class VistaTablero implements ImageObserver {
 		return false;
 	}
 
-	public Carta getCartaDefault() {
-		return cartaDefault;
-	}
-
-	public void setCartaDefault(Carta cartaDefault) {
-		this.cartaDefault = cartaDefault;
-	}
+	
 }

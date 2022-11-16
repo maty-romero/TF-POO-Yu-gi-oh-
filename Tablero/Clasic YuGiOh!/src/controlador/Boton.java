@@ -35,7 +35,7 @@ public class Boton implements ActionListener {
 //			this.getTc().getControladorBot().invocarCarta();
 			
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-			this.getTc().getControladorBot().Batalla();
+//			this.getTc().getControladorBot().Batalla();
 			this.getTc().getControladorBot().Batalla();
 
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(true);

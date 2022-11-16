@@ -65,7 +65,7 @@ public abstract class CartaMonstruo extends Carta {
 
 	@Override
 	public String toString() {
-		return super.toString() + "\n\nataque: " + ataque + "\ndefensa: " + defensa;
+		return super.toString() + "\n\nAtaque: " + ataque + "\nDefensa: " + defensa;
 	}
 
 }

@@ -50,7 +50,7 @@ public abstract class Carta {
 
 	@Override
 	public String toString() {
-		return  "Carta: " + nombre + "\n\n"+ descripcion ;
+		return  nombre + "\n\n"+ descripcion ;
 	}
 
 	
