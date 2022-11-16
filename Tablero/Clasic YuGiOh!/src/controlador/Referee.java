@@ -156,7 +156,10 @@ public class Referee {
 		}
 		this.getTc().getVista().mostrar();
 	}
-
+	
+	
+	//getters 
+	
 	public TableroController getTc() {
 		return tc;
 	}
