@@ -65,7 +65,7 @@ public class Referee {
 			buferCarta = this.getTc().getVista().rotarImagenGrados(buferCarta, -90);
 			label = new JLabel(new ImageIcon(buferCarta));
 			(panelARotar).removeAll();
-			this.getTc().getCampoMonstruosJugador().get((panelARotar)).setPosicionAtaque(true);
+			this.getTc().getCampoMonstruosJugador().get((panelARotar)).setPosicionAtaque(false);
 			this.getTc().getCampoMonstruosJugador().get((panelARotar)).setBocaAbajo(false);
 			(panelARotar).add(label);
 			this.getTc().getVista().mostrar();

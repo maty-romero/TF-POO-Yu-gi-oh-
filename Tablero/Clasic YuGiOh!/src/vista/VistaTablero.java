@@ -119,10 +119,8 @@ public class VistaTablero implements ImageObserver {
 	private JButton btnBatalla;
 //Label Fase de la partida
 	private JLabel labelFasePartida;
-	
-	
+
 //genero panel carta boca abajo default
-	private Carta cartaDefault;
 	private String pathCartaDefault;
 
 // Array de cartas
@@ -144,7 +142,6 @@ public class VistaTablero implements ImageObserver {
 	private void generarTablero() {
 
 		this.pathCartaDefault = "/boca_abajo_default/boca_abajo.jpg";
-		
 
 		// MANO DEL JUGADOR Panel grid layout que tiene adentro paneles con imagenes
 		manoJugador = new JPanel();
@@ -156,7 +153,7 @@ public class VistaTablero implements ImageObserver {
 
 		manoJugador.setLayout(new GridLayout(1, 0, 0, 0));
 		manoJugador.setFocusable(true);
-		
+
 		// MANO DEL BOT Panel grid layout
 		manoBot = new JPanel();
 		manoBot.setBounds(94, 10, 726, 100);
@@ -170,25 +167,22 @@ public class VistaTablero implements ImageObserver {
 		manoBot.setFocusable(true);
 		manoBot.requestFocus();
 
-		//Label Fase Partida
+		// Label Fase Partida
 		labelFasePartida = new JLabel("");
 		labelFasePartida.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		labelFasePartida.setForeground(Color.WHITE);
 		labelFasePartida.setBounds(28, 461, 135, 62);
 		tablero.getContentPane().add(labelFasePartida);
-		
-		//Boton Siguiente Fase
+
+		// Boton Siguiente Fase
 		btnBatalla = new JButton("Batalla");
 		btnBatalla.setBounds(28, 345, 119, 36);
 		tablero.getContentPane().add(btnBatalla);
-		//Boton Terminar Turno
+		// Boton Terminar Turno
 		btnTerminarTurno = new JButton("Terminar Turno");
 		btnTerminarTurno.setBounds(31, 298, 119, 36);
 		tablero.getContentPane().add(btnTerminarTurno);
-		
-		
-		
-		
+
 		// Contador vida jugador
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
@@ -264,29 +258,28 @@ public class VistaTablero implements ImageObserver {
 		this.cem_jug.add(imagenCemJug);
 
 		tablero.getContentPane().add(this.cem_jug);
-		
+
 //Proyeccion de Carta		
 		this.cartaSeleccionada = new JPanel();
 		cartaSeleccionada.setBounds(862, 78, 391, 390);
 		this.cartaSeleccionada.setBackground(Color.BLACK);
 		tablero.getContentPane().add(this.cartaSeleccionada);
-		
-		//Proyeccion de Descripcion 
+
+		// Proyeccion de Descripcion
 		JPanel descripcionProyeccion = new JPanel();
 		descripcionProyeccion.setBackground(Color.DARK_GRAY);
 		descripcionProyeccion.setBounds(862, 479, 391, 147);
 		tablero.getContentPane().add(descripcionProyeccion);
 		descripcionProyeccion.setLayout(null);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 371, 125);
 		descripcionProyeccion.add(scrollPane);
-		
+
 		textArea = new JTextArea();
 		textArea.setEditable(false);
 		textArea.setFont(new Font("Consolas", Font.BOLD, 17));
 		scrollPane.setViewportView(textArea);
-		
 
 //icono del bot
 		iconoBot = new JPanel();
@@ -347,6 +340,17 @@ public class VistaTablero implements ImageObserver {
 
 		mano.setFocusable(true);
 		return cartaPanel;
+	}
+
+	public JPanel agregoCartaManoDefault(JPanel panelDefault, JPanel mano) {
+		panelDefault.setBounds(605, 593, 74, 96);
+		panelDefault.setBackground(new Color(153, 0, 0));
+		panelDefault.addMouseListener(new ControladorProyeccionCartas(tableroController));
+		panelDefault.setFocusable(true);
+		panelDefault.requestFocus();
+		mano.add(panelDefault);
+		mano.setFocusable(true);
+		return panelDefault;
 	}
 
 	public JPanel devuelvoPanelCampo(JLabel labelCarta) {
@@ -456,7 +460,6 @@ public class VistaTablero implements ImageObserver {
 	// Devuelvo la imagen de la carta, gracias a que el objeto carta tiene una ruta
 	// de archivo(pathImagen)
 	public JLabel generoImagenCarta(Carta carta) {
-
 		JLabel jlabel = new JLabel();
 		BufferedImage original = leoImagenCarta(carta);
 		original = this.cambioTamaño(original, 155, 90);
@@ -475,7 +478,7 @@ public class VistaTablero implements ImageObserver {
 		return original;
 
 	}
-	
+
 	public BufferedImage leoImagen(String ruta) {
 		BufferedImage original = null;
 		try {
@@ -486,7 +489,6 @@ public class VistaTablero implements ImageObserver {
 		return original;
 
 	}
-
 
 	public BufferedImage cambioTamaño(BufferedImage img, int altura, int anchura) {
 		Image tmp = img.getScaledInstance(altura, anchura, Image.SCALE_SMOOTH);
@@ -531,13 +533,13 @@ public class VistaTablero implements ImageObserver {
 		JPanel panel = new JPanel();
 
 		panel = new JPanel();
-		panel.setForeground(new Color(153, 0, 0));
-		panel.setBackground(new Color(102, 102, 0));
-		java.net.URL url = getClass().getResource(this.pathCartaDefault); // imagen local relativa
-																			// al projecto
-		ImageIcon icon = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(120, 100, Image.SCALE_DEFAULT));
-		JLabel img = new JLabel(icon);
-		panel.add(img);
+		BufferedImage original = this.leoImagen(this.pathCartaDefault);
+//		panel.setForeground(new Color(153, 0, 0));
+//		panel.setBackground(new Color(102, 102, 0));
+		original = this.cambioTamaño(original, 155, 90);
+		JLabel jlabel = new JLabel(new ImageIcon(original));
+
+		panel.add(jlabel);
 		panel.addMouseListener(new ControladorProyeccionCartas(tableroController));
 
 		tablero.getContentPane().add(panel);
@@ -545,7 +547,7 @@ public class VistaTablero implements ImageObserver {
 		return panel;
 
 	}
-	
+
 	public JButton getBtnTerminarTurno() {
 		return btnTerminarTurno;
 	}
@@ -553,8 +555,6 @@ public class VistaTablero implements ImageObserver {
 	public void setBtnTerminarTurno(JButton btnTerminarTurno) {
 		this.btnTerminarTurno = btnTerminarTurno;
 	}
-
-	
 
 	public JButton getBtnBatalla() {
 		return btnBatalla;
@@ -571,8 +571,6 @@ public class VistaTablero implements ImageObserver {
 	public void setLabelFasePartida(JLabel labelFasePartida) {
 		this.labelFasePartida = labelFasePartida;
 	}
-
-	
 
 	public JTextArea getTextArea() {
 		return textArea;
@@ -846,14 +844,6 @@ public class VistaTablero implements ImageObserver {
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	public Carta getCartaDefault() {
-		return cartaDefault;
-	}
-
-	public void setCartaDefault(Carta cartaDefault) {
-		this.cartaDefault = cartaDefault;
 	}
 
 }
