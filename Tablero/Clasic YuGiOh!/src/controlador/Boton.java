@@ -27,12 +27,13 @@ public class Boton implements ActionListener {
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(false);
 
 			this.getTc().getControladorBot().robarCarta();
+			
 //			this.getTc().getVista().getManoBot().removeAll();
 //			this.getTc().setManoBot();
 
 			this.getTc().getControladorBot().invocarCarta();
 //			this.getTc().getControladorBot().invocarCarta();
-
+			
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			this.getTc().getControladorBot().Batalla();
 			this.getTc().getControladorBot().Batalla();
@@ -45,6 +46,12 @@ public class Boton implements ActionListener {
 			agregarListenersCampo(this.getTc().getCampoMonstruosJugador());
 			
 			
+			//Se muestra en la vista las acciones que realizo el bot en su turno. 
+			this.getTc().getVista().informarTurnoBot(this.getTc().getControladorBot().getInformeBot());
+			//Se limpia el string para posteriores turnos del bot
+			this.getTc().getControladorBot().setInformeBot(""); 
+			
+			//Turno del jugador, nuevamente. 
 			this.getTc().getDuelistaJugador().robarCarta();
 			this.getTc().getVista().getManoJugador().removeAll();
 
@@ -54,6 +61,7 @@ public class Boton implements ActionListener {
 		} catch (PierdeLaPartida e1) {
 			System.out.println(e1.getMessage());
 			this.getTc().getVista().getTablero().dispose();
+			
 		}
 
 	}

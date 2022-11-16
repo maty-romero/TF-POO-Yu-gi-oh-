@@ -1,4 +1,4 @@
-package controlador;
+package controladoresMenu;
 
 import vista.MenuFinal;
 
@@ -14,6 +14,14 @@ public class MenuFinalController {
 		this.vista.setLocationRelativeTo(null);
 		
 		this.vista.getMensajeFinalPartida().setText(mensajeGanador);
+		
+		this.vista.getBtnSalir().addActionListener(e->{System.exit(0);});
+		this.vista.getBtnVueltaMenuPpal().addActionListener(e -> this.vueltaMenuPrincipal());
+	}
+	
+	private void vueltaMenuPrincipal() {
+		this.vista.dispose();
+		new MenuPrincipalController(); 
 	}
 	
 }

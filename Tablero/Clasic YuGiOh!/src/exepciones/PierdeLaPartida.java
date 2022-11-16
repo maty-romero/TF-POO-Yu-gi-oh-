@@ -1,7 +1,6 @@
 package exepciones;
 
-import controlador.MenuFinalController;
-import vista.MenuFinal;
+import controladoresMenu.MenuFinalController;
 
 public class PierdeLaPartida extends Exception{
 

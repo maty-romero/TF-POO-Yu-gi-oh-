@@ -22,6 +22,8 @@ public class CerebroBot {
 	private CartaMonstruo monstruoObjetivo;
 	private HashMap hash;
 
+	String informeBot = ""; //para mostrar los resultados del turno del bot. 
+	
 	public CerebroBot(TableroController tc) {
 		this.tc = tc;
 	}
@@ -29,8 +31,8 @@ public class CerebroBot {
 	// ROBAR CARTA
 
 	public void robarCarta() throws PierdeLaPartida {
-
-		System.out.println("BOT Roba una carta");
+		this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha robado una carta\n"; 
+		
 		this.getTc().getDuelistaOponente().robarCarta();
 		// en el modelo ya se elimina y retorna una carta.
 
@@ -43,28 +45,26 @@ public class CerebroBot {
 		this.getTc().getVista().getManoBot().removeAll();
 
 		this.getTc().setManoBot();
-
+		
 		this.getTc().getVista().mostrar(); // Actualizo JFrame
-
 	}
 
 	// INVOCAR
 
-	// --> Consistir desde el flujo de partida si es posible realizar una
-	// invocacion.
-
 	public void invocarCarta() {
-
+		
 		// Invocacion carta monstruo
 		if (rnd.nextBoolean()) {
 
 			// si hay cartas monstruo en la mano --> Invoco un monstruo
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
-
+				
 				// Obtengo una posicion vacia para invocar
 				Integer posi = this.getTc().getReferee()
 						.posVaciaCampo((this.getTc().getVista().getPanelesMonstruosCampoOponente()));
 				if (posi != null) {
+					this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha invocado un monstruo\n"; 
+					
 					// obtengo un panel aleatorio de la mano
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
 					panelAleatorio.setVisible(false);
@@ -87,7 +87,6 @@ public class CerebroBot {
 					this.getTc().getVista().getPanelesMonstruosCampoOponente().get(posi).add(panelMonstruo);
 				}
 				this.getTc().getVista().mostrar(); // Actualizo JFrame
-
 			}
 
 		} else { // invocacion carta Hehizo
@@ -100,7 +99,8 @@ public class CerebroBot {
 				Integer posi = this.getTc().getReferee()
 						.posVaciaCampo((this.getTc().getVista().getPanelesHechizosCampoOponente()));
 				if (posi != null) {
-
+					this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " invocado un hechizo\n"; 
+					
 					// obtengo un panel aleatorio.
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoHechizoOponente());
 					panelAleatorio.setVisible(false);
@@ -198,14 +198,18 @@ public class CerebroBot {
 
 			// si no tiene monstruos el Jugador --> AtaqueDirecto
 			if (this.getTc().getCampoMonstruosJugador().size() == 0) {
+				
 				System.out.println("El duelista Jugador no tiene Defensa! --> ATAQUE DIRECTO");
 				monstruoAtacante.ataqueDirecto(this.getTc().getDuelistaJugador(), monstruoAtacante);
 				actualizarVida();
+				
+				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado con: "+ monstruoAtacante.getNombre()+ "\nDaño causado: " 
+						+ monstruoAtacante.getAtaque() + "\n"; 
 
 			} else {
 
-				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");
-
+				System.out.println("El duelista Jugador tiene Defensa! --> ATAQUE COMPUESTO");	
+				
 				// Obtengo el panelObjetivo y MonstruoObjetivo del Duelista Jugador
 
 				// obtengo un panel aleatorio del monstruo Atacante.
@@ -215,7 +219,8 @@ public class CerebroBot {
 				if (monstruoObjetivo.getBocaAbajo() == true) {
 					this.getTc().getReferee().rotarCartaMonstruo(panelMonstruoObjetivo);
 				}
-
+				Integer vidaAnterior = this.getTc().getDuelistaJugador().getVida(); //utilizado para el informe 
+				
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
 
@@ -223,6 +228,10 @@ public class CerebroBot {
 																						// muertas.
 
 				actualizarVida(); // se actualiza la vida de los Duelistas
+				
+				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado con: "+monstruoAtacante.getNombre()+ 
+						"\nal monstruo: " +monstruoObjetivo.getNombre()+ "\nDaño causado: " + 
+						(vidaAnterior - this.getTc().getDuelistaJugador().getVida()) + "\n"; 
 
 			}
 
@@ -310,6 +319,7 @@ public class CerebroBot {
 
 	}
 
+	
 	// Getters y setters
 	public TableroController getTc() {
 		return tc;
@@ -319,4 +329,14 @@ public class CerebroBot {
 		this.tc = tc;
 	}
 
+	public String getInformeBot() {
+		return informeBot;
+	}
+
+	public void setInformeBot(String informeBot) {
+		this.informeBot = informeBot;
+	}
+
+	
+	
 }

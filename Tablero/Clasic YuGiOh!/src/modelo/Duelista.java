@@ -16,7 +16,7 @@ public class Duelista {
 	private Boolean ganador, invocoMonstruo;
 	private Integer contadorDuelistaPierde;
 
-	public Duelista(String nombre, Integer id) {
+	public Duelista(String nombre) {
 		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
 		this.deck.mezclarDeck();
 
@@ -55,7 +55,7 @@ public class Duelista {
 		if (monstruo == null) {
 			this.contadorDuelistaPierde++;
 			if (this.contadorDuelistaPierde == 2) {
-				throw new PierdeLaPartida("PERDIO: " + this.getNombre() + " no robo");
+				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido");
 
 			}
 			this.roboHechizo();
@@ -74,7 +74,7 @@ public class Duelista {
 		if (hechizo == null) {
 			this.contadorDuelistaPierde++;
 			if (this.contadorDuelistaPierde == 2) {
-				throw new PierdeLaPartida("PERDIO " + this.getNombre() + "no robo");
+				throw new PierdeLaPartida("El duelista " + this.getNombre() + " ha perdido");
 
 			}
 			this.roboMonstruo();
