@@ -14,8 +14,7 @@ public abstract class CartaHechizo extends Carta {
 	}
 	
 //sus hijos implementan este metodo con estos parametros. en cambio, la CartaMonstruo no usa un metodo con estos parametros
-	public abstract void aplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
-			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo);
+	public abstract void aplicarEfectoMagicoAMonstruo(CartaHechizo hechizo, CartaMonstruo monstruo);
 
 	@Override
 	public String toString() {

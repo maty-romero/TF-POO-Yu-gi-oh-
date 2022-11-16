@@ -10,14 +10,13 @@ public class CartaHechizoBuffeadora extends CartaHechizo {
 		super(id, nombre, descripcion, pathImagen, efecto);
 	}
 
-	public void aplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
-			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo) {
-		Integer valorEfecto = hashCartasMagicas.get(cartaMagica).getEfecto();
+	public void aplicarEfectoMagicoAMonstruo(CartaHechizo cartaHechizo, CartaMonstruo cartaMonstruo) {
+		Integer valorEfecto = cartaHechizo.getEfecto();
 
-		Integer nuevoAtaque = hashCartasMonstruo.get(cartaMonstruo).getAtaque();
+		Integer nuevoAtaque = cartaMonstruo.getAtaque();
 
 		nuevoAtaque = nuevoAtaque + valorEfecto;
-		hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
+		cartaMonstruo.setAtaque(nuevoAtaque);
 
 		try {
 			Thread.sleep(2000);
