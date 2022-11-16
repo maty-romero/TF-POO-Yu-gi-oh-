@@ -43,6 +43,7 @@ public class Barajador {
 				defensa = rsCartaM.getInt("defensa");
 
 				monstruos.add(new CartaMonstruo(id, nombre, descripcion, url, ataque, defensa));
+				
 
 				// se obtienen los hechizos y se añade al deck.
 
@@ -51,6 +52,7 @@ public class Barajador {
 				descripcion = rsCartaH.getString("descripcion");
 				url = rsCartaH.getString("pathImagen");
 				efecto = rsCartaH.getInt("efecto");
+				
 //				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
 //				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
 //				hechizos.add(new CartaHechizo(id, nombre, descripcion, url, efecto)); // agrego al deck hechizos
