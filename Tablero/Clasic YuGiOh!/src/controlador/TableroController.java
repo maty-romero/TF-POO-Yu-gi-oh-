@@ -71,17 +71,20 @@ public class TableroController {
 
 		try {
 			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
-			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//			this.duelistaJugador.robarCarta();
+//
+//			this.duelistaOponente.robarCarta();
+//			this.duelistaOponente.robarCarta();
+//			this.duelistaOponente.robarCarta();
+//			this.duelistaOponente.robarCarta();
+//			this.duelistaOponente.robarCarta();
 
-			this.duelistaOponente.robarCarta();
-			this.duelistaOponente.robarCarta();
-			this.duelistaOponente.robarCarta();
-			this.duelistaOponente.robarCarta();
-			this.duelistaOponente.robarCarta();
-
+			ArrayList<CartaMonstruo> monstruosJugador = duelistaJugador.getMano().getManoMonstruos();
+			monstruosJugador.add(new CartaMonstruo(1, "hola", "jaja", "/cartas/dark_magician.jpg", 5000, 5000));
+			
 			setManoJugador();
 			setManoBot();
 
