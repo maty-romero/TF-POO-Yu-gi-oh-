@@ -26,9 +26,12 @@ public class MenuInvocarBocaArribaHechizo implements ActionListener, MouseListen
 		System.out.println(this.mouse.getTc().getCampoHechizosJugador().size());
 		System.out.println(this.mouse.getTc().getManoHechizoJugador().size());
 
-		if (this.mouse.getTc().getCampoHechizosJugador().size() < 3) {
+		Integer posi = this.mouse.getTc().getReferee()
+				.posVaciaCampo((this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()));
+		if (posi != null) {
+
 			this.mouse.getTc().getVista().getPanelesHechizosCampoJugador()
-					.get(this.mouse.getTc().getCampoHechizosJugador().size()).add(mouse.getPanelSeleccionado())
+					.get(posi ).add(mouse.getPanelSeleccionado())
 					.setFocusable(false);
 
 			mouse.getPanelSeleccionado().setVisible(true);
@@ -45,7 +48,6 @@ public class MenuInvocarBocaArribaHechizo implements ActionListener, MouseListen
 			this.mouse.getPanelSeleccionado().setBackground(Color.GRAY);
 			mouse.getTc().getVista().mostrar();
 		}
-
 	}
 
 	@Override

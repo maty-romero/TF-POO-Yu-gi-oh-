@@ -119,7 +119,7 @@ public class CerebroBot {
 					// se agrega una carta al campo Monstruo Oponente a la vista
 					this.getTc().getVista().getPanelesHechizosCampoOponente().get(posi).add(panelHechizo);
 
-					this.getTc().getReferee().AplicarEfectoMagicoAMonstruo(panelHechizo,
+					this.getTc().getCampoHechizosOponente().get(panelHechizo).aplicarEfectoMagicoAMonstruo(panelHechizo,
 							panelAleatorio(this.getTc().getCampoMonstruosOponente()),
 							this.getTc().getCampoHechizosOponente(), this.getTc().getCampoMonstruosOponente());
 

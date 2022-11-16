@@ -115,21 +115,6 @@ public class Referee {
 		}
 	}
 
-	public void AplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
-			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo) {
-		Integer valorEfecto = hashCartasMagicas.get(cartaMagica).getEfecto();
-
-		Integer nuevoAtaque = hashCartasMonstruo.get(cartaMonstruo).getAtaque();
-
-		nuevoAtaque = nuevoAtaque + valorEfecto;
-		hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
-
-		try {
-			Thread.sleep(2000);
-		} catch (Exception e) {
-		}
-
-	}
 
 	public void remuevoPanelCampoHechizo(JPanel panelMagico, HashMap<JPanel, CartaHechizo> hashHechizos,
 			ArrayList<JPanel> panelesCampoHechizos) {

@@ -43,9 +43,9 @@ public class MenuActivarHechizo implements ActionListener, MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		JPanel panelAplicarEfecto = (JPanel) e.getSource();
 
-		this.mouse.getTc().getReferee().AplicarEfectoMagicoAMonstruo(this.mouse.getPanelSeleccionado(),
-				panelAplicarEfecto, this.mouse.getTc().getCampoHechizosJugador(),
-				this.mouse.getTc().getCampoMonstruosJugador());
+		this.mouse.getTc().getCampoHechizosJugador().get(this.mouse.getPanelSeleccionado())
+				.aplicarEfectoMagicoAMonstruo(this.mouse.getPanelSeleccionado(), panelAplicarEfecto,
+						this.mouse.getTc().getCampoHechizosJugador(), this.mouse.getTc().getCampoMonstruosJugador());
 
 		this.mouse.getTc().getReferee().remuevoPanelCampoHechizo(mouse.getPanelSeleccionado(),
 				this.mouse.getTc().getCampoHechizosJugador(),
