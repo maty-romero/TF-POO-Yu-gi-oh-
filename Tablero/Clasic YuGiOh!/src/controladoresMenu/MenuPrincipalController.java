@@ -1,5 +1,6 @@
-package controlador;
+package controladoresMenu;
 
+import controlador.TableroController;
 import vista.MenuPrincipal;
 
 public class MenuPrincipalController {
@@ -8,7 +9,7 @@ public class MenuPrincipalController {
 	
 	public MenuPrincipalController() {
 		this.vista = new MenuPrincipal();
-		this.vista.setTitle("MENU PRINCIPAL");
+		this.vista.setTitle("YUGIOH");
 		this.vista.setResizable(false);
 		this.vista.setVisible(true);
 		this.vista.setLocationRelativeTo(null);
@@ -18,12 +19,12 @@ public class MenuPrincipalController {
 		this.vista.getBtnNuevaPartida().addActionListener(e->this.nuevaPartida());
 	}
 	
-//	protected void opciones() {
+//	private void opciones() {
 //		this.vista.dispose();
 //		new OpcionesController();
 //	}
 	
-	protected void nuevaPartida() {
+	private void nuevaPartida() {
 		this.vista.dispose();
 		new TableroController();
 	}

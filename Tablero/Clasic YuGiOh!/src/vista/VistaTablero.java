@@ -136,7 +136,7 @@ public class VistaTablero implements ImageObserver {
 
 	public VistaTablero(TableroController tableroController) {
 		this.setTableroController(tableroController);
-		this.tablero = new JFrame("TABLERO");
+		this.tablero = new JFrame("YUGIOH");
 		tablero.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.tablero.setSize(1390, 1004);
 		this.tablero.setResizable(false);

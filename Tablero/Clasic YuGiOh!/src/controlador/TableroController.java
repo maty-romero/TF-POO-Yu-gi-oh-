@@ -63,8 +63,8 @@ public class TableroController {
 
 //		mouse = new MonstruosInvocacion(this);
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
-		this.duelistaJugador = new Duelista("1", 1);
-		this.duelistaOponente = new Duelista("2", 2);
+		this.duelistaJugador = new Duelista("YUGI");
+		this.duelistaOponente = new Duelista("SETTO");
 
 		this.controladorBot = new CerebroBot(this);
 		this.referee = new Referee(this);

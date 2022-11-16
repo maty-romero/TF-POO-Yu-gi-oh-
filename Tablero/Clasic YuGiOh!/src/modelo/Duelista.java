@@ -16,7 +16,7 @@ public class Duelista {
 	private Boolean ganador, invocoMonstruo;
 	private Integer contadorDuelistaPierde;
 
-	public Duelista(String nombre, Integer id) {
+	public Duelista(String nombre) {
 		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
 		this.deck.mezclarDeck();
 

@@ -19,21 +19,9 @@ public class MenuFinal extends JFrame {
 	private JPanel contentPane;
 	private JLabel fondoMenuFinal;
 	private JLabel mensajeFinalPartida;
+	
 	private JButton btnVueltaMenuPpal;
 	private JButton btnSalir;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuFinal frame = new MenuFinal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public MenuFinal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,8 +58,28 @@ public class MenuFinal extends JFrame {
 		contentPane.add(fondoMenuFinal);
 	}
 
+	
+	
+	//Getters y Setters 
+	
 	public JLabel getMensajeFinalPartida() {
 		return mensajeFinalPartida;
+	}
+
+	public JButton getBtnVueltaMenuPpal() {
+		return btnVueltaMenuPpal;
+	}
+
+	public void setBtnVueltaMenuPpal(JButton btnVueltaMenuPpal) {
+		this.btnVueltaMenuPpal = btnVueltaMenuPpal;
+	}
+
+	public JButton getBtnSalir() {
+		return btnSalir;
+	}
+
+	public void setBtnSalir(JButton btnSalir) {
+		this.btnSalir = btnSalir;
 	}
 
 	public void setMensajeFinalPartida(JLabel mensajeFinalPartida) {
