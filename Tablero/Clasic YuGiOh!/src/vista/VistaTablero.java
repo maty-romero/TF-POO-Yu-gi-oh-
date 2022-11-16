@@ -118,9 +118,9 @@ public class VistaTablero implements ImageObserver {
 //Botones 
 	private JButton btnTerminarTurno;
 	private JButton btnBatalla;
-//Label Fase de la partida
-	private JLabel labelFasePartida;
-	
+//TextAreas para proyecciones 
+	private JTextArea textAreaDescripcion;
+	private JTextArea textAreaBot;
 	
 //genero panel carta boca abajo default
 	private Carta cartaDefault;
@@ -131,9 +131,7 @@ public class VistaTablero implements ImageObserver {
 	private ArrayList<JPanel> panelesHechizosCampoJugador = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesMonstruosCampoOponente = new ArrayList<JPanel>();
 	private ArrayList<JPanel> panelesHechizosCampoOponente = new ArrayList<JPanel>();
-	private JTextArea textAreaDescripcion;
-	private JTextArea textAreaBot;
-
+	
 	public VistaTablero(TableroController tableroController) {
 		this.setTableroController(tableroController);
 		this.tablero = new JFrame("YUGIOH");
@@ -152,7 +150,7 @@ public class VistaTablero implements ImageObserver {
 		manoJugador.setBackground(new Color(102, 51, 102));
 		tablero.getContentPane().setLayout(null);
 		
-		manoJugador.setBounds(28, 700, 730, 100);
+		manoJugador.setBounds(97, 700, 730, 100);
 		manoJugador.setSize(730, 100);
 		tablero.getContentPane().add(manoJugador);
 
@@ -171,23 +169,16 @@ public class VistaTablero implements ImageObserver {
 		manoBot.setVisible(true);
 		manoBot.setFocusable(true);
 		manoBot.requestFocus();
-
-		//Label Fase Partida
-		labelFasePartida = new JLabel("");
-		labelFasePartida.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		labelFasePartida.setForeground(Color.WHITE);
-		labelFasePartida.setBounds(28, 461, 135, 62);
-		tablero.getContentPane().add(labelFasePartida);
 		
 		//Boton Siguiente Fase
 		btnBatalla = new JButton("Batalla");
 		btnBatalla.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
-		btnBatalla.setBounds(28, 534, 205, 36);
+		btnBatalla.setBounds(97, 534, 205, 36);
 		tablero.getContentPane().add(btnBatalla);
 		//Boton Terminar Turno
 		btnTerminarTurno = new JButton("Terminar Turno");
 		btnTerminarTurno.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
-		btnTerminarTurno.setBounds(28, 594, 205, 36);
+		btnTerminarTurno.setBounds(97, 592, 205, 36);
 		tablero.getContentPane().add(btnTerminarTurno);
 		
 		
@@ -196,7 +187,7 @@ public class VistaTablero implements ImageObserver {
 		// Contador vida jugador
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
-		contadorJug.setBounds(1084, 700, 192, 70);
+		contadorJug.setBounds(1077, 715, 192, 70);
 		contadorJug.setFont(new Font("Sitka Subheading", Font.BOLD, 45));
 		contadorJug.setForeground(Color.WHITE);
 		this.contadorJug.setBackground(new Color(255, 255, 255));
@@ -212,7 +203,7 @@ public class VistaTablero implements ImageObserver {
 
 //deck del bot
 		this.deck_bot = new JPanel();
-		deck_bot.setBounds(21, 6, 80, 96);
+		deck_bot.setBounds(21, 6, 80, 100);
 		this.deck_bot.setForeground(new Color(204, 0, 0));
 		this.deck_bot.setBackground(new Color(0, 0, 0));
 
@@ -241,7 +232,7 @@ public class VistaTablero implements ImageObserver {
 
 //deck del jugador
 		this.deck_jug = new JPanel();
-		deck_jug.setBounds(853, 522, 87, 108);
+		deck_jug.setBounds(853, 522, 87, 121);
 		this.deck_jug.setForeground(new Color(153, 0, 0));
 		this.deck_jug.setBackground(new Color(0, 0, 0));
 
@@ -256,7 +247,7 @@ public class VistaTablero implements ImageObserver {
 
 //cementerio del jugador
 		this.cem_jug = new JPanel();
-		cem_jug.setBounds(791, 700, 87, 100);
+		cem_jug.setBounds(853, 700, 87, 100);
 		this.cem_jug.setForeground(new Color(0, 0, 0));
 		this.cem_jug.setBackground(new Color(0, 0, 0));
 
@@ -299,7 +290,7 @@ public class VistaTablero implements ImageObserver {
 		informeTurnoBot.setLayout(null);
 		
 		JScrollPane scrollPaneBot = new JScrollPane();
-		scrollPaneBot.setBounds(10, 11, 192, 248);
+		scrollPaneBot.setBounds(10, 11, 319, 248);
 		informeTurnoBot.add(scrollPaneBot);
 		
 		textAreaBot = new JTextArea();
@@ -323,7 +314,7 @@ public class VistaTablero implements ImageObserver {
 
 //icono del jugador
 		JPanel iconoJug = new JPanel();
-		iconoJug.setBounds(948, 690, 93, 80);
+		iconoJug.setBounds(950, 704, 93, 80);
 
 		java.net.URL urlIconoJug = getClass().getResource("/IconoPersonajes/yugi_moto.jpg"); // imagen local relativa al
 																								// projecto
