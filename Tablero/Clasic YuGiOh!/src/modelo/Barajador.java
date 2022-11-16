@@ -52,7 +52,8 @@ public class Barajador {
 				defensa = rsCartaM.getInt("defensa");
 
 				monstruos.add(new CartaMonstruoNormal(id, nombre, descripcion, url, ataque, defensa));
-
+				monstruos.add(new CartaMonstruoNormal(id, nombre, descripcion, url, ataque, defensa));
+				
 				id = rsCartaMRiesgoso.getInt("id_carta");
 				nombre = rsCartaMRiesgoso.getString("nombre");
 				descripcion = rsCartaMRiesgoso.getString("descripcion");
