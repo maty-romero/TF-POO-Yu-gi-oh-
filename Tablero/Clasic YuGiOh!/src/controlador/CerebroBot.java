@@ -62,7 +62,8 @@ public class CerebroBot {
 			if (this.getTc().getManoMonstruoOponente().size() >= 1) {
 
 				// Obtengo una posicion vacia para invocar
-				Integer posi = this.getTc().getReferee().posVaciaCampo((this.getTc().getVista().getPanelesMonstruosCampoOponente()));
+				Integer posi = this.getTc().getReferee()
+						.posVaciaCampo((this.getTc().getVista().getPanelesMonstruosCampoOponente()));
 				if (posi != null) {
 					// obtengo un panel aleatorio de la mano
 					JPanel panelAleatorio = panelAleatorio(this.getTc().getManoMonstruoOponente());
@@ -96,7 +97,8 @@ public class CerebroBot {
 					&& this.getTc().getCampoMonstruosOponente().size() >= 1) {
 
 				// Obtengo una posicion vacia para invocar
-				Integer posi = this.getTc().getReferee().posVaciaCampo((this.getTc().getVista().getPanelesHechizosCampoOponente()));
+				Integer posi = this.getTc().getReferee()
+						.posVaciaCampo((this.getTc().getVista().getPanelesHechizosCampoOponente()));
 				if (posi != null) {
 
 					// obtengo un panel aleatorio.
@@ -119,9 +121,9 @@ public class CerebroBot {
 					// se agrega una carta al campo Monstruo Oponente a la vista
 					this.getTc().getVista().getPanelesHechizosCampoOponente().get(posi).add(panelHechizo);
 
-					this.getTc().getCampoHechizosOponente().get(panelHechizo).aplicarEfectoMagicoAMonstruo(panelHechizo,
-							panelAleatorio(this.getTc().getCampoMonstruosOponente()),
-							this.getTc().getCampoHechizosOponente(), this.getTc().getCampoMonstruosOponente());
+					this.getTc().getCampoHechizosOponente().get(panelHechizo).aplicarEfectoMagicoAMonstruo(hechizo,
+							this.getTc().getCampoMonstruosOponente()
+									.get((panelAleatorio(this.getTc().getCampoMonstruosOponente()))));
 
 //					this.getTc().getReferee().remuevoPanelCampoHechizo(panelHechizo,
 //							this.getTc().getCampoHechizosOponente(),
@@ -159,7 +161,6 @@ public class CerebroBot {
 	 * Retorna la primera posicion del array en donde esta vacio, para poder invocar
 	 * en el tablero.
 	 */
-
 
 	// BATALLA
 
@@ -218,7 +219,8 @@ public class CerebroBot {
 				monstruoAtacante.AccionCarta(monstruoObjetivo, this.getTc().getDuelistaOponente(),
 						this.getTc().getDuelistaJugador());
 
-				actualizarPanelesyHash(panelMonstruoAtacante, panelMonstruoObjetivo); // remover paneles de cartas muertas.
+				actualizarPanelesyHash(panelMonstruoAtacante, panelMonstruoObjetivo); // remover paneles de cartas
+																						// muertas.
 
 				actualizarVida(); // se actualiza la vida de los Duelistas
 

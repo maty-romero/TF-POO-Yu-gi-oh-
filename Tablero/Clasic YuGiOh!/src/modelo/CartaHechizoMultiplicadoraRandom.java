@@ -14,18 +14,17 @@ public class CartaHechizoMultiplicadoraRandom extends CartaHechizo {
 	}
 
 	@Override
-	public void aplicarEfectoMagicoAMonstruo(JPanel cartaMagica, JPanel cartaMonstruo,
-			HashMap<JPanel, CartaHechizo> hashCartasMagicas, HashMap<JPanel, CartaMonstruo> hashCartasMonstruo) {
+	public void aplicarEfectoMagicoAMonstruo(CartaHechizo cartaHechizo, CartaMonstruo cartaMonstruo) {
 
-		Integer nuevoAtaque = hashCartasMonstruo.get(cartaMonstruo).getAtaque();
+		Integer nuevoAtaque = cartaMonstruo.getAtaque();
 	
 		if(new Random().nextBoolean()) {
 			nuevoAtaque = nuevoAtaque * super.getEfecto();
-			hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
+			cartaMonstruo.setAtaque(nuevoAtaque);
 			
 		}else {
 			nuevoAtaque = nuevoAtaque / super.getEfecto();
-			hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
+			cartaMonstruo.setAtaque(nuevoAtaque);
 		}
 
 		try {
