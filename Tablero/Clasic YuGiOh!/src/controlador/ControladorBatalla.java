@@ -20,13 +20,10 @@ import modelo.CartaMonstruo;
 import modelo.Duelista;
 import vista.VistaTablero;
 
-//el que ataca es el jugador, con su carta atacante. siempre, porque este listener se activa con el click del jugador
 public class ControladorBatalla implements ActionListener, MouseListener {
 
 	private MenuCartaInvocadaMonstruo menuAtacar;
 
-	// monstruoAtacante --> Del jugador
-	// monstruoObjetivo --> Del bot
 	private CartaMonstruo monstruoAtacante;
 	private CartaMonstruo monstruoObjetivo;
 	private JPanel panelMonstruoAtacante = new JPanel();
@@ -169,8 +166,6 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 				this.menuAtacar.getTc().getCampoMonstruosOponente().remove(panelMonstruoObjetivo);
 			}
 
-			System.out.println("SE HAN APLICADO CAMBIOS EN LA VISTA");
-
 		}
 	}
 
@@ -178,14 +173,12 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 			HashMap<JPanel, CartaMonstruo> hashModificar) {
 
 		// Eliminacion panel en la vista.
-
 		JPanel coincidencia = new JPanel();
 		for (JPanel panel : panelesMonstruo) {
 			for (Component componente : panel.getComponents()) {
 				if (componente == panelRemover) {
 					coincidencia = panel;
 					componente.setVisible(false);
-					System.out.println("hubo coincidencia AAAAAAAAAAAAAAAA");
 					break;
 				}
 			}
@@ -195,14 +188,11 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 		this.menuAtacar.getTc().getVista().mostrar();
 		this.menuAtacar.getTc().getVista().getTablero().setVisible(true);
 
-		// elinimacion del hash
 		hashModificar.remove(panelRemover);
 
 		this.menuAtacar.getTc().getVista().mostrar();
 
 	}
-
-	// Metodos sobrescritos que no se usan
 
 	@Override
 	public void mousePressed(MouseEvent e) {

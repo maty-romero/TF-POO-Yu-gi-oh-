@@ -28,28 +28,14 @@ public class CerebroBot {
 		this.tc = tc;
 	}
 
-	// ROBAR CARTA
-
 	public void robarCarta() throws PierdeLaPartida {
 		this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha robado una carta\n"; 
 		
 		this.getTc().getDuelistaOponente().robarCarta();
-		// en el modelo ya se elimina y retorna una carta.
-
-		System.out.println("");
-		System.out.println(
-				"Size mano monstruos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoMonstruos().size());
-		System.out.println(
-				"Size mano hechizos Bot: " + this.getTc().getDuelistaOponente().getMano().getManoHechizos().size());
-
 		this.getTc().getVista().getManoBot().removeAll();
-
 		this.getTc().setManoBot();
-		
 		this.getTc().getVista().mostrar(); // Actualizo JFrame
 	}
-
-	// INVOCAR
 
 	public void invocarCarta() {
 		
@@ -125,9 +111,6 @@ public class CerebroBot {
 							this.getTc().getCampoMonstruosOponente()
 									.get((panelAleatorio(this.getTc().getCampoMonstruosOponente()))));
 
-//					this.getTc().getReferee().remuevoPanelCampoHechizo(panelHechizo,
-//							this.getTc().getCampoHechizosOponente(),
-//							this.getTc().getVista().getPanelesHechizosCampoOponente());
 					this.getTc().getVista().mostrar(); // Actualizo JFrame
 
 				} else {
@@ -157,31 +140,6 @@ public class CerebroBot {
 		return panel;
 	}
 
-	/*
-	 * Retorna la primera posicion del array en donde esta vacio, para poder invocar
-	 * en el tablero.
-	 */
-
-	// BATALLA
-
-	/*
-	 * Turno del Bot:
-	 * 
-	 * monstruoMuertoJugador --> Bot monstruoMuertoOponente --> Jugador
-	 * 
-	 * Lo siguiente esta escrito desde nuestra perspectiva.
-	 * 
-	 * CartaJug posAtaque = true
-	 * 
-	 * dmg > 0 -> CartaJugador muere, recibe dmg restante el Jugador dmg < 0 ->
-	 * CartaBot muere, Bot recibe dmg restante dmg = 0 -> ambas cartas mueren, no
-	 * hay dmg restante
-	 * 
-	 * CartaJug posAtaque = false dmg > 0 -> CartaJugador muere dmg < 0 -> Bot
-	 * recibe dmg restante.
-	 * 
-	 * 
-	 */
 
 	public void Batalla() throws PierdeLaPartida {
 

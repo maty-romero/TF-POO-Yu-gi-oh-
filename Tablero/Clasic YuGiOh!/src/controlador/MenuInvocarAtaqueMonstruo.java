@@ -29,8 +29,6 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		if (this.mouse.getTc().getCampoMonstruosJugador().size() < 3) {
- 
 		Integer posi = this.mouse.getTc().getReferee().posVaciaCampo((this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()));
 		if (posi != null) {
 			this.mouse.getTc().getVista().getPanelesMonstruosCampoJugador()
@@ -40,10 +38,6 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			mouse.getPanelSeleccionado().setVisible(true);
 			mouse.getPanelSeleccionado().setFocusable(true);
 
-			/*
-			 * Se agrega el controlador MenuAtacar ya que los que estan en TableroController
-			 * no son los mismos paneles que hay en el HASH
-			 */
 			JPopupMenu pm = new JPopupMenu();
 			MenuCartaInvocadaMonstruo ma = new MenuCartaInvocadaMonstruo(this.mouse.getTc());
 
@@ -58,9 +52,7 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setPosicionAtaque(true);
 			this.mouse.getTc().getCampoMonstruosJugador().get(mouse.getPanelSeleccionado()).setBocaAbajo(false);
 
-			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
-
-			
+			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);		
 			
 			try {
 				Thread.sleep(500);
@@ -81,7 +73,6 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 		
 	}
 	
-
 	private void removerListenersMano(HashMap<JPanel, ?> map) {
 		for (JPanel panel : map.keySet()) {
 			panel.removeMouseListener(mouse);

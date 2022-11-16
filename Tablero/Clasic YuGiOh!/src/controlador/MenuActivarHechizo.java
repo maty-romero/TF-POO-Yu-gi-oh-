@@ -59,7 +59,6 @@ public class MenuActivarHechizo implements ActionListener, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-
 	}
 
 	@Override

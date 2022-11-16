@@ -29,29 +29,13 @@ public class MonstruosInvocacion implements MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
-
-	@Override
 	public void mouseEntered(MouseEvent e) {
 		// Grids Layouts
 		this.tc.getVista().getManoJugador().setFocusable(true);
-//		this.tc.getVista().getManoBot().setFocusable(true);
-
-		JPanel panel = (JPanel) e.getSource(); // panel apunta a la posicion del panel que activó el mouselistener, no
-												// es una copia del panel; es el panel mismo
+		JPanel panel = (JPanel) e.getSource(); 
 
 		pm = new JPopupMenu();
 
-		// create menuItems
 		JMenuItem m1 = new JMenuItem("Invocar Ataque");
 		JMenuItem m2 = new JMenuItem("Invocar defensa");
 
@@ -71,7 +55,18 @@ public class MonstruosInvocacion implements MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
 	}
 
 	public TableroController getTc() {

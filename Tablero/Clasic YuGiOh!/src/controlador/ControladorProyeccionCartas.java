@@ -27,22 +27,9 @@ public class ControladorProyeccionCartas implements MouseListener {
 		this.tc = tc;
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-	}
-
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {
-
 		{
 
 			HashMap<JPanel, Carta> hashCartas = new HashMap<JPanel, Carta>();
@@ -55,9 +42,6 @@ public class ControladorProyeccionCartas implements MouseListener {
 
 			hashCartas.putAll(this.tc.getManoMonstruoJugador());
 			hashCartas.putAll(this.tc.getManoHechizoJugador());
-
-//			hashCartas.putAll(this.tc.getManoMonstruoOponente());
-//			hashCartas.putAll(this.tc.getManoHechizoOponente());
 
 			this.tc.getVista().getManoJugador().setFocusable(true);
 			this.tc.getVista().getManoBot().setFocusable(true);
@@ -104,6 +88,18 @@ public class ControladorProyeccionCartas implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
 	}
 
 }

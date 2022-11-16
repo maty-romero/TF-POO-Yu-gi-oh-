@@ -5,9 +5,13 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
-//multiplica por 2 o 3 el monstruo elegido, segun el numero en el efecto que tengan.
 public class CartaHechizoMultiplicadoraRandom extends CartaHechizo {
 
+	/*
+	 *multiplica por 2 o 3 el monstruo elegido, 
+	 *segun el numero en el efecto que tengan. 
+	 */
+	
 	public CartaHechizoMultiplicadoraRandom(Integer id, String nombre, String descripcion, String pathImagen,
 			Integer efecto) {
 		super(id, nombre, descripcion, pathImagen, efecto);

@@ -13,10 +13,6 @@ import javax.swing.JPanel;
 import modelo.CartaHechizo;
 import modelo.CartaMonstruo;
 
-/* Esta clase realiza algunas acciones sobre el tablero ( no todas) . la idea es que haya
- * un controlador accesible por el bot y el jugador, y que TableroController no haga todo esto
- */
-
 public class Referee {
 	private TableroController tc;
 
@@ -36,7 +32,6 @@ public class Referee {
 		return posicion;
 	}
 
-	// el panel que le mandes, ahora se ve distinto; como boca abajo
 	public void cartaDefaultBocaAbajo(JPanel panelCarta) {
 
 		panelCarta.removeAll();
@@ -50,10 +45,6 @@ public class Referee {
 		panelCarta.add(label);
 	}
 
-	// si el bot quiere rotar una carta del jugador, debe enviar ese panel aquí. Si
-	// queremos que el bot rote sus cartas,
-	// solo tenemos que agregar unos if más para chequear la posicion de ataque y
-	// boca abajo de las cartas modelo del bot
 	public void rotarCartaMonstruo(JPanel panelARotar) {
 		BufferedImage buferCarta;
 		JLabel label;
@@ -124,8 +115,6 @@ public class Referee {
 		JPanel coincidencia = new JPanel();
 
 		// Remuevo VISUALMENTE el componente de panel
-		// getVista().panelesHechizosCampoJugador, no uno de esos 3 paneles sino su
-		// componente
 		for (JPanel panel : panelesCampoHechizos) {
 			for (Component componente : panel.getComponents()) {
 				if (componente == panelMagico) {

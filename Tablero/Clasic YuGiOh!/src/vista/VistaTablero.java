@@ -41,7 +41,7 @@ import java.awt.SystemColor;
 public class VistaTablero implements ImageObserver {
 	// Controlador
 	private TableroController tableroController;
-//tablero
+	//tablero
 	private JFrame tablero;
 	private JPanel manoJugador; // Grid Layout
 	private JPanel manoBot; // Grid Layout

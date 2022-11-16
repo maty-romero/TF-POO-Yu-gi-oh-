@@ -18,31 +18,14 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import vista.VistaTablero;
 
-//cuando el bot use esta clase, va a hacer exactamente lo mismo, pero usando su hash de cartasOponente. El resto es lo mismo
 public class ManuHechizos implements MouseListener {
 	private TableroController tc;
-	private JPanel panelSeleccionado; // panel que activó el mouselistener
+	private JPanel panelSeleccionado; 
 
 	private JPopupMenu pm;
 
 	public ManuHechizos(TableroController tc) {
 		this.tc = tc;
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -83,6 +66,17 @@ public class ManuHechizos implements MouseListener {
 
 	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
 	public TableroController getTc() {
 		return tc;
 	}

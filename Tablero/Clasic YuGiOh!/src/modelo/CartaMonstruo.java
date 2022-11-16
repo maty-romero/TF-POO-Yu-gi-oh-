@@ -20,8 +20,8 @@ public abstract class CartaMonstruo extends Carta {
 		this.conVida = true;
 	}
 
-//sé que el duelistaJugador (sea true o false) es el que ataca al duelistaAtacado
-	public abstract void AccionCarta(CartaMonstruo cartaObjetivo, Duelista duelistaAtacante, Duelista duelistaAtacado) throws PierdeLaPartida;
+	public abstract void AccionCarta(CartaMonstruo cartaObjetivo, Duelista duelistaAtacante, 
+			Duelista duelistaAtacado) throws PierdeLaPartida;
 
 	// Si el duelista no tiene monstruos en el campo de batalla, la carta monstruo
 	// ataca al duelista
@@ -29,7 +29,8 @@ public abstract class CartaMonstruo extends Carta {
 		duelista.recibirDanio(cartaAtacante.getAtaque());
 	}
 
-	// Getters
+	
+	// Getters y setters 
 
 	public Integer getAtaque() {
 		return ataque;

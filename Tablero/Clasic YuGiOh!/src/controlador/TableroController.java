@@ -52,17 +52,11 @@ public class TableroController {
 
 	private JPanel panelCarta;
 	private VistaTablero vista;
-//	private JPopupMenu pm;
-//	private MouseListener mouse;
-
-//	private MouseListener mouseBatalla; 
 
 	public TableroController() {
 
 		VistaTablero vista = new VistaTablero(this);
 		this.vista = vista;
-
-//		mouse = new MonstruosInvocacion(this);
 		this.controladorProyeccionCartas = new ControladorProyeccionCartas(this);
 		this.duelistaJugador = new Duelista("YUGI");
 		this.duelistaOponente = new Duelista("SETTO");
@@ -92,14 +86,8 @@ public class TableroController {
 					.println("Size Deck Hechizos - BOT: " + this.getDuelistaOponente().getDeck().getHechizos().size());
 
 			// INICIO DE PARTIDA
-
-			// Listener de btn Terminar Turno --> Comienza la ejecucion del hilo Bot
-			partidaFinalizada = false;
-			System.out.println("cuento");
 			Boton boton = new Boton(this);
 			this.getVista().getBtnTerminarTurno().addActionListener(boton);
-
-//			this.Partida(); //Comienza la partida. 
 
 		} catch (PierdeLaPartida e1) {
 			System.out.println(e1.getMessage());
