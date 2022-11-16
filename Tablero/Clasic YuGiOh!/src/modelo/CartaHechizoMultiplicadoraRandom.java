@@ -26,7 +26,6 @@ public class CartaHechizoMultiplicadoraRandom extends CartaHechizo {
 		}else {
 			nuevoAtaque = nuevoAtaque / super.getEfecto();
 			hashCartasMonstruo.get(cartaMonstruo).setAtaque(nuevoAtaque);
-		
 		}
 
 		try {
