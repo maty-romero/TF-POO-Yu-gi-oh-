@@ -27,8 +27,8 @@ public class Barajador {
 			// obtengo los resultSet de cada tabla.
 
 			// Se obtiene aproximadamente el 50% de las filas de la tablas
-			ResultSet rsCartaH = ConexionDB.getInstance().query("SELECT * from cartas c  WHERE  c.tipo = 'hechizo'");
-			ResultSet rsCartaM = ConexionDB.getInstance().query("SELECT * from cartas c WHERE c.tipo =  'monstruo' ");
+			ResultSet rsCartaH = ConexionDB.getInstance().query("SELECT * from cartas c  WHERE  c.tipo = 'hechizo_buffeadora'");
+			ResultSet rsCartaM = ConexionDB.getInstance().query("SELECT * from cartas c WHERE c.tipo =  'monstruo_normal' ");
 			ResultSet rsCartaHechizo_destructor = ConexionDB.getInstance()
 					.query("SELECT * from cartas c WHERE c.tipo =  'hechizo_destructor' ");
 			// pregunta si hay filas.
