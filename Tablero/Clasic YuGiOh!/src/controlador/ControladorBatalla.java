@@ -23,7 +23,6 @@ import vista.VistaTablero;
 //el que ataca es el jugador, con su carta atacante. siempre, porque este listener se activa con el click del jugador
 public class ControladorBatalla implements ActionListener, MouseListener {
 
-//	private menuAtacar menuAtacar;
 	private MenuCartaInvocadaMonstruo menuAtacar;
 
 	// monstruoAtacante --> Del jugador
@@ -41,26 +40,21 @@ public class ControladorBatalla implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println("entre al listener de atacar");
-		this.menuAtacar.getPanelSeleccionado().addMouseListener(menuAtacar);
+
 		this.panelMonstruoAtacante = this.menuAtacar.getPanelSeleccionado();
+	
 		//obtengo el monstruo asociado al panel 
 		this.monstruoAtacante = this.menuAtacar.getTc().getCampoMonstruosJugador().get(this.panelMonstruoAtacante);
-
-		// System.out.println("CONTROLADOR BATALLA ACTION PERFORMED - ACTIVADO");
-
-		// System.out.println("Monstruo Atacante: " + this.monstruoAtacante);
-		// System.out.println("Monstruo Atacante posAtaque: " +
-		// this.monstruoAtacante.getPosicionAtaque());
-		// si no tiene monstruos el Bot --> AtaqueDirecto
-//		System.out.println("SYZE                                            EEEEEEEEEEEE      "
-//				+ this.menuAtacar.getTc().getCampoMonstruosOponente().size());
 		
 		if (this.menuAtacar.getTc().getCampoMonstruosOponente().size() == 0) {
+			
 			this.monstruoAtacante.ataqueDirecto(this.menuAtacar.getTc().getDuelistaOponente(), monstruoAtacante);
 			aplicarResultadoBatallaVida(); // solo se actualiza la vida del duelista atacado
 			
 			//Remuevo de la carta atacante el listener para que no se pueda interactuar mas con esa carta
-			this.menuAtacar.getPanelSeleccionado().removeMouseListener(menuAtacar);
+			//hasta el proximo turno. 
+			this.panelMonstruoAtacante.removeMouseListener(menuAtacar);
+			
 		}
 
 		agregarListeners(this.menuAtacar.getTc().getCampoMonstruosOponente());
