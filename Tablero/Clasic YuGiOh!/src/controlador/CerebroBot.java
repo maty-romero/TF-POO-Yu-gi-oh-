@@ -202,7 +202,7 @@ public class CerebroBot {
 				monstruoAtacante.ataqueDirecto(this.getTc().getDuelistaJugador(), monstruoAtacante);
 				actualizarVida();
 				
-				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado de forma directa\nDaño causado: " 
+				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado con: "+ monstruoAtacante.getNombre()+ "\nDaño causado: " 
 						+ monstruoAtacante.getAtaque() + "\n"; 
 
 			} else {
@@ -227,7 +227,8 @@ public class CerebroBot {
 
 				actualizarVida(); // se actualiza la vida de los Duelistas
 				
-				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado al monstruo: " +monstruoObjetivo.getNombre()+ "\nDaño causado: " + 
+				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado con: "+monstruoAtacante.getNombre()+ 
+						"\nal monstruo: " +monstruoObjetivo.getNombre()+ "\nDaño causado: " + 
 						(vidaAnterior - this.getTc().getDuelistaJugador().getVida()) + "\n"; 
 
 			}

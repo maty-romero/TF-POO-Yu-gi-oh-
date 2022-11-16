@@ -625,14 +625,6 @@ public class VistaTablero implements ImageObserver {
 		this.btnBatalla = btnBatalla;
 	}
 
-	public JLabel getLabelFasePartida() {
-		return labelFasePartida;
-	}
-
-	public void setLabelFasePartida(JLabel labelFasePartida) {
-		this.labelFasePartida = labelFasePartida;
-	}
-
 	public JTextArea getTextArea() {
 		return textAreaDescripcion;
 	}

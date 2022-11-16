@@ -18,7 +18,6 @@ public class MenuPrincipal extends JFrame {
 
 	private JButton btnSalir;
 	private JButton btnNuevaPartida;
-	private JButton btnOpciones;
 
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,19 +35,13 @@ public class MenuPrincipal extends JFrame {
 		// Boton Salir
 		btnSalir = new JButton("Salir");
 		btnSalir.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
-		btnSalir.setBounds(71, 504, 231, 51);
+		btnSalir.setBounds(71, 365, 231, 51);
 		contentPane.add(btnSalir);
-
-		// Boton Opciones
-		btnOpciones = new JButton("Opciones");
-		btnOpciones.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
-		btnOpciones.setBounds(71, 348, 231, 51);
-		contentPane.add(btnOpciones);
 
 		// Boton Nueva Partida
 		btnNuevaPartida = new JButton("Nueva Partida");
 		btnNuevaPartida.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
-		btnNuevaPartida.setBounds(71, 190, 231, 45);
+		btnNuevaPartida.setBounds(71, 233, 231, 45);
 		contentPane.add(btnNuevaPartida);
 
 		this.fondoMenuPpal = new JLabel(iconFondoTablero);
