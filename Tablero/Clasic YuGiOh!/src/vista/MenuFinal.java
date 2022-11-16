@@ -11,12 +11,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 public class MenuFinal extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel fondoMenuFinal;
 	private JLabel mensajeFinalPartida;
+	private JButton btnVueltaMenuPpal;
+	private JButton btnSalir;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -40,15 +44,26 @@ public class MenuFinal extends JFrame {
 		contentPane.setLayout(null);
 		
 		
-		java.net.URL fondoURL = getClass().getResource("/fondo_tablero/FondoFinal.jpg"); //
+		java.net.URL fondoURL = getClass().getResource("/fondo_tablero/FondoFinal3.jpg"); //
 		ImageIcon iconFondoTablero = new ImageIcon(
-				new ImageIcon(fondoURL).getImage().getScaledInstance(800, 800, Image.SCALE_DEFAULT));
+				new ImageIcon(fondoURL).getImage().getScaledInstance(800, 800, Image.SCALE_SMOOTH));
 		
-		mensajeFinalPartida = new JLabel("");
-		mensajeFinalPartida.setFont(new Font("Consolas", Font.PLAIN, 36));
-		mensajeFinalPartida.setForeground(Color.WHITE);
-		mensajeFinalPartida.setBounds(54, 31, 323, 76);
+		btnSalir = new JButton("Salir");
+		btnSalir.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
+		btnSalir.setBounds(313, 350, 157, 42);
+		contentPane.add(btnSalir);
+		
+		mensajeFinalPartida = new JLabel("PRUEBAA");
+		mensajeFinalPartida.setHorizontalAlignment(SwingConstants.CENTER);
+		mensajeFinalPartida.setFont(new Font("Sitka Subheading", Font.BOLD, 36));
+		mensajeFinalPartida.setForeground(new Color(255, 255, 255));
+		mensajeFinalPartida.setBounds(62, 45, 670, 76);
 		contentPane.add(mensajeFinalPartida);
+		
+		btnVueltaMenuPpal = new JButton("Menu Principal");
+		btnVueltaMenuPpal.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
+		btnVueltaMenuPpal.setBounds(313, 270, 157, 42);
+		contentPane.add(btnVueltaMenuPpal);
 		
 		fondoMenuFinal = new JLabel(iconFondoTablero);
 		fondoMenuFinal.setBounds(0, 0, 783, 625);
@@ -62,7 +77,4 @@ public class MenuFinal extends JFrame {
 	public void setMensajeFinalPartida(JLabel mensajeFinalPartida) {
 		this.mensajeFinalPartida = mensajeFinalPartida;
 	}
-	
-	
-	
 }

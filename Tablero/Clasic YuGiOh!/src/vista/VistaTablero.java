@@ -178,12 +178,12 @@ public class VistaTablero implements ImageObserver {
 		
 		//Boton Siguiente Fase
 		btnBatalla = new JButton("Batalla");
-		btnBatalla.setFont(new Font("Sitka Subheading", Font.BOLD, 18));
+		btnBatalla.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
 		btnBatalla.setBounds(28, 385, 167, 36);
 		tablero.getContentPane().add(btnBatalla);
 		//Boton Terminar Turno
 		btnTerminarTurno = new JButton("Terminar Turno");
-		btnTerminarTurno.setFont(new Font("Sitka Subheading", Font.BOLD, 18));
+		btnTerminarTurno.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
 		btnTerminarTurno.setBounds(31, 309, 167, 36);
 		tablero.getContentPane().add(btnTerminarTurno);
 		
@@ -194,7 +194,7 @@ public class VistaTablero implements ImageObserver {
 		this.contadorJug = new JLabel();
 		this.contadorJug.setText("8000");
 		contadorJug.setBounds(1081, 698, 205, 70);
-		contadorJug.setFont(new Font("Consolas", Font.BOLD, 45));
+		contadorJug.setFont(new Font("Sitka Subheading", Font.BOLD, 45));
 		contadorJug.setForeground(Color.WHITE);
 		this.contadorJug.setBackground(new Color(255, 255, 255));
 		tablero.getContentPane().add(this.contadorJug);
@@ -202,7 +202,7 @@ public class VistaTablero implements ImageObserver {
 //contador vida bot
 		this.contadorBot = new JLabel("8000");
 		contadorBot.setBounds(1066, 30, 200, 57);
-		contadorBot.setFont(new Font("Consolas", Font.BOLD, 45));
+		contadorBot.setFont(new Font("Sitka Subheading", Font.BOLD, 45));
 		contadorBot.setForeground(Color.WHITE);
 		this.contadorBot.setBackground(new Color(0, 0, 153));
 		tablero.getContentPane().add(this.contadorBot);

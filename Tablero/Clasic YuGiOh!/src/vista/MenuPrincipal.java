@@ -35,19 +35,19 @@ public class MenuPrincipal extends JFrame {
 
 		// Boton Salir
 		btnSalir = new JButton("Salir");
-		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnSalir.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
 		btnSalir.setBounds(71, 504, 231, 51);
 		contentPane.add(btnSalir);
 
 		// Boton Opciones
 		btnOpciones = new JButton("Opciones");
-		btnOpciones.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnOpciones.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
 		btnOpciones.setBounds(71, 348, 231, 51);
 		contentPane.add(btnOpciones);
 
 		// Boton Nueva Partida
 		btnNuevaPartida = new JButton("Nueva Partida");
-		btnNuevaPartida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNuevaPartida.setFont(new Font("Sitka Subheading", Font.BOLD, 17));
 		btnNuevaPartida.setBounds(71, 190, 231, 45);
 		contentPane.add(btnNuevaPartida);
 
