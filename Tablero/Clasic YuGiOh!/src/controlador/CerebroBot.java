@@ -193,9 +193,10 @@ public class CerebroBot {
 				this.informeBot += this.getTc().getDuelistaOponente().getNombre() + " ha atacado el monstruo: \n"+monstruoAtacante.getNombre()+ 
 						"\nAtaque: " + this.monstruoAtacante.getAtaque()
 						+"\nDefensa: " +this.monstruoAtacante.getDefensa() 
-						+"\nal monstruo: " +monstruoObjetivo.getNombre()+ "\nDaño causado: " + 
+						+"\nal monstruo: " +monstruoObjetivo.getNombre()
+						+ "\nDaño causado al duelista " + this.getTc().getDuelistaJugador().getNombre() + ": " + 
 						(vidaAnterior - this.getTc().getDuelistaJugador().getVida()) + "\n"; 
-
+				
 			}
 
 		}
