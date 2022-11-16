@@ -18,7 +18,7 @@ public class Boton implements ActionListener {
 	//Boton "Terminar Turno" 
 	public void actionPerformed(ActionEvent e) {
 		try {
-			System.out.println("BOT JUGANGO");
+			System.out.println("BOT JUGANDO");
 			
 //			this.getTc().getReferee().remuevoPanelCampoHechizo(panelHechizo,
 //			this.getTc().getCampoHechizosOponente(),
@@ -42,12 +42,14 @@ public class Boton implements ActionListener {
 			//Vuelve a turno jugador
 			
 			//agrego listeners antes del turno del jugador 
-			agregarListenersMano(this.getTc().getManoMonstruoJugador());
 			agregarListenersCampo(this.getTc().getCampoMonstruosJugador());
+			
 			
 			this.getTc().getDuelistaJugador().robarCarta();
 			this.getTc().getVista().getManoJugador().removeAll();
+
 			this.getTc().setManoJugador();
+			
 
 		} catch (PierdeLaPartida e1) {
 			System.out.println(e1.getMessage());
@@ -59,12 +61,6 @@ public class Boton implements ActionListener {
 	private void agregarListenersCampo(HashMap<JPanel, ?> map) {
 		for (JPanel panelAux : map.keySet()) {
 			panelAux.addMouseListener(new MenuCartaInvocadaMonstruo(this.getTc()));
-		}
-	}
-	
-	private void agregarListenersMano(HashMap<JPanel, ?> map) {
-		for (JPanel panel : map.keySet()) {
-			panel.removeMouseListener(new MonstruosInvocacion(this.getTc()));
 		}
 	}
 	

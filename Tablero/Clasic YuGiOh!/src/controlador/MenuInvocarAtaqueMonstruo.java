@@ -1,11 +1,13 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,22 +60,28 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 
 			this.mouse.getPanelSeleccionado().setBackground(Color.GREEN);
 
+			
+			
 			try {
 				Thread.sleep(500);
 				this.mouse.getTc().getVista().getManoJugador().setVisible(false);
 				this.mouse.getTc().getVista().getManoJugador().setVisible(true);
 				mouse.getPanelSeleccionado().setVisible(false);
 				mouse.getPanelSeleccionado().setVisible(true);
+				
+				
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
 			
+			System.out.println("REMUEVE LISTENERS MANO JUGADOR");
 			removerListenersMano(this.mouse.getTc().getManoMonstruoJugador());
 			
 		}
+		
 	}
 	
-	
+
 	private void removerListenersMano(HashMap<JPanel, ?> map) {
 		for (JPanel panel : map.keySet()) {
 			panel.removeMouseListener(mouse);
