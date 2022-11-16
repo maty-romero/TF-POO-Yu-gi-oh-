@@ -67,7 +67,16 @@ public class MenuInvocarAtaqueMonstruo implements ActionListener {
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-
+			
+			removerListenersMano(this.mouse.getTc().getManoMonstruoJugador());
+			
+		}
+	}
+	
+	
+	private void removerListenersMano(HashMap<JPanel, ?> map) {
+		for (JPanel panel : map.keySet()) {
+			panel.removeMouseListener(mouse);
 		}
 	}
 

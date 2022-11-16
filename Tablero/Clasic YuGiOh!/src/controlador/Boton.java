@@ -35,12 +35,14 @@ public class Boton implements ActionListener {
 
 			System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 			this.getTc().getControladorBot().Batalla();
+			this.getTc().getControladorBot().Batalla();
 
 			this.getTc().getVista().getBtnTerminarTurno().setEnabled(true);
 
 			//Vuelve a turno jugador
 			
 			//agrego listeners antes del turno del jugador 
+			agregarListenersMano(this.getTc().getManoMonstruoJugador());
 			agregarListenersCampo(this.getTc().getCampoMonstruosJugador());
 			
 			this.getTc().getDuelistaJugador().robarCarta();
@@ -54,9 +56,15 @@ public class Boton implements ActionListener {
 
 	}
 
-	public void agregarListenersCampo(HashMap<JPanel, ?> map) {
+	private void agregarListenersCampo(HashMap<JPanel, ?> map) {
 		for (JPanel panelAux : map.keySet()) {
 			panelAux.addMouseListener(new MenuCartaInvocadaMonstruo(this.getTc()));
+		}
+	}
+	
+	private void agregarListenersMano(HashMap<JPanel, ?> map) {
+		for (JPanel panel : map.keySet()) {
+			panel.removeMouseListener(new MonstruosInvocacion(this.getTc()));
 		}
 	}
 	

@@ -54,7 +54,6 @@ public class MonstruosInvocacion implements MouseListener {
 		// create menuItems
 		JMenuItem m1 = new JMenuItem("Invocar Ataque");
 		JMenuItem m2 = new JMenuItem("Invocar defensa");
-		JMenuItem m4 = new JMenuItem("VOLTEAR");
 
 		this.setPanelSeleccionado(panel);
 

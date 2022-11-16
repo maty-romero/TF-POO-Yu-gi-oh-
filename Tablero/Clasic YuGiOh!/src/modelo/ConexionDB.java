@@ -18,8 +18,8 @@ public class ConexionDB {
 	private String url = "jdbc:postgresql://localhost:5433/CartasYugi"; 
 //	private String url = "jdbc:postgresql://localhost/CartasDB2";
 	private String username = "postgres";
-	private String password = "juanijo123";
-// private String password = "gatos123";
+//	private String password = "juanijo123";
+	private String password = "gatos123";
 
 	private ConexionDB() {
 		try {
