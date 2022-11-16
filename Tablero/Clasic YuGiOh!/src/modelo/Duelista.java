@@ -17,15 +17,15 @@ public class Duelista {
 	private Integer contadorDuelistaPierde;
 
 	public Duelista(String nombre) {
-		this.deck = Barajador.generaDeck(); // se obtiene un deck 'aleatorio' desde la BD
+		this.deck = Barajador.generaDeck(); 
 		this.deck.mezclarDeck();
 
 		this.mano = new Mano();
 		this.campo = new Campo();
 		this.cementerio = new Cementerio();
-		this.vida = 8000; // inicializacion de vida
+		this.vida = 8000; 
 		this.nombre = nombre;
-		this.ganador = true; // los duelistas son ganadores hasta que uno de los dos pierda
+		this.ganador = true; 
 		this.invocoMonstruo = false;
 		// this.icono = iconoUrl;
 	}

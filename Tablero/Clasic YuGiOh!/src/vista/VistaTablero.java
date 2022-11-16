@@ -160,7 +160,7 @@ public class VistaTablero implements ImageObserver {
 		manoBot = new JPanel();
 		manoBot.setBounds(148, 6, 730, 100);
 		manoBot.setSize(730, 100);
-		manoBot.setBackground(new Color(0, 0, 0));
+		manoBot.setBackground(new Color(102, 51, 102));
 		manoBot.setVisible(true);
 
 		tablero.getContentPane().add(manoBot);
@@ -356,7 +356,7 @@ public class VistaTablero implements ImageObserver {
 
 	public JPanel agregoCartaManoDefault(JPanel panelDefault, JPanel mano) {
 		panelDefault.setBounds(605, 593, 74, 96);
-		panelDefault.setBackground(new Color(153, 0, 0));
+		panelDefault.setBackground(new Color(102, 51, 102));
 		panelDefault.addMouseListener(new ControladorProyeccionCartas(tableroController));
 		panelDefault.setFocusable(true);
 		panelDefault.requestFocus();
